@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  Layout.swift
 //  swiftui-escola
 //
 //  Created by João Damazio on 01/07/20.
@@ -8,14 +8,16 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct LayoutView: View {
     var body: some View {
-        Text("Hello, World!")
+		NavigationView {
+			LoginScreen()
+		}
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct Layout_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        LayoutView()
     }
 }

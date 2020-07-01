@@ -9,21 +9,31 @@
 /* Begin PBXBuildFile section */
 		DCF043DF24AD16B600241062 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF043DE24AD16B600241062 /* AppDelegate.swift */; };
 		DCF043E124AD16B600241062 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF043E024AD16B600241062 /* SceneDelegate.swift */; };
-		DCF043E324AD16B600241062 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF043E224AD16B600241062 /* ContentView.swift */; };
 		DCF043E524AD16B800241062 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DCF043E424AD16B800241062 /* Assets.xcassets */; };
 		DCF043E824AD16B800241062 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DCF043E724AD16B800241062 /* Preview Assets.xcassets */; };
 		DCF043EB24AD16B800241062 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DCF043E924AD16B800241062 /* LaunchScreen.storyboard */; };
+		DCF043F724AD17E100241062 /* LayoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF043F624AD17E100241062 /* LayoutView.swift */; };
+		DCF043F924AD191200241062 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF043F824AD191200241062 /* LoginScreen.swift */; };
+		DCF043FC24AD1ABD00241062 /* CustomInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF043FB24AD1ABD00241062 /* CustomInputView.swift */; };
+		DCF043FF24AD1D5900241062 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF043FE24AD1D5900241062 /* Colors.swift */; };
+		DCF0440224AD29F600241062 /* Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = DCF0440124AD29F600241062 /* Logo.png */; };
+		DCF0440424AD2BB000241062 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF0440324AD2BB000241062 /* Images.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		DCF043DB24AD16B600241062 /* swiftui-escola.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "swiftui-escola.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCF043DE24AD16B600241062 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DCF043E024AD16B600241062 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		DCF043E224AD16B600241062 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		DCF043E424AD16B800241062 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DCF043E724AD16B800241062 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		DCF043EA24AD16B800241062 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DCF043EC24AD16B800241062 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DCF043F624AD17E100241062 /* LayoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutView.swift; sourceTree = "<group>"; };
+		DCF043F824AD191200241062 /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
+		DCF043FB24AD1ABD00241062 /* CustomInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInputView.swift; sourceTree = "<group>"; };
+		DCF043FE24AD1D5900241062 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		DCF0440124AD29F600241062 /* Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Logo.png; path = ../../../Logo.png; sourceTree = "<group>"; };
+		DCF0440324AD2BB000241062 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,12 +66,16 @@
 		DCF043DD24AD16B600241062 /* swiftui-escola */ = {
 			isa = PBXGroup;
 			children = (
+				DCF0440024AD29E400241062 /* Resources */,
+				DCF043F524AD17C400241062 /* Layout */,
+				DCF043F424AD16F900241062 /* Components */,
+				DCF043F224AD16E600241062 /* Screens */,
+				DCF043FD24AD1C5700241062 /* Theme */,
 				DCF043DE24AD16B600241062 /* AppDelegate.swift */,
 				DCF043E024AD16B600241062 /* SceneDelegate.swift */,
-				DCF043E224AD16B600241062 /* ContentView.swift */,
-				DCF043E424AD16B800241062 /* Assets.xcassets */,
-				DCF043E924AD16B800241062 /* LaunchScreen.storyboard */,
 				DCF043EC24AD16B800241062 /* Info.plist */,
+				DCF043E924AD16B800241062 /* LaunchScreen.storyboard */,
+				DCF043E424AD16B800241062 /* Assets.xcassets */,
 				DCF043E624AD16B800241062 /* Preview Content */,
 			);
 			path = "swiftui-escola";
@@ -73,6 +87,63 @@
 				DCF043E724AD16B800241062 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		DCF043F224AD16E600241062 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				DCF043F324AD16F200241062 /* Login */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		DCF043F324AD16F200241062 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				DCF043F824AD191200241062 /* LoginScreen.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		DCF043F424AD16F900241062 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				DCF043FA24AD1AA800241062 /* Input */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		DCF043F524AD17C400241062 /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				DCF043F624AD17E100241062 /* LayoutView.swift */,
+			);
+			path = Layout;
+			sourceTree = "<group>";
+		};
+		DCF043FA24AD1AA800241062 /* Input */ = {
+			isa = PBXGroup;
+			children = (
+				DCF043FB24AD1ABD00241062 /* CustomInputView.swift */,
+			);
+			path = Input;
+			sourceTree = "<group>";
+		};
+		DCF043FD24AD1C5700241062 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				DCF043FE24AD1D5900241062 /* Colors.swift */,
+				DCF0440324AD2BB000241062 /* Images.swift */,
+			);
+			path = Theme;
+			sourceTree = "<group>";
+		};
+		DCF0440024AD29E400241062 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				DCF0440124AD29F600241062 /* Logo.png */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -133,6 +204,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DCF0440224AD29F600241062 /* Logo.png in Resources */,
 				DCF043EB24AD16B800241062 /* LaunchScreen.storyboard in Resources */,
 				DCF043E824AD16B800241062 /* Preview Assets.xcassets in Resources */,
 				DCF043E524AD16B800241062 /* Assets.xcassets in Resources */,
@@ -146,9 +218,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DCF0440424AD2BB000241062 /* Images.swift in Sources */,
 				DCF043DF24AD16B600241062 /* AppDelegate.swift in Sources */,
+				DCF043FF24AD1D5900241062 /* Colors.swift in Sources */,
+				DCF043F924AD191200241062 /* LoginScreen.swift in Sources */,
+				DCF043F724AD17E100241062 /* LayoutView.swift in Sources */,
+				DCF043FC24AD1ABD00241062 /* CustomInputView.swift in Sources */,
 				DCF043E124AD16B600241062 /* SceneDelegate.swift in Sources */,
-				DCF043E324AD16B600241062 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
