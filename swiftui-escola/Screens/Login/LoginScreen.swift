@@ -9,26 +9,25 @@
 import SwiftUI
 import UIKit
 
-struct Background<Content: View>: View {
-    private var content: Content
-
-    init(@ViewBuilder content: @escaping () -> Content) {
-        self.content = content()
-    }
-
-    var body: some View {
-        Color.white
-        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-        .overlay(content)
+fileprivate struct SubmitButton: ButtonStyle {
+    func makeBody(configuration: Self.Configuration) -> some View {
+        configuration.label
+            .foregroundColor(Color.white)
+			.padding(.vertical, 3)
+			.padding(.horizontal, 8)
+			.background(CustomColor.link)
+            .cornerRadius(10)
+			.scaleEffect(configuration.isPressed ? 1.05 : 1.0)
+			.opacity(configuration.isPressed ? 0.7 : 1)
     }
 }
-
 
 struct LoginScreen: View {
 	let form: FormModel = FormModel.init(inputs: [
 		FormInputModel.init(
 			name: "email",
 			placeholder: "Email",
+			keyboardType: .emailAddress,
 			rules: [
 				FormRulesModel.init(
 					name: .email,
@@ -39,6 +38,7 @@ struct LoginScreen: View {
 		FormInputModel.init(
 			name: "password",
 			placeholder: "Senha",
+			isPassword: true,
 			rules: [
 				FormRulesModel.init(
 					name: .minLength,
@@ -65,19 +65,14 @@ struct LoginScreen: View {
 				ForEach(self.form.inputs, id: \.name) { input in
 					CustomInput(input: input)
 				}
-				Button(action: {
-					
-				}) {
+				Button(action: {}) {
 					Text("Fazer login")
-						.padding(.vertical, 12)
-						.padding(.horizontal, 30)
-						.foregroundColor(CustomColor.white)
-						.background(CustomColor.link)
-						.cornerRadius(15)
-				}
+					.padding(.vertical, 12)
+										.padding(.horizontal, 30)				}
+				.buttonStyle(SubmitButton())
 				.padding(.top, 20)
 			}
-			.padding(.bottom, 100)
+			.padding(.bottom, 130)
 			.padding(.horizontal)
 			.keyboardAdaptive()
 		}.onTapGesture {

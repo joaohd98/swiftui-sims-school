@@ -32,6 +32,8 @@ struct FormInputModel {
 	var name: String
 	var placeholder: String
 	var value: String = ""
+	var isPassword: Bool = false
+	var keyboardType: UIKeyboardType = .default
 	var rules: [FormRulesModel] = []
 	var validationRule: (FormRulesModel)? = nil
 }
