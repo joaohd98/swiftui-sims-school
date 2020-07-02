@@ -18,6 +18,8 @@
 		DCF043FF24AD1D5900241062 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF043FE24AD1D5900241062 /* Colors.swift */; };
 		DCF0440224AD29F600241062 /* Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = DCF0440124AD29F600241062 /* Logo.png */; };
 		DCF0440424AD2BB000241062 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF0440324AD2BB000241062 /* Images.swift */; };
+		DCF0440924AE1E0400241062 /* FormModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF0440824AE1E0400241062 /* FormModel.swift */; };
+		DCF0440D24AE2CF500241062 /* KeyboardHideInputHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF0440C24AE2CF500241062 /* KeyboardHideInputHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		DCF043FE24AD1D5900241062 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		DCF0440124AD29F600241062 /* Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Logo.png; path = ../../../Logo.png; sourceTree = "<group>"; };
 		DCF0440324AD2BB000241062 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
+		DCF0440824AE1E0400241062 /* FormModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormModel.swift; sourceTree = "<group>"; };
+		DCF0440C24AE2CF500241062 /* KeyboardHideInputHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardHideInputHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,9 +71,12 @@
 			isa = PBXGroup;
 			children = (
 				DCF0440024AD29E400241062 /* Resources */,
+				DCF0440B24AE2CCB00241062 /* Helpers */,
 				DCF043F524AD17C400241062 /* Layout */,
 				DCF043F424AD16F900241062 /* Components */,
+				DCF0440624AE1DB900241062 /* Model */,
 				DCF043F224AD16E600241062 /* Screens */,
+				DCF0440A24AE224200241062 /* Services */,
 				DCF043FD24AD1C5700241062 /* Theme */,
 				DCF043DE24AD16B600241062 /* AppDelegate.swift */,
 				DCF043E024AD16B600241062 /* SceneDelegate.swift */,
@@ -144,6 +151,37 @@
 				DCF0440124AD29F600241062 /* Logo.png */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		DCF0440624AE1DB900241062 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DCF0440724AE1DCC00241062 /* Form */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		DCF0440724AE1DCC00241062 /* Form */ = {
+			isa = PBXGroup;
+			children = (
+				DCF0440824AE1E0400241062 /* FormModel.swift */,
+			);
+			path = Form;
+			sourceTree = "<group>";
+		};
+		DCF0440A24AE224200241062 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		DCF0440B24AE2CCB00241062 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				DCF0440C24AE2CF500241062 /* KeyboardHideInputHelper.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -225,6 +263,8 @@
 				DCF043F724AD17E100241062 /* LayoutView.swift in Sources */,
 				DCF043FC24AD1ABD00241062 /* CustomInputView.swift in Sources */,
 				DCF043E124AD16B600241062 /* SceneDelegate.swift in Sources */,
+				DCF0440D24AE2CF500241062 /* KeyboardHideInputHelper.swift in Sources */,
+				DCF0440924AE1E0400241062 /* FormModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
