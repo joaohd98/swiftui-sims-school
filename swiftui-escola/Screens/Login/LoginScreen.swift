@@ -10,27 +10,27 @@ import SwiftUI
 
 struct LoginScreen: View {
 	let form: FormModel = FormModel.init(inputs: [
-		InputModel.init(
+		FormInputModel.init(
 			name: "email",
 			placeholder: "Email",
 			rules: [
-				RulesModel.init(
-					name: "email",
+				FormRulesModel.init(
+					name: .email,
 					message: "Digite um email válido!"
 				),
 			]
 		),
-		InputModel.init(
+		FormInputModel.init(
 			name: "password",
 			placeholder: "Senha",
 			rules: [
-				RulesModel.init(
-					name: "min-value",
+				FormRulesModel.init(
+					name: .minLength,
 					message: "Digite um senha com no mínimo 4 digitos!",
 					optionalParam: 4
 				),
-				RulesModel.init(
-					name: "max-value",
+				FormRulesModel.init(
+					name: .maxLength,
 					message: "Digite um senha com no máximo 8 digitos!",
 					optionalParam: 8
 				),
@@ -39,25 +39,30 @@ struct LoginScreen: View {
 	])
 	
     var body: some View {
-		VStack(alignment: .center, spacing: 30) {
-			CustomImages.logo.resizable().frame(width: 150, height: 150)
-			CustomInputView(textValue: "", placeholder: "Email")
-			CustomInputView(textValue: "", placeholder: "Senha")
-			Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/) {
+		VStack(alignment: .center, spacing: 10) {
+			CustomImages
+				.logo
+				.resizable()
+				.frame(width: 150, height: 150)
+				.padding(.bottom, 25)
+			ForEach(self.form.inputs, id: \.name) { input in
+				CustomInputView(input: input)
+			}
+			Button(action: {
+				
+			}) {
 				Text("Fazer login")
 					.padding(.vertical, 12)
 					.padding(.horizontal, 30)
 					.foregroundColor(CustomColor.white)
 					.background(CustomColor.link)
 					.cornerRadius(15)
-
-
 			}
-			.padding(.top, 10)
+			.padding(.top, 20)
 		}
-		.padding(.horizontal)
 		.padding(.bottom, 100)
-		.keyboardAdaptive() 
+		.padding(.horizontal)
+		.keyboardAdaptive()
     }
 }
 

@@ -10,9 +10,9 @@ import SwiftUI
 import UIKit
 
 class FormModel {
-	var inputs: [InputModel] = []
-
-	init(inputs: [InputModel]) {
+	var inputs: [FormInputModel] = []
+	
+	init(inputs: [FormInputModel]) {
 		self.inputs = inputs
 	}
 	
@@ -28,15 +28,16 @@ class FormModel {
 	
 }
 
-struct InputModel {
+struct FormInputModel {
 	var name: String
 	var placeholder: String
 	var value: String = ""
-	var rules: [RulesModel] = []
+	var rules: [FormRulesModel] = []
+	var validationRule: (FormRulesModel)? = nil
 }
 
-struct RulesModel {
-	var name: String
+struct FormRulesModel {
+	var name: FormRulesNames
 	var message: String
 	var optionalParam: (Any)? = nil
 }

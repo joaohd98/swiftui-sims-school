@@ -20,6 +20,7 @@
 		DCF0440424AD2BB000241062 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF0440324AD2BB000241062 /* Images.swift */; };
 		DCF0440924AE1E0400241062 /* FormModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF0440824AE1E0400241062 /* FormModel.swift */; };
 		DCF0440D24AE2CF500241062 /* KeyboardHideInputHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF0440C24AE2CF500241062 /* KeyboardHideInputHelper.swift */; };
+		DCF0440F24AE393500241062 /* FormRules.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF0440E24AE393500241062 /* FormRules.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		DCF0440324AD2BB000241062 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		DCF0440824AE1E0400241062 /* FormModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormModel.swift; sourceTree = "<group>"; };
 		DCF0440C24AE2CF500241062 /* KeyboardHideInputHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardHideInputHelper.swift; sourceTree = "<group>"; };
+		DCF0440E24AE393500241062 /* FormRules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormRules.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				DCF0440824AE1E0400241062 /* FormModel.swift */,
+				DCF0440E24AE393500241062 /* FormRules.swift */,
 			);
 			path = Form;
 			sourceTree = "<group>";
@@ -263,6 +266,7 @@
 				DCF043F724AD17E100241062 /* LayoutView.swift in Sources */,
 				DCF043FC24AD1ABD00241062 /* CustomInputView.swift in Sources */,
 				DCF043E124AD16B600241062 /* SceneDelegate.swift in Sources */,
+				DCF0440F24AE393500241062 /* FormRules.swift in Sources */,
 				DCF0440D24AE2CF500241062 /* KeyboardHideInputHelper.swift in Sources */,
 				DCF0440924AE1E0400241062 /* FormModel.swift in Sources */,
 			);

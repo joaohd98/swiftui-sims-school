@@ -22,16 +22,13 @@ extension UIResponder {
 }
 
 extension Publishers {
-	// 1.
 	static var keyboardHeight: AnyPublisher<CGFloat, Never> {
-		// 2.
 		let willShow = NotificationCenter.default.publisher(for: UIApplication.keyboardWillShowNotification)
-			.map { $0.keyboardHeight }
+			.map { $0.keyboardHeight + 75 }
 		
 		let willHide = NotificationCenter.default.publisher(for: UIApplication.keyboardWillHideNotification)
 			.map { _ in CGFloat(0) }
 		
-		// 3.
 		return MergeMany(willShow, willHide)
 			.eraseToAnyPublisher()
 	}
@@ -45,23 +42,17 @@ extension Notification {
 
 struct KeyboardAdaptive: ViewModifier {
 	@State private var bottomPadding: CGFloat = 0
-	
+
 	func body(content: Content) -> some View {
-		// 1.
 		GeometryReader { geometry in
 			content
 				.padding(.bottom, self.bottomPadding)
-				// 2.
 				.onReceive(Publishers.keyboardHeight) { keyboardHeight in
-					// 3.
 					let keyboardTop = geometry.frame(in: .global).height - keyboardHeight
-					// 4.
 					let focusedTextInputBottom = UIResponder.currentFirstResponder?.globalFrame?.maxY ?? 0
-					// 5.
 					self.bottomPadding = max(0, focusedTextInputBottom - keyboardTop - geometry.safeAreaInsets.bottom)
 			}
-				// 6.
-				.animation(.easeOut(duration: 0.16))
+			.animation(.easeOut(duration: 0.16))
 		}
 	}
 }
