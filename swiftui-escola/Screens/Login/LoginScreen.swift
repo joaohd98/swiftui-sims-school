@@ -7,6 +7,22 @@
 //
 
 import SwiftUI
+import UIKit
+
+struct Background<Content: View>: View {
+    private var content: Content
+
+    init(@ViewBuilder content: @escaping () -> Content) {
+        self.content = content()
+    }
+
+    var body: some View {
+        Color.white
+        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        .overlay(content)
+    }
+}
+
 
 struct LoginScreen: View {
 	let form: FormModel = FormModel.init(inputs: [
@@ -39,30 +55,34 @@ struct LoginScreen: View {
 	])
 	
     var body: some View {
-		VStack(alignment: .center, spacing: 10) {
-			CustomImages
-				.logo
-				.resizable()
-				.frame(width: 150, height: 150)
-				.padding(.bottom, 25)
-			ForEach(self.form.inputs, id: \.name) { input in
-				CustomInputView(input: input)
+        CustomContainer {
+			VStack(alignment: .center, spacing: 10) {
+				CustomImages
+					.logo
+					.resizable()
+					.frame(width: 150, height: 150)
+					.padding(.bottom, 25)
+				ForEach(self.form.inputs, id: \.name) { input in
+					CustomInput(input: input)
+				}
+				Button(action: {
+					
+				}) {
+					Text("Fazer login")
+						.padding(.vertical, 12)
+						.padding(.horizontal, 30)
+						.foregroundColor(CustomColor.white)
+						.background(CustomColor.link)
+						.cornerRadius(15)
+				}
+				.padding(.top, 20)
 			}
-			Button(action: {
-				
-			}) {
-				Text("Fazer login")
-					.padding(.vertical, 12)
-					.padding(.horizontal, 30)
-					.foregroundColor(CustomColor.white)
-					.background(CustomColor.link)
-					.cornerRadius(15)
-			}
-			.padding(.top, 20)
+			.padding(.bottom, 100)
+			.padding(.horizontal)
+			.keyboardAdaptive()
+		}.onTapGesture {
+			UIApplication.shared.endEditing()
 		}
-		.padding(.bottom, 100)
-		.padding(.horizontal)
-		.keyboardAdaptive()
     }
 }
 

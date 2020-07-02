@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct CustomInputView: View {
+struct CustomInput: View {
 	@State var input: FormInputModel
 		
     var body: some View {
@@ -37,9 +37,9 @@ struct CustomInputView: View {
 }
 
 
-struct CustomInputView_Previews: PreviewProvider {
+struct CustomInput_Previews: PreviewProvider {
     static var previews: some View {
-		CustomInputView(
+		CustomInput(
 			input: FormInputModel.init(name: "nome", placeholder: "Nome")
 		)
 		.previewLayout(.fixed(width: 300, height: 100))

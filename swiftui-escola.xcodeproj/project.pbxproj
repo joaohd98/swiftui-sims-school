@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DCA500C124AE5223006B4C63 /* CustomContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA500C024AE5223006B4C63 /* CustomContainer.swift */; };
 		DCF043DF24AD16B600241062 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF043DE24AD16B600241062 /* AppDelegate.swift */; };
 		DCF043E124AD16B600241062 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF043E024AD16B600241062 /* SceneDelegate.swift */; };
 		DCF043E524AD16B800241062 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DCF043E424AD16B800241062 /* Assets.xcassets */; };
@@ -14,7 +15,7 @@
 		DCF043EB24AD16B800241062 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DCF043E924AD16B800241062 /* LaunchScreen.storyboard */; };
 		DCF043F724AD17E100241062 /* LayoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF043F624AD17E100241062 /* LayoutView.swift */; };
 		DCF043F924AD191200241062 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF043F824AD191200241062 /* LoginScreen.swift */; };
-		DCF043FC24AD1ABD00241062 /* CustomInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF043FB24AD1ABD00241062 /* CustomInputView.swift */; };
+		DCF043FC24AD1ABD00241062 /* CustomInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF043FB24AD1ABD00241062 /* CustomInput.swift */; };
 		DCF043FF24AD1D5900241062 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF043FE24AD1D5900241062 /* Colors.swift */; };
 		DCF0440224AD29F600241062 /* Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = DCF0440124AD29F600241062 /* Logo.png */; };
 		DCF0440424AD2BB000241062 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF0440324AD2BB000241062 /* Images.swift */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DCA500C024AE5223006B4C63 /* CustomContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomContainer.swift; sourceTree = "<group>"; };
 		DCF043DB24AD16B600241062 /* swiftui-escola.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "swiftui-escola.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCF043DE24AD16B600241062 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DCF043E024AD16B600241062 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -33,7 +35,7 @@
 		DCF043EC24AD16B800241062 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DCF043F624AD17E100241062 /* LayoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutView.swift; sourceTree = "<group>"; };
 		DCF043F824AD191200241062 /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
-		DCF043FB24AD1ABD00241062 /* CustomInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInputView.swift; sourceTree = "<group>"; };
+		DCF043FB24AD1ABD00241062 /* CustomInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInput.swift; sourceTree = "<group>"; };
 		DCF043FE24AD1D5900241062 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		DCF0440124AD29F600241062 /* Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Logo.png; path = ../../../Logo.png; sourceTree = "<group>"; };
 		DCF0440324AD2BB000241062 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
@@ -53,6 +55,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DCA500BD24AE51CC006B4C63 /* Container */ = {
+			isa = PBXGroup;
+			children = (
+				DCA500C024AE5223006B4C63 /* CustomContainer.swift */,
+			);
+			path = Container;
+			sourceTree = "<group>";
+		};
 		DCF043D224AD16B600241062 = {
 			isa = PBXGroup;
 			children = (
@@ -117,6 +127,7 @@
 		DCF043F424AD16F900241062 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				DCA500BD24AE51CC006B4C63 /* Container */,
 				DCF043FA24AD1AA800241062 /* Input */,
 			);
 			path = Components;
@@ -133,7 +144,7 @@
 		DCF043FA24AD1AA800241062 /* Input */ = {
 			isa = PBXGroup;
 			children = (
-				DCF043FB24AD1ABD00241062 /* CustomInputView.swift */,
+				DCF043FB24AD1ABD00241062 /* CustomInput.swift */,
 			);
 			path = Input;
 			sourceTree = "<group>";
@@ -260,11 +271,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				DCF0440424AD2BB000241062 /* Images.swift in Sources */,
+				DCA500C124AE5223006B4C63 /* CustomContainer.swift in Sources */,
 				DCF043DF24AD16B600241062 /* AppDelegate.swift in Sources */,
 				DCF043FF24AD1D5900241062 /* Colors.swift in Sources */,
 				DCF043F924AD191200241062 /* LoginScreen.swift in Sources */,
 				DCF043F724AD17E100241062 /* LayoutView.swift in Sources */,
-				DCF043FC24AD1ABD00241062 /* CustomInputView.swift in Sources */,
+				DCF043FC24AD1ABD00241062 /* CustomInput.swift in Sources */,
 				DCF043E124AD16B600241062 /* SceneDelegate.swift in Sources */,
 				DCF0440F24AE393500241062 /* FormRules.swift in Sources */,
 				DCF0440D24AE2CF500241062 /* KeyboardHideInputHelper.swift in Sources */,
