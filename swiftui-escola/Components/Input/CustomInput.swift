@@ -39,8 +39,8 @@ fileprivate struct CustomTextField : TextFieldStyle {
 }
 
 struct CustomInput: View {
-	@Binding var form: FormModel
-	@State var input: FormInputModel
+	@ObservedObject var form: FormModel
+	@ObservedObject var input: FormInputModel
 	@State var wrongAttempt: Bool = false
 
 	func onAppear() {
@@ -59,19 +59,15 @@ struct CustomInput: View {
 	}
 	
     var body: some View {
-		let text = self.input.bindingValue ?? Binding<String>(
-			get: {self.input.value},
-			set: {self.input.value = $0}
-		)
 		
 		return (
 			VStack(alignment: .leading, spacing: 2.0) {
 				if self.input.isPassword {
-					SecureField(input.placeholder, text: text)
+					SecureField(input.placeholder, text: self.input.bindingValue!)
 						.textFieldStyle(CustomTextField(input: self.input, wrongAttempt: self.wrongAttempt))
 				}
 				else {
-					TextField(input.placeholder, text: text)
+					TextField(input.placeholder, text: self.input.bindingValue!)
 						.keyboardType(self.input.keyboardType)
 						.textFieldStyle(CustomTextField(input: self.input, wrongAttempt: self.wrongAttempt))
 				}
@@ -94,7 +90,7 @@ struct CustomInputView_Previews: PreviewProvider {
 
     static var previews: some View {
 		CustomInput(
-			form: $form,
+			form: form,
 			input: input
 		)
 		.previewLayout(.fixed(width: 300, height: 100))
