@@ -64,7 +64,7 @@ struct LoginScreen: View {
 					.frame(width: 150, height: 150)
 					.padding(.bottom, 25)
 				ForEach(self.form.inputs.indices) { index in
-					CustomInput(form: self.form, input: self.form.inputs[index])
+					CustomInput(input: self.form.inputs[index])
 				}
 				Button(action: {
 					withAnimation {

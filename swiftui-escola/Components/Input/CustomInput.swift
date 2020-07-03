@@ -22,26 +22,30 @@ struct Shake: GeometryEffect {
 
 fileprivate struct CustomTextField : TextFieldStyle {
 	var input: FormInputModel
-	var wrongAttempt: Bool
 
 	public func _body(configuration: TextField<Self._Label>) -> some View {
-		configuration
-			.padding(.vertical, 8)
-			.padding(.horizontal, 10)
-			.foregroundColor(CustomColor.inputColor)
-			.font(.system(size: 13, weight: .medium, design: .rounded))
-			.background(
-				RoundedRectangle(cornerRadius: 10)
-					.strokeBorder(self.wrongAttempt ? CustomColor.danger :  CustomColor.borderInputColor, lineWidth: 1)
-			)
-			.modifier(Shake(animatableData: CGFloat(self.wrongAttempt ? 10 : 0)))
+		
+		let color = self.input.getColor()
+		
+		return (
+			configuration
+				.padding(.vertical, 8)
+				.padding(.horizontal, 10)
+				.foregroundColor(CustomColor.inputColor)
+				.font(.system(size: 13, weight: .medium, design: .rounded))
+				.background(
+					RoundedRectangle(cornerRadius: 10)
+						.strokeBorder(color, lineWidth: 1)
+				)
+				.modifier(Shake(animatableData: CGFloat(self.input.submitWhenInvalid ? 10 : 0)))
+		)
+	
 	}
 }
 
+
 struct CustomInput: View {
-	@ObservedObject var form: FormModel
 	@ObservedObject var input: FormInputModel
-	@State var wrongAttempt: Bool = false
 
 	func onAppear() {
 		self.input.bindingValue = Binding<String>(get: {
@@ -50,30 +54,26 @@ struct CustomInput: View {
 			self.input.value = $0
 			self.input.validationRule = FormRules.checkInputIsValid(input: self.input)
 		})
-		
-		self.input.onWrongAttemptSubmit = {
-			self.wrongAttempt.toggle()
-		}
-		
-		form.onChangingInput(name: self.input.name, newInput: self.input)
 	}
 	
     var body: some View {
+		let color = self.input.getColor()
+		let message = color == CustomColor.danger ||  color == CustomColor.warning ? self.input.validationRule!.message : ""
 		
 		return (
 			VStack(alignment: .leading, spacing: 2.0) {
 				if self.input.isPassword {
 					SecureField(input.placeholder, text: self.input.bindingValue!)
-						.textFieldStyle(CustomTextField(input: self.input, wrongAttempt: self.wrongAttempt))
+						.textFieldStyle(CustomTextField(input: self.input))
 				}
 				else {
-					TextField(input.placeholder, text: self.input.bindingValue!)
-						.keyboardType(self.input.keyboardType)
-						.textFieldStyle(CustomTextField(input: self.input, wrongAttempt: self.wrongAttempt))
+					TextField(input.placeholder, text: self.input.bindingValue!, onEditingChanged: {hasFocus in self.input.changeFocus(hasFocus)})
+					.keyboardType(self.input.keyboardType)
+					.textFieldStyle(CustomTextField(input: self.input))
 				}
 		
-				Text(self.input.validationRule != nil ? self.input.validationRule!.message : "")
-					.foregroundColor(CustomColor.danger)
+				Text(message)
+					.foregroundColor(color)
 					.font(.system(size: 12, weight: .medium, design: .rounded))
 					.padding(.horizontal, 7)
 			}.padding(.horizontal, 7)
@@ -85,13 +85,9 @@ struct CustomInput: View {
 
 
 struct CustomInputView_Previews: PreviewProvider {
-	@State static var form = FormModel.init(inputs: [])
-	@State static var input = FormInputModel.init(name: "nome", placeholder: "Nome")
-
     static var previews: some View {
 		CustomInput(
-			form: form,
-			input: input
+			input: FormInputModel.init(name: "nome", placeholder: "Nome")
 		)
 		.previewLayout(.fixed(width: 300, height: 100))
     }

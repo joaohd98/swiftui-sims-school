@@ -21,11 +21,9 @@ class FormModel: ObservableObject {
 		for i in self.inputs.indices {
 			
 			self.inputs[i].validationRule = FormRules.checkInputIsValid(input: self.inputs[i])
-			
-			print(self.inputs[i].validationRule ?? "Nil")
-			
+						
 			if self.inputs[i].validationRule != nil {
-				self.inputs[i].onWrongAttemptSubmit()
+				self.inputs[i].submitWhenInvalid = true
 				return false
 			}
 			
@@ -48,37 +46,67 @@ class FormInputModel: ObservableObject {
 	@Published var value: String
 	@Published var bindingValue: Binding<String>?
 	@Published var isPassword: Bool
-	@Published var submitWhenInvalid: Bool
 	@Published var keyboardType: UIKeyboardType
 	@Published var rules: [FormRulesModel]
 	@Published var validationRule: (FormRulesModel)?
-	@Published var onWrongAttemptSubmit: (() -> Void)
-	
+	@Published var submitWhenInvalid: Bool
+	@Published var hasFocus: Bool
+	@Published var hasEverUnfocused: Bool
+
 	init(
 		name: String,
 		placeholder: String,
 		value: String = "",
 		bindingValue: Binding<String>? = nil,
 		isPassword: Bool = false,
-		submitWhenInvalid: Bool = false,
 		keyboardType: UIKeyboardType = .default,
 		rules: [FormRulesModel] = [],
-		validationRule: (FormRulesModel)? = nil,
-		onWrongAttemptSubmit: (() -> Void)? = nil
+		validationRule: (FormRulesModel)? = nil
 	){
 		self.name = name
 		self.placeholder = placeholder
 		self.value = value
 		self.isPassword = isPassword
-		self.submitWhenInvalid = submitWhenInvalid
 		self.keyboardType = keyboardType
 		self.rules = rules
 		self.validationRule = validationRule
-		self.onWrongAttemptSubmit = onWrongAttemptSubmit ?? {}
+		self.submitWhenInvalid = false
+		self.hasFocus = false
+		self.hasEverUnfocused = false
 		self.bindingValue = bindingValue ?? Binding<String>(
 			get: {self.value},
 			set: {self.value = $0}
 		)
+	}
+	
+	
+	func changeFocus(_ hasFocus: Bool) {
+		if hasFocus {
+			self.hasFocus = true
+		} else {
+			self.hasFocus = false
+			self.hasEverUnfocused = true
+		}
+	}
+	
+	func getColor() -> Color {
+		var color = CustomColor.borderInputColor
+		
+		if(self.hasEverUnfocused && self.validationRule != nil) {
+			if(self.hasFocus) {
+				color = CustomColor.warning
+			}
+			
+			else {
+				color = CustomColor.danger
+			}
+		}
+		
+		else if(self.value != "" && self.validationRule == nil) {
+			color = CustomColor.success
+		}
+		
+		return color
 	}
 	
 }
