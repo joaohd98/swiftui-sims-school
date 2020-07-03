@@ -26,7 +26,7 @@
 
 /* Begin PBXFileReference section */
 		DCA500C024AE5223006B4C63 /* CustomContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomContainer.swift; sourceTree = "<group>"; };
-		DCF043DB24AD16B600241062 /* swiftui-escola.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "swiftui-escola.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DCF043DB24AD16B600241062 /* Sims School.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sims School.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCF043DE24AD16B600241062 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DCF043E024AD16B600241062 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		DCF043E424AD16B800241062 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -74,7 +74,7 @@
 		DCF043DC24AD16B600241062 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				DCF043DB24AD16B600241062 /* swiftui-escola.app */,
+				DCF043DB24AD16B600241062 /* Sims School.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -215,7 +215,7 @@
 			);
 			name = "swiftui-escola";
 			productName = "swiftui-escola";
-			productReference = DCF043DB24AD16B600241062 /* swiftui-escola.app */;
+			productReference = DCF043DB24AD16B600241062 /* Sims School.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -425,7 +425,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "joao.tm.swiftui-escola";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Sims School";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -444,7 +444,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "joao.tm.swiftui-escola";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Sims School";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

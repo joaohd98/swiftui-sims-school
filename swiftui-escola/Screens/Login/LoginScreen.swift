@@ -13,17 +13,18 @@ fileprivate struct SubmitButton: ButtonStyle {
     func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
             .foregroundColor(Color.white)
-			.padding(.vertical, 3)
-			.padding(.horizontal, 8)
+			.padding(.vertical, 12)
+			.padding(.horizontal, 40)
 			.background(CustomColor.link)
-            .cornerRadius(10)
+            .cornerRadius(20)
 			.scaleEffect(configuration.isPressed ? 1.05 : 1.0)
 			.opacity(configuration.isPressed ? 0.7 : 1)
+		
     }
 }
 
 struct LoginScreen: View {
-	let form: FormModel = FormModel.init(inputs: [
+	@State var form: FormModel = FormModel.init(inputs: [
 		FormInputModel.init(
 			name: "email",
 			placeholder: "Email",
@@ -55,20 +56,25 @@ struct LoginScreen: View {
 	])
 	
     var body: some View {
-        CustomContainer {
+		CustomContainer {
 			VStack(alignment: .center, spacing: 10) {
 				CustomImages
 					.logo
 					.resizable()
 					.frame(width: 150, height: 150)
 					.padding(.bottom, 25)
-				ForEach(self.form.inputs, id: \.name) { input in
-					CustomInput(input: input)
+				ForEach(self.form.inputs.indices) { index in
+					CustomInput(form: self.$form, input: self.form.inputs[index])
 				}
-				Button(action: {}) {
-					Text("Fazer login")
-					.padding(.vertical, 12)
-										.padding(.horizontal, 30)				}
+				Button(action: {
+					withAnimation {
+						if self.form.checkFormIsValid() {
+							
+						}
+					}
+				}) {
+					Text("Entrar")
+				}
 				.buttonStyle(SubmitButton())
 				.padding(.top, 20)
 			}

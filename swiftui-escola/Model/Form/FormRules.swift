@@ -34,13 +34,9 @@ class FormRules {
 	}
 	
 	
-	static func checkFormIsValid(input: FormInputModel) -> (FormRulesModel)? {
+	static func checkInputIsValid(input: FormInputModel) -> (FormRulesModel)? {
 		let validations = FormRules.init()
 		
-		if input.value == "" {
-			return nil
-		}
-
 		for formRule in input.rules {
 			switch formRule.name {
 				case .email: do {
