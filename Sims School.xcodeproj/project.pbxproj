@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -68,7 +68,6 @@
 				A518D0BBE87DF0D79C52DB73 /* Pods-swiftui-escola.debug.xcconfig */,
 				E3B0308193EC0AD9A9EBDCFD /* Pods-swiftui-escola.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -91,7 +90,7 @@
 		DCF043D224AD16B600241062 = {
 			isa = PBXGroup;
 			children = (
-				DCF043DD24AD16B600241062 /* swiftui-escola */,
+				DCF043DD24AD16B600241062 /* Sims School */,
 				DCF043DC24AD16B600241062 /* Products */,
 				0AE6214BD201AE44F04D15BF /* Pods */,
 				A55350B1B31EDA574414D329 /* Frameworks */,
@@ -106,7 +105,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		DCF043DD24AD16B600241062 /* swiftui-escola */ = {
+		DCF043DD24AD16B600241062 /* Sims School */ = {
 			isa = PBXGroup;
 			children = (
 				DCF0440024AD29E400241062 /* Resources */,
@@ -125,7 +124,7 @@
 				DCF043E424AD16B800241062 /* Assets.xcassets */,
 				DCF043E624AD16B800241062 /* Preview Content */,
 			);
-			path = "swiftui-escola";
+			path = "Sims School";
 			sourceTree = "<group>";
 		};
 		DCF043E624AD16B800241062 /* Preview Content */ = {
@@ -229,9 +228,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		DCF043DA24AD16B600241062 /* swiftui-escola */ = {
+		DCF043DA24AD16B600241062 /* Sims School */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = DCF043EF24AD16B800241062 /* Build configuration list for PBXNativeTarget "swiftui-escola" */;
+			buildConfigurationList = DCF043EF24AD16B800241062 /* Build configuration list for PBXNativeTarget "Sims School" */;
 			buildPhases = (
 				663AFD1E9157B6170CADB5EF /* [CP] Check Pods Manifest.lock */,
 				DCF043D724AD16B600241062 /* Sources */,
@@ -243,7 +242,7 @@
 			);
 			dependencies = (
 			);
-			name = "swiftui-escola";
+			name = "Sims School";
 			productName = "swiftui-escola";
 			productReference = DCF043DB24AD16B600241062 /* Sims School.app */;
 			productType = "com.apple.product-type.application";
@@ -263,7 +262,7 @@
 					};
 				};
 			};
-			buildConfigurationList = DCF043D624AD16B600241062 /* Build configuration list for PBXProject "swiftui-escola" */;
+			buildConfigurationList = DCF043D624AD16B600241062 /* Build configuration list for PBXProject "Sims School" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -276,7 +275,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				DCF043DA24AD16B600241062 /* swiftui-escola */,
+				DCF043DA24AD16B600241062 /* Sims School */,
 			);
 		};
 /* End PBXProject section */
@@ -491,9 +490,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"swiftui-escola/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Sims School/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "swiftui-escola/Info.plist";
+				INFOPLIST_FILE = "Sims School/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -511,9 +510,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"swiftui-escola/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Sims School/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "swiftui-escola/Info.plist";
+				INFOPLIST_FILE = "Sims School/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -528,7 +527,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		DCF043D624AD16B600241062 /* Build configuration list for PBXProject "swiftui-escola" */ = {
+		DCF043D624AD16B600241062 /* Build configuration list for PBXProject "Sims School" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DCF043ED24AD16B800241062 /* Debug */,
@@ -537,7 +536,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		DCF043EF24AD16B800241062 /* Build configuration list for PBXNativeTarget "swiftui-escola" */ = {
+		DCF043EF24AD16B800241062 /* Build configuration list for PBXNativeTarget "Sims School" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DCF043F024AD16B800241062 /* Debug */,
