@@ -8,18 +8,6 @@
 
 import SwiftUI
 
-struct Shake: GeometryEffect {
-    var amount: CGFloat = 30
-    var shakesPerUnit = 2
-    var animatableData: CGFloat
-
-    func effectValue(size: CGSize) -> ProjectionTransform {
-        ProjectionTransform(CGAffineTransform(translationX:
-            amount * sin(animatableData * .pi * CGFloat(shakesPerUnit)),
-            y: 0))
-    }
-}
-
 fileprivate struct CustomTextField : TextFieldStyle {
 	var input: FormInputModel
 	var color: Color
@@ -34,7 +22,6 @@ fileprivate struct CustomTextField : TextFieldStyle {
 				RoundedRectangle(cornerRadius: 10)
 					.strokeBorder(self.color, lineWidth: 1)
 			)
-			.modifier(Shake(animatableData: CGFloat(self.input.submitWhenInvalid ? 10 : 0)))
 	}
 }
 
@@ -54,7 +41,7 @@ struct CustomInput: View {
     var body: some View {
 		let color = self.input.getColor()
 		let message = color == CustomColor.danger ||  color == CustomColor.warning ? self.input.validationRule!.message : ""
-		
+
 		return (
 			VStack(alignment: .leading, spacing: 2.0) {
 				if self.input.isPassword {

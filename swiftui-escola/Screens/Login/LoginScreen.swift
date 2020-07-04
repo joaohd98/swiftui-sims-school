@@ -74,8 +74,8 @@ struct LoginScreen: View {
 				Button(action: {
 					withAnimation {
 						if self.form.checkFormIsValid() {
-							
 						}
+
 					}
 				}) {
 					Text("Entrar")

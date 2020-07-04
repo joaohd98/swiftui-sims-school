@@ -17,19 +17,23 @@ class FormModel: ObservableObject {
 	}
 	
 	func checkFormIsValid() -> Bool {
+		var isSucess = true
+		var inputs: [FormInputModel] = []
 		
 		for i in self.inputs.indices {
-			
 			self.inputs[i].validationRule = FormRules.checkInputIsValid(input: self.inputs[i])
-			
+			self.inputs[i].hasTriedSubmit = true
+
 			if self.inputs[i].validationRule != nil {
-				self.inputs[i].submitWhenInvalid = true
-				return false
+				isSucess = false
 			}
 			
+			inputs.append(self.inputs[i])
 		}
 		
-		return true
+		self.inputs = inputs
+		
+		return isSucess
 	}	
 }
 
@@ -42,9 +46,9 @@ class FormInputModel: ObservableObject {
 	@Published var keyboardType: UIKeyboardType
 	@Published var rules: [FormRulesModel]
 	@Published var validationRule: (FormRulesModel)?
-	@Published var submitWhenInvalid: Bool
 	@Published var hasFocus: Bool
 	@Published var hasEverUnfocused: Bool
+	@Published var hasTriedSubmit: Bool
 
 	init(
 		name: String,
@@ -63,9 +67,9 @@ class FormInputModel: ObservableObject {
 		self.keyboardType = keyboardType
 		self.rules = rules
 		self.validationRule = validationRule
-		self.submitWhenInvalid = false
 		self.hasFocus = false
 		self.hasEverUnfocused = false
+		self.hasTriedSubmit = false
 		self.bindingValue = bindingValue ?? Binding<String>(get: {
 			self.value
 		}, set: {
@@ -87,7 +91,7 @@ class FormInputModel: ObservableObject {
 	func getColor() -> Color {
 		var color = CustomColor.borderInputColor
 		
-		if(self.hasEverUnfocused && self.validationRule != nil) {
+		if((self.hasEverUnfocused && self.validationRule != nil) || self.hasTriedSubmit) {
 			if(self.hasFocus) {
 				color = CustomColor.warning
 			}
@@ -97,7 +101,7 @@ class FormInputModel: ObservableObject {
 			}
 		}
 		
-		else if(self.value != "" && self.validationRule == nil) {
+		else if((self.value != "" && self.validationRule == nil) || self.hasTriedSubmit) {
 			color = CustomColor.success
 		}
 		
@@ -111,7 +115,7 @@ class FormRulesModel: ObservableObject {
 	@Published var message: String
 	@Published var optionalParam: (Any)? = nil
 	
-	internal init(name: FormRulesNames, message: String, optionalParam: (Any)? = nil) {
+	init(name: FormRulesNames, message: String, optionalParam: (Any)? = nil) {
 		self.name = name
 		self.message = message
 		self.optionalParam = optionalParam
