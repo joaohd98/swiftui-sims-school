@@ -41,6 +41,7 @@ struct CustomInput: View {
     var body: some View {
 		let color = self.input.getColor()
 		let message = color == CustomColor.danger ||  color == CustomColor.warning ? self.input.validationRule!.message : ""
+		
 
 		return (
 			VStack(alignment: .leading, spacing: 2.0) {

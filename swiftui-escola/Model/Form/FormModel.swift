@@ -22,7 +22,7 @@ class FormModel: ObservableObject {
 		
 		for i in self.inputs.indices {
 			self.inputs[i].validationRule = FormRules.checkInputIsValid(input: self.inputs[i])
-			self.inputs[i].hasTriedSubmit = true
+			self.inputs[i].hasTriedSubmit = true 
 
 			if self.inputs[i].validationRule != nil {
 				isSucess = false
@@ -91,7 +91,7 @@ class FormInputModel: ObservableObject {
 	func getColor() -> Color {
 		var color = CustomColor.borderInputColor
 		
-		if((self.hasEverUnfocused && self.validationRule != nil) || self.hasTriedSubmit) {
+		if((self.hasEverUnfocused || self.hasTriedSubmit) && self.validationRule != nil) {
 			if(self.hasFocus) {
 				color = CustomColor.warning
 			}
@@ -101,7 +101,7 @@ class FormInputModel: ObservableObject {
 			}
 		}
 		
-		else if((self.value != "" && self.validationRule == nil) || self.hasTriedSubmit) {
+		else if((self.value != "" || self.hasTriedSubmit) && self.validationRule == nil) {
 			color = CustomColor.success
 		}
 		
