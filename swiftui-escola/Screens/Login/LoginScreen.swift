@@ -31,6 +31,11 @@ struct LoginScreen: View {
 			keyboardType: .emailAddress,
 			rules: [
 				FormRulesModel.init(
+					name: .minLength,
+					message: "Por favor, digite o email",
+					optionalParam: 0
+				),
+				FormRulesModel.init(
 					name: .email,
 					message: "Digite um email válido!"
 				),
@@ -43,12 +48,12 @@ struct LoginScreen: View {
 			rules: [
 				FormRulesModel.init(
 					name: .minLength,
-					message: "Digite um senha com no mínimo 4 digitos!",
-					optionalParam: 4
+					message: "Por favor, digite a senha",
+					optionalParam: 0
 				),
 				FormRulesModel.init(
 					name: .maxLength,
-					message: "Digite um senha com no máximo 8 digitos!",
+					message: "A senha pode ter no maximo 8 digitos",
 					optionalParam: 8
 				),
 			]

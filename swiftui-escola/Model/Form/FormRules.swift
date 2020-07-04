@@ -26,7 +26,7 @@ class FormRules {
 	}
 	
 	fileprivate func minLength(text: String, length: Int) -> Bool {
-		return text.count < length
+		return text.count < length || (length == 0 && text == "")
 	}
 	
 	fileprivate func maxLength(text: String, length: Int) -> Bool {

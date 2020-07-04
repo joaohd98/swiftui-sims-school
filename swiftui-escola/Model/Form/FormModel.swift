@@ -21,7 +21,7 @@ class FormModel: ObservableObject {
 		for i in self.inputs.indices {
 			
 			self.inputs[i].validationRule = FormRules.checkInputIsValid(input: self.inputs[i])
-						
+			
 			if self.inputs[i].validationRule != nil {
 				self.inputs[i].submitWhenInvalid = true
 				return false
@@ -30,14 +30,7 @@ class FormModel: ObservableObject {
 		}
 		
 		return true
-	}
-	
-	func onChangingInput(name: String, newInput: FormInputModel) {
-		if 	let index = self.inputs.firstIndex(where: { (input) -> Bool in input.name == name }) {
-			self.inputs[index] = newInput
-		}
-	}
-	
+	}	
 }
 
 class FormInputModel: ObservableObject {
@@ -73,12 +66,13 @@ class FormInputModel: ObservableObject {
 		self.submitWhenInvalid = false
 		self.hasFocus = false
 		self.hasEverUnfocused = false
-		self.bindingValue = bindingValue ?? Binding<String>(
-			get: {self.value},
-			set: {self.value = $0}
-		)
+		self.bindingValue = bindingValue ?? Binding<String>(get: {
+			self.value
+		}, set: {
+			self.value = $0
+			self.validationRule = FormRules.checkInputIsValid(input: self)
+		})
 	}
-	
 	
 	func changeFocus(_ hasFocus: Bool) {
 		if hasFocus {
@@ -86,6 +80,7 @@ class FormInputModel: ObservableObject {
 		} else {
 			self.hasFocus = false
 			self.hasEverUnfocused = true
+			self.validationRule = FormRules.checkInputIsValid(input: self)
 		}
 	}
 	
@@ -108,7 +103,7 @@ class FormInputModel: ObservableObject {
 		
 		return color
 	}
-	
+
 }
 
 class FormRulesModel: ObservableObject {
