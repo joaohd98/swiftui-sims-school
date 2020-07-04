@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D281D715FF05792F60610EF5 /* Pods_swiftui_escola.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11E5C85CFD8D421189204686 /* Pods_swiftui_escola.framework */; };
 		DCA500C124AE5223006B4C63 /* CustomContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA500C024AE5223006B4C63 /* CustomContainer.swift */; };
+		DCB672D324B13D550064484D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DCB672D224B13D550064484D /* GoogleService-Info.plist */; };
 		DCF043DF24AD16B600241062 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF043DE24AD16B600241062 /* AppDelegate.swift */; };
 		DCF043E124AD16B600241062 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF043E024AD16B600241062 /* SceneDelegate.swift */; };
 		DCF043E524AD16B800241062 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DCF043E424AD16B800241062 /* Assets.xcassets */; };
@@ -25,7 +27,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		11E5C85CFD8D421189204686 /* Pods_swiftui_escola.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_swiftui_escola.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A518D0BBE87DF0D79C52DB73 /* Pods-swiftui-escola.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-swiftui-escola.debug.xcconfig"; path = "Target Support Files/Pods-swiftui-escola/Pods-swiftui-escola.debug.xcconfig"; sourceTree = "<group>"; };
 		DCA500C024AE5223006B4C63 /* CustomContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomContainer.swift; sourceTree = "<group>"; };
+		DCB672D224B13D550064484D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DCF043DB24AD16B600241062 /* Sims School.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sims School.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCF043DE24AD16B600241062 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DCF043E024AD16B600241062 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -42,6 +47,7 @@
 		DCF0440824AE1E0400241062 /* FormModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormModel.swift; sourceTree = "<group>"; };
 		DCF0440C24AE2CF500241062 /* KeyboardHideInputHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardHideInputHelper.swift; sourceTree = "<group>"; };
 		DCF0440E24AE393500241062 /* FormRules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormRules.swift; sourceTree = "<group>"; };
+		E3B0308193EC0AD9A9EBDCFD /* Pods-swiftui-escola.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-swiftui-escola.release.xcconfig"; path = "Target Support Files/Pods-swiftui-escola/Pods-swiftui-escola.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,12 +55,31 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D281D715FF05792F60610EF5 /* Pods_swiftui_escola.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0AE6214BD201AE44F04D15BF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A518D0BBE87DF0D79C52DB73 /* Pods-swiftui-escola.debug.xcconfig */,
+				E3B0308193EC0AD9A9EBDCFD /* Pods-swiftui-escola.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		A55350B1B31EDA574414D329 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				11E5C85CFD8D421189204686 /* Pods_swiftui_escola.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		DCA500BD24AE51CC006B4C63 /* Container */ = {
 			isa = PBXGroup;
 			children = (
@@ -68,6 +93,8 @@
 			children = (
 				DCF043DD24AD16B600241062 /* swiftui-escola */,
 				DCF043DC24AD16B600241062 /* Products */,
+				0AE6214BD201AE44F04D15BF /* Pods */,
+				A55350B1B31EDA574414D329 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -90,6 +117,7 @@
 				DCF043F224AD16E600241062 /* Screens */,
 				DCF0440A24AE224200241062 /* Services */,
 				DCF043FD24AD1C5700241062 /* Theme */,
+				DCB672D224B13D550064484D /* GoogleService-Info.plist */,
 				DCF043DE24AD16B600241062 /* AppDelegate.swift */,
 				DCF043E024AD16B600241062 /* SceneDelegate.swift */,
 				DCF043EC24AD16B800241062 /* Info.plist */,
@@ -205,9 +233,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DCF043EF24AD16B800241062 /* Build configuration list for PBXNativeTarget "swiftui-escola" */;
 			buildPhases = (
+				663AFD1E9157B6170CADB5EF /* [CP] Check Pods Manifest.lock */,
 				DCF043D724AD16B600241062 /* Sources */,
 				DCF043D824AD16B600241062 /* Frameworks */,
 				DCF043D924AD16B600241062 /* Resources */,
+				18EF4CBCDA38BC645A868545 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -258,12 +288,55 @@
 			files = (
 				DCF0440224AD29F600241062 /* Logo.png in Resources */,
 				DCF043EB24AD16B800241062 /* LaunchScreen.storyboard in Resources */,
+				DCB672D324B13D550064484D /* GoogleService-Info.plist in Resources */,
 				DCF043E824AD16B800241062 /* Preview Assets.xcassets in Resources */,
 				DCF043E524AD16B800241062 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		18EF4CBCDA38BC645A868545 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-swiftui-escola/Pods-swiftui-escola-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-swiftui-escola/Pods-swiftui-escola-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-swiftui-escola/Pods-swiftui-escola-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		663AFD1E9157B6170CADB5EF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-swiftui-escola-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		DCF043D724AD16B600241062 /* Sources */ = {
@@ -414,6 +487,7 @@
 		};
 		DCF043F024AD16B800241062 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A518D0BBE87DF0D79C52DB73 /* Pods-swiftui-escola.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -424,7 +498,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "joao.tm.swiftui-escola";
+				PRODUCT_BUNDLE_IDENTIFIER = "joao.tm.swiftui-sims-school";
 				PRODUCT_NAME = "Sims School";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -433,6 +507,7 @@
 		};
 		DCF043F124AD16B800241062 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E3B0308193EC0AD9A9EBDCFD /* Pods-swiftui-escola.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -443,7 +518,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "joao.tm.swiftui-escola";
+				PRODUCT_BUNDLE_IDENTIFIER = "joao.tm.swiftui-sims-school";
 				PRODUCT_NAME = "Sims School";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
