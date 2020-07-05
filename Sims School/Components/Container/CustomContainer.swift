@@ -8,18 +8,52 @@
 
 import SwiftUI
 
-struct CustomContainer<Content: View>: View {
+fileprivate protocol CustomView: View {
+	func isLoading(_ newState: Bool) -> Self;
+	func hasHeader(_ newState: Bool) -> Self;
+}
+
+struct CustomContainer<Content: View>: CustomView {
 	private var content: Content
+	private var isLoading: Bool = false
+	private var hasHeader: Bool = true
 
 	init(@ViewBuilder content: @escaping () -> Content) {
 		self.content = content()
 	}
+	
+	func getBackgroundColor() -> Color {
+		return self.isLoading ? CustomColor.borderInputColor : Color.white
+	}
+	
+	func isLoading(_ newState: Bool) -> CustomContainer<Content> {
+		var copy = self
+		
+		copy.isLoading = newState
+	
+		return copy
+	}
 
+	func hasHeader(_ newState: Bool) -> CustomContainer<Content> {
+		var copy = self
+			
+		copy.hasHeader = newState
+
+		return copy
+	}
+	
 	var body: some View {
-		Color.white
-			.frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-			.overlay(content)
-   }
+		NavigationView {
+			self.content
+				.disabled(self.isLoading)
+				.background(self.getBackgroundColor())
+				.navigationBarTitle("")
+				.navigationBarHidden(!self.hasHeader)
+
+		}
+
+	}
+	
 }
 
 fileprivate struct PreviewView: View {

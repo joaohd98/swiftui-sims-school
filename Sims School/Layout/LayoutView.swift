@@ -9,10 +9,9 @@
 import SwiftUI
 
 struct LayoutView: View {
+	
     var body: some View {
-		NavigationView {
-			LoginScreen()
-		}
+		LoginScreen()
     }
 }
 

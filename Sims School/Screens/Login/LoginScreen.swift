@@ -10,24 +10,27 @@ import SwiftUI
 import UIKit
 
 fileprivate struct SubmitButton: ButtonStyle {
+	@State var isLoading: Bool = false
+	
     func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
             .foregroundColor(Color.white)
-			.padding(.vertical, 12)
-			.padding(.horizontal, 40)
+			.frame(width: 140, height: 40, alignment: .center)
 			.background(CustomColor.link)
             .cornerRadius(20)
 			.scaleEffect(configuration.isPressed ? 1.05 : 1.0)
-			.opacity(configuration.isPressed ? 0.7 : 1)
+			.opacity((configuration.isPressed || isLoading) ? 0.7 : 1)
 		
     }
 }
 
 struct LoginScreen: View {
+	@State var isLoading: Bool = false
 	@ObservedObject var form: FormModel = FormModel.init(inputs: [
 		FormInputModel.init(
 			name: "email",
 			placeholder: "Email",
+			value: "teste@mail.com",
 			keyboardType: .emailAddress,
 			rules: [
 				FormRulesModel.init(
@@ -44,6 +47,7 @@ struct LoginScreen: View {
 		FormInputModel.init(
 			name: "password",
 			placeholder: "Senha",
+			value: "1234",
 			isPassword: true,
 			rules: [
 				FormRulesModel.init(
@@ -73,23 +77,35 @@ struct LoginScreen: View {
 				}
 				Button(action: {
 					withAnimation {
+						UIApplication.shared.endEditing()
+
 						if self.form.checkFormIsValid() {
+							self.isLoading.toggle()
 						}
 
 					}
 				}) {
-					Text("Entrar")
+					if self.isLoading {
+						ActivityIndicator()
+					}
+					else {
+						Text("Entrar")
+					}
 				}
-				.buttonStyle(SubmitButton())
+				.disabled(self.isLoading)
+				.buttonStyle(SubmitButton(isLoading: self.isLoading))
 				.padding(.top, 20)
 			}
-			.padding(.bottom, 130)
 			.padding(.horizontal)
 			.keyboardAdaptive()
-		}.onTapGesture {
+		}
+		.isLoading(self.isLoading)
+		.hasHeader(false)
+		.onTapGesture {
 			UIApplication.shared.endEditing()
 		}
-    }
+	}
+
 }
 
 struct LoginScreen_Previews: PreviewProvider {
