@@ -8,6 +8,7 @@
 
 import SwiftUI
 import UIKit
+import FirebaseAuth
 
 fileprivate struct SubmitButton: ButtonStyle {
 	@State var isLoading: Bool = false
@@ -26,6 +27,8 @@ fileprivate struct SubmitButton: ButtonStyle {
 
 struct LoginScreen: View {
 	@State var isLoading: Bool = false
+    @State var showsAlert = false
+	@State var errorCode: AuthErrorCode? = nil
 	@ObservedObject var form: FormModel = FormModel.init(inputs: [
 		FormInputModel.init(
 			name: "email",
@@ -47,7 +50,7 @@ struct LoginScreen: View {
 		FormInputModel.init(
 			name: "password",
 			placeholder: "Senha",
-			value: "1234",
+			value: "abc123",
 			isPassword: true,
 			rules: [
 				FormRulesModel.init(
@@ -81,6 +84,19 @@ struct LoginScreen: View {
 
 						if self.form.checkFormIsValid() {
 							self.isLoading.toggle()
+							
+							let user = UserRequest.init(
+								email: self.form.inputs[0].value,
+								password: self.form.inputs[1].value
+							)
+
+							UserService.signIn(user: user, onSucess: { (user) in
+								
+							}) { (err) in
+								self.isLoading.toggle()
+								self.showsAlert.toggle()
+								self.errorCode = err
+							}
 						}
 
 					}
@@ -90,6 +106,32 @@ struct LoginScreen: View {
 					}
 					else {
 						Text("Entrar")
+					}
+				}
+				.alert(isPresented: self.$showsAlert) {
+					if self.errorCode == .some(.missingEmail) {
+						return Alert(
+							title: Text("Email incorreto"),
+							message: Text("O email que você entrou não pertence a nenhuma conta. Por favor, verifique o endereco de email e tente novamente."),
+							dismissButton: .default(Text("OK"))
+						)
+
+					}
+					
+					else if self.errorCode == .some(.wrongPassword) {
+						return Alert(
+							title: Text("Email incorreto"),
+							message: Text("A senha que você entrou está incorreta. Por favor tente novamente."),
+							dismissButton: .default(Text("OK"))
+						)
+					}
+					
+					else {
+						return Alert(
+							title: Text("Algo errado aconteceu"),
+							message: Text("Ocorreu um erro interno. Por favor tente novamente."),
+							dismissButton: .default(Text("OK"))
+						)
 					}
 				}
 				.disabled(self.isLoading)

@@ -7,11 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D281D715FF05792F60610EF5 /* Pods_swiftui_escola.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11E5C85CFD8D421189204686 /* Pods_swiftui_escola.framework */; };
+		3935579CB37C812B2AB1DEFB /* Pods_Sims_School.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 777DFA7D8B92C11713096229 /* Pods_Sims_School.framework */; };
 		DCA500C124AE5223006B4C63 /* CustomContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA500C024AE5223006B4C63 /* CustomContainer.swift */; };
 		DCB672D324B13D550064484D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DCB672D224B13D550064484D /* GoogleService-Info.plist */; };
 		DCB672D824B242120064484D /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB672D724B242120064484D /* ActivityIndicator.swift */; };
 		DCB672DA24B2683D0064484D /* ColorToUiColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB672D924B2683D0064484D /* ColorToUiColor.swift */; };
+		DCB672DF24B29BB60064484D /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB672DE24B29BB60064484D /* Request.swift */; };
+		DCB672E124B29BC10064484D /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB672E024B29BC10064484D /* Response.swift */; };
+		DCB672E324B29BD10064484D /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB672E224B29BD10064484D /* Service.swift */; };
 		DCF043DF24AD16B600241062 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF043DE24AD16B600241062 /* AppDelegate.swift */; };
 		DCF043E124AD16B600241062 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF043E024AD16B600241062 /* SceneDelegate.swift */; };
 		DCF043E524AD16B800241062 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DCF043E424AD16B800241062 /* Assets.xcassets */; };
@@ -29,12 +32,17 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		11E5C85CFD8D421189204686 /* Pods_swiftui_escola.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_swiftui_escola.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B698B968CFB1C1CF16D3BDF /* Pods-Sims School.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sims School.release.xcconfig"; path = "Target Support Files/Pods-Sims School/Pods-Sims School.release.xcconfig"; sourceTree = "<group>"; };
+		777DFA7D8B92C11713096229 /* Pods_Sims_School.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sims_School.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A518D0BBE87DF0D79C52DB73 /* Pods-swiftui-escola.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-swiftui-escola.debug.xcconfig"; path = "Target Support Files/Pods-swiftui-escola/Pods-swiftui-escola.debug.xcconfig"; sourceTree = "<group>"; };
+		AB599491792EC550D7C02C8C /* Pods-Sims School.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sims School.debug.xcconfig"; path = "Target Support Files/Pods-Sims School/Pods-Sims School.debug.xcconfig"; sourceTree = "<group>"; };
 		DCA500C024AE5223006B4C63 /* CustomContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomContainer.swift; sourceTree = "<group>"; };
 		DCB672D224B13D550064484D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DCB672D724B242120064484D /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		DCB672D924B2683D0064484D /* ColorToUiColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorToUiColor.swift; sourceTree = "<group>"; };
+		DCB672DE24B29BB60064484D /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
+		DCB672E024B29BC10064484D /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		DCB672E224B29BD10064484D /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		DCF043DB24AD16B600241062 /* Sims School.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sims School.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCF043DE24AD16B600241062 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DCF043E024AD16B600241062 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -59,7 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D281D715FF05792F60610EF5 /* Pods_swiftui_escola.framework in Frameworks */,
+				3935579CB37C812B2AB1DEFB /* Pods_Sims_School.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,6 +79,8 @@
 			children = (
 				A518D0BBE87DF0D79C52DB73 /* Pods-swiftui-escola.debug.xcconfig */,
 				E3B0308193EC0AD9A9EBDCFD /* Pods-swiftui-escola.release.xcconfig */,
+				AB599491792EC550D7C02C8C /* Pods-Sims School.debug.xcconfig */,
+				3B698B968CFB1C1CF16D3BDF /* Pods-Sims School.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -78,7 +88,7 @@
 		A55350B1B31EDA574414D329 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				11E5C85CFD8D421189204686 /* Pods_swiftui_escola.framework */,
+				777DFA7D8B92C11713096229 /* Pods_Sims_School.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -97,6 +107,16 @@
 				DCB672D724B242120064484D /* ActivityIndicator.swift */,
 			);
 			path = "Activity Indicator";
+			sourceTree = "<group>";
+		};
+		DCB672DD24B29B580064484D /* User */ = {
+			isa = PBXGroup;
+			children = (
+				DCB672DE24B29BB60064484D /* Request.swift */,
+				DCB672E024B29BC10064484D /* Response.swift */,
+				DCB672E224B29BD10064484D /* Service.swift */,
+			);
+			path = User;
 			sourceTree = "<group>";
 		};
 		DCF043D224AD16B600241062 = {
@@ -226,6 +246,7 @@
 		DCF0440A24AE224200241062 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				DCB672DD24B29B580064484D /* User */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -316,15 +337,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-swiftui-escola/Pods-swiftui-escola-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Sims School/Pods-Sims School-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-swiftui-escola/Pods-swiftui-escola-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Sims School/Pods-Sims School-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-swiftui-escola/Pods-swiftui-escola-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Sims School/Pods-Sims School-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		663AFD1E9157B6170CADB5EF /* [CP] Check Pods Manifest.lock */ = {
@@ -342,7 +363,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-swiftui-escola-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Sims School-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -360,13 +381,16 @@
 				DCA500C124AE5223006B4C63 /* CustomContainer.swift in Sources */,
 				DCF043DF24AD16B600241062 /* AppDelegate.swift in Sources */,
 				DCF043FF24AD1D5900241062 /* Colors.swift in Sources */,
+				DCB672E124B29BC10064484D /* Response.swift in Sources */,
 				DCB672D824B242120064484D /* ActivityIndicator.swift in Sources */,
 				DCF043F924AD191200241062 /* LoginScreen.swift in Sources */,
 				DCF043F724AD17E100241062 /* LayoutView.swift in Sources */,
 				DCF043FC24AD1ABD00241062 /* CustomInput.swift in Sources */,
+				DCB672E324B29BD10064484D /* Service.swift in Sources */,
 				DCF043E124AD16B600241062 /* SceneDelegate.swift in Sources */,
 				DCF0440F24AE393500241062 /* FormRules.swift in Sources */,
 				DCB672DA24B2683D0064484D /* ColorToUiColor.swift in Sources */,
+				DCB672DF24B29BB60064484D /* Request.swift in Sources */,
 				DCF0440D24AE2CF500241062 /* KeyboardHideInputHelper.swift in Sources */,
 				DCF0440924AE1E0400241062 /* FormModel.swift in Sources */,
 			);
@@ -502,7 +526,7 @@
 		};
 		DCF043F024AD16B800241062 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A518D0BBE87DF0D79C52DB73 /* Pods-swiftui-escola.debug.xcconfig */;
+			baseConfigurationReference = AB599491792EC550D7C02C8C /* Pods-Sims School.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -522,7 +546,7 @@
 		};
 		DCF043F124AD16B800241062 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E3B0308193EC0AD9A9EBDCFD /* Pods-swiftui-escola.release.xcconfig */;
+			baseConfigurationReference = 3B698B968CFB1C1CF16D3BDF /* Pods-Sims School.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
