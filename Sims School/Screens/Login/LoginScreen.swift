@@ -120,7 +120,7 @@ struct LoginScreen: View {
 					
 					else if self.errorCode == .some(.wrongPassword) {
 						return Alert(
-							title: Text("Email incorreto"),
+							title: Text("Senha incorreta"),
 							message: Text("A senha que você entrou está incorreta. Por favor tente novamente."),
 							dismissButton: .default(Text("OK"))
 						)
