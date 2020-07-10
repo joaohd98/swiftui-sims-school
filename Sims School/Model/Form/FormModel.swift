@@ -41,7 +41,6 @@ class FormInputModel: ObservableObject {
 	@Published var name: String
 	@Published var placeholder: String
 	@Published var value: String
-	@Published var bindingValue: Binding<String>?
 	@Published var isPassword: Bool
 	@Published var keyboardType: UIKeyboardType
 	@Published var rules: [FormRulesModel]
@@ -54,7 +53,6 @@ class FormInputModel: ObservableObject {
 		name: String,
 		placeholder: String,
 		value: String = "",
-		bindingValue: Binding<String>? = nil,
 		isPassword: Bool = false,
 		keyboardType: UIKeyboardType = .default,
 		rules: [FormRulesModel] = [],
@@ -70,12 +68,6 @@ class FormInputModel: ObservableObject {
 		self.hasFocus = false
 		self.hasEverUnfocused = false
 		self.hasTriedSubmit = false
-		self.bindingValue = bindingValue ?? Binding<String>(get: {
-			self.value
-		}, set: {
-			self.value = $0
-			self.validationRule = FormRules.checkInputIsValid(input: self)
-		})
 	}
 	
 	func changeFocus(_ hasFocus: Bool) {

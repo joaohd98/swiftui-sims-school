@@ -13,6 +13,8 @@
 		DC98E1B524B8AA3E00D4BD76 /* LoginScreenLogo.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC98E1B424B8AA3E00D4BD76 /* LoginScreenLogo.swift */; };
 		DC98E1B924B8AE3900D4BD76 /* LoginScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC98E1B824B8AE3900D4BD76 /* LoginScreenModel.swift */; };
 		DC98E1BB24B8BF5900D4BD76 /* Input.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC98E1BA24B8BF5900D4BD76 /* Input.swift */; };
+		DC98E1BE24B8ED4B00D4BD76 /* ScreenSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC98E1BD24B8ED4B00D4BD76 /* ScreenSize.swift */; };
+		DC98E1C024B8EE8000D4BD76 /* PaddingTextFieldHorizontal.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC98E1BF24B8EE8000D4BD76 /* PaddingTextFieldHorizontal.swift */; };
 		DCA500C124AE5223006B4C63 /* CustomContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA500C024AE5223006B4C63 /* CustomContainer.swift */; };
 		DCB672D824B242120064484D /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB672D724B242120064484D /* ActivityIndicator.swift */; };
 		DCB672DA24B2683D0064484D /* ColorToUiColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB672D924B2683D0064484D /* ColorToUiColor.swift */; };
@@ -45,6 +47,8 @@
 		DC98E1B424B8AA3E00D4BD76 /* LoginScreenLogo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenLogo.swift; sourceTree = "<group>"; };
 		DC98E1B824B8AE3900D4BD76 /* LoginScreenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenModel.swift; sourceTree = "<group>"; };
 		DC98E1BA24B8BF5900D4BD76 /* Input.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Input.swift; sourceTree = "<group>"; };
+		DC98E1BD24B8ED4B00D4BD76 /* ScreenSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenSize.swift; sourceTree = "<group>"; };
+		DC98E1BF24B8EE8000D4BD76 /* PaddingTextFieldHorizontal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingTextFieldHorizontal.swift; sourceTree = "<group>"; };
 		DCA500C024AE5223006B4C63 /* CustomContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomContainer.swift; sourceTree = "<group>"; };
 		DCB672D724B242120064484D /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		DCB672D924B2683D0064484D /* ColorToUiColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorToUiColor.swift; sourceTree = "<group>"; };
@@ -300,6 +304,8 @@
 			children = (
 				DCF0440C24AE2CF500241062 /* KeyboardHideInputHelper.swift */,
 				DCB672D924B2683D0064484D /* ColorToUiColor.swift */,
+				DC98E1BD24B8ED4B00D4BD76 /* ScreenSize.swift */,
+				DC98E1BF24B8EE8000D4BD76 /* PaddingTextFieldHorizontal.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -427,6 +433,7 @@
 				DCF043DF24AD16B600241062 /* AppDelegate.swift in Sources */,
 				DCF043FF24AD1D5900241062 /* Colors.swift in Sources */,
 				DCB672E124B29BC10064484D /* Response.swift in Sources */,
+				DC98E1C024B8EE8000D4BD76 /* PaddingTextFieldHorizontal.swift in Sources */,
 				DCB672D824B242120064484D /* ActivityIndicator.swift in Sources */,
 				DCF043F924AD191200241062 /* LoginScreen.swift in Sources */,
 				DCF043F724AD17E100241062 /* LayoutView.swift in Sources */,
@@ -439,6 +446,7 @@
 				DCB672DA24B2683D0064484D /* ColorToUiColor.swift in Sources */,
 				DCB672DF24B29BB60064484D /* Request.swift in Sources */,
 				DCF0440D24AE2CF500241062 /* KeyboardHideInputHelper.swift in Sources */,
+				DC98E1BE24B8ED4B00D4BD76 /* ScreenSize.swift in Sources */,
 				DCF0440924AE1E0400241062 /* FormModel.swift in Sources */,
 				DC98E1B924B8AE3900D4BD76 /* LoginScreenModel.swift in Sources */,
 			);

@@ -9,7 +9,7 @@
 import SwiftUI
 import UIKit
 
-struct InputUI: UIViewRepresentable {
+struct UIInput: UIViewRepresentable {
 	@ObservedObject var input: FormInputModel
 
 	func makeUIView(context: Context) -> UITextField {
@@ -23,7 +23,8 @@ struct InputUI: UIViewRepresentable {
 		textField.layer.borderWidth = 1
 		textField.layer.cornerRadius = 10
 		textField.font = UIFont.systemFont(ofSize: 13, weight: .medium)
-				
+		textField.setLeftRightPaddingPoints(right: 10, left: 10)
+		
 		return textField
 	}
 
@@ -38,9 +39,9 @@ struct InputUI: UIViewRepresentable {
 	}
 	
 	class Coordinator: NSObject, UITextFieldDelegate {
-		var parent: InputUI
+		var parent: UIInput
 
-		init(_ textField: InputUI) {
+		init(_ textField: UIInput) {
 			self.parent = textField
 		}
 		
@@ -60,13 +61,12 @@ struct InputUI: UIViewRepresentable {
 			
 			return true
 		}
-		
 	}
 }
 
 struct Input_Previews: PreviewProvider {
     static var previews: some View {
-        InputUI(
+        UIInput(
 			input: FormInputModel.init(name: "nome", placeholder: "Nome")
 		)
     }

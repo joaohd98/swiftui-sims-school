@@ -8,35 +8,8 @@
 
 import SwiftUI
 
-//fileprivate struct CustomTextField : TextFieldStyle {
-//	var input: FormInputModel
-//	var color: Color
-//
-//	public func _body(configuration: TextField<Self._Label>) -> some View {
-//		configuration
-//			.padding(.vertical, 8)
-//			.padding(.horizontal, 10)
-//			.foregroundColor(CustomColor.inputColor)
-//			.font(.system(size: 13, weight: .medium, design: .rounded))
-//			.background(
-//				RoundedRectangle(cornerRadius: 10)
-//					.strokeBorder(self.color, lineWidth: 1)
-//			)
-//	}
-//}
-
-
 struct CustomInput: View {
 	@ObservedObject var input: FormInputModel
-	
-	func onAppear() {
-		self.input.bindingValue = Binding<String>(get: {
-			self.input.value
-		}, set: {
-			self.input.value = $0
-			self.input.validationRule = FormRules.checkInputIsValid(input: self.input)
-		})
-	}
 	
     var body: some View {
 		let color = self.input.getColor()
@@ -44,15 +17,16 @@ struct CustomInput: View {
 		
 		return (
 			VStack(alignment: .leading, spacing: 2.0) {
-				InputUI(input: self.input)
-				
+				UIInput(input: self.input)
+					.frame(height: 40, alignment: .center)
 				Text(message)
 					.foregroundColor(Color(color))
 					.font(.system(size: 12, weight: .medium, design: .rounded))
 					.padding(.horizontal, 7)
-			}.padding(.horizontal, 7)
+			}
+			.padding(.horizontal, 7)
+
 		)
-		.onAppear{ self.onAppear() }
 	}
 	
 }
