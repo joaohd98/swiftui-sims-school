@@ -15,8 +15,6 @@ struct UIInput: UIViewRepresentable {
 	func makeUIView(context: Context) -> UITextField {
 		let textField = UITextField(frame: .zero)
 		textField.delegate = context.coordinator
-		textField.becomeFirstResponder()
-
 		textField.placeholder = input.placeholder
 		textField.text = input.value
 		textField.textColor = CustomColor.inputColor
@@ -27,6 +25,8 @@ struct UIInput: UIViewRepresentable {
 		textField.font = UIFont.systemFont(ofSize: 13, weight: .medium)
 		textField.setLeftRightPaddingPoints(right: 10, left: 10)
 		
+		input.becomeFirstResponder = textField.becomeFirstResponder
+		 
 		return textField
 	}
 

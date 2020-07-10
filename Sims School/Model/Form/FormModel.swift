@@ -25,6 +25,10 @@ class FormModel: ObservableObject {
 			self.inputs[i].hasTriedSubmit = true 
 
 			if self.inputs[i].validationRule != nil {
+				if isSucess {
+					let _ = self.inputs[i].becomeFirstResponder()
+				}
+				
 				isSucess = false
 			}
 			
@@ -48,6 +52,7 @@ class FormInputModel: ObservableObject {
 	@Published var hasFocus: Bool
 	@Published var hasEverUnfocused: Bool
 	@Published var hasTriedSubmit: Bool
+	@Published var becomeFirstResponder: () ->  Bool
 
 	init(
 		name: String,
@@ -68,6 +73,7 @@ class FormInputModel: ObservableObject {
 		self.hasFocus = false
 		self.hasEverUnfocused = false
 		self.hasTriedSubmit = false
+		self.becomeFirstResponder = { () in return true }
 	}
 	
 	func changeFocus(_ hasFocus: Bool) {
