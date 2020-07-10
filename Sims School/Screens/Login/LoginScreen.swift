@@ -15,7 +15,7 @@ struct LoginScreen: View {
 	
 	func onSubmitLogin(onError: @escaping (_ errorCode: AuthErrorCode) -> Void = {_ in }) {
 		UIApplication.shared.endEditing()
-
+		
 		if self.props.form.checkFormIsValid() {
 			self.props.isLoading.toggle()
 			
@@ -38,7 +38,9 @@ struct LoginScreen: View {
 			VStack(alignment: .center, spacing: 10) {
 				LoginScreenLogo()
 				ForEach(self.props.form.inputs.indices) { index in
-					CustomInput(input: self.props.form.inputs[index])
+					CustomInput(
+						input: self.props.form.inputs[index]
+					)
 				}
 				LoginScreenSubmitButton(
 					isLoading: self.$props.isLoading,

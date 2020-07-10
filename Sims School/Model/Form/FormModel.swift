@@ -11,31 +11,26 @@ import UIKit
 
 class FormModel: ObservableObject {
 	@Published var inputs: [FormInputModel]
-	
+
 	init(inputs: [FormInputModel]) {
 		self.inputs = inputs
 	}
 	
 	func checkFormIsValid() -> Bool {
 		var isSucess = true
-		var inputs: [FormInputModel] = []
-		
+
 		for i in self.inputs.indices {
 			self.inputs[i].validationRule = FormRules.checkInputIsValid(input: self.inputs[i])
-			self.inputs[i].hasTriedSubmit = true 
-
+			
 			if self.inputs[i].validationRule != nil {
 				if isSucess {
+					self.inputs[i].howManyAttempts += 1
 					let _ = self.inputs[i].becomeFirstResponder()
 				}
 				
 				isSucess = false
 			}
-			
-			inputs.append(self.inputs[i])
 		}
-		
-		self.inputs = inputs
 		
 		return isSucess
 	}	
@@ -51,8 +46,9 @@ class FormInputModel: ObservableObject {
 	@Published var validationRule: (FormRulesModel)?
 	@Published var hasFocus: Bool
 	@Published var hasEverUnfocused: Bool
-	@Published var hasTriedSubmit: Bool
+	@Published var howManyAttempts: Int
 	@Published var becomeFirstResponder: () ->  Bool
+	
 
 	init(
 		name: String,
@@ -72,7 +68,7 @@ class FormInputModel: ObservableObject {
 		self.validationRule = validationRule
 		self.hasFocus = false
 		self.hasEverUnfocused = false
-		self.hasTriedSubmit = false
+		self.howManyAttempts = 0
 		self.becomeFirstResponder = { () in return true }
 	}
 	
@@ -89,7 +85,7 @@ class FormInputModel: ObservableObject {
 	func getColor() -> UIColor {
 		var color = CustomColor.borderInputColor
 		
-		if((self.hasEverUnfocused || self.hasTriedSubmit) && self.validationRule != nil) {
+		if((self.hasEverUnfocused || self.howManyAttempts > 0) && self.validationRule != nil) {
 			if(self.hasFocus) {
 				color = CustomColor.warning
 			}
@@ -99,7 +95,7 @@ class FormInputModel: ObservableObject {
 			}
 		}
 		
-		else if((self.value != "" || self.hasTriedSubmit) && self.validationRule == nil) {
+		else if((self.value != "" || self.howManyAttempts > 0) && self.validationRule == nil) {
 			color = CustomColor.success
 		}
 		
