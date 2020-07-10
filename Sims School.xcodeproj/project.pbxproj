@@ -8,8 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		3935579CB37C812B2AB1DEFB /* Pods_Sims_School.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 777DFA7D8B92C11713096229 /* Pods_Sims_School.framework */; };
+		DC98E1AF24B8A07F00D4BD76 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DC98E1AE24B8A07F00D4BD76 /* GoogleService-Info.plist */; };
+		DC98E1B224B8A18100D4BD76 /* LoginScreenSubmitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC98E1B124B8A18100D4BD76 /* LoginScreenSubmitButton.swift */; };
+		DC98E1B524B8AA3E00D4BD76 /* LoginScreenLogo.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC98E1B424B8AA3E00D4BD76 /* LoginScreenLogo.swift */; };
 		DCA500C124AE5223006B4C63 /* CustomContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA500C024AE5223006B4C63 /* CustomContainer.swift */; };
-		DCB672D324B13D550064484D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DCB672D224B13D550064484D /* GoogleService-Info.plist */; };
 		DCB672D824B242120064484D /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB672D724B242120064484D /* ActivityIndicator.swift */; };
 		DCB672DA24B2683D0064484D /* ColorToUiColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB672D924B2683D0064484D /* ColorToUiColor.swift */; };
 		DCB672DF24B29BB60064484D /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB672DE24B29BB60064484D /* Request.swift */; };
@@ -36,8 +38,10 @@
 		777DFA7D8B92C11713096229 /* Pods_Sims_School.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sims_School.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A518D0BBE87DF0D79C52DB73 /* Pods-swiftui-escola.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-swiftui-escola.debug.xcconfig"; path = "Target Support Files/Pods-swiftui-escola/Pods-swiftui-escola.debug.xcconfig"; sourceTree = "<group>"; };
 		AB599491792EC550D7C02C8C /* Pods-Sims School.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sims School.debug.xcconfig"; path = "Target Support Files/Pods-Sims School/Pods-Sims School.debug.xcconfig"; sourceTree = "<group>"; };
+		DC98E1AE24B8A07F00D4BD76 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		DC98E1B124B8A18100D4BD76 /* LoginScreenSubmitButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenSubmitButton.swift; sourceTree = "<group>"; };
+		DC98E1B424B8AA3E00D4BD76 /* LoginScreenLogo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenLogo.swift; sourceTree = "<group>"; };
 		DCA500C024AE5223006B4C63 /* CustomContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomContainer.swift; sourceTree = "<group>"; };
-		DCB672D224B13D550064484D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DCB672D724B242120064484D /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		DCB672D924B2683D0064484D /* ColorToUiColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorToUiColor.swift; sourceTree = "<group>"; };
 		DCB672DE24B29BB60064484D /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
@@ -91,6 +95,22 @@
 				777DFA7D8B92C11713096229 /* Pods_Sims_School.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DC98E1B024B8A14C00D4BD76 /* Submit Button */ = {
+			isa = PBXGroup;
+			children = (
+				DC98E1B124B8A18100D4BD76 /* LoginScreenSubmitButton.swift */,
+			);
+			path = "Submit Button";
+			sourceTree = "<group>";
+		};
+		DC98E1B324B8AA0300D4BD76 /* Logo */ = {
+			isa = PBXGroup;
+			children = (
+				DC98E1B424B8AA3E00D4BD76 /* LoginScreenLogo.swift */,
+			);
+			path = Logo;
 			sourceTree = "<group>";
 		};
 		DCA500BD24AE51CC006B4C63 /* Container */ = {
@@ -148,7 +168,7 @@
 				DCF043F224AD16E600241062 /* Screens */,
 				DCF0440A24AE224200241062 /* Services */,
 				DCF043FD24AD1C5700241062 /* Theme */,
-				DCB672D224B13D550064484D /* GoogleService-Info.plist */,
+				DC98E1AE24B8A07F00D4BD76 /* GoogleService-Info.plist */,
 				DCF043DE24AD16B600241062 /* AppDelegate.swift */,
 				DCF043E024AD16B600241062 /* SceneDelegate.swift */,
 				DCF043EC24AD16B800241062 /* Info.plist */,
@@ -178,6 +198,8 @@
 		DCF043F324AD16F200241062 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				DC98E1B324B8AA0300D4BD76 /* Logo */,
+				DC98E1B024B8A14C00D4BD76 /* Submit Button */,
 				DCF043F824AD191200241062 /* LoginScreen.swift */,
 			);
 			path = Login;
@@ -322,7 +344,7 @@
 			files = (
 				DCF0440224AD29F600241062 /* Logo.png in Resources */,
 				DCF043EB24AD16B800241062 /* LaunchScreen.storyboard in Resources */,
-				DCB672D324B13D550064484D /* GoogleService-Info.plist in Resources */,
+				DC98E1AF24B8A07F00D4BD76 /* GoogleService-Info.plist in Resources */,
 				DCF043E824AD16B800241062 /* Preview Assets.xcassets in Resources */,
 				DCF043E524AD16B800241062 /* Assets.xcassets in Resources */,
 			);
@@ -379,6 +401,7 @@
 			files = (
 				DCF0440424AD2BB000241062 /* Images.swift in Sources */,
 				DCA500C124AE5223006B4C63 /* CustomContainer.swift in Sources */,
+				DC98E1B524B8AA3E00D4BD76 /* LoginScreenLogo.swift in Sources */,
 				DCF043DF24AD16B600241062 /* AppDelegate.swift in Sources */,
 				DCF043FF24AD1D5900241062 /* Colors.swift in Sources */,
 				DCB672E124B29BC10064484D /* Response.swift in Sources */,
@@ -387,6 +410,7 @@
 				DCF043F724AD17E100241062 /* LayoutView.swift in Sources */,
 				DCF043FC24AD1ABD00241062 /* CustomInput.swift in Sources */,
 				DCB672E324B29BD10064484D /* Service.swift in Sources */,
+				DC98E1B224B8A18100D4BD76 /* LoginScreenSubmitButton.swift in Sources */,
 				DCF043E124AD16B600241062 /* SceneDelegate.swift in Sources */,
 				DCF0440F24AE393500241062 /* FormRules.swift in Sources */,
 				DCB672DA24B2683D0064484D /* ColorToUiColor.swift in Sources */,
