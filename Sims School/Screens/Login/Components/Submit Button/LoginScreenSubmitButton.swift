@@ -49,7 +49,9 @@ struct LoginScreenSubmitButton: View {
 			}
 		}
 		.alert(isPresented: self.$showAlert) {
-			if self.errorCode == .some(.missingEmail) {
+			let errorCode = self.errorCode!
+			
+			if errorCode == .some(.missingEmail) || errorCode == .some(.userNotFound) {
 				return Alert(
 					title: Text("Email incorreto"),
 					message: Text("O email que você entrou não pertence a nenhuma conta. Por favor, verifique o endereco de email e tente novamente."),
@@ -58,7 +60,7 @@ struct LoginScreenSubmitButton: View {
 
 			}
 			
-			else if self.errorCode == .some(.wrongPassword) {
+			else if errorCode == .some(.wrongPassword) {
 				return Alert(
 					title: Text("Senha incorreta"),
 					message: Text("A senha que você entrou está incorreta. Por favor tente novamente."),

@@ -11,6 +11,7 @@
 		DC98E1AF24B8A07F00D4BD76 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DC98E1AE24B8A07F00D4BD76 /* GoogleService-Info.plist */; };
 		DC98E1B224B8A18100D4BD76 /* LoginScreenSubmitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC98E1B124B8A18100D4BD76 /* LoginScreenSubmitButton.swift */; };
 		DC98E1B524B8AA3E00D4BD76 /* LoginScreenLogo.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC98E1B424B8AA3E00D4BD76 /* LoginScreenLogo.swift */; };
+		DC98E1B924B8AE3900D4BD76 /* LoginScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC98E1B824B8AE3900D4BD76 /* LoginScreenModel.swift */; };
 		DCA500C124AE5223006B4C63 /* CustomContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA500C024AE5223006B4C63 /* CustomContainer.swift */; };
 		DCB672D824B242120064484D /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB672D724B242120064484D /* ActivityIndicator.swift */; };
 		DCB672DA24B2683D0064484D /* ColorToUiColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB672D924B2683D0064484D /* ColorToUiColor.swift */; };
@@ -41,6 +42,7 @@
 		DC98E1AE24B8A07F00D4BD76 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DC98E1B124B8A18100D4BD76 /* LoginScreenSubmitButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenSubmitButton.swift; sourceTree = "<group>"; };
 		DC98E1B424B8AA3E00D4BD76 /* LoginScreenLogo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenLogo.swift; sourceTree = "<group>"; };
+		DC98E1B824B8AE3900D4BD76 /* LoginScreenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenModel.swift; sourceTree = "<group>"; };
 		DCA500C024AE5223006B4C63 /* CustomContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomContainer.swift; sourceTree = "<group>"; };
 		DCB672D724B242120064484D /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		DCB672D924B2683D0064484D /* ColorToUiColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorToUiColor.swift; sourceTree = "<group>"; };
@@ -111,6 +113,23 @@
 				DC98E1B424B8AA3E00D4BD76 /* LoginScreenLogo.swift */,
 			);
 			path = Logo;
+			sourceTree = "<group>";
+		};
+		DC98E1B624B8AC7E00D4BD76 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				DC98E1B324B8AA0300D4BD76 /* Logo */,
+				DC98E1B024B8A14C00D4BD76 /* Submit Button */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		DC98E1B724B8AE0300D4BD76 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DC98E1B824B8AE3900D4BD76 /* LoginScreenModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		DCA500BD24AE51CC006B4C63 /* Container */ = {
@@ -198,8 +217,8 @@
 		DCF043F324AD16F200241062 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				DC98E1B324B8AA0300D4BD76 /* Logo */,
-				DC98E1B024B8A14C00D4BD76 /* Submit Button */,
+				DC98E1B724B8AE0300D4BD76 /* Model */,
+				DC98E1B624B8AC7E00D4BD76 /* Components */,
 				DCF043F824AD191200241062 /* LoginScreen.swift */,
 			);
 			path = Login;
@@ -417,6 +436,7 @@
 				DCB672DF24B29BB60064484D /* Request.swift in Sources */,
 				DCF0440D24AE2CF500241062 /* KeyboardHideInputHelper.swift in Sources */,
 				DCF0440924AE1E0400241062 /* FormModel.swift in Sources */,
+				DC98E1B924B8AE3900D4BD76 /* LoginScreenModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
