@@ -8,22 +8,22 @@
 
 import SwiftUI
 
-fileprivate struct CustomTextField : TextFieldStyle {
-	var input: FormInputModel
-	var color: Color
-
-	public func _body(configuration: TextField<Self._Label>) -> some View {
-		configuration
-			.padding(.vertical, 8)
-			.padding(.horizontal, 10)
-			.foregroundColor(CustomColor.inputColor)
-			.font(.system(size: 13, weight: .medium, design: .rounded))
-			.background(
-				RoundedRectangle(cornerRadius: 10)
-					.strokeBorder(self.color, lineWidth: 1)
-			)
-	}
-}
+//fileprivate struct CustomTextField : TextFieldStyle {
+//	var input: FormInputModel
+//	var color: Color
+//
+//	public func _body(configuration: TextField<Self._Label>) -> some View {
+//		configuration
+//			.padding(.vertical, 8)
+//			.padding(.horizontal, 10)
+//			.foregroundColor(CustomColor.inputColor)
+//			.font(.system(size: 13, weight: .medium, design: .rounded))
+//			.background(
+//				RoundedRectangle(cornerRadius: 10)
+//					.strokeBorder(self.color, lineWidth: 1)
+//			)
+//	}
+//}
 
 
 struct CustomInput: View {
@@ -44,26 +44,10 @@ struct CustomInput: View {
 		
 		return (
 			VStack(alignment: .leading, spacing: 2.0) {
-				if self.input.isPassword {
-					SecureField(input.placeholder, text: self.input.bindingValue!)
-						.simultaneousGesture(TapGesture().onEnded { _ in
-							self.input.changeFocus(true)
-						})
-					   .onReceive(NotificationCenter.default.publisher(for: UIApplication.keyboardWillHideNotification), perform: {_ in
-							if self.input.hasFocus {
-								self.input.changeFocus(false)
-							}
-						})
-						.textFieldStyle(CustomTextField(input: self.input, color: color))
-				}
-				else {
-					TextField(input.placeholder, text: self.input.bindingValue!, onEditingChanged: {hasFocus in self.input.changeFocus(hasFocus)})
-						.keyboardType(self.input.keyboardType)
-						.textFieldStyle(CustomTextField(input: self.input, color: color))
-				}
-		
+				InputUI(input: self.input)
+				
 				Text(message)
-					.foregroundColor(color)
+					.foregroundColor(Color(color))
 					.font(.system(size: 12, weight: .medium, design: .rounded))
 					.padding(.horizontal, 7)
 			}.padding(.horizontal, 7)

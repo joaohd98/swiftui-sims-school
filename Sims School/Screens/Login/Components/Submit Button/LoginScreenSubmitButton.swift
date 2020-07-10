@@ -18,7 +18,7 @@ fileprivate struct SubmitButton: ButtonStyle {
         configuration.label
             .foregroundColor(Color.white)
 			.frame(width: 140, height: 40, alignment: .center)
-			.background(CustomColor.link)
+			.background(Color(CustomColor.link))
             .cornerRadius(20)
 			.scaleEffect(configuration.isPressed ? 1.05 : 1.0)
 			.opacity((configuration.isPressed || isLoading) ? 0.7 : 1)

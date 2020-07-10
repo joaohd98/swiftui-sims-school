@@ -12,6 +12,7 @@
 		DC98E1B224B8A18100D4BD76 /* LoginScreenSubmitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC98E1B124B8A18100D4BD76 /* LoginScreenSubmitButton.swift */; };
 		DC98E1B524B8AA3E00D4BD76 /* LoginScreenLogo.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC98E1B424B8AA3E00D4BD76 /* LoginScreenLogo.swift */; };
 		DC98E1B924B8AE3900D4BD76 /* LoginScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC98E1B824B8AE3900D4BD76 /* LoginScreenModel.swift */; };
+		DC98E1BB24B8BF5900D4BD76 /* Input.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC98E1BA24B8BF5900D4BD76 /* Input.swift */; };
 		DCA500C124AE5223006B4C63 /* CustomContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA500C024AE5223006B4C63 /* CustomContainer.swift */; };
 		DCB672D824B242120064484D /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB672D724B242120064484D /* ActivityIndicator.swift */; };
 		DCB672DA24B2683D0064484D /* ColorToUiColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB672D924B2683D0064484D /* ColorToUiColor.swift */; };
@@ -43,6 +44,7 @@
 		DC98E1B124B8A18100D4BD76 /* LoginScreenSubmitButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenSubmitButton.swift; sourceTree = "<group>"; };
 		DC98E1B424B8AA3E00D4BD76 /* LoginScreenLogo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenLogo.swift; sourceTree = "<group>"; };
 		DC98E1B824B8AE3900D4BD76 /* LoginScreenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenModel.swift; sourceTree = "<group>"; };
+		DC98E1BA24B8BF5900D4BD76 /* Input.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Input.swift; sourceTree = "<group>"; };
 		DCA500C024AE5223006B4C63 /* CustomContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomContainer.swift; sourceTree = "<group>"; };
 		DCB672D724B242120064484D /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		DCB672D924B2683D0064484D /* ColorToUiColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorToUiColor.swift; sourceTree = "<group>"; };
@@ -246,6 +248,7 @@
 			isa = PBXGroup;
 			children = (
 				DCF043FB24AD1ABD00241062 /* CustomInput.swift */,
+				DC98E1BA24B8BF5900D4BD76 /* Input.swift */,
 			);
 			path = Input;
 			sourceTree = "<group>";
@@ -428,6 +431,7 @@
 				DCF043F924AD191200241062 /* LoginScreen.swift in Sources */,
 				DCF043F724AD17E100241062 /* LayoutView.swift in Sources */,
 				DCF043FC24AD1ABD00241062 /* CustomInput.swift in Sources */,
+				DC98E1BB24B8BF5900D4BD76 /* Input.swift in Sources */,
 				DCB672E324B29BD10064484D /* Service.swift in Sources */,
 				DC98E1B224B8A18100D4BD76 /* LoginScreenSubmitButton.swift in Sources */,
 				DCF043E124AD16B600241062 /* SceneDelegate.swift in Sources */,

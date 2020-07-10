@@ -88,7 +88,7 @@ class FormInputModel: ObservableObject {
 		}
 	}
 	
-	func getColor() -> Color {
+	func getColor() -> UIColor {
 		var color = CustomColor.borderInputColor
 		
 		if((self.hasEverUnfocused || self.hasTriedSubmit) && self.validationRule != nil) {
