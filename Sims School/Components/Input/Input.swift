@@ -15,6 +15,8 @@ struct UIInput: UIViewRepresentable {
 	func makeUIView(context: Context) -> UITextField {
 		let textField = UITextField(frame: .zero)
 		textField.delegate = context.coordinator
+		textField.becomeFirstResponder()
+
 		textField.placeholder = input.placeholder
 		textField.text = input.value
 		textField.textColor = CustomColor.inputColor
@@ -40,6 +42,7 @@ struct UIInput: UIViewRepresentable {
 	
 	class Coordinator: NSObject, UITextFieldDelegate {
 		var parent: UIInput
+		var checkForDelete: Bool = false
 
 		init(_ textField: UIInput) {
 			self.parent = textField
@@ -53,14 +56,43 @@ struct UIInput: UIViewRepresentable {
 			self.parent.input.changeFocus(false)
 		}
 		
+		func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+			
+			self.checkForDelete = false
+			
+			if let text = textField.text {
+			   if textField.isSecureTextEntry && text.count > 0 {
+				   self.checkForDelete = true
+			   }
+			}
+		
+			return true;
+		}
+				
 		func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+			
 			let input = self.parent.input
 			
-			input.value = textField.text ?? ""
+			if (self.checkForDelete && string.count == 0) {
+				self.checkForDelete = false;
+				
+				input.value = ""
+			}
+			
+			else {
+				let oldString = (textField.text! as NSString)
+				let updatedString = oldString.replacingCharacters(in: range, with: string)
+
+				input.value = updatedString
+			}
+			
+		
 			input.validationRule = FormRules.checkInputIsValid(input: input)
 			
+
 			return true
 		}
+		
 	}
 }
 

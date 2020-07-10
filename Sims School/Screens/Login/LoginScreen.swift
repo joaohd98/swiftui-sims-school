@@ -15,9 +15,10 @@ struct LoginScreen: View {
 	
 	func onSubmitLogin(onError: @escaping (_ errorCode: AuthErrorCode) -> Void = {_ in }) {
 		UIApplication.shared.endEditing()
-		self.props.isLoading.toggle()
 
 		if self.props.form.checkFormIsValid() {
+			self.props.isLoading.toggle()
+			
 			let user = UserRequest.init(
 				email: self.props.form.inputs[0].value,
 				password: self.props.form.inputs[1].value
