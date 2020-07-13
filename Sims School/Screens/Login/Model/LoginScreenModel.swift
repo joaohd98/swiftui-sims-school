@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
 class LoginScreenModel: ObservableObject {
 	@Published var isLoading: Bool = false
@@ -14,6 +15,7 @@ class LoginScreenModel: ObservableObject {
 		FormInputModel.init(
 			name: "email",
 			placeholder: "Email",
+			keyboardReturnText: .next,
 			keyboardType: .emailAddress,
 			rules: [
 				FormRulesModel.init(

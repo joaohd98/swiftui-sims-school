@@ -26,19 +26,42 @@ fileprivate struct SubmitButton: ButtonStyle {
     }
 }
 
-struct LoginScreenSubmitButton: View {
+fileprivate protocol CustomView: View {
+	func setErrorHandle(_ form: FormModel) -> Self;
+}
+
+struct LoginScreenSubmitButton: CustomView {
 	@Binding var isLoading: Bool
 	@State var onButtonPress: (_ onError: @escaping (_ errorCode: AuthErrorCode?) -> Void) -> Void
 	@State var showAlert: Bool = false
 	@State var errorCode: AuthErrorCode? = nil
+	
+	func onErrorSubmit(errorCode: AuthErrorCode?) {
+		print("showAlert", self.showAlert)
+		print("errorCode", self.errorCode)
+		
+		self.showAlert.toggle()
+		self.errorCode = errorCode
+		
+		print("showAlert", self.showAlert)
+		print("errorCode", self.errorCode)
+
+	}
+	
+	func setErrorHandle(_ form: FormModel) -> LoginScreenSubmitButton {
+		form.onSubmit = { () in
+			withAnimation {
+				self.onButtonPress(self.onErrorSubmit)
+			}
+		}
+
+		return self
+	}
 
 	var body: some View {
 		Button(action: {
 			withAnimation {
-				self.onButtonPress({ errorCode in
-					self.showAlert.toggle()
-					self.errorCode = errorCode
-				})
+				self.onButtonPress(self.onErrorSubmit)
 			}
 		}) {
 			if self.isLoading {

@@ -24,7 +24,6 @@ class UserService {
 				))
 			}
 			else if let err = error{
-				print("valueeeeee", err._code)
 				onError(AuthErrorCode(rawValue: err._code)!)
 			}
 		}

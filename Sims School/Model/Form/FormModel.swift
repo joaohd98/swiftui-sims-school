@@ -10,9 +10,32 @@ import SwiftUI
 import UIKit
 
 class FormModel: ObservableObject {
-	@Published var inputs: [FormInputModel]
+	@Published var inputs: [FormInputModel] = []
+	@Published var onSubmit: () -> Void = { () in }
 
 	init(inputs: [FormInputModel]) {
+		let indexLast = inputs.count - 1
+		
+		for (index, input) in inputs.enumerated() {
+			input.onKeyboardReturn = { () in
+				input.validationRule = FormRules.checkInputIsValid(input: input)
+			
+				if input.validationRule != nil {
+					input.howManyAttempts += 1
+				}
+				
+				else {
+					if index == indexLast {
+						self.onSubmit()
+					}
+								
+					else {
+						let _ = inputs[index + 1].becomeFirstResponder()
+					}
+				}
+			}
+		 }
+
 		self.inputs = inputs
 	}
 	
@@ -41,6 +64,8 @@ class FormInputModel: ObservableObject {
 	@Published var placeholder: String
 	@Published var value: String
 	@Published var isPassword: Bool
+	@Published var keyboardReturnText: UIReturnKeyType
+	@Published var onKeyboardReturn: () -> Void
 	@Published var keyboardType: UIKeyboardType
 	@Published var rules: [FormRulesModel]
 	@Published var validationRule: (FormRulesModel)?
@@ -55,6 +80,7 @@ class FormInputModel: ObservableObject {
 		placeholder: String,
 		value: String = "",
 		isPassword: Bool = false,
+		keyboardReturnText: UIReturnKeyType = .done,
 		keyboardType: UIKeyboardType = .default,
 		rules: [FormRulesModel] = [],
 		validationRule: (FormRulesModel)? = nil
@@ -63,6 +89,8 @@ class FormInputModel: ObservableObject {
 		self.placeholder = placeholder
 		self.value = value
 		self.isPassword = isPassword
+		self.keyboardReturnText = keyboardReturnText
+		self.onKeyboardReturn = { () in }
 		self.keyboardType = keyboardType
 		self.rules = rules
 		self.validationRule = validationRule

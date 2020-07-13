@@ -12,7 +12,7 @@ import FirebaseAuth
 
 struct LoginScreen: View {
 	@ObservedObject var props = LoginScreenModel()
-	
+		
 	func onSubmitLogin(onError: @escaping (_ errorCode: AuthErrorCode) -> Void = {_ in }) {
 		UIApplication.shared.endEditing()
 		
@@ -46,6 +46,7 @@ struct LoginScreen: View {
 					isLoading: self.$props.isLoading,
 					onButtonPress: self.onSubmitLogin
 				)
+				.setErrorHandle(self.props.form)
 			}
 			.padding(.horizontal)
 			.keyboardAdaptive()
@@ -56,7 +57,6 @@ struct LoginScreen: View {
 			UIApplication.shared.endEditing()
 		}
 	}
-
 }
 
 struct LoginScreen_Previews: PreviewProvider {

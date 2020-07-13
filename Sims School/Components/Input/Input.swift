@@ -18,6 +18,7 @@ struct UIInput: UIViewRepresentable {
 		textField.placeholder = input.placeholder
 		textField.text = input.value
 		textField.textColor = CustomColor.inputColor
+		textField.returnKeyType = input.keyboardReturnText
 		textField.keyboardType = input.keyboardType
 		textField.isSecureTextEntry = input.isPassword
 		textField.layer.borderWidth = 1
@@ -93,6 +94,11 @@ struct UIInput: UIViewRepresentable {
 			return true
 		}
 		
+		func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+			self.parent.input.onKeyboardReturn()
+			
+			return false
+		}
 	}
 }
 
