@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3935579CB37C812B2AB1DEFB /* Pods_Sims_School.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 777DFA7D8B92C11713096229 /* Pods_Sims_School.framework */; };
+		DC989EDA24BCE094003B79A6 /* AllView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC989ED924BCE094003B79A6 /* AllView.swift */; };
 		DC98E1AF24B8A07F00D4BD76 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DC98E1AE24B8A07F00D4BD76 /* GoogleService-Info.plist */; };
 		DC98E1B224B8A18100D4BD76 /* LoginScreenSubmitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC98E1B124B8A18100D4BD76 /* LoginScreenSubmitButton.swift */; };
 		DC98E1B524B8AA3E00D4BD76 /* LoginScreenLogo.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC98E1B424B8AA3E00D4BD76 /* LoginScreenLogo.swift */; };
@@ -42,6 +43,7 @@
 		777DFA7D8B92C11713096229 /* Pods_Sims_School.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sims_School.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A518D0BBE87DF0D79C52DB73 /* Pods-swiftui-escola.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-swiftui-escola.debug.xcconfig"; path = "Target Support Files/Pods-swiftui-escola/Pods-swiftui-escola.debug.xcconfig"; sourceTree = "<group>"; };
 		AB599491792EC550D7C02C8C /* Pods-Sims School.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sims School.debug.xcconfig"; path = "Target Support Files/Pods-Sims School/Pods-Sims School.debug.xcconfig"; sourceTree = "<group>"; };
+		DC989ED924BCE094003B79A6 /* AllView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllView.swift; sourceTree = "<group>"; };
 		DC98E1AE24B8A07F00D4BD76 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DC98E1B124B8A18100D4BD76 /* LoginScreenSubmitButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenSubmitButton.swift; sourceTree = "<group>"; };
 		DC98E1B424B8AA3E00D4BD76 /* LoginScreenLogo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenLogo.swift; sourceTree = "<group>"; };
@@ -103,6 +105,14 @@
 				777DFA7D8B92C11713096229 /* Pods_Sims_School.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DC989ED824BCE06F003B79A6 /* All View */ = {
+			isa = PBXGroup;
+			children = (
+				DC989ED924BCE094003B79A6 /* AllView.swift */,
+			);
+			path = "All View";
 			sourceTree = "<group>";
 		};
 		DC98E1B024B8A14C00D4BD76 /* Submit Button */ = {
@@ -277,6 +287,7 @@
 		DCF0440624AE1DB900241062 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				DC989ED824BCE06F003B79A6 /* All View */,
 				DCF0440724AE1DCC00241062 /* Form */,
 			);
 			path = Model;
@@ -442,6 +453,7 @@
 				DCB672E324B29BD10064484D /* Service.swift in Sources */,
 				DC98E1B224B8A18100D4BD76 /* LoginScreenSubmitButton.swift in Sources */,
 				DCF043E124AD16B600241062 /* SceneDelegate.swift in Sources */,
+				DC989EDA24BCE094003B79A6 /* AllView.swift in Sources */,
 				DCF0440F24AE393500241062 /* FormRules.swift in Sources */,
 				DCB672DA24B2683D0064484D /* ColorToUiColor.swift in Sources */,
 				DCB672DF24B29BB60064484D /* Request.swift in Sources */,

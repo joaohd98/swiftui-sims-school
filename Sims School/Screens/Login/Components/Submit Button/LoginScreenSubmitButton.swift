@@ -11,7 +11,7 @@ import UIKit
 import SwiftUI
 import FirebaseAuth
 
-fileprivate struct SubmitButton: ButtonStyle {
+private struct SubmitButton: ButtonStyle {
 	@State var isLoading: Bool = false
 	
     func makeBody(configuration: Self.Configuration) -> some View {
@@ -26,42 +26,17 @@ fileprivate struct SubmitButton: ButtonStyle {
     }
 }
 
-fileprivate protocol CustomView: View {
-	func setErrorHandle(_ form: FormModel) -> Self;
-}
 
-struct LoginScreenSubmitButton: CustomView {
+struct LoginScreenSubmitButton: View {
 	@Binding var isLoading: Bool
-	@State var onButtonPress: (_ onError: @escaping (_ errorCode: AuthErrorCode?) -> Void) -> Void
-	@State var showAlert: Bool = false
-	@State var errorCode: AuthErrorCode? = nil
+	@Binding var hasError: Bool
+	@Binding var errorCode: AuthErrorCode?
+	@State var onButtonPress: () -> Void
 	
-	func onErrorSubmit(errorCode: AuthErrorCode?) {
-		print("showAlert", self.showAlert)
-		print("errorCode", self.errorCode)
-		
-		self.showAlert.toggle()
-		self.errorCode = errorCode
-		
-		print("showAlert", self.showAlert)
-		print("errorCode", self.errorCode)
-
-	}
-	
-	func setErrorHandle(_ form: FormModel) -> LoginScreenSubmitButton {
-		form.onSubmit = { () in
-			withAnimation {
-				self.onButtonPress(self.onErrorSubmit)
-			}
-		}
-
-		return self
-	}
-
 	var body: some View {
 		Button(action: {
 			withAnimation {
-				self.onButtonPress(self.onErrorSubmit)
+				self.onButtonPress()
 			}
 		}) {
 			if self.isLoading {
@@ -71,9 +46,10 @@ struct LoginScreenSubmitButton: CustomView {
 				Text("Entrar")
 			}
 		}
-		.alert(isPresented: self.$showAlert) {
-			let errorCode = self.errorCode!
+		.alert(isPresented: self.$hasError) {
 			
+			let errorCode = self.errorCode!
+						
 			if errorCode == .some(.missingEmail) || errorCode == .some(.userNotFound) {
 				return Alert(
 					title: Text("Email incorreto"),
@@ -108,11 +84,16 @@ struct LoginScreenSubmitButton: CustomView {
 struct LoginScreenSubmitButton_Previews: PreviewProvider {
 	
 	@State static var isLoading: Bool = false
-	static func onSubmitLogin(onError: @escaping (_ errorCode: AuthErrorCode) -> Void = {_ in }) {}
+	@State static var hasError: Bool = false
+	@State static var errorCode: AuthErrorCode? = nil
+
+	static func onSubmitLogin() {}
 	
     static var previews: some View {
         LoginScreenSubmitButton(
 			isLoading: self.$isLoading,
+			hasError: self.$hasError,
+			errorCode: self.$errorCode,
 			onButtonPress: self.onSubmitLogin
 		)
     }

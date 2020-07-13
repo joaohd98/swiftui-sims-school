@@ -13,7 +13,11 @@ import FirebaseAuth
 struct LoginScreen: View {
 	@ObservedObject var props = LoginScreenModel()
 		
-	func onSubmitLogin(onError: @escaping (_ errorCode: AuthErrorCode) -> Void = {_ in }) {
+	func viewDidLoad() {
+		self.props.form.onSubmit = onSubmitLogin
+	}
+	
+	func onSubmitLogin() {
 		UIApplication.shared.endEditing()
 		
 		if self.props.form.checkFormIsValid() {
@@ -28,7 +32,8 @@ struct LoginScreen: View {
 
 			}) { (err) in
 				self.props.isLoading.toggle()
-				onError(err)
+				self.props.hasError.toggle()
+				self.props.errorCode = err
 			}
 		}
 	}
@@ -44,9 +49,10 @@ struct LoginScreen: View {
 				}
 				LoginScreenSubmitButton(
 					isLoading: self.$props.isLoading,
+					hasError: self.$props.hasError,
+					errorCode: self.$props.errorCode,
 					onButtonPress: self.onSubmitLogin
 				)
-				.setErrorHandle(self.props.form)
 			}
 			.padding(.horizontal)
 			.keyboardAdaptive()
@@ -56,6 +62,7 @@ struct LoginScreen: View {
 		.onTapGesture {
 			UIApplication.shared.endEditing()
 		}
+		.onAppear(perform: self.viewDidLoad)
 	}
 }
 
