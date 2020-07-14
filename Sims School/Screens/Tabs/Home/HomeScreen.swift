@@ -11,8 +11,13 @@ import SwiftUI
 struct HomeScreen: View {
     var body: some View {
 		CustomContainerGuestSignIn {
-			Group {
-				Text("HomeScreen")
+			VStack(alignment: .leading, spacing: 0) {
+				HomeScreenProfile()
+					.background(Color.white.shadow(radius: 2))
+				Spacer()
+				HomeScreenClasses()
+				Spacer()
+				HomeScreenAds()
 			}
 			.navigationBarTitle("Meu teste", displayMode: .inline)
 		}

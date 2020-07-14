@@ -21,7 +21,7 @@ struct CustomContainerGuest<Content: View>: CustomView {
 	}
 	
 	func getBackgroundColor() -> Color {
-		return Color(self.isLoading ? CustomColor.borderInputColor : UIColor.white)
+		return Color(self.isLoading ? CustomColor.bordergray : UIColor.white)
 	}
 	
 	func isLoading(_ newState: Bool) -> CustomContainerGuest<Content> {

@@ -11,6 +11,9 @@
 		DC05771924BD6104005CC9BC /* CustomContainerSignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC05771824BD6104005CC9BC /* CustomContainerSignIn.swift */; };
 		DC64927324BDEEB300EDAC0E /* ViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC64927224BDEEB300EDAC0E /* ViewRouter.swift */; };
 		DC64927624BDF27400EDAC0E /* ScoresScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC64927524BDF27400EDAC0E /* ScoresScreen.swift */; };
+		DC64927C24BE179B00EDAC0E /* HomeScreenProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC64927B24BE179B00EDAC0E /* HomeScreenProfile.swift */; };
+		DC64927E24BE1A2B00EDAC0E /* HomeScreenClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC64927D24BE1A2B00EDAC0E /* HomeScreenClasses.swift */; };
+		DC64928024BE1A3D00EDAC0E /* HomeScreenAds.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC64927F24BE1A3D00EDAC0E /* HomeScreenAds.swift */; };
 		DC89F04724BD704B001964FC /* TabsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC89F04624BD704B001964FC /* TabsScreen.swift */; };
 		DC989EDA24BCE094003B79A6 /* AllView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC989ED924BCE094003B79A6 /* AllView.swift */; };
 		DC989EDD24BCEDCA003B79A6 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC989EDC24BCEDCA003B79A6 /* HomeScreen.swift */; };
@@ -36,7 +39,6 @@
 		DCF043F924AD191200241062 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF043F824AD191200241062 /* LoginScreen.swift */; };
 		DCF043FC24AD1ABD00241062 /* CustomInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF043FB24AD1ABD00241062 /* CustomInput.swift */; };
 		DCF043FF24AD1D5900241062 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF043FE24AD1D5900241062 /* Colors.swift */; };
-		DCF0440224AD29F600241062 /* Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = DCF0440124AD29F600241062 /* Logo.png */; };
 		DCF0440424AD2BB000241062 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF0440324AD2BB000241062 /* Images.swift */; };
 		DCF0440924AE1E0400241062 /* FormModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF0440824AE1E0400241062 /* FormModel.swift */; };
 		DCF0440D24AE2CF500241062 /* KeyboardHideInputHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF0440C24AE2CF500241062 /* KeyboardHideInputHelper.swift */; };
@@ -51,6 +53,9 @@
 		DC05771824BD6104005CC9BC /* CustomContainerSignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomContainerSignIn.swift; sourceTree = "<group>"; };
 		DC64927224BDEEB300EDAC0E /* ViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRouter.swift; sourceTree = "<group>"; };
 		DC64927524BDF27400EDAC0E /* ScoresScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoresScreen.swift; sourceTree = "<group>"; };
+		DC64927B24BE179B00EDAC0E /* HomeScreenProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenProfile.swift; sourceTree = "<group>"; };
+		DC64927D24BE1A2B00EDAC0E /* HomeScreenClasses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenClasses.swift; sourceTree = "<group>"; };
+		DC64927F24BE1A3D00EDAC0E /* HomeScreenAds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenAds.swift; sourceTree = "<group>"; };
 		DC89F04624BD704B001964FC /* TabsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabsScreen.swift; sourceTree = "<group>"; };
 		DC989ED924BCE094003B79A6 /* AllView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllView.swift; sourceTree = "<group>"; };
 		DC989EDC24BCEDCA003B79A6 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
@@ -78,7 +83,6 @@
 		DCF043F824AD191200241062 /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
 		DCF043FB24AD1ABD00241062 /* CustomInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInput.swift; sourceTree = "<group>"; };
 		DCF043FE24AD1D5900241062 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
-		DCF0440124AD29F600241062 /* Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Logo.png; path = ../../../Logo.png; sourceTree = "<group>"; };
 		DCF0440324AD2BB000241062 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		DCF0440824AE1E0400241062 /* FormModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormModel.swift; sourceTree = "<group>"; };
 		DCF0440C24AE2CF500241062 /* KeyboardHideInputHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardHideInputHelper.swift; sourceTree = "<group>"; };
@@ -141,6 +145,40 @@
 			path = Scores;
 			sourceTree = "<group>";
 		};
+		DC64927724BE15A200EDAC0E /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				DC64927A24BE15DB00EDAC0E /* Ads */,
+				DC64927924BE15C000EDAC0E /* Classes */,
+				DC64927824BE15B100EDAC0E /* Profile */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		DC64927824BE15B100EDAC0E /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				DC64927B24BE179B00EDAC0E /* HomeScreenProfile.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		DC64927924BE15C000EDAC0E /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				DC64927D24BE1A2B00EDAC0E /* HomeScreenClasses.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		DC64927A24BE15DB00EDAC0E /* Ads */ = {
+			isa = PBXGroup;
+			children = (
+				DC64927F24BE1A3D00EDAC0E /* HomeScreenAds.swift */,
+			);
+			path = Ads;
+			sourceTree = "<group>";
+		};
 		DC89F04524BD7036001964FC /* Tabs */ = {
 			isa = PBXGroup;
 			children = (
@@ -162,6 +200,7 @@
 		DC989EDB24BCEC58003B79A6 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				DC64927724BE15A200EDAC0E /* Components */,
 				DC989EDC24BCEDCA003B79A6 /* HomeScreen.swift */,
 			);
 			path = Home;
@@ -255,7 +294,6 @@
 		DCF043DD24AD16B600241062 /* Sims School */ = {
 			isa = PBXGroup;
 			children = (
-				DCF0440024AD29E400241062 /* Resources */,
 				DCF0440B24AE2CCB00241062 /* Helpers */,
 				DC989EE324BCFFF2003B79A6 /* Layout */,
 				DCF043F424AD16F900241062 /* Components */,
@@ -328,14 +366,6 @@
 				DCF0440324AD2BB000241062 /* Images.swift */,
 			);
 			path = Theme;
-			sourceTree = "<group>";
-		};
-		DCF0440024AD29E400241062 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				DCF0440124AD29F600241062 /* Logo.png */,
-			);
-			path = Resources;
 			sourceTree = "<group>";
 		};
 		DCF0440624AE1DB900241062 /* Model */ = {
@@ -436,7 +466,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DCF0440224AD29F600241062 /* Logo.png in Resources */,
 				DCF043EB24AD16B800241062 /* LaunchScreen.storyboard in Resources */,
 				DC98E1AF24B8A07F00D4BD76 /* GoogleService-Info.plist in Resources */,
 				DCF043E824AD16B800241062 /* Preview Assets.xcassets in Resources */,
@@ -501,12 +530,15 @@
 				DCF043DF24AD16B600241062 /* AppDelegate.swift in Sources */,
 				DCF043FF24AD1D5900241062 /* Colors.swift in Sources */,
 				DCB672E124B29BC10064484D /* Response.swift in Sources */,
+				DC64927C24BE179B00EDAC0E /* HomeScreenProfile.swift in Sources */,
+				DC64927E24BE1A2B00EDAC0E /* HomeScreenClasses.swift in Sources */,
 				DC98E1C024B8EE8000D4BD76 /* PaddingTextFieldHorizontal.swift in Sources */,
 				DCB672D824B242120064484D /* ActivityIndicator.swift in Sources */,
 				DCF043F924AD191200241062 /* LoginScreen.swift in Sources */,
 				DC89F04724BD704B001964FC /* TabsScreen.swift in Sources */,
 				DC64927624BDF27400EDAC0E /* ScoresScreen.swift in Sources */,
 				DCF043FC24AD1ABD00241062 /* CustomInput.swift in Sources */,
+				DC64928024BE1A3D00EDAC0E /* HomeScreenAds.swift in Sources */,
 				DC98E1BB24B8BF5900D4BD76 /* Input.swift in Sources */,
 				DCB672E324B29BD10064484D /* Service.swift in Sources */,
 				DC98E1B224B8A18100D4BD76 /* LoginScreenSubmitButton.swift in Sources */,

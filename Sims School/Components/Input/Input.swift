@@ -17,7 +17,7 @@ struct UIInput: UIViewRepresentable {
 		textField.delegate = context.coordinator
 		textField.placeholder = input.placeholder
 		textField.text = input.value
-		textField.textColor = CustomColor.inputColor
+		textField.textColor = CustomColor.gray
 		textField.returnKeyType = input.keyboardReturnText
 		textField.keyboardType = input.keyboardType
 		textField.isSecureTextEntry = input.isPassword
