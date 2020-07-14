@@ -9,44 +9,58 @@
 import SwiftUI
 
 struct HomeScreenClasses: View {
+    @State var currentPage = 0
+
+	func getCard() -> some View {
+		VStack(alignment: .leading, spacing: 10) {
+			HStack(alignment: .center, spacing: 0) {
+				Spacer()
+				Text("22/07/3030 - Quarta")
+					.foregroundColor(Color(CustomColor.white))
+					.font(.system(size: 16, weight: .medium))
+				Spacer()
+			}
+			.padding(.vertical, 5)
+			.background(Color(CustomColor.gray))
+
+			Text("Gestão de projeto - Agile")
+				.foregroundColor(Color(CustomColor.gray))
+				.font(.system(size: 16, weight: .bold))
+				.multilineTextAlignment(.leading)
+				.padding(.horizontal, 10)
+
+			Text("Renato silva de lima")
+				.foregroundColor(Color(CustomColor.gray))
+				.font(.system(size: 16, weight: .medium))
+				.multilineTextAlignment(.leading)
+				.padding(.horizontal, 10)
+
+			HStack(alignment: .center) {
+				Spacer()
+				Text("Paulista 7 - lab. 706")
+					.font(.system(size: 14, weight: .bold))
+				Spacer()
+			}
+			.padding(.vertical, 10)
+
+		}
+		.border(Color.gray, width: 1)
+	}
+	
     var body: some View {
 		HStack(spacing: 0) {
 			Spacer()
 			VStack(alignment: .center) {
-				VStack(alignment: .leading, spacing: 10) {
-					HStack(alignment: .center, spacing: 0) {
-						Spacer()
-						Text("22/07/3030 - Quarta")
-							.foregroundColor(Color(CustomColor.white))
-							.font(.system(size: 16, weight: .medium))
-						Spacer()
-					}
-					.padding(.vertical, 5)
-					.background(Color(CustomColor.gray))
+				SlideHorizontal(
+					controllers: [
+						UIHostingController(rootView: self.getCard()),
+						UIHostingController(rootView: self.getCard()),
+						UIHostingController(rootView: self.getCard()),
 
-					Text("Gestão de projeto - Agile")
-						.foregroundColor(Color(CustomColor.gray))
-						.font(.system(size: 16, weight: .bold))
-						.multilineTextAlignment(.leading)
-						.padding(.horizontal, 10)
-
-					Text("Renato silva de lima")
-						.foregroundColor(Color(CustomColor.gray))
-						.font(.system(size: 16, weight: .medium))
-						.multilineTextAlignment(.leading)
-						.padding(.horizontal, 10)
-
-					HStack(alignment: .center) {
-						Spacer()
-						Text("Paulista 7 - lab. 706")
-							.font(.system(size: 14, weight: .bold))
-						Spacer()
-					}
-					.padding(.vertical, 10)
-
-				}
-				.border(Color.gray, width: 1)
-
+					],
+					currentPage: $currentPage
+				)
+				.frame(height: 200)
 				HStack(alignment: .center, spacing: 15) {
 					Image(systemName: "circle")
 						.resizable()
@@ -72,7 +86,6 @@ struct HomeScreenClasses: View {
 			}
 			Spacer()
 		}
-		.padding()
     }
 }
 

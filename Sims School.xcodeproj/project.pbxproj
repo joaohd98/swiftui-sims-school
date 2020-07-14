@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3935579CB37C812B2AB1DEFB /* Pods_Sims_School.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 777DFA7D8B92C11713096229 /* Pods_Sims_School.framework */; };
 		DC05771924BD6104005CC9BC /* CustomContainerSignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC05771824BD6104005CC9BC /* CustomContainerSignIn.swift */; };
+		DC1D22DB24BE5C1F00E1855D /* SlideHorizontal.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1D22DA24BE5C1F00E1855D /* SlideHorizontal.swift */; };
 		DC64927324BDEEB300EDAC0E /* ViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC64927224BDEEB300EDAC0E /* ViewRouter.swift */; };
 		DC64927624BDF27400EDAC0E /* ScoresScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC64927524BDF27400EDAC0E /* ScoresScreen.swift */; };
 		DC64927C24BE179B00EDAC0E /* HomeScreenProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC64927B24BE179B00EDAC0E /* HomeScreenProfile.swift */; };
@@ -51,6 +52,7 @@
 		A518D0BBE87DF0D79C52DB73 /* Pods-swiftui-escola.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-swiftui-escola.debug.xcconfig"; path = "Target Support Files/Pods-swiftui-escola/Pods-swiftui-escola.debug.xcconfig"; sourceTree = "<group>"; };
 		AB599491792EC550D7C02C8C /* Pods-Sims School.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sims School.debug.xcconfig"; path = "Target Support Files/Pods-Sims School/Pods-Sims School.debug.xcconfig"; sourceTree = "<group>"; };
 		DC05771824BD6104005CC9BC /* CustomContainerSignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomContainerSignIn.swift; sourceTree = "<group>"; };
+		DC1D22DA24BE5C1F00E1855D /* SlideHorizontal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideHorizontal.swift; sourceTree = "<group>"; };
 		DC64927224BDEEB300EDAC0E /* ViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRouter.swift; sourceTree = "<group>"; };
 		DC64927524BDF27400EDAC0E /* ScoresScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoresScreen.swift; sourceTree = "<group>"; };
 		DC64927B24BE179B00EDAC0E /* HomeScreenProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenProfile.swift; sourceTree = "<group>"; };
@@ -127,6 +129,14 @@
 				DC05771824BD6104005CC9BC /* CustomContainerSignIn.swift */,
 			);
 			path = "Container Sign in";
+			sourceTree = "<group>";
+		};
+		DC1D22D924BE5BE000E1855D /* Slide Horizontal */ = {
+			isa = PBXGroup;
+			children = (
+				DC1D22DA24BE5C1F00E1855D /* SlideHorizontal.swift */,
+			);
+			path = "Slide Horizontal";
 			sourceTree = "<group>";
 		};
 		DC64927124BDEE9F00EDAC0E /* View Router */ = {
@@ -342,6 +352,7 @@
 		DCF043F424AD16F900241062 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				DC1D22D924BE5BE000E1855D /* Slide Horizontal */,
 				DCB672D624B241FE0064484D /* Activity Indicator */,
 				DCA500BD24AE51CC006B4C63 /* Container Guest */,
 				DC05771724BD60D7005CC9BC /* Container Sign in */,
@@ -533,6 +544,7 @@
 				DC64927C24BE179B00EDAC0E /* HomeScreenProfile.swift in Sources */,
 				DC64927E24BE1A2B00EDAC0E /* HomeScreenClasses.swift in Sources */,
 				DC98E1C024B8EE8000D4BD76 /* PaddingTextFieldHorizontal.swift in Sources */,
+				DC1D22DB24BE5C1F00E1855D /* SlideHorizontal.swift in Sources */,
 				DCB672D824B242120064484D /* ActivityIndicator.swift in Sources */,
 				DCF043F924AD191200241062 /* LoginScreen.swift in Sources */,
 				DC89F04724BD704B001964FC /* TabsScreen.swift in Sources */,
