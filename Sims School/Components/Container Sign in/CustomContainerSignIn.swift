@@ -8,14 +8,28 @@
 
 import SwiftUI
 
-struct CustomContainerGuestSignIn: View {
+struct CustomContainerGuestSignIn<Content: View>: View {
+	private var content: Content
+
+	init(@ViewBuilder content: @escaping () -> Content) {
+		self.content = content()
+	}
+	
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+		NavigationView {
+			self.content
+		}
     }
+}
+
+fileprivate struct PreviewView: View {
+	var body: some View {
+		Text("Hello world")
+	}
 }
 
 struct CustomContainerGuestSignIn_Previews: PreviewProvider {
     static var previews: some View {
-        CustomContainerGuestSignIn()
+		CustomContainerGuestSignIn<PreviewView>(content: { PreviewView() })
     }
 }

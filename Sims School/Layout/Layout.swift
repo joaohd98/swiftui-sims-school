@@ -12,7 +12,7 @@ import FirebaseAuth
 struct LayoutView: View {
 	var body: some View {
 		if Auth.auth().currentUser != nil {
-			return AnyView(HomeScreen())
+			return AnyView(TabsScreen())
 		} else {
 			return AnyView(LoginScreen())
 		}

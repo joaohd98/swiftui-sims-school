@@ -49,7 +49,7 @@ struct LoginScreen: View {
 						input: self.props.form.inputs[index]
 					)
 				}
-				NavigationLink(destination:  HomeScreen(), isActive: self.$goHome) {
+				NavigationLink(destination:  TabsScreen(), isActive: self.$goHome) {
 					LoginScreenSubmitButton(
 						isLoading: self.$props.isLoading,
 						hasError: self.$props.hasError,

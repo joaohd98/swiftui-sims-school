@@ -10,8 +10,13 @@ import SwiftUI
 
 struct HomeScreen: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
+		CustomContainerGuestSignIn {
+			Group {
+				Text("Hello world")
+			}
+			.navigationBarTitle("Meu teste", displayMode: .inline)
+		}
+	}
 }
 
 struct HomeScreen_Previews: PreviewProvider {
