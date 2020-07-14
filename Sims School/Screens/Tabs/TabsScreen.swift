@@ -9,34 +9,61 @@
 import SwiftUI
 
 struct TabsScreen: View {
-    var body: some View {
-		TabView {
-			HomeScreen()
-			 .tabItem {
-				Image(systemName: "phone.fill")
-				Text("First Tab")
-			  }
-			Text("The content of the second view")
-			  .tabItem {
-				 Image(systemName: "phone.fill")
-				 Text("Second Tab")
-			   }
-			Text("The content of the third view")
-			   .tabItem {
-				  Image(systemName: "phone.fill")
-				  Text("First Tab")
+	@ObservedObject var viewRouter = ViewRouter()
+	
+	func getActualRoute() -> AnyView {
+		return AnyView(viewRouter.tabRoutes[viewRouter.currentView]?.screen)
+	}
+	
+	func getTabIcon(_ geometry: GeometryProxy, tab: TabInformation) -> some View {
+		let currentView = self.viewRouter.currentView
+		let countTab = CGFloat(self.viewRouter.tabRoutes.count)
+		let widthTab = geometry.size.width / countTab
+		
+		return VStack(spacing: 0) {
+			Divider()
+				.frame(height: 2)
+				.background(currentView == tab.type ? Color.blue : nil)
+			
+			Spacer()
+			
+			Image(systemName: tab.icon)
+				.resizable()
+				.aspectRatio(contentMode: .fit)
+				.frame(width: 25, height: 25)
+				.foregroundColor(currentView == tab.type ? .blue : .gray)
+				.padding(.bottom, 2)
+
+			Text(tab.name)
+				.foregroundColor(currentView == tab.type ? .blue : .gray)
+				.font(.system(size: 12, weight: .medium, design: .default))
+				.padding(.top, 2)
+			
+			Spacer()
+
+		}
+		.frame(width: widthTab, height: geometry.size.height / 10, alignment: .center)
+		.onTapGesture {
+			self.viewRouter.currentView = tab.type
+		}
+	}
+		
+	var body: some View {
+		GeometryReader { geometry in
+			VStack {
+				self.getActualRoute()
+				HStack(alignment: .center, spacing: 0) {
+					self.getTabIcon(geometry, tab: self.viewRouter.tabRoutes[.HomeScreen]!)
+					self.getTabIcon(geometry, tab: self.viewRouter.tabRoutes[.ScoresScreen]!)
 				}
-			Text("The content of the fourth view")
-			.tabItem {
-			   Image(systemName: "phone.fill")
-			   Text("First Tab")
-			 }
+				.frame(width: geometry.size.width, height: geometry.size.height / 10)
+			}
 		}
 	}
 }
 
 struct TabsScreen_Previews: PreviewProvider {
-    static var previews: some View {
-        TabsScreen()
-    }
+	static var previews: some View {
+		TabsScreen()
+	}
 }
