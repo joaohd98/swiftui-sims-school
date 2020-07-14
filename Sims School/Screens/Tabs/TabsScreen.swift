@@ -44,7 +44,9 @@ struct TabsScreen: View {
 		}
 		.frame(width: widthTab, height: geometry.size.height / 10, alignment: .center)
 		.onTapGesture {
-			self.viewRouter.currentView = tab.type
+			withAnimation {
+				self.viewRouter.currentView = tab.type
+			}
 		}
 	}
 		
@@ -55,6 +57,9 @@ struct TabsScreen: View {
 				HStack(alignment: .center, spacing: 0) {
 					self.getTabIcon(geometry, tab: self.viewRouter.tabRoutes[.HomeScreen]!)
 					self.getTabIcon(geometry, tab: self.viewRouter.tabRoutes[.ScoresScreen]!)
+					self.getTabIcon(geometry, tab: self.viewRouter.tabRoutes[.ClassesScreen]!)
+					self.getTabIcon(geometry, tab: self.viewRouter.tabRoutes[.ChatScreen]!)
+					self.getTabIcon(geometry, tab: self.viewRouter.tabRoutes[.MenuScreen]!)
 				}
 				.frame(width: geometry.size.width, height: geometry.size.height / 10)
 			}

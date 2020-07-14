@@ -14,7 +14,9 @@ import Combine
 enum TabsRoutes {
 	case HomeScreen
 	case ScoresScreen
-
+	case ClassesScreen
+	case ChatScreen
+	case MenuScreen
 }
 
 struct TabInformation {
@@ -30,10 +32,22 @@ class ViewRouter: ObservableObject {
 	
 	init() {
 		tabRoutes[.HomeScreen] = TabInformation(
-			name: "Home", icon: "house", screen: AnyView(HomeScreen()), type: .HomeScreen
+			name: "Home", icon: "house.fill", screen: AnyView(HomeScreen()), type: .HomeScreen
 		)
 		tabRoutes[.ScoresScreen] = TabInformation(
-			name: "Person", icon: "person", screen: AnyView(ScoresScreen()), type: .ScoresScreen
+			name: "Scores", icon: "lightbulb.fill", screen: AnyView(ScoresScreen()), type: .ScoresScreen
+		)
+		
+		tabRoutes[.ClassesScreen] = TabInformation(
+			name: "Classes", icon: "folder.fill", screen: AnyView(ScoresScreen()), type: .ClassesScreen
+		)
+		
+		tabRoutes[.ChatScreen] = TabInformation(
+			name: "Chat", icon: "tray.full.fill", screen: AnyView(ScoresScreen()), type: .ChatScreen
+		)
+		
+		tabRoutes[.MenuScreen] = TabInformation(
+			name: "Menu", icon: "line.horizontal.3", screen: AnyView(ScoresScreen()), type: .MenuScreen
 		)
 	}
 }
