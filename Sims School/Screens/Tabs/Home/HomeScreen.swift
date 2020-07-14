@@ -14,8 +14,8 @@ struct HomeScreen: View {
 			VStack(alignment: .leading, spacing: 0) {
 				HomeScreenProfile()
 					.background(Color.white.shadow(radius: 2))
-				Spacer()
 				HomeScreenClasses()
+					.padding()
 				Spacer()
 				HomeScreenAds()
 			}

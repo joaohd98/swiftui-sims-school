@@ -27,7 +27,7 @@ struct HomeScreenProfile: View {
 					)
 				}
 				.padding()
-				.background(Color.white.shadow(radius: 4))
+				.background(Color.white.shadow(radius: 2))
 
 				VStack(alignment: .leading, spacing: 5) {
 					Text("Renan Sobreira Miranda")
@@ -46,7 +46,7 @@ struct HomeScreenProfile: View {
 					}
 				}
 				.padding(.leading, 125)
-				.padding(.top, -60)
+				.padding(.top, -55)
 
 				HStack(alignment: .firstTextBaseline) {
 					Text("Turma:")
@@ -63,8 +63,7 @@ struct HomeScreenProfile: View {
 					.font(.system(size: 20, weight: .bold))
 			}
 			.padding()
-			.padding(.top, -65)
-
+			.padding(.top, -75)
 		}
     }
 }
