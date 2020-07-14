@@ -1,17 +1,21 @@
 //
 //  Layout.swift
-//  swiftui-escola
+//  Sims School
 //
-//  Created by João Damazio on 01/07/20.
+//  Created by João Damazio on 13/07/20.
 //  Copyright © 2020 João Damazio. All rights reserved.
 //
 
 import SwiftUI
+import FirebaseAuth
 
 struct LayoutView: View {
-	
-    var body: some View {
-		LoginScreen()
+	var body: some View {
+		if Auth.auth().currentUser != nil {
+			return AnyView(HomeScreen())
+		} else {
+			return AnyView(LoginScreen())
+		}
     }
 }
 

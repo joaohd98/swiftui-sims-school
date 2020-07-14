@@ -11,6 +11,7 @@ import UIKit
 import FirebaseAuth
 
 struct LoginScreen: View {
+	@State var goHome: Bool = false
 	@ObservedObject var props = LoginScreenModel()
 		
 	func viewDidLoad() {
@@ -29,7 +30,8 @@ struct LoginScreen: View {
 			)
 
 			UserService.signIn(user: user, onSucess: { (user) in
-
+				self.goHome = true
+				
 			}) { (err) in
 				self.props.isLoading.toggle()
 				self.props.hasError.toggle()
@@ -39,7 +41,7 @@ struct LoginScreen: View {
 	}
 	
     var body: some View {
-		CustomContainer {
+		CustomContainerGuest {
 			VStack(alignment: .center, spacing: 10) {
 				LoginScreenLogo()
 				ForEach(self.props.form.inputs.indices) { index in
@@ -47,18 +49,19 @@ struct LoginScreen: View {
 						input: self.props.form.inputs[index]
 					)
 				}
-				LoginScreenSubmitButton(
-					isLoading: self.$props.isLoading,
-					hasError: self.$props.hasError,
-					errorCode: self.$props.errorCode,
-					onButtonPress: self.onSubmitLogin
-				)
+				NavigationLink(destination:  HomeScreen(), isActive: self.$goHome) {
+					LoginScreenSubmitButton(
+						isLoading: self.$props.isLoading,
+						hasError: self.$props.hasError,
+						errorCode: self.$props.errorCode,
+						onButtonPress: self.onSubmitLogin
+					)
+				}
 			}
 			.padding(.horizontal)
 			.keyboardAdaptive()
 		}
 		.isLoading(self.props.isLoading)
-		.hasHeader(false)
 		.onTapGesture {
 			UIApplication.shared.endEditing()
 		}

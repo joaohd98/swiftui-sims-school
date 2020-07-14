@@ -1,5 +1,5 @@
 //
-//  CustomContainer.swift
+//  CustomContainerGuest.swift
 //  swiftui-escola
 //
 //  Created by João Damazio on 02/07/20.
@@ -10,13 +10,11 @@ import SwiftUI
 
 fileprivate protocol CustomView: View {
 	func isLoading(_ newState: Bool) -> Self;
-	func hasHeader(_ newState: Bool) -> Self;
 }
 
-struct CustomContainer<Content: View>: CustomView {
+struct CustomContainerGuest<Content: View>: CustomView {
 	private var content: Content
 	private var isLoading: Bool = false
-	private var hasHeader: Bool = true
 
 	init(@ViewBuilder content: @escaping () -> Content) {
 		self.content = content()
@@ -26,19 +24,11 @@ struct CustomContainer<Content: View>: CustomView {
 		return Color(self.isLoading ? CustomColor.borderInputColor : UIColor.white)
 	}
 	
-	func isLoading(_ newState: Bool) -> CustomContainer<Content> {
+	func isLoading(_ newState: Bool) -> CustomContainerGuest<Content> {
 		var copy = self
 		
 		copy.isLoading = newState
 	
-		return copy
-	}
-
-	func hasHeader(_ newState: Bool) -> CustomContainer<Content> {
-		var copy = self
-			
-		copy.hasHeader = newState
-
 		return copy
 	}
 	
@@ -48,10 +38,8 @@ struct CustomContainer<Content: View>: CustomView {
 				.disabled(self.isLoading)
 				.background(self.getBackgroundColor())
 				.navigationBarTitle("")
-				.navigationBarHidden(!self.hasHeader)
-
+				.navigationBarHidden(true)
 		}
-
 	}
 	
 }
@@ -62,8 +50,8 @@ fileprivate struct PreviewView: View {
 	}
 }
 
-struct CustomContainer_Previews: PreviewProvider {
+struct CustomContainerGuest_Previews: PreviewProvider {
     static var previews: some View {
-		CustomContainer<PreviewView>(content: { PreviewView() })
+		CustomContainerGuest<PreviewView>(content: { PreviewView() })
 	 }
 }
