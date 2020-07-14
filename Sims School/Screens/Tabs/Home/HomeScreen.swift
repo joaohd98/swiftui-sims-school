@@ -13,9 +13,7 @@ struct HomeScreen: View {
 		CustomContainerGuestSignIn {
 			VStack(alignment: .leading, spacing: 0) {
 				HomeScreenProfile()
-					.background(Color.white.shadow(radius: 2))
 				HomeScreenClasses()
-					.padding()
 				Spacer()
 				HomeScreenAds()
 			}

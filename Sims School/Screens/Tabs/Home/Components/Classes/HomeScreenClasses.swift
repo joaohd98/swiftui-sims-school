@@ -72,6 +72,7 @@ struct HomeScreenClasses: View {
 			}
 			Spacer()
 		}
+		.padding()
     }
 }
 
