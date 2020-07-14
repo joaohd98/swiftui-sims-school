@@ -20,34 +20,35 @@ struct TabsScreen: View {
 		let countTab = CGFloat(self.viewRouter.tabRoutes.count)
 		let widthTab = geometry.size.width / countTab
 		
-		return VStack(spacing: 0) {
-			Divider()
-				.frame(height: 2)
-				.background(currentView == tab.type ? Color.blue : nil)
-			
-			Spacer()
-			
-			Image(systemName: tab.icon)
-				.resizable()
-				.aspectRatio(contentMode: .fit)
-				.frame(width: 25, height: 25)
-				.foregroundColor(currentView == tab.type ? .blue : .gray)
-				.padding(.bottom, 2)
+		return
+			Button(action: {
+				withAnimation {
+					self.viewRouter.currentView = tab.type
+				}
+			}) {
+				VStack(spacing: 0) {
+					Divider()
+						.frame(height: 2)
+						.background(currentView == tab.type ? Color.blue : nil)
+					
+					Spacer()
+					
+					Image(systemName: tab.icon)
+						.resizable()
+						.aspectRatio(contentMode: .fit)
+						.frame(width: 25, height: 25)
+						.foregroundColor(currentView == tab.type ? .blue : .gray)
+						.padding(.bottom, 2)
 
-			Text(tab.name)
-				.foregroundColor(currentView == tab.type ? .blue : .gray)
-				.font(.system(size: 12, weight: .medium, design: .default))
-				.padding(.top, 2)
-			
-			Spacer()
-
+					Text(tab.name)
+						.foregroundColor(currentView == tab.type ? .blue : .gray)
+						.font(.system(size: 12, weight: .medium, design: .default))
+						.padding(.top, 2)
+					
+					Spacer()
+				}
 		}
 		.frame(width: widthTab, height: geometry.size.height / 10, alignment: .center)
-		.onTapGesture {
-			withAnimation {
-				self.viewRouter.currentView = tab.type
-			}
-		}
 	}
 		
 	var body: some View {
