@@ -48,35 +48,13 @@ struct HomeScreenClasses: View {
 		.padding()
 	}
 	
-	func getPoint(index: Int) -> String {		
-		return self.currentClass == index ? "circle.fill" : "circle"
-	}
-	
     var body: some View {
-		HStack(spacing: 0) {
-			Spacer()
-			VStack(alignment: .center) {
-				SlideHorizontal(
-					controllers: self.classes.map { UIHostingController(rootView: self.getCard(index: $0.text)) },
-					currentPage: $currentClass
-				)
-				.frame(height: 170)
-				HStack(alignment: .center, spacing: 15) {
-					ForEach(self.classes.indices) { index in
-						Button(action: {
-							self.currentClass = index
-						}, label: {
-							Image(systemName: self.getPoint(index: index))
-								.resizable()
-								.aspectRatio(contentMode: .fit)
-								.frame(width: 15, height: 15)
-								.foregroundColor(.blue)
-						})
-					}
-				}
-			}
-			Spacer()
-		}
+		SlideHorizontal(
+			self.classes.map { self.getCard(index: $0.text) },
+			hasDots: true
+		)
+		.frame(height: 170)
+		.padding(.vertical, 20)
     }
 }
 
