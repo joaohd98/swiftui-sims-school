@@ -9,11 +9,13 @@
 import SwiftUI
 
 struct HomeScreen: View {
+	@ObservedObject var props: HomeScreenModel = HomeScreenModel()
+	
     var body: some View {
 		CustomContainerGuestSignIn {
 			VStack(alignment: .leading, spacing: 0) {
 				HomeScreenProfile()
-				HomeScreenClasses()
+				HomeScreenClasses(classes: self.$props.classes, currentClass: self.props.currentClass)
 				Spacer()
 				HomeScreenAds()
 			}
