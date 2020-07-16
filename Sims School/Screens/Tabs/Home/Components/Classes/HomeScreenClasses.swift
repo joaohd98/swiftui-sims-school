@@ -18,7 +18,7 @@ struct HomeScreenClasses: View {
 				Spacer()
 				Text("22/07/3030 - Quarta \(index)")
 					.foregroundColor(Color(CustomColor.white))
-					.font(.system(size: 16, weight: .medium))
+					.font(.system(size: 14, weight: .medium))
 				Spacer()
 			}
 			.padding(.vertical, 5)
@@ -54,7 +54,7 @@ struct HomeScreenClasses: View {
 			hasDots: true
 		)
 		.frame(height: 170)
-		.padding(.vertical, 20)
+		.padding(.top, 20)
     }
 }
 

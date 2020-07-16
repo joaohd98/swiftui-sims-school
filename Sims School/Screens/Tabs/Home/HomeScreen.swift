@@ -13,13 +13,15 @@ struct HomeScreen: View {
 	
     var body: some View {
 		CustomContainerGuestSignIn {
-			VStack(alignment: .leading, spacing: 0) {
-				HomeScreenProfile()
-				HomeScreenClasses(classes: self.$props.classes, currentClass: self.props.currentClass)
-				Spacer()
-				HomeScreenAds()
+			ScrollView {
+				VStack(alignment: .leading, spacing: 0) {
+					HomeScreenProfile()
+					HomeScreenClasses(classes: self.$props.classes, currentClass: self.props.currentClass)
+					Spacer()
+					HomeScreenAds()
+				}
+				.navigationBarTitle("Meu teste", displayMode: .inline)
 			}
-			.navigationBarTitle("Meu teste", displayMode: .inline)
 		}
 	}
 }

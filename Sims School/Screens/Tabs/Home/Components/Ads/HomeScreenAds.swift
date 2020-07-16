@@ -10,7 +10,14 @@ import SwiftUI
 
 struct HomeScreenAds: View {
     var body: some View {
-        Text("Hello, World!")
+		Image("cover-ps4")
+			.resizable()
+			.frame(height: 175)
+			.cornerRadius(10)
+			.overlay(
+				RoundedRectangle(cornerRadius: 10).stroke(Color.black, lineWidth: 0)
+			)
+			.padding()
     }
 }
 
