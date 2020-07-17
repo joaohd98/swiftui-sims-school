@@ -20,7 +20,7 @@ struct HomeScreen: View {
 					Spacer()
 					HomeScreenAds()
 				}
-				.navigationBarTitle("Meu teste", displayMode: .inline)
+				.navigationBarTitle("Home", displayMode: .inline)
 			}
 		}
 	}

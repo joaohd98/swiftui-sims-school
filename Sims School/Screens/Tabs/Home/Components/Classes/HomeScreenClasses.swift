@@ -47,14 +47,14 @@ struct HomeScreenClasses: View {
 		.border(Color.gray, width: 1)
 		.padding()
 	}
-	
     var body: some View {
 		SlideHorizontal(
-			self.classes.map { self.getCard(index: $0.text) },
+			classes.map { self.getCard(index: $0.text) },
 			hasDots: true
 		)
 		.frame(height: 170)
-		.padding(.vertical, 10)
+		.padding(.top, 10)
+		.padding(.bottom, 20)
     }
 }
 

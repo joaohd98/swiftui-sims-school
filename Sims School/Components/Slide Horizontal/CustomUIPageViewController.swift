@@ -28,12 +28,14 @@ struct CustomUIPageViewController: UIViewControllerRepresentable {
 		pageViewController.dataSource = context.coordinator
 		pageViewController.delegate = context.coordinator
 		
+		pageViewController.setViewControllers(
+			[controllers[currentPage]], direction: .forward, animated: true
+		)
+		
 		return pageViewController
 	}
 	
-	func updateUIViewController(_ pageViewController: UIPageViewController, context: Context) {
-		pageViewController.setViewControllers([controllers[currentPage]], direction: .forward, animated: true)
-	}
+	func updateUIViewController(_ pageViewController: UIPageViewController, context: Context) {}
 	
 	class Coordinator: NSObject, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
 		var parent: CustomUIPageViewController
@@ -76,8 +78,8 @@ struct CustomUIPageViewController: UIViewControllerRepresentable {
 			if completed,
 				let visibleViewController = pageViewController.viewControllers?.first,
 				let index = parent.controllers.firstIndex(of: visibleViewController) {
-				print("value", self.parent.currentPage)
-				self.parent.currentPage = index
+
+				parent.currentPage = index
 			}
 		}
 	}

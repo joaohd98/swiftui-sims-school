@@ -19,15 +19,11 @@ struct SlideHorizontalDots: View {
     var body: some View {
 		HStack(alignment: .center, spacing: 15) {
 			ForEach(0..<numberOfPages) { index in
-				Button(action: {
-					self.currentPage = index
-				}, label: {
-					Image(systemName: self.getPoint(index: index))
-						.resizable()
-						.aspectRatio(contentMode: .fit)
-						.frame(width: 15, height: 15)
-						.foregroundColor(.blue)
-				})
+				Image(systemName: self.getPoint(index: index))
+					.resizable()
+					.aspectRatio(contentMode: .fit)
+					.frame(width: 15, height: 15)
+					.foregroundColor(.blue)
 			}
 		}
 	}

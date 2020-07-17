@@ -12,13 +12,14 @@ struct SlideHorizontal<Page: View>: View {
 	var hasDots: Bool
 	@State var currentPage = 0
 	
+
 	init(_ views: [Page], hasDots: Bool) {
 		self.viewControllers = views.map { UIHostingController(rootView: $0) }
 		self.hasDots = hasDots
 	}
 
     var body: some View {
-		VStack(alignment: .center, spacing: 20) {
+		VStack(alignment: .center, spacing: 5) {
             CustomUIPageViewController(controllers: viewControllers, currentPage: $currentPage)
 			if self.hasDots {
 				SlideHorizontalDots(numberOfPages: viewControllers.count, currentPage: $currentPage)

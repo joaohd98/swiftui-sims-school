@@ -13,11 +13,12 @@ struct SafariView: UIViewControllerRepresentable {
     let url: URL
 
     func makeUIViewController(context: UIViewControllerRepresentableContext<SafariView>) -> SFSafariViewController {
-		let safari = SFSafariViewController(url: url)
-		safari.modalPresentationStyle = .fullScreen
-		
-		safari.delegate = context.coordinator
-		
+		let config = SFSafariViewController.Configuration()
+		config.entersReaderIfAvailable = true
+		config.barCollapsingEnabled = false
+
+		let safari = SFSafariViewController(url: url, configuration: config)
+
 		return safari
     }
 

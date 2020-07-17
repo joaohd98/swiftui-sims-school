@@ -30,7 +30,7 @@ struct HomeScreenAds: View {
 	}
 	
     var body: some View {
-		self.getImage(name: self.images[0])
+		self.getImage(name: self.images[1])
 			.frame(height: 175)
 			.sheet(isPresented: $showSafari) {
 				SafariView(url:URL(string: self.urlString)!)
