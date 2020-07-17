@@ -27,7 +27,7 @@ struct TabInformation {
 }
 
 class ViewRouter: ObservableObject {
-	@Published var currentView: TabsRoutes = .ScoresScreen
+	@Published var currentView: TabsRoutes = .ClassesScreen
 	@Published var tabRoutes: [TabsRoutes: TabInformation] = [:]
 	
 	init() {
@@ -39,7 +39,7 @@ class ViewRouter: ObservableObject {
 		)
 		
 		tabRoutes[.ClassesScreen] = TabInformation(
-			name: "Classes", icon: "folder.fill", screen: AnyView(ScoresScreen()), type: .ClassesScreen
+			name: "Classes", icon: "folder.fill", screen: AnyView(ClassesScreen()), type: .ClassesScreen
 		)
 		
 		tabRoutes[.ChatScreen] = TabInformation(
