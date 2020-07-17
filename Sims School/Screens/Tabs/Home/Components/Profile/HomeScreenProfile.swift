@@ -65,6 +65,11 @@ struct HomeScreenProfile: View {
 			.padding()
 			.padding(.top, -75)
 		}
+		.background(Color(
+			UIColor.init { (trait) -> UIColor in
+				return trait.userInterfaceStyle == .dark ? .black : .white
+			}
+			).shadow(radius: 10))
     }
 }
 

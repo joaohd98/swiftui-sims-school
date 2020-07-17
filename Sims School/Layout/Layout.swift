@@ -11,7 +11,7 @@ import FirebaseAuth
 
 struct LayoutView: View {
 	var body: some View {
-		if Auth.auth().currentUser == nil {
+		if Auth.auth().currentUser != nil {
 			return AnyView(TabsScreen())
 		} else {
 			return AnyView(LoginScreen())
