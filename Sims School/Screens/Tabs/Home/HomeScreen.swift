@@ -17,7 +17,6 @@ struct HomeScreen: View {
 				VStack(alignment: .leading, spacing: 0) {
 					HomeScreenProfile()
 					HomeScreenClasses(classes: self.$props.classes, currentClass: self.props.currentClass)
-					Spacer()
 					HomeScreenAds()
 				}
 				.navigationBarTitle("Home", displayMode: .inline)

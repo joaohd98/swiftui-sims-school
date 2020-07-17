@@ -32,8 +32,8 @@ struct HomeScreenProfile: View {
 				VStack(alignment: .leading, spacing: 5) {
 					Text("Renan Sobreira Miranda")
 						.foregroundColor(Color(CustomColor.gray))
-						.font(.system(size: 16, weight: .medium))
-					
+						.font(.system(size: 16, weight: .bold))
+
 					HStack {
 						Text("RM:")
 							.foregroundColor(Color(CustomColor.gray))
@@ -41,7 +41,7 @@ struct HomeScreenProfile: View {
 
 						Text("2216105480")
 							.foregroundColor(Color(CustomColor.gray))
-							.font(.system(size: 14, weight: .medium))
+							.font(.system(size: 14, weight: .semibold))
 
 					}
 				}
@@ -55,7 +55,7 @@ struct HomeScreenProfile: View {
 
 					Text("22CLD")
 						.foregroundColor(Color(CustomColor.gray))
-						.font(.system(size: 16, weight: .medium))
+						.font(.system(size: 16, weight: .semibold))
 				}
 
 				Text("MBA em Cloud Computing")

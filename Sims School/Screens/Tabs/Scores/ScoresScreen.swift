@@ -11,10 +11,11 @@ import SwiftUI
 struct ScoresScreen: View {
     var body: some View {
 		CustomContainerGuestSignIn {
-			Group {
-				Text("ScoresScreen")
+			ScrollView {
+				ScoresScreenSemesters()
+				ScoresScreenCardScore()
 			}
-			.navigationBarTitle("Meu teste", displayMode: .inline)
+			.navigationBarTitle("Score")
 		}
     }
 }

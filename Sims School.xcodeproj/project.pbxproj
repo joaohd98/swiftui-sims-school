@@ -10,6 +10,8 @@
 		3935579CB37C812B2AB1DEFB /* Pods_Sims_School.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 777DFA7D8B92C11713096229 /* Pods_Sims_School.framework */; };
 		DC05771924BD6104005CC9BC /* CustomContainerSignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC05771824BD6104005CC9BC /* CustomContainerSignIn.swift */; };
 		DC1D22DB24BE5C1F00E1855D /* SlideHorizontal.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1D22DA24BE5C1F00E1855D /* SlideHorizontal.swift */; };
+		DC4D2CFC24C1E635008FD663 /* ScoresScreenSemesters.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4D2CFB24C1E635008FD663 /* ScoresScreenSemesters.swift */; };
+		DC4D2CFF24C1E68D008FD663 /* ScoresScreenCardScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4D2CFE24C1E68D008FD663 /* ScoresScreenCardScore.swift */; };
 		DC53D72624C0EB53004266CE /* CustomUIPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC53D72524C0EB53004266CE /* CustomUIPageViewController.swift */; };
 		DC53D72A24C0ECC9004266CE /* SlideHorizontalDots.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC53D72924C0ECC9004266CE /* SlideHorizontalDots.swift */; };
 		DC53D72D24C121B8004266CE /* SafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC53D72C24C121B8004266CE /* SafariView.swift */; };
@@ -58,6 +60,8 @@
 		AB599491792EC550D7C02C8C /* Pods-Sims School.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sims School.debug.xcconfig"; path = "Target Support Files/Pods-Sims School/Pods-Sims School.debug.xcconfig"; sourceTree = "<group>"; };
 		DC05771824BD6104005CC9BC /* CustomContainerSignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomContainerSignIn.swift; sourceTree = "<group>"; };
 		DC1D22DA24BE5C1F00E1855D /* SlideHorizontal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideHorizontal.swift; sourceTree = "<group>"; };
+		DC4D2CFB24C1E635008FD663 /* ScoresScreenSemesters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoresScreenSemesters.swift; sourceTree = "<group>"; };
+		DC4D2CFE24C1E68D008FD663 /* ScoresScreenCardScore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoresScreenCardScore.swift; sourceTree = "<group>"; };
 		DC53D72524C0EB53004266CE /* CustomUIPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIPageViewController.swift; sourceTree = "<group>"; };
 		DC53D72924C0ECC9004266CE /* SlideHorizontalDots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideHorizontalDots.swift; sourceTree = "<group>"; };
 		DC53D72C24C121B8004266CE /* SafariView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariView.swift; sourceTree = "<group>"; };
@@ -151,6 +155,31 @@
 			path = "Slide Horizontal";
 			sourceTree = "<group>";
 		};
+		DC4D2CF924C1E5C2008FD663 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				DC4D2CFA24C1E5E6008FD663 /* Semesters */,
+				DC4D2CFD24C1E65D008FD663 /* CardScore */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		DC4D2CFA24C1E5E6008FD663 /* Semesters */ = {
+			isa = PBXGroup;
+			children = (
+				DC4D2CFB24C1E635008FD663 /* ScoresScreenSemesters.swift */,
+			);
+			path = Semesters;
+			sourceTree = "<group>";
+		};
+		DC4D2CFD24C1E65D008FD663 /* CardScore */ = {
+			isa = PBXGroup;
+			children = (
+				DC4D2CFE24C1E68D008FD663 /* ScoresScreenCardScore.swift */,
+			);
+			path = CardScore;
+			sourceTree = "<group>";
+		};
 		DC53D72B24C121A9004266CE /* Safari View */ = {
 			isa = PBXGroup;
 			children = (
@@ -170,6 +199,7 @@
 		DC64927424BDF25100EDAC0E /* Scores */ = {
 			isa = PBXGroup;
 			children = (
+				DC4D2CF924C1E5C2008FD663 /* Components */,
 				DC64927524BDF27400EDAC0E /* ScoresScreen.swift */,
 			);
 			path = Scores;
@@ -577,6 +607,7 @@
 				DCA500C124AE5223006B4C63 /* CustomContainerGuest.swift in Sources */,
 				DC989EE524BD0006003B79A6 /* Layout.swift in Sources */,
 				DC05771924BD6104005CC9BC /* CustomContainerSignIn.swift in Sources */,
+				DC4D2CFF24C1E68D008FD663 /* ScoresScreenCardScore.swift in Sources */,
 				DC98E1B524B8AA3E00D4BD76 /* LoginScreenLogo.swift in Sources */,
 				DCF043DF24AD16B600241062 /* AppDelegate.swift in Sources */,
 				DCF043FF24AD1D5900241062 /* Colors.swift in Sources */,
@@ -606,6 +637,7 @@
 				DCB672DF24B29BB60064484D /* Request.swift in Sources */,
 				DCF0440D24AE2CF500241062 /* KeyboardHideInputHelper.swift in Sources */,
 				DC989EDD24BCEDCA003B79A6 /* HomeScreen.swift in Sources */,
+				DC4D2CFC24C1E635008FD663 /* ScoresScreenSemesters.swift in Sources */,
 				DC98E1BE24B8ED4B00D4BD76 /* ScreenSize.swift in Sources */,
 				DCF0440924AE1E0400241062 /* FormModel.swift in Sources */,
 				DC98E1B924B8AE3900D4BD76 /* LoginScreenModel.swift in Sources */,

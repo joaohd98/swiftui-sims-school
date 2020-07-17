@@ -22,7 +22,7 @@ struct SlideHorizontalDots: View {
 				Image(systemName: self.getPoint(index: index))
 					.resizable()
 					.aspectRatio(contentMode: .fit)
-					.frame(width: 15, height: 15)
+					.frame(width: 10, height: 10)
 					.foregroundColor(.blue)
 			}
 		}
