@@ -65,7 +65,6 @@ struct HomeScreenProfile: View {
 			.padding()
 			.padding(.top, -75)
 		}
-		.background(Color.white.shadow(radius: 2))
     }
 }
 

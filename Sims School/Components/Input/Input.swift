@@ -15,9 +15,17 @@ struct UIInput: UIViewRepresentable {
 	func makeUIView(context: Context) -> UITextField {
 		let textField = UITextField(frame: .zero)
 		textField.delegate = context.coordinator
-		textField.placeholder = input.placeholder
 		textField.text = input.value
-		textField.textColor = CustomColor.gray
+
+		textField.attributedPlaceholder = NSAttributedString(
+			string: input.placeholder,
+			attributes: [NSAttributedString.Key.foregroundColor: CustomColor.gray]
+		)
+		
+		let fontColor = UIColor.init { (trait) -> UIColor in
+			return trait.userInterfaceStyle == .dark ? .white : .black
+		}
+		textField.textColor = fontColor
 		textField.returnKeyType = input.keyboardReturnText
 		textField.keyboardType = input.keyboardType
 		textField.isSecureTextEntry = input.isPassword
@@ -99,6 +107,7 @@ struct UIInput: UIViewRepresentable {
 			
 			return false
 		}
+		
 	}
 }
 

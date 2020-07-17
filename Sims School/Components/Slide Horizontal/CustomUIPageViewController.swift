@@ -76,6 +76,7 @@ struct CustomUIPageViewController: UIViewControllerRepresentable {
 			if completed,
 				let visibleViewController = pageViewController.viewControllers?.first,
 				let index = parent.controllers.firstIndex(of: visibleViewController) {
+				print("value", self.parent.currentPage)
 				self.parent.currentPage = index
 			}
 		}

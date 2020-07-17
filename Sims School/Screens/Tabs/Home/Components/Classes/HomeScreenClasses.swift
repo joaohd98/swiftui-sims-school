@@ -54,7 +54,7 @@ struct HomeScreenClasses: View {
 			hasDots: true
 		)
 		.frame(height: 170)
-		.padding(.top, 20)
+		.padding(.vertical, 10)
     }
 }
 
