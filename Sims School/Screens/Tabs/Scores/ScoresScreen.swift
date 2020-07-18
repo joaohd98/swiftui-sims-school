@@ -10,7 +10,7 @@ import SwiftUI
 
 struct ScoresScreen: View {
     var body: some View {
-		CustomContainerGuestSignIn {
+		CustomContainerSignIn {
 			ScrollView {
 				ScoresScreenSemesters()
 				ScoresScreenCardScore()

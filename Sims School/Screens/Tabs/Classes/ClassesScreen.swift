@@ -10,11 +10,25 @@ import SwiftUI
 import Foundation
 
 struct ClassesScreen: View {
+	@State var showModal: Bool = false
+
 	var body: some View {
-		CustomContainerGuestSignIn {
-			VStack(spacing: 0) {
-				ClassesScreenDaysWeek()
-				ClassesScreenCalendar()
+		CustomContainerSignIn {
+			Group {
+				ZStack {
+					VStack(spacing: 0) {
+						Button(action: {
+							self.showModal.toggle()
+						}) {
+							ClassesScreenDaysWeek()
+						}
+						ClassesScreenCalendar()
+					}
+					.opacity(self.showModal ? 0.2 : 1)
+					SliderOverView(isVisible: self.$showModal) {
+						ClassesScreenSubjectDay()
+					}
+				}
 			}
 			.navigationBarTitle("Classes", displayMode: .inline)
 		}

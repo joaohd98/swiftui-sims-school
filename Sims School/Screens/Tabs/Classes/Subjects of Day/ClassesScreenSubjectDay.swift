@@ -8,9 +8,28 @@
 
 import SwiftUI
 
-struct ClassesScreenSubjectDay: View {
+struct ClassesScreenSubjectDay: View {	
     var body: some View {
-        Text("Hello, World!")
+		CustomContainerSignIn {
+			Group {
+				HStack(alignment: .firstTextBaseline, spacing: 20) {
+					VStack {
+						Image(systemName: "person")
+						.resizable()
+						.frame(width: 25, height: 25, alignment: .center)
+						.padding(.top, 10)
+					}
+					VStack(alignment: .leading) {
+						Text("Gestão de projeto - Agile")
+						Text("Renato silva de lima")
+					}
+					Spacer()
+				}
+				.padding()
+			}
+			.navigationBarTitle("15, Jun")
+		}
+	
     }
 }
 

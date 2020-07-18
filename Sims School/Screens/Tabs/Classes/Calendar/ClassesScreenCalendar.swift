@@ -51,12 +51,14 @@ struct ClassesScreenCalendar: View {
 			day = String(data.getDay())
 		}
 		
+		let colorWeekDay = [1, 7].contains(weekDay) ? Color(CustomColor.gray) : Color(UIColor.init { (trait) -> UIColor in
+			return trait.userInterfaceStyle == .dark ? .white : .black
+		})
+		
 		return (
 			VStack(spacing: 0) {
 				Text(day)
-					.foregroundColor(
-						[1, 7].contains(weekDay) ? Color(CustomColor.gray) : Color.black
-					)
+					.foregroundColor(colorWeekDay)
 					.font(.system(size: 16, weight: .semibold))
 					.padding(.vertical, 10)
 					.frame(width: 40, height: 30, alignment: .center)

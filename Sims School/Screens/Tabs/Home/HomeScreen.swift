@@ -12,7 +12,7 @@ struct HomeScreen: View {
 	@ObservedObject var props: HomeScreenModel = HomeScreenModel()
 	
     var body: some View {
-		CustomContainerGuestSignIn {
+		CustomContainerSignIn {
 			ScrollView {
 				VStack(alignment: .leading, spacing: 0) {
 					HomeScreenProfile()

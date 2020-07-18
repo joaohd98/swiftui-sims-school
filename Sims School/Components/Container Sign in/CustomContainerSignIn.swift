@@ -1,5 +1,5 @@
 //
-//  CustomContainerGuestSignIn.swift
+//  CustomContainerSignIn.swift
 //  Sims School
 //
 //  Created by João Damazio on 14/07/20.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct CustomContainerGuestSignIn<Content: View>: View {
+struct CustomContainerSignIn<Content: View>: View {
 	private var content: Content
 
 	init(@ViewBuilder content: @escaping () -> Content) {
@@ -28,8 +28,8 @@ fileprivate struct PreviewView: View {
 	}
 }
 
-struct CustomContainerGuestSignIn_Previews: PreviewProvider {
+struct CustomContainerSignIn_Previews: PreviewProvider {
     static var previews: some View {
-		CustomContainerGuestSignIn<PreviewView>(content: { PreviewView() })
+		CustomContainerSignIn<PreviewView>(content: { PreviewView() })
     }
 }
