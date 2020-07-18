@@ -14,6 +14,9 @@
 		DC4D2CFF24C1E68D008FD663 /* ScoresScreenCardScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4D2CFE24C1E68D008FD663 /* ScoresScreenCardScore.swift */; };
 		DC4D2D0224C219FE008FD663 /* ClassesScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4D2D0124C219FE008FD663 /* ClassesScreen.swift */; };
 		DC4D2D0424C22DDA008FD663 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4D2D0324C22DDA008FD663 /* Date.swift */; };
+		DC4D2D0924C27D5F008FD663 /* ClassesScreenCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4D2D0824C27D5F008FD663 /* ClassesScreenCalendar.swift */; };
+		DC4D2D0B24C27D70008FD663 /* ClassesScreenDaysWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4D2D0A24C27D70008FD663 /* ClassesScreenDaysWeek.swift */; };
+		DC4D2D0D24C27D85008FD663 /* ClassesScreenSubjectDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4D2D0C24C27D85008FD663 /* ClassesScreenSubjectDay.swift */; };
 		DC53D72624C0EB53004266CE /* CustomUIPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC53D72524C0EB53004266CE /* CustomUIPageViewController.swift */; };
 		DC53D72A24C0ECC9004266CE /* SlideHorizontalDots.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC53D72924C0ECC9004266CE /* SlideHorizontalDots.swift */; };
 		DC53D72D24C121B8004266CE /* SafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC53D72C24C121B8004266CE /* SafariView.swift */; };
@@ -66,6 +69,9 @@
 		DC4D2CFE24C1E68D008FD663 /* ScoresScreenCardScore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoresScreenCardScore.swift; sourceTree = "<group>"; };
 		DC4D2D0124C219FE008FD663 /* ClassesScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassesScreen.swift; sourceTree = "<group>"; };
 		DC4D2D0324C22DDA008FD663 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		DC4D2D0824C27D5F008FD663 /* ClassesScreenCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassesScreenCalendar.swift; sourceTree = "<group>"; };
+		DC4D2D0A24C27D70008FD663 /* ClassesScreenDaysWeek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassesScreenDaysWeek.swift; sourceTree = "<group>"; };
+		DC4D2D0C24C27D85008FD663 /* ClassesScreenSubjectDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassesScreenSubjectDay.swift; sourceTree = "<group>"; };
 		DC53D72524C0EB53004266CE /* CustomUIPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIPageViewController.swift; sourceTree = "<group>"; };
 		DC53D72924C0ECC9004266CE /* SlideHorizontalDots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideHorizontalDots.swift; sourceTree = "<group>"; };
 		DC53D72C24C121B8004266CE /* SafariView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariView.swift; sourceTree = "<group>"; };
@@ -187,9 +193,36 @@
 		DC4D2D0024C21916008FD663 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				DC4D2D0724C27D42008FD663 /* Subjects of Day */,
+				DC4D2D0624C27D2E008FD663 /* Days of Week */,
+				DC4D2D0524C27CA8008FD663 /* Calendar */,
 				DC4D2D0124C219FE008FD663 /* ClassesScreen.swift */,
 			);
 			path = Classes;
+			sourceTree = "<group>";
+		};
+		DC4D2D0524C27CA8008FD663 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				DC4D2D0824C27D5F008FD663 /* ClassesScreenCalendar.swift */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
+		DC4D2D0624C27D2E008FD663 /* Days of Week */ = {
+			isa = PBXGroup;
+			children = (
+				DC4D2D0A24C27D70008FD663 /* ClassesScreenDaysWeek.swift */,
+			);
+			path = "Days of Week";
+			sourceTree = "<group>";
+		};
+		DC4D2D0724C27D42008FD663 /* Subjects of Day */ = {
+			isa = PBXGroup;
+			children = (
+				DC4D2D0C24C27D85008FD663 /* ClassesScreenSubjectDay.swift */,
+			);
+			path = "Subjects of Day";
 			sourceTree = "<group>";
 		};
 		DC53D72B24C121A9004266CE /* Safari View */ = {
@@ -624,6 +657,7 @@
 				DC4D2CFF24C1E68D008FD663 /* ScoresScreenCardScore.swift in Sources */,
 				DC98E1B524B8AA3E00D4BD76 /* LoginScreenLogo.swift in Sources */,
 				DCF043DF24AD16B600241062 /* AppDelegate.swift in Sources */,
+				DC4D2D0D24C27D85008FD663 /* ClassesScreenSubjectDay.swift in Sources */,
 				DCF043FF24AD1D5900241062 /* Colors.swift in Sources */,
 				DCAAF78D24C09D6F00F0518C /* ClassesResponse.swift in Sources */,
 				DCB672E124B29BC10064484D /* Response.swift in Sources */,
@@ -635,9 +669,11 @@
 				DC1D22DB24BE5C1F00E1855D /* SlideHorizontal.swift in Sources */,
 				DCB672D824B242120064484D /* ActivityIndicator.swift in Sources */,
 				DCF043F924AD191200241062 /* LoginScreen.swift in Sources */,
+				DC4D2D0B24C27D70008FD663 /* ClassesScreenDaysWeek.swift in Sources */,
 				DCAAF79024C0A86000F0518C /* HomeScreenPageModel.swift in Sources */,
 				DC89F04724BD704B001964FC /* TabsScreen.swift in Sources */,
 				DC64927624BDF27400EDAC0E /* ScoresScreen.swift in Sources */,
+				DC4D2D0924C27D5F008FD663 /* ClassesScreenCalendar.swift in Sources */,
 				DCF043FC24AD1ABD00241062 /* CustomInput.swift in Sources */,
 				DC64928024BE1A3D00EDAC0E /* HomeScreenAds.swift in Sources */,
 				DC98E1BB24B8BF5900D4BD76 /* Input.swift in Sources */,
