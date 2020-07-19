@@ -8,15 +8,34 @@
 
 import SwiftUI
 
-struct SliderOverView<Content: View>: View {
+private protocol CustomView: View {
+	func isModalVisible(_ modalVisible: Bool) -> Self
+}
+
+struct SliderOverView<Content: View>: CustomView {
 	var content: Content
-    @Binding var isVisible: Bool
-	@State var position = CardPosition.middle
-    @GestureState private var dragState = DragState.inactive
+	var height: CGFloat
+	@GestureState private var dragState = DragState.inactive
+	@State var position = SliderOverViewCardPosition.bottom
 	
-	init(isVisible: Binding<Bool>, @ViewBuilder content: @escaping () -> Content) {
-		self._isVisible = isVisible
+	init(height: CGFloat, @ViewBuilder content: @escaping () -> Content) {
+		self.height = height
 		self.content = content()
+	}
+	
+	func isModalVisible(_ modalVisible: Bool) -> SliderOverView<Content> {
+		let slide = self
+	
+		if modalVisible && position == .bottom {
+			slide.position = .middle
+		}
+		
+		else if !modalVisible && position != .bottom {
+			slide.position = .bottom
+		}
+		
+		return slide
+		
 	}
 	
 	var body: some View {
@@ -27,25 +46,24 @@ struct SliderOverView<Content: View>: View {
 		
 		return (
 			self.content
-				.frame(height: self.isVisible ? UIScreen.main.bounds.height : 0)
+				.frame(height: self.height)
 				.background(Color.white)
 				.cornerRadius(10.0)
 				.shadow(color: Color(.sRGBLinear, white: 0, opacity: 0.13), radius: 10.0)
 				.offset(y: self.position.rawValue + self.dragState.translation.height)
-				.animation(self.dragState.isDragging ? nil : .interpolatingSpring(stiffness: 300.0, damping: 30.0, initialVelocity: 10.0))
+				.animation(.interpolatingSpring(stiffness: 300.0, damping: 30.0, initialVelocity: 10.0))
 				.gesture(drag)
-			
 		)
 	}
 	
 	private func onDragEnded(drag: DragGesture.Value) {
 		let verticalDirection = drag.predictedEndLocation.y - drag.location.y
 		let cardTopEdgeLocation = self.position.rawValue + drag.translation.height
-		let positionAbove: CardPosition
-		let positionBelow: CardPosition
-		let closestPosition: CardPosition
+		let positionAbove: SliderOverViewCardPosition
+		let positionBelow: SliderOverViewCardPosition
+		let closestPosition: SliderOverViewCardPosition
 		
-		if cardTopEdgeLocation <= CardPosition.middle.rawValue {
+		if cardTopEdgeLocation <= SliderOverViewCardPosition.middle.rawValue {
 			positionAbove = .top
 			positionBelow = .middle
 		} else {
@@ -66,21 +84,16 @@ struct SliderOverView<Content: View>: View {
 		} else {
 			self.position = closestPosition
 		}
-		
-		if self.position == .bottom {
-			self.isVisible.toggle()
-			self.position = .middle
-		}
 	}
 }
 
-enum CardPosition: CGFloat {
+enum SliderOverViewCardPosition: CGFloat {
 	case top = 100
-	case middle = 500
+	case middle = 400
 	case bottom = 850
 }
 
-enum DragState {
+private enum DragState {
 	case inactive
 	case dragging(translation: CGSize)
 	
@@ -103,17 +116,17 @@ enum DragState {
 	}
 }
 
-fileprivate struct PreviewView: View {
+private struct PreviewView: View {
 	var body: some View {
 		Text("Hello world")
 	}
 }
 
 struct SliderOverView_Previews: PreviewProvider {
-	@State static var showModal: Bool = false
-
+	@State static var modalVisible: Bool = false
+	
 	static var previews: some View {
-		SliderOverView<PreviewView>(isVisible: $showModal) {
+		SliderOverView<PreviewView>(height: 300){
 			PreviewView()
 		}
 	}

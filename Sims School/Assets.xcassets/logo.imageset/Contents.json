@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "Logo.png",
+      "filename" : "Logo-6.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
@@ -28,7 +28,7 @@
       "scale" : "1x"
     },
     {
-      "filename" : "Logo-3.png",
+      "filename" : "Logo-7.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
@@ -55,7 +55,7 @@
       "scale" : "2x"
     },
     {
-      "filename" : "Logo-1.png",
+      "filename" : "Logo-8.png",
       "idiom" : "universal",
       "scale" : "3x"
     },

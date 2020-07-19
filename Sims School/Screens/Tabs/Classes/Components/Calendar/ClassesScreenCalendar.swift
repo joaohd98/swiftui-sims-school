@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct ClassesScreenCalendar: View {
+	@Binding var modalVisible: Bool
 	let year = String(Calendar.current.component(.year, from: Date()))
 	let months = [
 		"January", "February", "March",
@@ -78,10 +79,11 @@ struct ClassesScreenCalendar: View {
 						ForEach(1..<8) { weekDay in
 							Spacer()
 							Button(action: {
-								
+								self.modalVisible.toggle()
 							}) {
 								self.getCalendarContent(interval: &interval, weekDay: weekDay)
 							}
+							.disabled([1, 7].contains(weekDay))
 							Spacer()
 						}
 					}
@@ -106,7 +108,9 @@ struct ClassesScreenCalendar: View {
 }
 
 struct ClassesScreenCalendar_Previews: PreviewProvider {
+	@State static var modalVisible: Bool = true
+
     static var previews: some View {
-        ClassesScreenCalendar()
+		ClassesScreenCalendar(modalVisible: $modalVisible)
     }
 }

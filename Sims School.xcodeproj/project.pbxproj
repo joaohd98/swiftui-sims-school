@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3935579CB37C812B2AB1DEFB /* Pods_Sims_School.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 777DFA7D8B92C11713096229 /* Pods_Sims_School.framework */; };
 		DC05771924BD6104005CC9BC /* CustomContainerSignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC05771824BD6104005CC9BC /* CustomContainerSignIn.swift */; };
+		DC198D3E24C3D2B000AF27B5 /* ClassesScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC198D3D24C3D2B000AF27B5 /* ClassesScreenModel.swift */; };
 		DC1D22DB24BE5C1F00E1855D /* SlideHorizontal.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1D22DA24BE5C1F00E1855D /* SlideHorizontal.swift */; };
 		DC4D2CFC24C1E635008FD663 /* ScoresScreenSemesters.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4D2CFB24C1E635008FD663 /* ScoresScreenSemesters.swift */; };
 		DC4D2CFF24C1E68D008FD663 /* ScoresScreenCardScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4D2CFE24C1E68D008FD663 /* ScoresScreenCardScore.swift */; };
@@ -27,7 +28,6 @@
 		DC64927E24BE1A2B00EDAC0E /* HomeScreenClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC64927D24BE1A2B00EDAC0E /* HomeScreenClasses.swift */; };
 		DC64928024BE1A3D00EDAC0E /* HomeScreenAds.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC64927F24BE1A3D00EDAC0E /* HomeScreenAds.swift */; };
 		DC89F04724BD704B001964FC /* TabsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC89F04624BD704B001964FC /* TabsScreen.swift */; };
-		DC989EDA24BCE094003B79A6 /* AllView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC989ED924BCE094003B79A6 /* AllView.swift */; };
 		DC989EDD24BCEDCA003B79A6 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC989EDC24BCEDCA003B79A6 /* HomeScreen.swift */; };
 		DC989EE524BD0006003B79A6 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC989EE424BD0006003B79A6 /* Layout.swift */; };
 		DC98E1AF24B8A07F00D4BD76 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DC98E1AE24B8A07F00D4BD76 /* GoogleService-Info.plist */; };
@@ -65,6 +65,7 @@
 		A518D0BBE87DF0D79C52DB73 /* Pods-swiftui-escola.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-swiftui-escola.debug.xcconfig"; path = "Target Support Files/Pods-swiftui-escola/Pods-swiftui-escola.debug.xcconfig"; sourceTree = "<group>"; };
 		AB599491792EC550D7C02C8C /* Pods-Sims School.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sims School.debug.xcconfig"; path = "Target Support Files/Pods-Sims School/Pods-Sims School.debug.xcconfig"; sourceTree = "<group>"; };
 		DC05771824BD6104005CC9BC /* CustomContainerSignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomContainerSignIn.swift; sourceTree = "<group>"; };
+		DC198D3D24C3D2B000AF27B5 /* ClassesScreenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassesScreenModel.swift; sourceTree = "<group>"; };
 		DC1D22DA24BE5C1F00E1855D /* SlideHorizontal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideHorizontal.swift; sourceTree = "<group>"; };
 		DC4D2CFB24C1E635008FD663 /* ScoresScreenSemesters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoresScreenSemesters.swift; sourceTree = "<group>"; };
 		DC4D2CFE24C1E68D008FD663 /* ScoresScreenCardScore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoresScreenCardScore.swift; sourceTree = "<group>"; };
@@ -83,7 +84,6 @@
 		DC64927D24BE1A2B00EDAC0E /* HomeScreenClasses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenClasses.swift; sourceTree = "<group>"; };
 		DC64927F24BE1A3D00EDAC0E /* HomeScreenAds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenAds.swift; sourceTree = "<group>"; };
 		DC89F04624BD704B001964FC /* TabsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabsScreen.swift; sourceTree = "<group>"; };
-		DC989ED924BCE094003B79A6 /* AllView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllView.swift; sourceTree = "<group>"; };
 		DC989EDC24BCEDCA003B79A6 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		DC989EE424BD0006003B79A6 /* Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
 		DC98E1AE24B8A07F00D4BD76 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -157,6 +157,24 @@
 			path = "Container Sign in";
 			sourceTree = "<group>";
 		};
+		DC198D3B24C3D27F00AF27B5 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				DC4D2D0724C27D42008FD663 /* Subjects of Day */,
+				DC4D2D0624C27D2E008FD663 /* Days of Week */,
+				DC4D2D0524C27CA8008FD663 /* Calendar */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		DC198D3C24C3D28F00AF27B5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DC198D3D24C3D2B000AF27B5 /* ClassesScreenModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		DC1D22D924BE5BE000E1855D /* Slide Horizontal */ = {
 			isa = PBXGroup;
 			children = (
@@ -195,9 +213,8 @@
 		DC4D2D0024C21916008FD663 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				DC4D2D0724C27D42008FD663 /* Subjects of Day */,
-				DC4D2D0624C27D2E008FD663 /* Days of Week */,
-				DC4D2D0524C27CA8008FD663 /* Calendar */,
+				DC198D3B24C3D27F00AF27B5 /* Components */,
+				DC198D3C24C3D28F00AF27B5 /* Model */,
 				DC4D2D0124C219FE008FD663 /* ClassesScreen.swift */,
 			);
 			path = Classes;
@@ -303,14 +320,6 @@
 				DC89F04624BD704B001964FC /* TabsScreen.swift */,
 			);
 			path = Tabs;
-			sourceTree = "<group>";
-		};
-		DC989ED824BCE06F003B79A6 /* All View */ = {
-			isa = PBXGroup;
-			children = (
-				DC989ED924BCE094003B79A6 /* AllView.swift */,
-			);
-			path = "All View";
 			sourceTree = "<group>";
 		};
 		DC989EDB24BCEC58003B79A6 /* Home */ = {
@@ -508,7 +517,6 @@
 			isa = PBXGroup;
 			children = (
 				DC64927124BDEE9F00EDAC0E /* View Router */,
-				DC989ED824BCE06F003B79A6 /* All View */,
 				DCF0440724AE1DCC00241062 /* Form */,
 			);
 			path = Model;
@@ -684,6 +692,7 @@
 				DCAAF79024C0A86000F0518C /* HomeScreenPageModel.swift in Sources */,
 				DC89F04724BD704B001964FC /* TabsScreen.swift in Sources */,
 				DC64927624BDF27400EDAC0E /* ScoresScreen.swift in Sources */,
+				DC198D3E24C3D2B000AF27B5 /* ClassesScreenModel.swift in Sources */,
 				DC4D2D0924C27D5F008FD663 /* ClassesScreenCalendar.swift in Sources */,
 				DCF043FC24AD1ABD00241062 /* CustomInput.swift in Sources */,
 				DC64928024BE1A3D00EDAC0E /* HomeScreenAds.swift in Sources */,
@@ -691,7 +700,6 @@
 				DCB672E324B29BD10064484D /* Service.swift in Sources */,
 				DC98E1B224B8A18100D4BD76 /* LoginScreenSubmitButton.swift in Sources */,
 				DCF043E124AD16B600241062 /* SceneDelegate.swift in Sources */,
-				DC989EDA24BCE094003B79A6 /* AllView.swift in Sources */,
 				DC53D72A24C0ECC9004266CE /* SlideHorizontalDots.swift in Sources */,
 				DC64927324BDEEB300EDAC0E /* ViewRouter.swift in Sources */,
 				DC4D2D1024C2FE5C008FD663 /* SliderOverView.swift in Sources */,

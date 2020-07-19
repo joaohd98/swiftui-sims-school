@@ -31,7 +31,6 @@ struct LoginScreen: View {
 
 			UserService.signIn(user: user, onSucess: { (user) in
 				self.goHome = true
-				
 			}) { (err) in
 				self.props.isLoading.toggle()
 				self.props.hasError.toggle()

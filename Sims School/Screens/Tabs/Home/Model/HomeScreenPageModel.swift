@@ -8,7 +8,7 @@
 
 import Foundation
 
-class HomeScreenModel: AllViewModel {
+class HomeScreenModel: ObservableObject {
 	@Published var classes: [ClassesResponse] = [
 		ClassesResponse(text: "ABC"),
 		ClassesResponse(text: "DEF"),

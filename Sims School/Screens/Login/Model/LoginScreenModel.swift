@@ -9,7 +9,11 @@
 import SwiftUI
 import FirebaseAuth
 
-class LoginScreenModel: AllViewModel {
+class LoginScreenModel: ObservableObject {
+	@Published var isLoading: Bool = false
+	@Published var hasError: Bool = false
+	@Published var errorCode: AuthErrorCode? = nil
+	@Published var hasInternetConnection = true
 	@Published var form: FormModel = FormModel.init(inputs: [
 		FormInputModel.init(
 			name: "email",
