@@ -15,7 +15,7 @@ enum TabsRoutes {
 	case HomeScreen
 	case ScoresScreen
 	case ClassesScreen
-	case ChatScreen
+	case TipsScreen
 	case MenuScreen
 }
 
@@ -27,7 +27,7 @@ struct TabInformation {
 }
 
 class ViewRouter: ObservableObject {
-	@Published var currentView: TabsRoutes = .ClassesScreen
+	@Published var currentView: TabsRoutes = .TipsScreen
 	@Published var tabRoutes: [TabsRoutes: TabInformation] = [:]
 	
 	init() {
@@ -42,8 +42,8 @@ class ViewRouter: ObservableObject {
 			name: "Classes", icon: "folder.fill", screen: AnyView(ClassesScreen()), type: .ClassesScreen
 		)
 		
-		tabRoutes[.ChatScreen] = TabInformation(
-			name: "Chat", icon: "tray.full.fill", screen: AnyView(ScoresScreen()), type: .ChatScreen
+		tabRoutes[.TipsScreen] = TabInformation(
+			name: "Tips", icon: "tray.full.fill", screen: AnyView(TipsScreen()), type: .TipsScreen
 		)
 		
 		tabRoutes[.MenuScreen] = TabInformation(
