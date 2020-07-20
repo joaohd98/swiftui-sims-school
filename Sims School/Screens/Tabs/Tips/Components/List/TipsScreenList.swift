@@ -43,8 +43,6 @@ struct TipsScreenList: View {
 			ZStack {
 				
 				Image("cover-ps4")
-					.resizable()
-					.aspectRatio(1, contentMode: .fit)
 					.frame(width: 42, height: 42, alignment: .center)
 					.cornerRadius(25)
 				

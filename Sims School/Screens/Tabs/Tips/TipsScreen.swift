@@ -11,9 +11,10 @@ import SwiftUI
 struct TipsScreen: View {
     var body: some View {
 		CustomContainerSignIn {
-			ScrollView {
-				TipsScreenList()
-			}
+//			ScrollView {
+//				TipsScreenList()
+//			}
+			TipsScreenFullScreenImage()
 			.navigationBarTitle("Tips")
 		}
     }

@@ -59,6 +59,7 @@
 		DCF0440924AE1E0400241062 /* FormModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF0440824AE1E0400241062 /* FormModel.swift */; };
 		DCF0440D24AE2CF500241062 /* KeyboardHideInputHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF0440C24AE2CF500241062 /* KeyboardHideInputHelper.swift */; };
 		DCF0440F24AE393500241062 /* FormRules.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF0440E24AE393500241062 /* FormRules.swift */; };
+		DCFD821E24C61492008E3C05 /* TipsScreenFullScreenImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCFD821D24C61492008E3C05 /* TipsScreenFullScreenImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -119,6 +120,7 @@
 		DCF0440824AE1E0400241062 /* FormModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormModel.swift; sourceTree = "<group>"; };
 		DCF0440C24AE2CF500241062 /* KeyboardHideInputHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardHideInputHelper.swift; sourceTree = "<group>"; };
 		DCF0440E24AE393500241062 /* FormRules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormRules.swift; sourceTree = "<group>"; };
+		DCFD821D24C61492008E3C05 /* TipsScreenFullScreenImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsScreenFullScreenImage.swift; sourceTree = "<group>"; };
 		E3B0308193EC0AD9A9EBDCFD /* Pods-swiftui-escola.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-swiftui-escola.release.xcconfig"; path = "Target Support Files/Pods-swiftui-escola/Pods-swiftui-escola.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -173,7 +175,8 @@
 		DC07B46F24C5EC5100840714 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				DC07B47024C5EC7E00840714 /* TipsScreenList.swift */,
+				DCFD821B24C61413008E3C05 /* List */,
+				DCFD821C24C6142A008E3C05 /* Full Screen Image */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -458,7 +461,7 @@
 		DCF043DD24AD16B600241062 /* Sims School */ = {
 			isa = PBXGroup;
 			children = (
-				DCF0440B24AE2CCB00241062 /* Helpers */,
+				DCF0440B24AE2CCB00241062 /* Extensions */,
 				DC989EE324BCFFF2003B79A6 /* Layout */,
 				DCF043F424AD16F900241062 /* Components */,
 				DCF0440624AE1DB900241062 /* Model */,
@@ -562,7 +565,7 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
-		DCF0440B24AE2CCB00241062 /* Helpers */ = {
+		DCF0440B24AE2CCB00241062 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				DCF0440C24AE2CF500241062 /* KeyboardHideInputHelper.swift */,
@@ -571,7 +574,23 @@
 				DC98E1BF24B8EE8000D4BD76 /* PaddingTextFieldHorizontal.swift */,
 				DC4D2D0324C22DDA008FD663 /* Date.swift */,
 			);
-			path = Helpers;
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		DCFD821B24C61413008E3C05 /* List */ = {
+			isa = PBXGroup;
+			children = (
+				DC07B47024C5EC7E00840714 /* TipsScreenList.swift */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		DCFD821C24C6142A008E3C05 /* Full Screen Image */ = {
+			isa = PBXGroup;
+			children = (
+				DCFD821D24C61492008E3C05 /* TipsScreenFullScreenImage.swift */,
+			);
+			path = "Full Screen Image";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -722,6 +741,7 @@
 				DCB672E324B29BD10064484D /* Service.swift in Sources */,
 				DC98E1B224B8A18100D4BD76 /* LoginScreenSubmitButton.swift in Sources */,
 				DC07B47124C5EC7E00840714 /* TipsScreenList.swift in Sources */,
+				DCFD821E24C61492008E3C05 /* TipsScreenFullScreenImage.swift in Sources */,
 				DCF043E124AD16B600241062 /* SceneDelegate.swift in Sources */,
 				DC53D72A24C0ECC9004266CE /* SlideHorizontalDots.swift in Sources */,
 				DC64927324BDEEB300EDAC0E /* ViewRouter.swift in Sources */,
