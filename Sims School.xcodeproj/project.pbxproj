@@ -41,7 +41,7 @@
 		DCAAF78D24C09D6F00F0518C /* ClassesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAAF78C24C09D6F00F0518C /* ClassesResponse.swift */; };
 		DCAAF79024C0A86000F0518C /* HomeScreenPageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAAF78F24C0A86000F0518C /* HomeScreenPageModel.swift */; };
 		DCB672D824B242120064484D /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB672D724B242120064484D /* ActivityIndicator.swift */; };
-		DCB672DA24B2683D0064484D /* ColorToUiColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB672D924B2683D0064484D /* ColorToUiColor.swift */; };
+		DCB672DA24B2683D0064484D /* HexToUiColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB672D924B2683D0064484D /* HexToUiColor.swift */; };
 		DCB672DF24B29BB60064484D /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB672DE24B29BB60064484D /* Request.swift */; };
 		DCB672E124B29BC10064484D /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB672E024B29BC10064484D /* Response.swift */; };
 		DCB672E324B29BD10064484D /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB672E224B29BD10064484D /* Service.swift */; };
@@ -97,7 +97,7 @@
 		DCAAF78C24C09D6F00F0518C /* ClassesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassesResponse.swift; sourceTree = "<group>"; };
 		DCAAF78F24C0A86000F0518C /* HomeScreenPageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenPageModel.swift; sourceTree = "<group>"; };
 		DCB672D724B242120064484D /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
-		DCB672D924B2683D0064484D /* ColorToUiColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorToUiColor.swift; sourceTree = "<group>"; };
+		DCB672D924B2683D0064484D /* HexToUiColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexToUiColor.swift; sourceTree = "<group>"; };
 		DCB672DE24B29BB60064484D /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		DCB672E024B29BC10064484D /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		DCB672E224B29BD10064484D /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
@@ -544,7 +544,7 @@
 			isa = PBXGroup;
 			children = (
 				DCF0440C24AE2CF500241062 /* KeyboardHideInputHelper.swift */,
-				DCB672D924B2683D0064484D /* ColorToUiColor.swift */,
+				DCB672D924B2683D0064484D /* HexToUiColor.swift */,
 				DC98E1BD24B8ED4B00D4BD76 /* ScreenSize.swift */,
 				DC98E1BF24B8EE8000D4BD76 /* PaddingTextFieldHorizontal.swift */,
 				DC4D2D0324C22DDA008FD663 /* Date.swift */,
@@ -704,7 +704,7 @@
 				DC64927324BDEEB300EDAC0E /* ViewRouter.swift in Sources */,
 				DC4D2D1024C2FE5C008FD663 /* SliderOverView.swift in Sources */,
 				DCF0440F24AE393500241062 /* FormRules.swift in Sources */,
-				DCB672DA24B2683D0064484D /* ColorToUiColor.swift in Sources */,
+				DCB672DA24B2683D0064484D /* HexToUiColor.swift in Sources */,
 				DC53D72624C0EB53004266CE /* CustomUIPageViewController.swift in Sources */,
 				DCB672DF24B29BB60064484D /* Request.swift in Sources */,
 				DCF0440D24AE2CF500241062 /* KeyboardHideInputHelper.swift in Sources */,

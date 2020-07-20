@@ -19,7 +19,7 @@ struct ClassesScreen: View {
 				ClassesScreenCalendar(modalVisible: self.$props.isModalVisible)
 			}
 			.sheet(isPresented: self.$props.isModalVisible) {
-				ClassesScreenSubjectDay(modalVisible: self.$props.isModalVisible)
+				ClassesScreenSubjectDay()
 			}
 			.navigationBarTitle("Classes", displayMode: .inline)
 		}
