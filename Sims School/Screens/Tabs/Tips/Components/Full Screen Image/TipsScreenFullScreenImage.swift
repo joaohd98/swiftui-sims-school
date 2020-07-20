@@ -9,6 +9,17 @@
 import SwiftUI
 
 struct TipsScreenFullScreenImage: View {
+	let statusIMG: String = Int.random(in: 0...1) % 2 == 0 ? "cover-ps4" : "vertical-image"
+	
+	func isVerticalImage() -> Bool {
+		let imageSource = UIImage(named: self.statusIMG)!
+		let screenHeight = UIScreen.screenHeight
+	
+		let imageWidth = imageSource.size.width * imageSource.scale
+		let imageHeight = imageSource.size.height * imageSource.scale
+		
+		return screenHeight < imageHeight && imageHeight > imageWidth / 2
+	}
 	
 	func progressBar() -> some View {
 		let progressValue = CGFloat.random(in: 0 ... 0.5)
@@ -60,6 +71,21 @@ struct TipsScreenFullScreenImage: View {
 		}
 	}
 	
+	func getVerticalImage() -> some View {
+		Image(self.statusIMG)
+		.resizable()
+		.clipped()
+	}
+	
+	func getHorizontalImage() -> some View {
+		Image(self.statusIMG)
+			.resizable()
+			.scaledToFit()
+			.frame(width: UIScreen.screenWidth, height: UIScreen.screenHeight / CGFloat(2))
+			.clipped()
+			.padding(.vertical, 10)
+	}
+	
 	func getFooterOpenLink() -> some View {
 		VStack(spacing: 10) {
 			Divider()
@@ -81,25 +107,28 @@ struct TipsScreenFullScreenImage: View {
 			}
 		}
 		.padding(.horizontal, 10)
+		.padding(.bottom, 25)
 	}
-	
-	func getHorizontalImage() -> some View {
-		Image("cover-ps4")
-			.resizable()
-			.frame(width: UIScreen.screenWidth, height: UIScreen.screenHeight / CGFloat(3))
-			.padding(.vertical, 10)
-	}
-	
+
 	var body: some View {
-		VStack {
-			self.progressBar()
-			self.backButton()
-			Spacer()
-			self.getHorizontalImage()
-			Spacer()
-			self.getFooterOpenLink()
-		}
-		.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+		let isVertical = self.isVerticalImage()
+		
+		return (
+			VStack {
+				self.progressBar()
+				self.backButton()
+				if !isVertical {
+					Spacer()
+					self.getHorizontalImage()
+				}
+			
+				Spacer()
+				self.getFooterOpenLink()
+			}
+			.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .top)
+			.background(isVertical ? AnyView(self.getVerticalImage()) : AnyView(Color.black))
+			.edgesIgnoringSafeArea(.all)
+		)
 	}
 }
 

@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "Eiffel_Tower_Vertical.jpeg",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "Eiffel_Tower_Vertical-1.jpeg",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "Eiffel_Tower_Vertical-2.jpeg",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

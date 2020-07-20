@@ -10,9 +10,9 @@ import SwiftUI
 
 struct TipsScreenList: View {
 	@Binding var showModal: Bool
-	var statusQuantity = Int.random(in: 1 ... 5)
 	
 	func statusSeparator() -> some View {
+		let statusQuantity = Int.random(in: 1 ... 10)
 		let size = CGFloat(min(1.0 / CGFloat(statusQuantity), 1.0))
 		var trim: [(from: CGFloat, to: CGFloat)] = []
 
