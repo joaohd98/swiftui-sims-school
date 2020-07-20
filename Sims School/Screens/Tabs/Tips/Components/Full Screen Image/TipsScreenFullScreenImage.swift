@@ -61,7 +61,6 @@ struct TipsScreenFullScreenImage: View {
 	}
 	
 	func getFooterOpenLink() -> some View {
-	
 		VStack(spacing: 10) {
 			Divider()
 				.background(Color.white)
@@ -84,16 +83,23 @@ struct TipsScreenFullScreenImage: View {
 		.padding(.horizontal, 10)
 	}
 	
+	func getHorizontalImage() -> some View {
+		Image("cover-ps4")
+			.resizable()
+			.frame(width: UIScreen.screenWidth, height: UIScreen.screenHeight / CGFloat(3))
+			.padding(.vertical, 10)
+	}
+	
 	var body: some View {
 		VStack {
 			self.progressBar()
 			self.backButton()
 			Spacer()
+			self.getHorizontalImage()
+			Spacer()
 			self.getFooterOpenLink()
 		}
 		.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
-		.padding()
-
 	}
 }
 

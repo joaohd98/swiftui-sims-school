@@ -9,11 +9,10 @@
 import SwiftUI
 
 struct TipsScreenList: View {
-	var statusQuantity = 6
+	@Binding var showModal: Bool
+	var statusQuantity = Int.random(in: 1 ... 5)
 	
 	func statusSeparator() -> some View {
-		let statusQuantity = Int.random(in: 1 ... 5)
-
 		let size = CGFloat(min(1.0 / CGFloat(statusQuantity), 1.0))
 		var trim: [(from: CGFloat, to: CGFloat)] = []
 
@@ -27,13 +26,15 @@ struct TipsScreenList: View {
 		
 		return (
 			ForEach(trim.indices) { index in
-				Circle()
-					.trim(from: trim[index].from, to: trim[index].to)
-					.stroke(style: StrokeStyle(lineWidth: 2, lineCap: .square))
-					.foregroundColor(Color.blue)
-					.frame(width: 50, height: 50, alignment: .center)
-					.padding(.all, 5)
-					.rotationEffect(Angle(degrees: 90.0))
+				if trim.indices.contains(index) {
+					Circle()
+						.trim(from: trim[index].from, to: trim[index].to)
+						.stroke(style: StrokeStyle(lineWidth: 2, lineCap: .square))
+						.foregroundColor(Color.blue)
+						.frame(width: 50, height: 50, alignment: .center)
+						.padding(.all, 5)
+						.rotationEffect(Angle(degrees: 90.0))
+				}
 			}
 		)
 	}
@@ -41,11 +42,10 @@ struct TipsScreenList: View {
 	func imageQuantityItems() -> some View {
 		return (
 			ZStack {
-				
 				Image("cover-ps4")
+					.renderingMode(.original)
 					.frame(width: 42, height: 42, alignment: .center)
 					.cornerRadius(25)
-				
 				self.statusSeparator()
 			
 			}
@@ -53,20 +53,27 @@ struct TipsScreenList: View {
 	}
 	
 	func getItem() -> some View {
-		HStack(spacing: 20) {
-			self.imageQuantityItems()
-				.frame(width: 50, height: 50, alignment: .center)
-			VStack(alignment: .leading) {
-				Text("Analise e desenvolvimento")
-					.lineLimit(2)
-					.font(.system(size: 12, weight: .bold))
-					.frame(height: 40, alignment: .leading)
-				Divider()
+		Button(action: {
+			self.showModal = true
+		}) {
+			HStack(spacing: 20) {
+				self.imageQuantityItems()
+					.frame(width: 50, height: 50, alignment: .center)
+				VStack(alignment: .leading) {
+					Text("Analise e desenvolvimento")
+						.lineLimit(2)
+						.font(.system(size: 12, weight: .bold))
+						.frame(height: 40, alignment: .leading)
+						.foregroundColor(Color(UIColor.init { (trait) -> UIColor in
+							return trait.userInterfaceStyle == .dark ? .white : .black
+						}))
+					Divider()
+				}
+				Spacer()
 			}
-			Spacer()
+			.padding(.horizontal, 10)
+			.padding(.vertical, 5)
 		}
-		.padding(.horizontal, 10)
-		.padding(.vertical, 5)
 	}
 	
     var body: some View {
@@ -84,7 +91,9 @@ struct TipsScreenList: View {
 }
 
 struct TipsScreenList_Previews: PreviewProvider {
+	@State static var showModal: Bool = false
+
     static var previews: some View {
-        TipsScreenList()
+        TipsScreenList(showModal: $showModal)
     }
 }
