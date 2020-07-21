@@ -11,6 +11,7 @@
 		DC05771924BD6104005CC9BC /* CustomContainerSignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC05771824BD6104005CC9BC /* CustomContainerSignIn.swift */; };
 		DC07B46E24C5DA7400840714 /* TipsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC07B46D24C5DA7400840714 /* TipsScreen.swift */; };
 		DC07B47124C5EC7E00840714 /* TipsScreenList.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC07B47024C5EC7E00840714 /* TipsScreenList.swift */; };
+		DC10077C24C74AD200DB3EE7 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC10077B24C74AD200DB3EE7 /* PlayerView.swift */; };
 		DC198D3E24C3D2B000AF27B5 /* ClassesScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC198D3D24C3D2B000AF27B5 /* ClassesScreenModel.swift */; };
 		DC1D22DB24BE5C1F00E1855D /* SlideHorizontal.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1D22DA24BE5C1F00E1855D /* SlideHorizontal.swift */; };
 		DC4D2CFC24C1E635008FD663 /* ScoresScreenSemesters.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4D2CFB24C1E635008FD663 /* ScoresScreenSemesters.swift */; };
@@ -20,10 +21,10 @@
 		DC4D2D0924C27D5F008FD663 /* ClassesScreenCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4D2D0824C27D5F008FD663 /* ClassesScreenCalendar.swift */; };
 		DC4D2D0B24C27D70008FD663 /* ClassesScreenDaysWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4D2D0A24C27D70008FD663 /* ClassesScreenDaysWeek.swift */; };
 		DC4D2D0D24C27D85008FD663 /* ClassesScreenSubjectDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4D2D0C24C27D85008FD663 /* ClassesScreenSubjectDay.swift */; };
-		DC4D2D1024C2FE5C008FD663 /* SliderOverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4D2D0F24C2FE5C008FD663 /* SliderOverView.swift */; };
 		DC53D72624C0EB53004266CE /* CustomUIPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC53D72524C0EB53004266CE /* CustomUIPageViewController.swift */; };
 		DC53D72A24C0ECC9004266CE /* SlideHorizontalDots.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC53D72924C0ECC9004266CE /* SlideHorizontalDots.swift */; };
 		DC53D72D24C121B8004266CE /* SafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC53D72C24C121B8004266CE /* SafariView.swift */; };
+		DC570CF224C7255D00C9AEDA /* CustomUIVideoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC570CF124C7255D00C9AEDA /* CustomUIVideoPlayer.swift */; };
 		DC64927324BDEEB300EDAC0E /* ViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC64927224BDEEB300EDAC0E /* ViewRouter.swift */; };
 		DC64927624BDF27400EDAC0E /* ScoresScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC64927524BDF27400EDAC0E /* ScoresScreen.swift */; };
 		DC64927C24BE179B00EDAC0E /* HomeScreenProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC64927B24BE179B00EDAC0E /* HomeScreenProfile.swift */; };
@@ -36,7 +37,7 @@
 		DC98E1B224B8A18100D4BD76 /* LoginScreenSubmitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC98E1B124B8A18100D4BD76 /* LoginScreenSubmitButton.swift */; };
 		DC98E1B524B8AA3E00D4BD76 /* LoginScreenLogo.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC98E1B424B8AA3E00D4BD76 /* LoginScreenLogo.swift */; };
 		DC98E1B924B8AE3900D4BD76 /* LoginScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC98E1B824B8AE3900D4BD76 /* LoginScreenModel.swift */; };
-		DC98E1BB24B8BF5900D4BD76 /* Input.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC98E1BA24B8BF5900D4BD76 /* Input.swift */; };
+		DC98E1BB24B8BF5900D4BD76 /* UIInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC98E1BA24B8BF5900D4BD76 /* UIInput.swift */; };
 		DC98E1BE24B8ED4B00D4BD76 /* ScreenSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC98E1BD24B8ED4B00D4BD76 /* ScreenSize.swift */; };
 		DC98E1C024B8EE8000D4BD76 /* PaddingTextFieldHorizontal.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC98E1BF24B8EE8000D4BD76 /* PaddingTextFieldHorizontal.swift */; };
 		DCA500C124AE5223006B4C63 /* CustomContainerGuest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA500C024AE5223006B4C63 /* CustomContainerGuest.swift */; };
@@ -70,6 +71,7 @@
 		DC05771824BD6104005CC9BC /* CustomContainerSignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomContainerSignIn.swift; sourceTree = "<group>"; };
 		DC07B46D24C5DA7400840714 /* TipsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsScreen.swift; sourceTree = "<group>"; };
 		DC07B47024C5EC7E00840714 /* TipsScreenList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsScreenList.swift; sourceTree = "<group>"; };
+		DC10077B24C74AD200DB3EE7 /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		DC198D3D24C3D2B000AF27B5 /* ClassesScreenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassesScreenModel.swift; sourceTree = "<group>"; };
 		DC1D22DA24BE5C1F00E1855D /* SlideHorizontal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideHorizontal.swift; sourceTree = "<group>"; };
 		DC4D2CFB24C1E635008FD663 /* ScoresScreenSemesters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoresScreenSemesters.swift; sourceTree = "<group>"; };
@@ -79,10 +81,10 @@
 		DC4D2D0824C27D5F008FD663 /* ClassesScreenCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassesScreenCalendar.swift; sourceTree = "<group>"; };
 		DC4D2D0A24C27D70008FD663 /* ClassesScreenDaysWeek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassesScreenDaysWeek.swift; sourceTree = "<group>"; };
 		DC4D2D0C24C27D85008FD663 /* ClassesScreenSubjectDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassesScreenSubjectDay.swift; sourceTree = "<group>"; };
-		DC4D2D0F24C2FE5C008FD663 /* SliderOverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderOverView.swift; sourceTree = "<group>"; };
 		DC53D72524C0EB53004266CE /* CustomUIPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIPageViewController.swift; sourceTree = "<group>"; };
 		DC53D72924C0ECC9004266CE /* SlideHorizontalDots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideHorizontalDots.swift; sourceTree = "<group>"; };
 		DC53D72C24C121B8004266CE /* SafariView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariView.swift; sourceTree = "<group>"; };
+		DC570CF124C7255D00C9AEDA /* CustomUIVideoPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIVideoPlayer.swift; sourceTree = "<group>"; };
 		DC64927224BDEEB300EDAC0E /* ViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRouter.swift; sourceTree = "<group>"; };
 		DC64927524BDF27400EDAC0E /* ScoresScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoresScreen.swift; sourceTree = "<group>"; };
 		DC64927B24BE179B00EDAC0E /* HomeScreenProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenProfile.swift; sourceTree = "<group>"; };
@@ -95,7 +97,7 @@
 		DC98E1B124B8A18100D4BD76 /* LoginScreenSubmitButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenSubmitButton.swift; sourceTree = "<group>"; };
 		DC98E1B424B8AA3E00D4BD76 /* LoginScreenLogo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenLogo.swift; sourceTree = "<group>"; };
 		DC98E1B824B8AE3900D4BD76 /* LoginScreenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenModel.swift; sourceTree = "<group>"; };
-		DC98E1BA24B8BF5900D4BD76 /* Input.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Input.swift; sourceTree = "<group>"; };
+		DC98E1BA24B8BF5900D4BD76 /* UIInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIInput.swift; sourceTree = "<group>"; };
 		DC98E1BD24B8ED4B00D4BD76 /* ScreenSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenSize.swift; sourceTree = "<group>"; };
 		DC98E1BF24B8EE8000D4BD76 /* PaddingTextFieldHorizontal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingTextFieldHorizontal.swift; sourceTree = "<group>"; };
 		DCA500C024AE5223006B4C63 /* CustomContainerGuest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomContainerGuest.swift; sourceTree = "<group>"; };
@@ -268,20 +270,21 @@
 			path = "Subjects of Day";
 			sourceTree = "<group>";
 		};
-		DC4D2D0E24C2FE45008FD663 /* Slide Over View */ = {
-			isa = PBXGroup;
-			children = (
-				DC4D2D0F24C2FE5C008FD663 /* SliderOverView.swift */,
-			);
-			path = "Slide Over View";
-			sourceTree = "<group>";
-		};
 		DC53D72B24C121A9004266CE /* Safari View */ = {
 			isa = PBXGroup;
 			children = (
 				DC53D72C24C121B8004266CE /* SafariView.swift */,
 			);
 			path = "Safari View";
+			sourceTree = "<group>";
+		};
+		DC570CEF24C7251F00C9AEDA /* Player Video */ = {
+			isa = PBXGroup;
+			children = (
+				DC570CF124C7255D00C9AEDA /* CustomUIVideoPlayer.swift */,
+				DC10077B24C74AD200DB3EE7 /* PlayerView.swift */,
+			);
+			path = "Player Video";
 			sourceTree = "<group>";
 		};
 		DC64927124BDEE9F00EDAC0E /* View Router */ = {
@@ -509,12 +512,12 @@
 		DCF043F424AD16F900241062 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				DC4D2D0E24C2FE45008FD663 /* Slide Over View */,
 				DC53D72B24C121A9004266CE /* Safari View */,
 				DC1D22D924BE5BE000E1855D /* Slide Horizontal */,
 				DCB672D624B241FE0064484D /* Activity Indicator */,
 				DCA500BD24AE51CC006B4C63 /* Container Guest */,
 				DC05771724BD60D7005CC9BC /* Container Sign in */,
+				DC570CEF24C7251F00C9AEDA /* Player Video */,
 				DCF043FA24AD1AA800241062 /* Input */,
 			);
 			path = Components;
@@ -524,7 +527,7 @@
 			isa = PBXGroup;
 			children = (
 				DCF043FB24AD1ABD00241062 /* CustomInput.swift */,
-				DC98E1BA24B8BF5900D4BD76 /* Input.swift */,
+				DC98E1BA24B8BF5900D4BD76 /* UIInput.swift */,
 			);
 			path = Input;
 			sourceTree = "<group>";
@@ -729,6 +732,7 @@
 				DC1D22DB24BE5C1F00E1855D /* SlideHorizontal.swift in Sources */,
 				DCB672D824B242120064484D /* ActivityIndicator.swift in Sources */,
 				DCF043F924AD191200241062 /* LoginScreen.swift in Sources */,
+				DC570CF224C7255D00C9AEDA /* CustomUIVideoPlayer.swift in Sources */,
 				DC4D2D0B24C27D70008FD663 /* ClassesScreenDaysWeek.swift in Sources */,
 				DCAAF79024C0A86000F0518C /* HomeScreenPageModel.swift in Sources */,
 				DC89F04724BD704B001964FC /* TabsScreen.swift in Sources */,
@@ -737,7 +741,8 @@
 				DC4D2D0924C27D5F008FD663 /* ClassesScreenCalendar.swift in Sources */,
 				DCF043FC24AD1ABD00241062 /* CustomInput.swift in Sources */,
 				DC64928024BE1A3D00EDAC0E /* HomeScreenAds.swift in Sources */,
-				DC98E1BB24B8BF5900D4BD76 /* Input.swift in Sources */,
+				DC98E1BB24B8BF5900D4BD76 /* UIInput.swift in Sources */,
+				DC10077C24C74AD200DB3EE7 /* PlayerView.swift in Sources */,
 				DCB672E324B29BD10064484D /* Service.swift in Sources */,
 				DC98E1B224B8A18100D4BD76 /* LoginScreenSubmitButton.swift in Sources */,
 				DC07B47124C5EC7E00840714 /* TipsScreenList.swift in Sources */,
@@ -745,7 +750,6 @@
 				DCF043E124AD16B600241062 /* SceneDelegate.swift in Sources */,
 				DC53D72A24C0ECC9004266CE /* SlideHorizontalDots.swift in Sources */,
 				DC64927324BDEEB300EDAC0E /* ViewRouter.swift in Sources */,
-				DC4D2D1024C2FE5C008FD663 /* SliderOverView.swift in Sources */,
 				DC07B46E24C5DA7400840714 /* TipsScreen.swift in Sources */,
 				DCF0440F24AE393500241062 /* FormRules.swift in Sources */,
 				DCB672DA24B2683D0064484D /* HexToUiColor.swift in Sources */,
@@ -898,6 +902,7 @@
 				DEVELOPMENT_TEAM = R8RR6LZ5DA;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Sims School/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -919,6 +924,7 @@
 				DEVELOPMENT_TEAM = R8RR6LZ5DA;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Sims School/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

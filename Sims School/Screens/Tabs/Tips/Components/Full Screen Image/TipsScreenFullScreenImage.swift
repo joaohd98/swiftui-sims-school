@@ -7,9 +7,15 @@
 //
 
 import SwiftUI
+import AVKit
 
 struct TipsScreenFullScreenImage: View {
 	let statusIMG: String = Int.random(in: 0...1) % 2 == 0 ? "cover-ps4" : "vertical-image"
+	@State var urlVideo: URL = URL(
+		string: "https://bit.ly/swswift"
+	)!
+	
+	@State var progress: Int = 0
 	
 	func isVerticalImage() -> Bool {
 		let imageSource = UIImage(named: self.statusIMG)!
@@ -86,6 +92,21 @@ struct TipsScreenFullScreenImage: View {
 			.padding(.vertical, 10)
 	}
 	
+	func getVerticalVideo() -> some View {
+		VideoView(videoURL: self.urlVideo, previewLength: 60)
+		  .cornerRadius(15)
+		  .frame(width: nil, height: 200, alignment: .center)
+		  .shadow(color: Color.black.opacity(0.7), radius: 30, x: 0, y: 2)
+		  .padding(.horizontal, 20)
+		  .padding(.top, 20)
+		
+	}
+	
+	func getHorizontalVideo() -> some View {
+		VideoView(videoURL: self.urlVideo, previewLength: 60)
+			.frame(width: nil, height: UIScreen.screenHeight / 3.5, alignment: .center)
+	}
+		
 	func getFooterOpenLink() -> some View {
 		VStack(spacing: 10) {
 			Divider()
@@ -117,16 +138,19 @@ struct TipsScreenFullScreenImage: View {
 			VStack {
 				self.progressBar()
 				self.backButton()
-				if !isVertical {
-					Spacer()
-					self.getHorizontalImage()
-				}
+//				if !isVertical {
+//					Spacer()
+//					self.getHorizontalImage()
+//				}
+				
+				Spacer()
+				self.getHorizontalVideo()
 			
 				Spacer()
 				self.getFooterOpenLink()
 			}
 			.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .top)
-			.background(isVertical ? AnyView(self.getVerticalImage()) : AnyView(Color.black))
+			.background(false ? AnyView(self.getVerticalImage()) : AnyView(Color.black))
 			.edgesIgnoringSafeArea(.all)
 		)
 	}
