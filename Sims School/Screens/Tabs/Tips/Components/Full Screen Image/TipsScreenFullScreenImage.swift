@@ -11,20 +11,29 @@ import AVKit
 
 struct TipsScreenFullScreenImage: View {
 	let statusIMG: String = Int.random(in: 0...1) % 2 == 0 ? "cover-ps4" : "vertical-image"
-	@State var urlVideo: URL = URL(
-		string: "https://bit.ly/swswift"
-	)!
-	
+	let urlVideo = Int.random(in: 0...1) % 2 == 0 ?
+		URL(string: "https://bit.ly/swswift")! :
+		URL(fileURLWithPath: Bundle.main.path(forResource: "video-vertical", ofType:"mov")!)
+
 	@State var progress: Int = 0
 	
 	func isVerticalImage() -> Bool {
 		let imageSource = UIImage(named: self.statusIMG)!
 		let screenHeight = UIScreen.screenHeight
-	
+		
 		let imageWidth = imageSource.size.width * imageSource.scale
 		let imageHeight = imageSource.size.height * imageSource.scale
 		
 		return screenHeight < imageHeight && imageHeight > imageWidth / 2
+	}
+	
+	func isVerticalVideo() -> Bool {
+
+		let videoTrack = AVAsset(url: self.urlVideo).tracks(withMediaType: AVMediaType.video).first!
+		
+		let transformedVideoSize = videoTrack.naturalSize.applying(videoTrack.preferredTransform)
+			
+		return abs(transformedVideoSize.width) < abs(transformedVideoSize.height)
 	}
 	
 	func progressBar() -> some View {
@@ -47,7 +56,7 @@ struct TipsScreenFullScreenImage: View {
 								width: min(CGFloat(progressValue) * size, size),
 								height: 6,
 								alignment: .leading
-							)
+						)
 							.foregroundColor(Color.blue)
 							.animation(.linear)
 					}
@@ -79,8 +88,8 @@ struct TipsScreenFullScreenImage: View {
 	
 	func getVerticalImage() -> some View {
 		Image(self.statusIMG)
-		.resizable()
-		.clipped()
+			.resizable()
+			.clipped()
 	}
 	
 	func getHorizontalImage() -> some View {
@@ -94,11 +103,7 @@ struct TipsScreenFullScreenImage: View {
 	
 	func getVerticalVideo() -> some View {
 		VideoView(videoURL: self.urlVideo, previewLength: 60)
-		  .cornerRadius(15)
-		  .frame(width: nil, height: 200, alignment: .center)
-		  .shadow(color: Color.black.opacity(0.7), radius: 30, x: 0, y: 2)
-		  .padding(.horizontal, 20)
-		  .padding(.top, 20)
+			.frame(width: nil, height: nil, alignment: .center)
 		
 	}
 	
@@ -106,14 +111,14 @@ struct TipsScreenFullScreenImage: View {
 		VideoView(videoURL: self.urlVideo, previewLength: 60)
 			.frame(width: nil, height: UIScreen.screenHeight / 3.5, alignment: .center)
 	}
-		
+	
 	func getFooterOpenLink() -> some View {
 		VStack(spacing: 10) {
 			Divider()
 				.background(Color.white)
 			
 			Button(action: {
-					
+				
 			}) {
 				VStack(spacing: 0) {
 					Image(systemName: "chevron.up")
@@ -130,27 +135,23 @@ struct TipsScreenFullScreenImage: View {
 		.padding(.horizontal, 10)
 		.padding(.bottom, 25)
 	}
-
+	
 	var body: some View {
-		let isVertical = self.isVerticalImage()
+		let isVertical = self.isVerticalVideo()
 		
 		return (
 			VStack {
 				self.progressBar()
 				self.backButton()
-//				if !isVertical {
-//					Spacer()
-//					self.getHorizontalImage()
-//				}
-				
-				Spacer()
-				self.getHorizontalVideo()
-			
+				if !isVertical {
+					Spacer()
+					self.getHorizontalVideo()
+				}
 				Spacer()
 				self.getFooterOpenLink()
 			}
 			.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .top)
-			.background(false ? AnyView(self.getVerticalImage()) : AnyView(Color.black))
+			.background(isVertical ? AnyView(self.getVerticalVideo()) : AnyView(Color.black))
 			.edgesIgnoringSafeArea(.all)
 		)
 	}
