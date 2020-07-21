@@ -12,15 +12,13 @@ struct TipsScreen: View {
 	@State var showModal: Bool = false
 	
     var body: some View {
-		CustomContainerSignIn {
-			ScrollView {
-				TipsScreenList(showModal: self.$showModal)
-			}
-			.sheet(isPresented: self.$showModal) {
-				TipsScreenFullScreenImage()
-			}
-			.navigationBarTitle("Tips")
+		ScrollView {
+			TipsScreenList(showModal: self.$showModal)
 		}
+		.sheet(isPresented: self.$showModal) {
+			TipsScreenFullScreenImage()
+		}
+		.navigationBarTitle("Tips")
     }
 }
 

@@ -52,17 +52,19 @@ struct TabsScreen: View {
 	}
 		
 	var body: some View {
-		GeometryReader { geometry in
-			VStack {
-				self.getActualRoute()
-				HStack(alignment: .center, spacing: 0) {
-					self.getTabIcon(geometry, tab: self.viewRouter.tabRoutes[.HomeScreen]!)
-					self.getTabIcon(geometry, tab: self.viewRouter.tabRoutes[.ScoresScreen]!)
-					self.getTabIcon(geometry, tab: self.viewRouter.tabRoutes[.ClassesScreen]!)
-					self.getTabIcon(geometry, tab: self.viewRouter.tabRoutes[.TipsScreen]!)
-					self.getTabIcon(geometry, tab: self.viewRouter.tabRoutes[.MenuScreen]!)
+		CustomContainerSignIn {
+			GeometryReader { geometry in
+				VStack {
+					self.getActualRoute()
+					HStack(alignment: .center, spacing: 0) {
+						self.getTabIcon(geometry, tab: self.viewRouter.tabRoutes[.HomeScreen]!)
+						self.getTabIcon(geometry, tab: self.viewRouter.tabRoutes[.ScoresScreen]!)
+						self.getTabIcon(geometry, tab: self.viewRouter.tabRoutes[.ClassesScreen]!)
+						self.getTabIcon(geometry, tab: self.viewRouter.tabRoutes[.TipsScreen]!)
+						self.getTabIcon(geometry, tab: self.viewRouter.tabRoutes[.MenuScreen]!)
+					}
+					.frame(width: geometry.size.width, height: geometry.size.height / 10)
 				}
-				.frame(width: geometry.size.width, height: geometry.size.height / 10)
 			}
 		}
 	}

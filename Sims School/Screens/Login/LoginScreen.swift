@@ -61,10 +61,11 @@ struct LoginScreen: View {
 			.keyboardAdaptive()
 		}
 		.isLoading(self.props.isLoading)
+		.onAppear(perform: self.viewDidLoad)
 		.onTapGesture {
 			UIApplication.shared.endEditing()
 		}
-		.onAppear(perform: self.viewDidLoad)
+		
 	}
 }
 

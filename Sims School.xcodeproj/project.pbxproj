@@ -14,6 +14,10 @@
 		DC10077C24C74AD200DB3EE7 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC10077B24C74AD200DB3EE7 /* PlayerView.swift */; };
 		DC10077F24C7580E00DB3EE7 /* video-vertical.mov in Resources */ = {isa = PBXBuildFile; fileRef = DC10077D24C7580E00DB3EE7 /* video-vertical.mov */; };
 		DC10078024C7580E00DB3EE7 /* video-horizontal.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = DC10077E24C7580E00DB3EE7 /* video-horizontal.mp4 */; };
+		DC10078324C75D0300DB3EE7 /* MenuScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC10078224C75D0300DB3EE7 /* MenuScreen.swift */; };
+		DC10078724C7628700DB3EE7 /* MenuScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC10078624C7628700DB3EE7 /* MenuScreenModel.swift */; };
+		DC10078924C77D7100DB3EE7 /* MenuScreenOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC10078824C77D7100DB3EE7 /* MenuScreenOptions.swift */; };
+		DC10078B24C77DC200DB3EE7 /* MenuScreenLogout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC10078A24C77DC200DB3EE7 /* MenuScreenLogout.swift */; };
 		DC198D3E24C3D2B000AF27B5 /* ClassesScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC198D3D24C3D2B000AF27B5 /* ClassesScreenModel.swift */; };
 		DC1D22DB24BE5C1F00E1855D /* SlideHorizontal.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1D22DA24BE5C1F00E1855D /* SlideHorizontal.swift */; };
 		DC4D2CFC24C1E635008FD663 /* ScoresScreenSemesters.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4D2CFB24C1E635008FD663 /* ScoresScreenSemesters.swift */; };
@@ -76,6 +80,10 @@
 		DC10077B24C74AD200DB3EE7 /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		DC10077D24C7580E00DB3EE7 /* video-vertical.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "video-vertical.mov"; sourceTree = "<group>"; };
 		DC10077E24C7580E00DB3EE7 /* video-horizontal.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "video-horizontal.mp4"; sourceTree = "<group>"; };
+		DC10078224C75D0300DB3EE7 /* MenuScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScreen.swift; sourceTree = "<group>"; };
+		DC10078624C7628700DB3EE7 /* MenuScreenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScreenModel.swift; sourceTree = "<group>"; };
+		DC10078824C77D7100DB3EE7 /* MenuScreenOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScreenOptions.swift; sourceTree = "<group>"; };
+		DC10078A24C77DC200DB3EE7 /* MenuScreenLogout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScreenLogout.swift; sourceTree = "<group>"; };
 		DC198D3D24C3D2B000AF27B5 /* ClassesScreenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassesScreenModel.swift; sourceTree = "<group>"; };
 		DC1D22DA24BE5C1F00E1855D /* SlideHorizontal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideHorizontal.swift; sourceTree = "<group>"; };
 		DC4D2CFB24C1E635008FD663 /* ScoresScreenSemesters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoresScreenSemesters.swift; sourceTree = "<group>"; };
@@ -183,6 +191,33 @@
 			children = (
 				DCFD821B24C61413008E3C05 /* List */,
 				DCFD821C24C6142A008E3C05 /* Full Screen Image */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		DC10078124C75CEE00DB3EE7 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				DC10078424C7622100DB3EE7 /* Model */,
+				DC10078524C7622A00DB3EE7 /* Components */,
+				DC10078224C75D0300DB3EE7 /* MenuScreen.swift */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
+		DC10078424C7622100DB3EE7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DC10078624C7628700DB3EE7 /* MenuScreenModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		DC10078524C7622A00DB3EE7 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				DC10078824C77D7100DB3EE7 /* MenuScreenOptions.swift */,
+				DC10078A24C77DC200DB3EE7 /* MenuScreenLogout.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -349,6 +384,7 @@
 				DC64927424BDF25100EDAC0E /* Scores */,
 				DC4D2D0024C21916008FD663 /* Classes */,
 				DC07B46C24C5DA5200840714 /* Tips */,
+				DC10078124C75CEE00DB3EE7 /* Menu */,
 				DC89F04624BD704B001964FC /* TabsScreen.swift */,
 			);
 			path = Tabs;
@@ -747,10 +783,13 @@
 				DC64927624BDF27400EDAC0E /* ScoresScreen.swift in Sources */,
 				DC198D3E24C3D2B000AF27B5 /* ClassesScreenModel.swift in Sources */,
 				DC4D2D0924C27D5F008FD663 /* ClassesScreenCalendar.swift in Sources */,
+				DC10078924C77D7100DB3EE7 /* MenuScreenOptions.swift in Sources */,
 				DCF043FC24AD1ABD00241062 /* CustomInput.swift in Sources */,
 				DC64928024BE1A3D00EDAC0E /* HomeScreenAds.swift in Sources */,
 				DC98E1BB24B8BF5900D4BD76 /* UIInput.swift in Sources */,
+				DC10078324C75D0300DB3EE7 /* MenuScreen.swift in Sources */,
 				DC10077C24C74AD200DB3EE7 /* PlayerView.swift in Sources */,
+				DC10078724C7628700DB3EE7 /* MenuScreenModel.swift in Sources */,
 				DCB672E324B29BD10064484D /* Service.swift in Sources */,
 				DC98E1B224B8A18100D4BD76 /* LoginScreenSubmitButton.swift in Sources */,
 				DC07B47124C5EC7E00840714 /* TipsScreenList.swift in Sources */,
@@ -760,6 +799,7 @@
 				DC64927324BDEEB300EDAC0E /* ViewRouter.swift in Sources */,
 				DC07B46E24C5DA7400840714 /* TipsScreen.swift in Sources */,
 				DCF0440F24AE393500241062 /* FormRules.swift in Sources */,
+				DC10078B24C77DC200DB3EE7 /* MenuScreenLogout.swift in Sources */,
 				DCB672DA24B2683D0064484D /* HexToUiColor.swift in Sources */,
 				DC53D72624C0EB53004266CE /* CustomUIPageViewController.swift in Sources */,
 				DCB672DF24B29BB60064484D /* Request.swift in Sources */,

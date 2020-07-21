@@ -12,15 +12,13 @@ struct HomeScreen: View {
 	@ObservedObject var props: HomeScreenModel = HomeScreenModel()
 	
     var body: some View {
-		CustomContainerSignIn {
-			ScrollView {
-				VStack(alignment: .leading, spacing: 0) {
-					HomeScreenProfile()
-					HomeScreenClasses(classes: self.$props.classes, currentClass: self.props.currentClass)
-					HomeScreenAds()
-				}
-				.navigationBarTitle("Home", displayMode: .inline)
+		ScrollView {
+			VStack(alignment: .leading, spacing: 0) {
+				HomeScreenProfile()
+				HomeScreenClasses(classes: self.$props.classes, currentClass: self.props.currentClass)
+				HomeScreenAds()
 			}
+			.navigationBarTitle("Home", displayMode: .inline)
 		}
 	}
 }

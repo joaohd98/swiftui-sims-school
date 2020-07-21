@@ -13,16 +13,14 @@ struct ClassesScreen: View {
 	@ObservedObject var props: ClassesScreenModel = ClassesScreenModel()
 	
 	var body: some View {
-		CustomContainerSignIn {
-			VStack(spacing: 0) {
-				ClassesScreenDaysWeek()
-				ClassesScreenCalendar(modalVisible: self.$props.isModalVisible)
-			}
-			.sheet(isPresented: self.$props.isModalVisible) {
-				ClassesScreenSubjectDay()
-			}
-			.navigationBarTitle("Classes", displayMode: .inline)
+		VStack(spacing: 0) {
+			ClassesScreenDaysWeek()
+			ClassesScreenCalendar(modalVisible: self.$props.isModalVisible)
 		}
+		.sheet(isPresented: self.$props.isModalVisible) {
+			ClassesScreenSubjectDay()
+		}
+		.navigationBarTitle("Classes", displayMode: .inline)
 	}
 }
 

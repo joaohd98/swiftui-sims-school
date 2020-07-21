@@ -19,11 +19,7 @@ struct CustomContainerGuest<Content: View>: CustomView {
 	init(@ViewBuilder content: @escaping () -> Content) {
 		self.content = content()
 	}
-	
-//	func getBackgroundColor() -> Color? {
-//		return Color(self.isLoading ? CustomColor.bordergray : nil)
-//	}
-	
+
 	func isLoading(_ newState: Bool) -> CustomContainerGuest<Content> {
 		var copy = self
 		
@@ -36,6 +32,7 @@ struct CustomContainerGuest<Content: View>: CustomView {
 		NavigationView {
 			self.content
 				.disabled(self.isLoading)
+				.opacity(self.isLoading ? 0.5 : 1)
 				.navigationBarTitle("")
 				.navigationBarHidden(true)
 		}
