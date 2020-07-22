@@ -47,7 +47,7 @@ struct MenuScreenOptions: View {
 	
 	func getCard(_ card: (text: String, image: Image)) -> AnyView {
 		if card.text == "Location" {
-			return AnyView(NavigationLink(destination: LocationScreen(), isActive: self.$goLocation) {
+			return AnyView(NavigationLink(destination: LocationScreen().navigationBarTitle("Maps"), isActive: self.$goLocation) {
 				self.cardContent(card)
 			})
 		}

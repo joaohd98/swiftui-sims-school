@@ -7,18 +7,19 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct LocationScreen: View {
-    var body: some View {
-		CustomContainerSignIn {
-			Text("ABC")
-			.navigationBarTitle("Maps")
-		}
-    }
+	@State var region = CLLocationCoordinate2D(latitude: -23.6037231, longitude: -46.7351884)
+	
+	var body: some View {
+		MapView(coordinate: self.region)
+			.frame(maxWidth: .infinity, maxHeight: .infinity)
+	}
 }
 
 struct LocationScreen_Previews: PreviewProvider {
-    static var previews: some View {
-        LocationScreen()
-    }
+	static var previews: some View {
+		LocationScreen()
+	}
 }

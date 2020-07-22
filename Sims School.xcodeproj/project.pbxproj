@@ -38,6 +38,7 @@
 		DC64928024BE1A3D00EDAC0E /* HomeScreenAds.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC64927F24BE1A3D00EDAC0E /* HomeScreenAds.swift */; };
 		DC7FCB8224C8719500406CDF /* LocationScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7FCB8124C8719500406CDF /* LocationScreen.swift */; };
 		DC7FCB8524C88CF600406CDF /* ShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7FCB8424C88CF600406CDF /* ShareSheet.swift */; };
+		DC7FCB8A24C8967A00406CDF /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7FCB8924C8967A00406CDF /* MapView.swift */; };
 		DC89F04724BD704B001964FC /* TabsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC89F04624BD704B001964FC /* TabsScreen.swift */; };
 		DC989EDD24BCEDCA003B79A6 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC989EDC24BCEDCA003B79A6 /* HomeScreen.swift */; };
 		DC989EE524BD0006003B79A6 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC989EE424BD0006003B79A6 /* Layout.swift */; };
@@ -106,6 +107,7 @@
 		DC64927F24BE1A3D00EDAC0E /* HomeScreenAds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenAds.swift; sourceTree = "<group>"; };
 		DC7FCB8124C8719500406CDF /* LocationScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationScreen.swift; sourceTree = "<group>"; };
 		DC7FCB8424C88CF600406CDF /* ShareSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheet.swift; sourceTree = "<group>"; };
+		DC7FCB8924C8967A00406CDF /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		DC89F04624BD704B001964FC /* TabsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabsScreen.swift; sourceTree = "<group>"; };
 		DC989EDC24BCEDCA003B79A6 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		DC989EE424BD0006003B79A6 /* Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
@@ -414,6 +416,14 @@
 			path = "Share Sheet";
 			sourceTree = "<group>";
 		};
+		DC7FCB8824C8966800406CDF /* Map View */ = {
+			isa = PBXGroup;
+			children = (
+				DC7FCB8924C8967A00406CDF /* MapView.swift */,
+			);
+			path = "Map View";
+			sourceTree = "<group>";
+		};
 		DC89F04524BD7036001964FC /* Tabs */ = {
 			isa = PBXGroup;
 			children = (
@@ -591,6 +601,7 @@
 		DCF043F424AD16F900241062 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				DC7FCB8824C8966800406CDF /* Map View */,
 				DC7FCB8324C88CE400406CDF /* Share Sheet */,
 				DC53D72B24C121A9004266CE /* Safari View */,
 				DC1D22D924BE5BE000E1855D /* Slide Horizontal */,
@@ -843,6 +854,7 @@
 				DCB672DA24B2683D0064484D /* HexToUiColor.swift in Sources */,
 				DC53D72624C0EB53004266CE /* CustomUIPageViewController.swift in Sources */,
 				DCB672DF24B29BB60064484D /* Request.swift in Sources */,
+				DC7FCB8A24C8967A00406CDF /* MapView.swift in Sources */,
 				DCF0440D24AE2CF500241062 /* KeyboardHideInputHelper.swift in Sources */,
 				DC989EDD24BCEDCA003B79A6 /* HomeScreen.swift in Sources */,
 				DC4D2CFC24C1E635008FD663 /* ScoresScreenSemesters.swift in Sources */,

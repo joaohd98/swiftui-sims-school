@@ -54,16 +54,12 @@ struct TabsScreen: View {
 		)
 	}
 	
-	func getActualRoute() -> AnyView {
-		return AnyView(viewRouter.tabRoutes[viewRouter.currentView]?.screen)
-	}
-	
 	func getTabIcon(_ geometry: GeometryProxy, tab: TabInformation) -> some View {
 		let currentView = self.viewRouter.currentView
 		let countTab = CGFloat(self.viewRouter.tabRoutes.count)
 		let widthTab = geometry.size.width / countTab
 		
-		return
+		return (
 			Button(action: {
 				withAnimation {
 					self.viewRouter.currentView = tab.type
@@ -79,25 +75,26 @@ struct TabsScreen: View {
 					Image(systemName: tab.icon)
 						.resizable()
 						.aspectRatio(contentMode: .fit)
-						.frame(width: 25, height: 25)
+						.frame(width: 20, height: 20)
 						.foregroundColor(currentView == tab.type ? .blue : .gray)
 						.padding(.bottom, 2)
 					
 					Text(tab.name)
 						.foregroundColor(currentView == tab.type ? .blue : .gray)
-						.font(.system(size: 12, weight: .medium, design: .default))
+						.font(.system(size: 10, weight: .medium, design: .default))
 						.padding(.top, 2)
 					
 					Spacer()
 				}
 			}
 			.frame(width: widthTab, height: geometry.size.height / 10, alignment: .center)
+		)
 	}
 	
 	var body: some View {
 		GeometryReader { geometry in
-			VStack {
-				self.getActualRoute()
+			VStack(spacing: 0) {
+				self.viewRouter.tabRoutes[self.viewRouter.currentView]?.screen
 				HStack(alignment: .center, spacing: 0) {
 					self.getTabIcon(geometry, tab: self.viewRouter.tabRoutes[.HomeScreen]!)
 					self.getTabIcon(geometry, tab: self.viewRouter.tabRoutes[.ScoresScreen]!)
