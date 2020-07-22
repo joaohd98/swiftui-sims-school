@@ -11,7 +11,7 @@ import UIKit
 import FirebaseAuth
 
 struct LoginScreen: View {
-	@State var goHome: Bool = false
+	@Binding var currentUser: User?
 	@ObservedObject var props = LoginScreenModel()
 		
 	func viewDidLoad() {
@@ -30,7 +30,7 @@ struct LoginScreen: View {
 			)
 
 			UserService.signIn(user: user, onSucess: { (user) in
-				self.goHome = true
+				self.currentUser = Auth.auth().currentUser
 			}) { (err) in
 				self.props.isLoading.toggle()
 				self.props.hasError.toggle()
@@ -48,14 +48,12 @@ struct LoginScreen: View {
 						input: self.props.form.inputs[index]
 					)
 				}
-				NavigationLink(destination:  TabsScreen(), isActive: self.$goHome) {
-					LoginScreenSubmitButton(
-						isLoading: self.$props.isLoading,
-						hasError: self.$props.hasError,
-						errorCode: self.$props.errorCode,
-						onButtonPress: self.onSubmitLogin
-					)
-				}
+				LoginScreenSubmitButton(
+					isLoading: self.$props.isLoading,
+					hasError: self.$props.hasError,
+					errorCode: self.$props.errorCode,
+					onButtonPress: self.onSubmitLogin
+				)
 			}
 			.padding(.horizontal)
 			.keyboardAdaptive()
@@ -70,7 +68,9 @@ struct LoginScreen: View {
 }
 
 struct LoginScreen_Previews: PreviewProvider {
+	@State static var currentUser: User? = Auth.auth().currentUser
+
     static var previews: some View {
-        LoginScreen()
+        LoginScreen(currentUser: $currentUser)
     }
 }

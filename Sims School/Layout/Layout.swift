@@ -10,11 +10,13 @@ import SwiftUI
 import FirebaseAuth
 
 struct LayoutView: View {
+	@State var currentUser: User? = Auth.auth().currentUser
+	
 	var body: some View {
-		if Auth.auth().currentUser != nil {
-			return AnyView(TabsScreen())
+		if currentUser != nil {
+			return AnyView(TabsScreen(currentUser: self.$currentUser))
 		} else {
-			return AnyView(LoginScreen())
+			return AnyView(LoginScreen(currentUser: self.$currentUser))
 		}
     }
 }

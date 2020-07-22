@@ -10,14 +10,14 @@ import SwiftUI
 import FirebaseAuth
 
 struct MenuScreenLogout: View {
+	@Binding var currentUser: User?
 	@State var isAlertOpened: Bool = false
-	@State var goLogin: Bool = false
 	
 	func logout() {
 		let firebaseAuth = Auth.auth()
 		do {
 			try firebaseAuth.signOut()
-			self.goLogin.toggle()
+			self.currentUser = nil
 		} catch let signOutError as NSError {
 			print ("Error signing out: %@", signOutError)
 		}
@@ -27,31 +27,29 @@ struct MenuScreenLogout: View {
 	var body: some View {
 		VStack(alignment: .leading, spacing: 15) {
 			Divider()
-			NavigationLink(
-				destination: LoginScreen(),
-				isActive: self.$goLogin) {
-				Button(action: {
-					self.logout()
-				}) {
-					HStack {
-						Image(systemName: "exclamationmark.triangle")
-							.resizable()
-							.aspectRatio(contentMode: .fit)
-							.frame(width: 24, height: 24)
-							.foregroundColor(Color(CustomColor.gray))
-						
-						Text("Sair")
-							.foregroundColor(Color(CustomColor.gray))
-					}
-					.padding(.horizontal, 15)
+			Button(action: {
+				self.logout()
+			}) {
+				HStack {
+					Image(systemName: "exclamationmark.triangle")
+						.resizable()
+						.aspectRatio(contentMode: .fit)
+						.frame(width: 24, height: 24)
+						.foregroundColor(Color(CustomColor.gray))
+					
+					Text("Sair")
+						.foregroundColor(Color(CustomColor.gray))
 				}
+				.padding(.horizontal, 15)
 			}
 		}
 	}
 }
 
 struct MenuScreenLogout_Previews: PreviewProvider {
+	@State static var currentUser: User? = Auth.auth().currentUser
+
 	static var previews: some View {
-		MenuScreenLogout()
+		MenuScreenLogout(currentUser: $currentUser)
 	}
 }
