@@ -11,7 +11,9 @@ import SwiftUI
 struct MenuScreenOptions: View {
 	@Binding var options: [(text: String, image: Image)]
 	@Binding var currentView: TabsRoutes
-
+	@State var goLocation: Bool = false
+	@State var isSharing: Bool = false
+	
 	func onClick(text: String) {
 		switch text {
 		case "Home":
@@ -31,18 +33,44 @@ struct MenuScreenOptions: View {
 			break
 			
 		case "Location":
+			self.goLocation.toggle()
 			break
 			
 		case "Share":
+			self.isSharing.toggle()
 			break
-			
 			
 		default:
 			break
 		}
 	}
 	
-	func getCard(_ card: (text: String, image: Image)) -> some View {
+	func getCard(_ card: (text: String, image: Image)) -> AnyView {
+		if card.text == "Location" {
+			return AnyView(NavigationLink(destination: LocationScreen(), isActive: self.$goLocation) {
+				self.cardContent(card)
+			})
+		}
+			
+		else if card.text == "Share" {
+			let shareText = """
+			Hey,
+
+			Sims School is a simple swiftui app, that I created with so much care
+
+			See the source code at: https://github.com/joaohd98/swiftui-school
+			"""
+			
+			return AnyView(self.cardContent(card).sheet(isPresented: self.$isSharing) {
+				ShareSheet(activityItems: [shareText.trimmingCharacters(in: .whitespacesAndNewlines)])
+			})
+		}
+		
+		return AnyView(self.cardContent(card))
+		
+	}
+	
+	func cardContent(_ card: (text: String, image: Image)) -> some View {
 		Button(action: {
 			self.onClick(text: card.text)
 		}) {
@@ -89,7 +117,7 @@ struct MenuScreenOptions: View {
 struct MenuScreenOptions_Previews: PreviewProvider {
 	@State static var options: [(text: String, image: Image)] = []
 	@State static var currentView: TabsRoutes = .MenuScreen
-
+	
 	static var previews: some View {
 		MenuScreenOptions(options: $options, currentView: self.$currentView)
 	}
