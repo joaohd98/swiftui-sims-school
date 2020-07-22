@@ -31,23 +31,6 @@ class ViewRouter: ObservableObject {
 	@Published var tabRoutes: [TabsRoutes: TabInformation] = [:]
 	
 	init() {
-		tabRoutes[.HomeScreen] = TabInformation(
-			name: "Home", icon: "house.fill", screen: AnyView(HomeScreen()), type: .HomeScreen
-		)
-		tabRoutes[.ScoresScreen] = TabInformation(
-			name: "Scores", icon: "lightbulb.fill", screen: AnyView(ScoresScreen()), type: .ScoresScreen
-		)
-		
-		tabRoutes[.ClassesScreen] = TabInformation(
-			name: "Classes", icon: "folder.fill", screen: AnyView(ClassesScreen()), type: .ClassesScreen
-		)
-		
-		tabRoutes[.TipsScreen] = TabInformation(
-			name: "Tips", icon: "tray.full.fill", screen: AnyView(TipsScreen()), type: .TipsScreen
-		)
-		
-		tabRoutes[.MenuScreen] = TabInformation(
-			name: "Menu", icon: "line.horizontal.3", screen: AnyView(MenuScreen()), type: .MenuScreen
-		)
+	
 	}
 }

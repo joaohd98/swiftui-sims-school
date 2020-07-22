@@ -28,7 +28,7 @@ struct MenuScreenLogout: View {
 		VStack(alignment: .leading, spacing: 15) {
 			Divider()
 			NavigationLink(
-				destination: LoginScreen().navigationBarTitle("").navigationBarHidden(true).navigationBarBackButtonHidden(true),
+				destination: LoginScreen(),
 				isActive: self.$goLogin) {
 				Button(action: {
 					self.logout()

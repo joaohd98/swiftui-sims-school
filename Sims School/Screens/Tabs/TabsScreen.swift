@@ -11,6 +11,42 @@ import SwiftUI
 struct TabsScreen: View {
 	@ObservedObject var viewRouter = ViewRouter()
 	
+	init() {
+		viewRouter.tabRoutes[.HomeScreen] = TabInformation(
+			name: "Home",
+			icon: "house.fill",
+			screen: AnyView(HomeScreen()),
+			type: .HomeScreen
+		)
+		
+		viewRouter.tabRoutes[.ScoresScreen] = TabInformation(
+			name: "Scores",
+			icon: "lightbulb.fill",
+			screen: AnyView(ScoresScreen()),
+			type: .ScoresScreen
+		)
+		
+		viewRouter.tabRoutes[.ClassesScreen] = TabInformation(
+			name: "Classes",
+			icon: "folder.fill",
+			screen: AnyView(ClassesScreen()),
+			type: .ClassesScreen
+		)
+		
+		viewRouter.tabRoutes[.TipsScreen] = TabInformation(
+			name: "Tips",
+			icon: "tray.full.fill",
+			screen: AnyView(TipsScreen()),
+			type: .TipsScreen
+		)
+		
+		viewRouter.tabRoutes[.MenuScreen] = TabInformation(
+			name: "Menu", icon: "line.horizontal.3",
+			screen: AnyView(MenuScreen(currentView: self.$viewRouter.currentView)),
+			type: .MenuScreen
+		)
+	}
+	
 	func getActualRoute() -> AnyView {
 		return AnyView(viewRouter.tabRoutes[viewRouter.currentView]?.screen)
 	}
@@ -39,7 +75,7 @@ struct TabsScreen: View {
 						.frame(width: 25, height: 25)
 						.foregroundColor(currentView == tab.type ? .blue : .gray)
 						.padding(.bottom, 2)
-
+					
 					Text(tab.name)
 						.foregroundColor(currentView == tab.type ? .blue : .gray)
 						.font(.system(size: 12, weight: .medium, design: .default))
@@ -47,24 +83,22 @@ struct TabsScreen: View {
 					
 					Spacer()
 				}
-		}
-		.frame(width: widthTab, height: geometry.size.height / 10, alignment: .center)
+			}
+			.frame(width: widthTab, height: geometry.size.height / 10, alignment: .center)
 	}
-		
+	
 	var body: some View {
-		CustomContainerSignIn {
-			GeometryReader { geometry in
-				VStack {
-					self.getActualRoute()
-					HStack(alignment: .center, spacing: 0) {
-						self.getTabIcon(geometry, tab: self.viewRouter.tabRoutes[.HomeScreen]!)
-						self.getTabIcon(geometry, tab: self.viewRouter.tabRoutes[.ScoresScreen]!)
-						self.getTabIcon(geometry, tab: self.viewRouter.tabRoutes[.ClassesScreen]!)
-						self.getTabIcon(geometry, tab: self.viewRouter.tabRoutes[.TipsScreen]!)
-						self.getTabIcon(geometry, tab: self.viewRouter.tabRoutes[.MenuScreen]!)
-					}
-					.frame(width: geometry.size.width, height: geometry.size.height / 10)
+		GeometryReader { geometry in
+			VStack {
+				self.getActualRoute()
+				HStack(alignment: .center, spacing: 0) {
+					self.getTabIcon(geometry, tab: self.viewRouter.tabRoutes[.HomeScreen]!)
+					self.getTabIcon(geometry, tab: self.viewRouter.tabRoutes[.ScoresScreen]!)
+					self.getTabIcon(geometry, tab: self.viewRouter.tabRoutes[.ClassesScreen]!)
+					self.getTabIcon(geometry, tab: self.viewRouter.tabRoutes[.TipsScreen]!)
+					self.getTabIcon(geometry, tab: self.viewRouter.tabRoutes[.MenuScreen]!)
 				}
+				.frame(width: geometry.size.width, height: geometry.size.height / 10)
 			}
 		}
 	}

@@ -36,6 +36,7 @@
 		DC64927C24BE179B00EDAC0E /* HomeScreenProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC64927B24BE179B00EDAC0E /* HomeScreenProfile.swift */; };
 		DC64927E24BE1A2B00EDAC0E /* HomeScreenClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC64927D24BE1A2B00EDAC0E /* HomeScreenClasses.swift */; };
 		DC64928024BE1A3D00EDAC0E /* HomeScreenAds.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC64927F24BE1A3D00EDAC0E /* HomeScreenAds.swift */; };
+		DC7FCB8224C8719500406CDF /* LocationScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7FCB8124C8719500406CDF /* LocationScreen.swift */; };
 		DC89F04724BD704B001964FC /* TabsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC89F04624BD704B001964FC /* TabsScreen.swift */; };
 		DC989EDD24BCEDCA003B79A6 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC989EDC24BCEDCA003B79A6 /* HomeScreen.swift */; };
 		DC989EE524BD0006003B79A6 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC989EE424BD0006003B79A6 /* Layout.swift */; };
@@ -102,6 +103,7 @@
 		DC64927B24BE179B00EDAC0E /* HomeScreenProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenProfile.swift; sourceTree = "<group>"; };
 		DC64927D24BE1A2B00EDAC0E /* HomeScreenClasses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenClasses.swift; sourceTree = "<group>"; };
 		DC64927F24BE1A3D00EDAC0E /* HomeScreenAds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenAds.swift; sourceTree = "<group>"; };
+		DC7FCB8124C8719500406CDF /* LocationScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationScreen.swift; sourceTree = "<group>"; };
 		DC89F04624BD704B001964FC /* TabsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabsScreen.swift; sourceTree = "<group>"; };
 		DC989EDC24BCEDCA003B79A6 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		DC989EE424BD0006003B79A6 /* Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
@@ -198,9 +200,8 @@
 		DC10078124C75CEE00DB3EE7 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
-				DC10078424C7622100DB3EE7 /* Model */,
-				DC10078524C7622A00DB3EE7 /* Components */,
-				DC10078224C75D0300DB3EE7 /* MenuScreen.swift */,
+				DC7FCB7F24C8716400406CDF /* Sub Screens */,
+				DC7FCB7E24C8715900406CDF /* Screen */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -375,6 +376,32 @@
 				DC64927F24BE1A3D00EDAC0E /* HomeScreenAds.swift */,
 			);
 			path = Ads;
+			sourceTree = "<group>";
+		};
+		DC7FCB7E24C8715900406CDF /* Screen */ = {
+			isa = PBXGroup;
+			children = (
+				DC10078424C7622100DB3EE7 /* Model */,
+				DC10078524C7622A00DB3EE7 /* Components */,
+				DC10078224C75D0300DB3EE7 /* MenuScreen.swift */,
+			);
+			path = Screen;
+			sourceTree = "<group>";
+		};
+		DC7FCB7F24C8716400406CDF /* Sub Screens */ = {
+			isa = PBXGroup;
+			children = (
+				DC7FCB8024C8717E00406CDF /* Location */,
+			);
+			path = "Sub Screens";
+			sourceTree = "<group>";
+		};
+		DC7FCB8024C8717E00406CDF /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				DC7FCB8124C8719500406CDF /* LocationScreen.swift */,
+			);
+			path = Location;
 			sourceTree = "<group>";
 		};
 		DC89F04524BD7036001964FC /* Tabs */ = {
@@ -762,6 +789,7 @@
 				DC989EE524BD0006003B79A6 /* Layout.swift in Sources */,
 				DC05771924BD6104005CC9BC /* CustomContainerSignIn.swift in Sources */,
 				DC4D2CFF24C1E68D008FD663 /* ScoresScreenCardScore.swift in Sources */,
+				DC7FCB8224C8719500406CDF /* LocationScreen.swift in Sources */,
 				DC98E1B524B8AA3E00D4BD76 /* LoginScreenLogo.swift in Sources */,
 				DCF043DF24AD16B600241062 /* AppDelegate.swift in Sources */,
 				DC4D2D0D24C27D85008FD663 /* ClassesScreenSubjectDay.swift in Sources */,
