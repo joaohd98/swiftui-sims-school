@@ -8,10 +8,15 @@ class FirebaseSession: ObservableObject {
 	init() {
 		let user = Auth.auth().currentUser
 		
-		if user != nil {
-			FirebaseDatabase(currentUser: self.setUser(user: user!))
-		}
-		
+		/*
+		 * create database
+		 *
+			if user != nil {
+				FirebaseDatabase(currentUser: self.setUser(user: user!))
+			}
+		 *
+		 */
+
 		self.user = (user != nil) ? self.setUser(user: user!) : nil
 	}
 

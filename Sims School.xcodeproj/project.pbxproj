@@ -59,10 +59,6 @@
 		DCB672DF24B29BB60064484D /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB672DE24B29BB60064484D /* Request.swift */; };
 		DCB672E124B29BC10064484D /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB672E024B29BC10064484D /* Response.swift */; };
 		DCB672E324B29BD10064484D /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB672E224B29BD10064484D /* Service.swift */; };
-		DCD9F3F424C9D66E00B8DB6D /* cover-iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = DCD9F3F024C9D66D00B8DB6D /* cover-iphone.png */; };
-		DCD9F3F524C9D66E00B8DB6D /* cover-ps4.png in Resources */ = {isa = PBXBuildFile; fileRef = DCD9F3F124C9D66D00B8DB6D /* cover-ps4.png */; };
-		DCD9F3F624C9D66E00B8DB6D /* cover-xbox-showcase.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DCD9F3F224C9D66E00B8DB6D /* cover-xbox-showcase.jpg */; };
-		DCD9F3F724C9D66E00B8DB6D /* cover-nintendo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DCD9F3F324C9D66E00B8DB6D /* cover-nintendo.jpg */; };
 		DCF043DF24AD16B600241062 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF043DE24AD16B600241062 /* AppDelegate.swift */; };
 		DCF043E124AD16B600241062 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF043E024AD16B600241062 /* SceneDelegate.swift */; };
 		DCF043E524AD16B800241062 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DCF043E424AD16B800241062 /* Assets.xcassets */; };
@@ -134,10 +130,6 @@
 		DCB672DE24B29BB60064484D /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		DCB672E024B29BC10064484D /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		DCB672E224B29BD10064484D /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
-		DCD9F3F024C9D66D00B8DB6D /* cover-iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cover-iphone.png"; sourceTree = "<group>"; };
-		DCD9F3F124C9D66D00B8DB6D /* cover-ps4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cover-ps4.png"; sourceTree = "<group>"; };
-		DCD9F3F224C9D66E00B8DB6D /* cover-xbox-showcase.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "cover-xbox-showcase.jpg"; sourceTree = "<group>"; };
-		DCD9F3F324C9D66E00B8DB6D /* cover-nintendo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "cover-nintendo.jpg"; sourceTree = "<group>"; };
 		DCF043DB24AD16B600241062 /* Sims School.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sims School.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCF043DE24AD16B600241062 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DCF043E024AD16B600241062 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -439,7 +431,6 @@
 		DC7FCB8B24C8CE3900406CDF /* Firebase */ = {
 			isa = PBXGroup;
 			children = (
-				DCD9F3EF24C9D65A00B8DB6D /* assets */,
 				DC7FCB8C24C8CE6000406CDF /* Database.swift */,
 				DC7FCB9024C8F8C200406CDF /* Session.swift */,
 			);
@@ -550,17 +541,6 @@
 				DCB672E224B29BD10064484D /* Service.swift */,
 			);
 			path = User;
-			sourceTree = "<group>";
-		};
-		DCD9F3EF24C9D65A00B8DB6D /* assets */ = {
-			isa = PBXGroup;
-			children = (
-				DCD9F3F024C9D66D00B8DB6D /* cover-iphone.png */,
-				DCD9F3F324C9D66E00B8DB6D /* cover-nintendo.jpg */,
-				DCD9F3F124C9D66D00B8DB6D /* cover-ps4.png */,
-				DCD9F3F224C9D66E00B8DB6D /* cover-xbox-showcase.jpg */,
-			);
-			path = assets;
 			sourceTree = "<group>";
 		};
 		DCF043D224AD16B600241062 = {
@@ -782,14 +762,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				DC10077F24C7580E00DB3EE7 /* video-vertical.mov in Resources */,
-				DCD9F3F424C9D66E00B8DB6D /* cover-iphone.png in Resources */,
-				DCD9F3F624C9D66E00B8DB6D /* cover-xbox-showcase.jpg in Resources */,
 				DC10078024C7580E00DB3EE7 /* video-horizontal.mp4 in Resources */,
-				DCD9F3F524C9D66E00B8DB6D /* cover-ps4.png in Resources */,
 				DCF043EB24AD16B800241062 /* LaunchScreen.storyboard in Resources */,
 				DC98E1AF24B8A07F00D4BD76 /* GoogleService-Info.plist in Resources */,
 				DCF043E824AD16B800241062 /* Preview Assets.xcassets in Resources */,
-				DCD9F3F724C9D66E00B8DB6D /* cover-nintendo.jpg in Resources */,
 				DCF043E524AD16B800241062 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
