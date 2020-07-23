@@ -22,30 +22,19 @@ protocol DocumentSerializable {
 
 struct ClassesWeekDayResponse {
 	var course: String
-	var day: String
-	var homework: String
-	var test: String
-	
-	var dictionary: [String: Any] {
-		return [
-			"course": course,
-			"day": day,
-			"homework": homework,
-			"test": test
-		]
+	var weekDay: String
+	var hasClass: Bool
+	var place: String
+	var teacher: String
+
+	init(dictionary: [String: Any]) {
+		self.course = dictionary["course"] as! String
+		self.weekDay = dictionary["weekDay"] as! String
+		self.hasClass = dictionary["hasClass"] as! Bool
+		self.place = dictionary["place"] as! String
+		self.teacher = dictionary["teacher"] as! String
+
 	}
 }
 
-extension ClassesWeekDayResponse: DocumentSerializable {
-	
-	init?(dictionary: [String : Any]) {
-		guard let course = dictionary["course"] as? String,
-			let day = dictionary["day"] as? String,
-			let homework = dictionary["homework"] as? String,
-			let test = dictionary["test"] as? String
-			else { return nil }
-		
-		self.init(course: course, day: day, homework: homework, test: test)
-	}
-}
 
