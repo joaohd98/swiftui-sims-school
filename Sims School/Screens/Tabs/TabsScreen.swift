@@ -10,12 +10,9 @@ import SwiftUI
 import FirebaseAuth
 
 struct TabsScreen: View {
-	@Binding var currentUser: User?
 	@ObservedObject var viewRouter = ViewRouter()
 	
-	init(currentUser: Binding<User?>) {
-		self._currentUser = currentUser
-		
+	init() {		
 		viewRouter.tabRoutes[.HomeScreen] = TabInformation(
 			name: "Home",
 			icon: "house.fill",
@@ -47,8 +44,7 @@ struct TabsScreen: View {
 		viewRouter.tabRoutes[.MenuScreen] = TabInformation(
 			name: "Menu", icon: "line.horizontal.3",
 			screen: AnyView(MenuScreen(
-				currentView: self.$viewRouter.currentView,
-				currentUser: self.$currentUser
+				currentView: self.$viewRouter.currentView
 			)),
 			type: .MenuScreen
 		)
@@ -109,9 +105,8 @@ struct TabsScreen: View {
 }
 
 struct TabsScreen_Previews: PreviewProvider {
-	@State static var currentUser: User? = Auth.auth().currentUser
 
 	static var previews: some View {
-		TabsScreen(currentUser: $currentUser)
+		TabsScreen()
 	}
 }

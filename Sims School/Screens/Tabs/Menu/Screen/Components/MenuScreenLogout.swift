@@ -10,25 +10,21 @@ import SwiftUI
 import FirebaseAuth
 
 struct MenuScreenLogout: View {
-	@Binding var currentUser: User?
+    @EnvironmentObject var firebaseSession: FirebaseSession
 	@State var isAlertOpened: Bool = false
 	
 	func logout() {
-		let firebaseAuth = Auth.auth()
-		do {
-			try firebaseAuth.signOut()
-			self.currentUser = nil
-		} catch let signOutError as NSError {
-			print ("Error signing out: %@", signOutError)
-		}
-		
+		try! Auth.auth().signOut()
+		self.firebaseSession.logout()
 	}
 	
 	var body: some View {
 		VStack(alignment: .leading, spacing: 15) {
 			Divider()
 			Button(action: {
-				self.logout()
+				withAnimation {
+					self.logout()
+				}
 			}) {
 				HStack {
 					Image(systemName: "exclamationmark.triangle")
@@ -39,6 +35,8 @@ struct MenuScreenLogout: View {
 					
 					Text("Sair")
 						.foregroundColor(Color(CustomColor.gray))
+					
+					Spacer()
 				}
 				.padding(.horizontal, 15)
 			}
@@ -47,9 +45,7 @@ struct MenuScreenLogout: View {
 }
 
 struct MenuScreenLogout_Previews: PreviewProvider {
-	@State static var currentUser: User? = Auth.auth().currentUser
-
 	static var previews: some View {
-		MenuScreenLogout(currentUser: $currentUser)
+		MenuScreenLogout()
 	}
 }

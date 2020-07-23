@@ -10,16 +10,15 @@ import SwiftUI
 import Firebase
  
 struct MenuScreen: View {
-	@Binding var currentView: TabsRoutes
-	@Binding var currentUser: User?
 	@ObservedObject var props = MenuScreenModel()
-		
+	@Binding var currentView: TabsRoutes
+
 	var body: some View {
 		CustomContainerSignIn {
 			VStack(alignment: .leading) {
 				MenuScreenOptions(options: self.$props.options, currentView: self.$currentView)
 				Spacer()
-				MenuScreenLogout(currentUser: self.$currentUser)
+				MenuScreenLogout()
 			}
 			.padding()
 			.navigationBarTitle("Menu", displayMode: .inline)
@@ -32,9 +31,8 @@ struct MenuScreen: View {
 
 struct MenuScreen_Previews: PreviewProvider {
 	@State static var currentView: TabsRoutes = .MenuScreen
-	@State static var currentUser: User? = Auth.auth().currentUser
-
+	
 	static var previews: some View {
-		MenuScreen(currentView: self.$currentView, currentUser: self.$currentUser)
+		MenuScreen(currentView: self.$currentView)
 	}
 }

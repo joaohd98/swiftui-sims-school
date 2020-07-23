@@ -103,6 +103,7 @@ struct ClassesScreenCalendar: View {
 					self.getDaysCalendar(month: String(index + 1), year: self.year)
 				}
 			}
+			.padding(.bottom, 10)
 		}
 	}
 }

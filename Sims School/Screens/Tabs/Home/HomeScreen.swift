@@ -19,6 +19,7 @@ struct HomeScreen: View {
 					HomeScreenClasses(classes: self.$props.classes, currentClass: self.props.currentClass)
 					HomeScreenAds()
 				}
+				.padding(.bottom, 10)
 				.navigationBarTitle("Home", displayMode: .inline)
 			}
 		}

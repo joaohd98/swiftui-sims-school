@@ -11,7 +11,7 @@ import UIKit
 import FirebaseAuth
 
 struct LoginScreen: View {
-	@Binding var currentUser: User?
+    @EnvironmentObject var firebaseSession: FirebaseSession
 	@ObservedObject var props = LoginScreenModel()
 		
 	func viewDidLoad() {
@@ -29,8 +29,11 @@ struct LoginScreen: View {
 				password: self.props.form.inputs[1].value
 			)
 
-			UserService.signIn(user: user, onSucess: { (user) in
-				self.currentUser = Auth.auth().currentUser
+			//oEnF6abrNybgr4XbeWs1YT4XxlW2
+			UserService.signIn(user: user, onSucess: { user in
+				withAnimation {
+					self.firebaseSession.login(user: user)
+				}
 			}) { (err) in
 				self.props.isLoading.toggle()
 				self.props.hasError.toggle()
@@ -68,9 +71,7 @@ struct LoginScreen: View {
 }
 
 struct LoginScreen_Previews: PreviewProvider {
-	@State static var currentUser: User? = Auth.auth().currentUser
-
     static var previews: some View {
-        LoginScreen(currentUser: $currentUser)
+        LoginScreen()
     }
 }

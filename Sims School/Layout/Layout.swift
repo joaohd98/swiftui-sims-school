@@ -8,21 +8,30 @@
 
 import SwiftUI
 import FirebaseAuth
+import FirebaseFirestore
 
 struct LayoutView: View {
-	@State var currentUser: User? = Auth.auth().currentUser
+    @EnvironmentObject var firebaseSession: FirebaseSession
+
+	var body: some View {		
+		return (
+			ZStack {
+				if firebaseSession.user != nil  {
+					AnyView(TabsScreen())
+						.transition(.scale)
+
+				} else {
+					AnyView(LoginScreen())
+						.transition(.scale)
+				}
+			}
+		)
+	}
 	
-	var body: some View {
-		if currentUser != nil {
-			return AnyView(TabsScreen(currentUser: self.$currentUser))
-		} else {
-			return AnyView(LoginScreen(currentUser: self.$currentUser))
-		}
-    }
 }
 
 struct Layout_Previews: PreviewProvider {
-    static var previews: some View {
-        LayoutView()
-    }
+	static var previews: some View {
+		LayoutView()
+	}
 }

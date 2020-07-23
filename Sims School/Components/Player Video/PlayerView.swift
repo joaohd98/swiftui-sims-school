@@ -32,7 +32,6 @@ class PlayerView: UIView {
 			player.seek(to: CMTime(seconds: 0, preferredTimescale: CMTimeScale(1)))
 		})
 		
-		
 		layer.addSublayer(playerLayer)
 	}
 	

@@ -11,17 +11,12 @@ import FirebaseAuth
 class UserService {
 	static func signIn(
 		user: UserRequest,
-		onSucess: @escaping (_ response: UserResponse) -> Void,
+		onSucess: @escaping (_ user: User) -> Void,
 		onError: @escaping (_ error: AuthErrorCode) -> Void
 	) {
-		FirebaseAuth.Auth.auth().signIn(withEmail: user.email, password: user.password) { (result, error) in
+		Auth.auth().signIn(withEmail: user.email, password: user.password) { (result, error) in
 			if let res = result {
-				onSucess(UserResponse.init(
-					uid: res.user.uid,
-					email: res.user.email!,
-					photoURL: res.user.photoURL,
-					name: res.user.displayName!
-				))
+				onSucess(res.user)
 			}
 			else if let err = error{
 				onError(AuthErrorCode(rawValue: err._code)!)
