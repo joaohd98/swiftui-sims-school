@@ -29,7 +29,6 @@ struct LoginScreen: View {
 				password: self.props.form.inputs[1].value
 			)
 
-			//oEnF6abrNybgr4XbeWs1YT4XxlW2
 			UserService.signIn(user: user, onSucess: { user in
 				withAnimation {
 					self.firebaseSession.login(user: user)

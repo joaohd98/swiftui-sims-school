@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19F101" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="AdsEntity" representedClassName="AdsEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="image" optional="YES" attributeType="String"/>
+        <attribute name="url" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="CalendarEntity" representedClassName="CalendarEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="course" optional="YES" attributeType="String"/>
+        <attribute name="day" optional="YES" attributeType="String"/>
+        <attribute name="homework" optional="YES" attributeType="String"/>
+        <attribute name="test" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="ClassEntity" representedClassName="ClassEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="course" optional="YES" attributeType="String"/>
+        <attribute name="hasClass" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="place" optional="YES" attributeType="String"/>
+        <attribute name="teacher" optional="YES" attributeType="String"/>
+        <attribute name="weekday" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="ScoreEntity" representedClassName="ScoreEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="av1" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="av2" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="skips" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="many_one_semester" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SemesterEntity" inverseName="one_many_score" inverseEntity="SemesterEntity"/>
+    </entity>
+    <entity name="SemesterEntity" representedClassName="SemesterEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="number" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="one_many_score" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ScoreEntity" inverseName="many_one_semester" inverseEntity="ScoreEntity"/>
+    </entity>
+    <entity name="TipsEntity" representedClassName="TipsEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="one_many_tipsMedias" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TipsMediasEntity" inverseName="many_one_tips" inverseEntity="TipsMediasEntity"/>
+    </entity>
+    <entity name="TipsMediasEntity" representedClassName="TipsMediasEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="image" optional="YES" attributeType="String"/>
+        <attribute name="url" optional="YES" attributeType="String"/>
+        <attribute name="video" optional="YES" attributeType="String"/>
+        <relationship name="many_one_tips" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TipsEntity" inverseName="one_many_tipsMedias" inverseEntity="TipsEntity"/>
+    </entity>
+    <entity name="UserEntity" representedClassName="UserEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="actual_class" optional="YES" attributeType="String"/>
+        <attribute name="course" optional="YES" attributeType="String"/>
+        <attribute name="cover_picture" optional="YES" attributeType="String"/>
+        <attribute name="id_class" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="profile_picture" optional="YES" attributeType="String"/>
+        <attribute name="rm" optional="YES" attributeType="String"/>
+        <attribute name="uuid" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+    </entity>
+    <elements>
+        <element name="UserEntity" positionX="-63" positionY="-18" width="128" height="163"/>
+        <element name="AdsEntity" positionX="-54" positionY="-9" width="128" height="73"/>
+        <element name="CalendarEntity" positionX="-36" positionY="9" width="128" height="103"/>
+        <element name="ClassEntity" positionX="-18" positionY="27" width="128" height="118"/>
+        <element name="ScoreEntity" positionX="0" positionY="45" width="128" height="118"/>
+        <element name="TipsEntity" positionX="-343.83203125" positionY="171.36328125" width="128" height="73"/>
+        <element name="SemesterEntity" positionX="0" positionY="63" width="128" height="73"/>
+        <element name="TipsMediasEntity" positionX="-21.046875" positionY="231.44140625" width="128" height="103"/>
+    </elements>
+</model>

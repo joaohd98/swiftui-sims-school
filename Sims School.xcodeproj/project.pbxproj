@@ -59,6 +59,7 @@
 		DCB672DF24B29BB60064484D /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB672DE24B29BB60064484D /* Request.swift */; };
 		DCB672E124B29BC10064484D /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB672E024B29BC10064484D /* Response.swift */; };
 		DCB672E324B29BD10064484D /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB672E224B29BD10064484D /* Service.swift */; };
+		DCD9F3FE24CA2C6800B8DB6D /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD9F3FD24CA2C6800B8DB6D /* Assets.swift */; };
 		DCF043DF24AD16B600241062 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF043DE24AD16B600241062 /* AppDelegate.swift */; };
 		DCF043E124AD16B600241062 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF043E024AD16B600241062 /* SceneDelegate.swift */; };
 		DCF043E524AD16B800241062 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DCF043E424AD16B800241062 /* Assets.xcassets */; };
@@ -71,6 +72,7 @@
 		DCF0440924AE1E0400241062 /* FormModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF0440824AE1E0400241062 /* FormModel.swift */; };
 		DCF0440D24AE2CF500241062 /* KeyboardHideInputHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF0440C24AE2CF500241062 /* KeyboardHideInputHelper.swift */; };
 		DCF0440F24AE393500241062 /* FormRules.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF0440E24AE393500241062 /* FormRules.swift */; };
+		DCF6EEC924CB177A00C026E9 /* SimsSchool.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DCF6EEC724CB177A00C026E9 /* SimsSchool.xcdatamodeld */; };
 		DCFD821E24C61492008E3C05 /* TipsScreenFullScreenImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCFD821D24C61492008E3C05 /* TipsScreenFullScreenImage.swift */; };
 /* End PBXBuildFile section */
 
@@ -130,6 +132,7 @@
 		DCB672DE24B29BB60064484D /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		DCB672E024B29BC10064484D /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		DCB672E224B29BD10064484D /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		DCD9F3FD24CA2C6800B8DB6D /* Assets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
 		DCF043DB24AD16B600241062 /* Sims School.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sims School.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCF043DE24AD16B600241062 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DCF043E024AD16B600241062 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -144,6 +147,7 @@
 		DCF0440824AE1E0400241062 /* FormModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormModel.swift; sourceTree = "<group>"; };
 		DCF0440C24AE2CF500241062 /* KeyboardHideInputHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardHideInputHelper.swift; sourceTree = "<group>"; };
 		DCF0440E24AE393500241062 /* FormRules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormRules.swift; sourceTree = "<group>"; };
+		DCF6EEC824CB177A00C026E9 /* SimsSchool.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SimsSchool.xcdatamodel; sourceTree = "<group>"; };
 		DCFD821D24C61492008E3C05 /* TipsScreenFullScreenImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsScreenFullScreenImage.swift; sourceTree = "<group>"; };
 		E3B0308193EC0AD9A9EBDCFD /* Pods-swiftui-escola.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-swiftui-escola.release.xcconfig"; path = "Target Support Files/Pods-swiftui-escola/Pods-swiftui-escola.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -433,6 +437,7 @@
 			children = (
 				DC7FCB8C24C8CE6000406CDF /* Database.swift */,
 				DC7FCB9024C8F8C200406CDF /* Session.swift */,
+				DCD9F3FD24CA2C6800B8DB6D /* Assets.swift */,
 			);
 			path = Firebase;
 			sourceTree = "<group>";
@@ -573,6 +578,7 @@
 				DCF0440A24AE224200241062 /* Services */,
 				DCF043FD24AD1C5700241062 /* Theme */,
 				DC98E1AE24B8A07F00D4BD76 /* GoogleService-Info.plist */,
+				DCF6EEC724CB177A00C026E9 /* SimsSchool.xcdatamodeld */,
 				DC10077E24C7580E00DB3EE7 /* video-horizontal.mp4 */,
 				DC10077D24C7580E00DB3EE7 /* video-vertical.mov */,
 				DCF043DE24AD16B600241062 /* AppDelegate.swift */,
@@ -833,6 +839,7 @@
 				DCAAF78D24C09D6F00F0518C /* ClassesWeekDayResponse.swift in Sources */,
 				DCB672E124B29BC10064484D /* Response.swift in Sources */,
 				DC64927C24BE179B00EDAC0E /* HomeScreenProfile.swift in Sources */,
+				DCD9F3FE24CA2C6800B8DB6D /* Assets.swift in Sources */,
 				DC4D2D0224C219FE008FD663 /* ClassesScreen.swift in Sources */,
 				DC4D2D0424C22DDA008FD663 /* Date.swift in Sources */,
 				DC64927E24BE1A2B00EDAC0E /* HomeScreenClasses.swift in Sources */,
@@ -857,6 +864,7 @@
 				DC10078324C75D0300DB3EE7 /* MenuScreen.swift in Sources */,
 				DC10077C24C74AD200DB3EE7 /* PlayerView.swift in Sources */,
 				DC10078724C7628700DB3EE7 /* MenuScreenModel.swift in Sources */,
+				DCF6EEC924CB177A00C026E9 /* SimsSchool.xcdatamodeld in Sources */,
 				DCB672E324B29BD10064484D /* Service.swift in Sources */,
 				DC98E1B224B8A18100D4BD76 /* LoginScreenSubmitButton.swift in Sources */,
 				DC07B47124C5EC7E00840714 /* TipsScreenList.swift in Sources */,
@@ -1074,6 +1082,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		DCF6EEC724CB177A00C026E9 /* SimsSchool.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				DCF6EEC824CB177A00C026E9 /* SimsSchool.xcdatamodel */,
+			);
+			currentVersion = DCF6EEC824CB177A00C026E9 /* SimsSchool.xcdatamodel */;
+			path = SimsSchool.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = DCF043D324AD16B600241062 /* Project object */;
 }

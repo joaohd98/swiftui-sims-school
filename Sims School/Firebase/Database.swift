@@ -43,10 +43,12 @@ class FirebaseDatabase {
 		let collection = db.collection("user")
 		let document = collection.document(user.uid)
 		
-		document.setData([
-			"class": "ABC123",
+		document.setData([ 
+			"name": "Hal Jordan",
+			"actual_class": "ABC123",
 			"course": "Software Enginner",
-			"cover": "",
+			"cover_picture": "",
+			"profile_picture": "",
 			"id_class": self.idClass,
 			"rm": "2216105480"
 		])
@@ -193,8 +195,8 @@ class FirebaseDatabase {
 	}
 	
 	func addTips() {
-		let collection = db.collection("tips")
-		let document = collection.document(self.idClass)
+//		let collection = db.collection("tips")
+//		let document = collection.document(self.idClass)
 		
 	}
 	

@@ -1,4 +1,5 @@
 import SwiftUI
+import CoreData
 
 struct UserResponse {
 	var uid: String
@@ -6,3 +7,4 @@ struct UserResponse {
 	var photoURL: URL?
 	var name: String
 }
+
