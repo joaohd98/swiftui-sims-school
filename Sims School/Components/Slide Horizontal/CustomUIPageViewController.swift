@@ -28,9 +28,12 @@ struct CustomUIPageViewController: UIViewControllerRepresentable {
 		pageViewController.dataSource = context.coordinator
 		pageViewController.delegate = context.coordinator
 		
-		pageViewController.setViewControllers(
-			[controllers[currentPage]], direction: .forward, animated: true
-		)
+		if controllers.count > 0 {
+			pageViewController.setViewControllers(
+				[controllers[currentPage]], direction: .forward, animated: true
+			)
+		}
+		
 		
 		return pageViewController
 	}
@@ -78,7 +81,7 @@ struct CustomUIPageViewController: UIViewControllerRepresentable {
 			if completed,
 				let visibleViewController = pageViewController.viewControllers?.first,
 				let index = parent.controllers.firstIndex(of: visibleViewController) {
-
+				
 				parent.currentPage = index
 			}
 		}

@@ -18,6 +18,7 @@ class LoginScreenModel: ObservableObject {
 		FormInputModel.init(
 			name: "email",
 			placeholder: "Email",
+			value: "teste@mail.com",
 			keyboardReturnText: .next,
 			keyboardType: .emailAddress,
 			rules: [
@@ -35,6 +36,7 @@ class LoginScreenModel: ObservableObject {
 		FormInputModel.init(
 			name: "password",
 			placeholder: "Senha",
+			value: "abc123",
 			isPassword: true,
 			rules: [
 				FormRulesModel.init(

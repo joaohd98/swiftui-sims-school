@@ -21,9 +21,16 @@ class UserService {
 				let docUser = db.collection("user").document(res.user.uid)
 
 				docUser.getDocument { (document, error) in
-					if let document = document, document.exists, var data = document.data() {
-						data["uid"] = res.user.uid
-						onSucess(UserResponse(data: data))
+					if let document = document, document.exists, var dictionary = document.data() {
+						
+						let group = DispatchGroup()
+						
+						dictionary["uid"] = res.user.uid
+						let response = UserResponse(dictionary: dictionary, group: group)
+						
+						group.notify(queue: .main) {
+							onSucess(response)
+						}
 					}
 						
 					else {

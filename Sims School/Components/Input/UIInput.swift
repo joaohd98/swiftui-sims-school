@@ -25,6 +25,11 @@ struct UIInput: UIViewRepresentable {
 		let fontColor = UIColor.init { (trait) -> UIColor in
 			return trait.userInterfaceStyle == .dark ? .white : .black
 		}
+		
+		if input.keyboardType == .emailAddress {
+			textField.autocapitalizationType = .none
+		}
+		
 		textField.textColor = fontColor
 		textField.returnKeyType = input.keyboardReturnText
 		textField.keyboardType = input.keyboardType

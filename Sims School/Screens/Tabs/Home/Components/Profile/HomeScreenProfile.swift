@@ -9,6 +9,8 @@
 import SwiftUI
 
 struct HomeScreenProfile: View {
+	@Binding var user: UserEntity?
+	
     var body: some View {
 		VStack(alignment: .leading, spacing: 5) {
 			Image("cover")
@@ -30,7 +32,7 @@ struct HomeScreenProfile: View {
 				.background(Color.white.shadow(radius: 2))
 
 				VStack(alignment: .leading, spacing: 5) {
-					Text("Renan Sobreira Miranda")
+					Text(self.user?.name ?? "")
 						.foregroundColor(Color(CustomColor.gray))
 						.font(.system(size: 16, weight: .bold))
 
@@ -39,26 +41,26 @@ struct HomeScreenProfile: View {
 							.foregroundColor(Color(CustomColor.gray))
 							.font(.system(size: 14, weight: .bold))
 
-						Text("2216105480")
+						Text(self.user?.rm ?? "")
 							.foregroundColor(Color(CustomColor.gray))
 							.font(.system(size: 14, weight: .semibold))
 
 					}
 				}
 				.padding(.leading, 125)
-				.padding(.top, -55)
+				.padding(.top, -50)
 
 				HStack(alignment: .firstTextBaseline) {
 					Text("Turma:")
 						.foregroundColor(Color(CustomColor.gray))
 						.font(.system(size: 16, weight: .bold))
 
-					Text("22CLD")
+					Text(self.user?.actual_class ?? "")
 						.foregroundColor(Color(CustomColor.gray))
 						.font(.system(size: 16, weight: .semibold))
 				}
 
-				Text("MBA em Cloud Computing")
+				Text(self.user?.course ?? "")
 					.foregroundColor(Color(CustomColor.gray))
 					.font(.system(size: 16, weight: .bold))
 			}
@@ -70,8 +72,10 @@ struct HomeScreenProfile: View {
 }
 
 struct HomeScreenProfile_Previews: PreviewProvider {
+	@State static var user: UserEntity? = nil
+	
     static var previews: some View {
-        HomeScreenProfile()
+		HomeScreenProfile(user: self.$user)
 			.previewLayout(.fixed(width: UIScreen.screenWidth, height: 300))
     }
 }

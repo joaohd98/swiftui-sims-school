@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 class HomeScreenModel: ObservableObject {
 	@Published var classes: [ClassesResponse] = [
@@ -17,4 +18,11 @@ class HomeScreenModel: ObservableObject {
 		ClassesResponse(text: "MNO")
 	]
 	@Published var currentClass: Int = 0
+	@Published var user: UserEntity? = nil
+
+	func getFetchRequests(users: FetchedResults<UserEntity>) {
+		if users.count > 0 {
+			self.user = users[0]
+		}
+	}
 }

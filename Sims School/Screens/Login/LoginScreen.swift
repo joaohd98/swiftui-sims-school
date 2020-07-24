@@ -14,7 +14,7 @@ struct LoginScreen: View {
     @EnvironmentObject var firebaseSession: FirebaseSession
 	@Environment(\.managedObjectContext) var managedObjectContext
 	@ObservedObject var props = LoginScreenModel()
-		
+	
 	func viewDidLoad() {
 		self.props.form.onSubmit = onSubmitLogin
 	}
@@ -33,8 +33,7 @@ struct LoginScreen: View {
 
 			UserService.signIn(user: user, onSucess: { user in
 				withAnimation {
-					print("user", user.name)
-					
+					user.saveContext(managedObjectContext: self.managedObjectContext)
 					self.firebaseSession.login()
 				}
 			}) { (err) in

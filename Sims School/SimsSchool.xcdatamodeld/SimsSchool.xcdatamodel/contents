@@ -41,10 +41,10 @@
     <entity name="UserEntity" representedClassName="UserEntity" syncable="YES" codeGenerationType="class">
         <attribute name="actual_class" optional="YES" attributeType="String"/>
         <attribute name="course" optional="YES" attributeType="String"/>
-        <attribute name="cover_picture" optional="YES" attributeType="String"/>
+        <attribute name="cover_picture" optional="YES" attributeType="URI"/>
         <attribute name="id_class" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
-        <attribute name="profile_picture" optional="YES" attributeType="String"/>
+        <attribute name="profile_picture" optional="YES" attributeType="URI"/>
         <attribute name="rm" optional="YES" attributeType="String"/>
         <attribute name="uid" optional="YES" attributeType="String"/>
     </entity>
