@@ -3,37 +3,32 @@ import Firebase
 import FirebaseAuth
 
 class FirebaseSession: ObservableObject {
-	@Published var user: UserResponse?
+	@Published var isLogged: Bool = Auth.auth().currentUser != nil
 
 	init() {
-		let user = Auth.auth().currentUser
 		
 		/*
 		 * create database
 		 *
 			if user != nil {
-				FirebaseDatabase(currentUser: self.setUser(user: user!))
+				self.database.initFirebaseDataBase(currentUser: self.setUser(user: user!))
 			}
 		 *
 		 */
+		
+		let user = Auth.auth().currentUser
+		
+		if user != nil {
+			FirebaseDatabase().initFirebaseDataBase(currentUser: user)
+		}
 
-		self.user = (user != nil) ? self.setUser(user: user!) : nil
 	}
 
-	func login(user: User) {
-		self.user = self.setUser(user: user)
+	func login() {
+		self.isLogged = true
 	}
 	
 	func logout() {
-		self.user = nil
-	}
-	
-	func setUser(user: User) -> UserResponse {
-		UserResponse(
-			uid: user.uid,
-			email: user.email!,
-			photoURL: user.photoURL,
-			name: user.displayName!
-		)
+		self.isLogged = false
 	}
 }

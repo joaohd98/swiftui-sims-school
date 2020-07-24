@@ -36,6 +36,8 @@
 		DC64927C24BE179B00EDAC0E /* HomeScreenProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC64927B24BE179B00EDAC0E /* HomeScreenProfile.swift */; };
 		DC64927E24BE1A2B00EDAC0E /* HomeScreenClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC64927D24BE1A2B00EDAC0E /* HomeScreenClasses.swift */; };
 		DC64928024BE1A3D00EDAC0E /* HomeScreenAds.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC64927F24BE1A3D00EDAC0E /* HomeScreenAds.swift */; };
+		DC74CF8424CB229000EFBFA0 /* ViewCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC74CF8324CB228F00EFBFA0 /* ViewCoreData.swift */; };
+		DC74CF8624CB247800EFBFA0 /* DatabaseEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC74CF8524CB247800EFBFA0 /* DatabaseEntity.swift */; };
 		DC7FCB8224C8719500406CDF /* LocationScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7FCB8124C8719500406CDF /* LocationScreen.swift */; };
 		DC7FCB8524C88CF600406CDF /* ShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7FCB8424C88CF600406CDF /* ShareSheet.swift */; };
 		DC7FCB8A24C8967A00406CDF /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7FCB8924C8967A00406CDF /* MapView.swift */; };
@@ -109,6 +111,8 @@
 		DC64927B24BE179B00EDAC0E /* HomeScreenProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenProfile.swift; sourceTree = "<group>"; };
 		DC64927D24BE1A2B00EDAC0E /* HomeScreenClasses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenClasses.swift; sourceTree = "<group>"; };
 		DC64927F24BE1A3D00EDAC0E /* HomeScreenAds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenAds.swift; sourceTree = "<group>"; };
+		DC74CF8324CB228F00EFBFA0 /* ViewCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCoreData.swift; sourceTree = "<group>"; };
+		DC74CF8524CB247800EFBFA0 /* DatabaseEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseEntity.swift; sourceTree = "<group>"; };
 		DC7FCB8124C8719500406CDF /* LocationScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationScreen.swift; sourceTree = "<group>"; };
 		DC7FCB8424C88CF600406CDF /* ShareSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheet.swift; sourceTree = "<group>"; };
 		DC7FCB8924C8967A00406CDF /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
@@ -436,6 +440,7 @@
 			isa = PBXGroup;
 			children = (
 				DC7FCB8C24C8CE6000406CDF /* Database.swift */,
+				DC74CF8524CB247800EFBFA0 /* DatabaseEntity.swift */,
 				DC7FCB9024C8F8C200406CDF /* Session.swift */,
 				DCD9F3FD24CA2C6800B8DB6D /* Assets.swift */,
 			);
@@ -687,6 +692,7 @@
 				DC98E1BD24B8ED4B00D4BD76 /* ScreenSize.swift */,
 				DC98E1BF24B8EE8000D4BD76 /* PaddingTextFieldHorizontal.swift */,
 				DC4D2D0324C22DDA008FD663 /* Date.swift */,
+				DC74CF8324CB228F00EFBFA0 /* ViewCoreData.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -836,6 +842,7 @@
 				DCF043DF24AD16B600241062 /* AppDelegate.swift in Sources */,
 				DC4D2D0D24C27D85008FD663 /* ClassesScreenSubjectDay.swift in Sources */,
 				DCF043FF24AD1D5900241062 /* Colors.swift in Sources */,
+				DC74CF8624CB247800EFBFA0 /* DatabaseEntity.swift in Sources */,
 				DCAAF78D24C09D6F00F0518C /* ClassesWeekDayResponse.swift in Sources */,
 				DCB672E124B29BC10064484D /* Response.swift in Sources */,
 				DC64927C24BE179B00EDAC0E /* HomeScreenProfile.swift in Sources */,
@@ -857,6 +864,7 @@
 				DC64927624BDF27400EDAC0E /* ScoresScreen.swift in Sources */,
 				DC198D3E24C3D2B000AF27B5 /* ClassesScreenModel.swift in Sources */,
 				DC4D2D0924C27D5F008FD663 /* ClassesScreenCalendar.swift in Sources */,
+				DC74CF8424CB229000EFBFA0 /* ViewCoreData.swift in Sources */,
 				DC10078924C77D7100DB3EE7 /* MenuScreenOptions.swift in Sources */,
 				DCF043FC24AD1ABD00241062 /* CustomInput.swift in Sources */,
 				DC64928024BE1A3D00EDAC0E /* HomeScreenAds.swift in Sources */,

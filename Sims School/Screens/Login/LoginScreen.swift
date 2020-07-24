@@ -12,6 +12,7 @@ import FirebaseAuth
 
 struct LoginScreen: View {
     @EnvironmentObject var firebaseSession: FirebaseSession
+	@Environment(\.managedObjectContext) var managedObjectContext
 	@ObservedObject var props = LoginScreenModel()
 		
 	func viewDidLoad() {
@@ -26,12 +27,15 @@ struct LoginScreen: View {
 			
 			let user = UserRequest.init(
 				email: self.props.form.inputs[0].value,
-				password: self.props.form.inputs[1].value
+				password: self.props.form.inputs[1].value,
+				firebaseSession: self.firebaseSession
 			)
 
 			UserService.signIn(user: user, onSucess: { user in
 				withAnimation {
-					self.firebaseSession.login(user: user)
+					print("user", user.name)
+					
+					self.firebaseSession.login()
 				}
 			}) { (err) in
 				self.props.isLoading.toggle()

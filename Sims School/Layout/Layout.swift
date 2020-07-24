@@ -16,7 +16,7 @@ struct LayoutView: View {
 	var body: some View {		
 		return (
 			ZStack {
-				if firebaseSession.user != nil  {
+				if firebaseSession.isLogged  {
 					AnyView(TabsScreen())
 						.transition(.scale)
 

@@ -11,22 +11,14 @@ import FirebaseFirestore
 import FirebaseAuth
 import FirebaseStorage
 
-class FirebaseDatabase {
-	var db: Firestore!
-	var storage: Storage
+class FirebaseDatabase {	
+	static var db: Firestore = Firestore.firestore()
+	static var storage: Storage = Storage.storage()
 
 	//var idClass = UUID().uuidString
-	var idClass = "0CA31E26-3FD2-4FFC-83E7-1736330"
+	private var idClass = "0CA31E26-3FD2-4FFC-83E7-1736330"
 	
-	init(currentUser: UserResponse?) {
-		// [START setup]
-		let settings = FirestoreSettings()
-		
-		Firestore.firestore().settings = settings
-		// [END setup]
-		db = Firestore.firestore()
-		storage = Storage.storage()
-
+	func initFirebaseDataBase(currentUser: User?) {
 		if let user = currentUser {
 			self.addUserInformation(user: user)
 			self.addClass()
@@ -36,26 +28,25 @@ class FirebaseDatabase {
 			self.addTips()
 
 		}
-		
 	}
 	
-	func addUserInformation(user: UserResponse) {
-		let collection = db.collection("user")
+	private func addUserInformation(user: User) {
+		let collection = FirebaseDatabase.db.collection("user")
 		let document = collection.document(user.uid)
 		
-		document.setData([ 
+		document.setData([
 			"name": "Hal Jordan",
 			"actual_class": "ABC123",
 			"course": "Software Enginner",
-			"cover_picture": "",
-			"profile_picture": "",
+			"cover_picture": "cover-picture.jpg",
+			"profile_picture": "profile-picture.png",
 			"id_class": self.idClass,
 			"rm": "2216105480"
 		])
 	}
 	
-	func addClass() {
-		let collection = db.collection("classes")
+	private func addClass() {
+		let collection = FirebaseDatabase.db.collection("classes")
 		let document = collection.document(self.idClass)
 		
 		document.setData([
@@ -113,8 +104,8 @@ class FirebaseDatabase {
 		])
 	}
 	
-	func getClasses(onComplete:  @escaping (_ weekDays: [ClassesWeekDayResponse]) -> Void) {
-		let documentClass = db.collection("classes").document(self.idClass)
+	private func getClasses(onComplete:  @escaping (_ weekDays: [ClassesWeekDayResponse]) -> Void) {
+		let documentClass = FirebaseDatabase.db.collection("classes").document(self.idClass)
 		
 		documentClass.getDocument { (document, error) in
 			if let document = document, document.exists {
@@ -128,8 +119,8 @@ class FirebaseDatabase {
 		
 	}
 	
-	func addCalendar() {
-		let documentCalendar = db.collection("calendar").document(self.idClass)
+	private func addCalendar() {
+		let documentCalendar = FirebaseDatabase.db.collection("calendar").document(self.idClass)
 		let year = String(Calendar.current.component(.year, from: Date()))
 
 		var calendar: [[String: Any]] = []
@@ -160,8 +151,8 @@ class FirebaseDatabase {
 		}
 	}
 	
-	func addScores(user: UserResponse) {
-		let collection = db.collection("score")
+	private func addScores(user: User) {
+		let collection = FirebaseDatabase.db.collection("score")
 		let document = collection.document(user.uid)
 		var semesters: [[String: Any]]  = []
 		
@@ -194,14 +185,14 @@ class FirebaseDatabase {
 		
 	}
 	
-	func addTips() {
+	private func addTips() {
 //		let collection = db.collection("tips")
 //		let document = collection.document(self.idClass)
 		
 	}
 	
 	
-	func addAds() {
+	private func addAds() {
 	
 	}
 	
