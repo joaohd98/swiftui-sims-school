@@ -10,19 +10,32 @@ import Foundation
 import SwiftUI
 
 class HomeScreenModel: ObservableObject {
-	@Published var classes: [ClassesResponse] = [
-		ClassesResponse(text: "ABC"),
-		ClassesResponse(text: "DEF"),
-		ClassesResponse(text: "GHI"),
-		ClassesResponse(text: "JKL"),
-		ClassesResponse(text: "MNO")
-	]
+	@Published var user: UserResponse? = nil
+	@Published var classes: [ClassResponse] = []
 	@Published var currentClass: Int = 0
-	@Published var user: UserEntity? = nil
-
-	func getFetchRequests(users: FetchedResults<UserEntity>) {
+	
+	func getUserRequest(users: FetchedResults<UserEntity>) {
 		if users.count > 0 {
-			self.user = users[0]
+			self.user = UserResponse(user: users[0])
 		}
+	}
+	
+	func getClassesRequest(storagedClasses: FetchedResults<ClassEntity>) {
+		if let id_class = self.user?.id_class {
+			ClassService.getClasses(
+				request: ClassRequest(id_class: id_class),
+				onSucess: { classes in
+					self.classes = classes
+				},
+				onError: {
+					print("error")
+
+				}
+			)
+		}
+	}
+	
+	func getAdsRequest(ads: FetchedResults<AdsEntity>) {
+		
 	}
 }

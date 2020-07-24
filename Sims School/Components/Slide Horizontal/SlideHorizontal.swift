@@ -12,7 +12,6 @@ struct SlideHorizontal<Page: View>: View {
 	var hasDots: Bool
 	@State var currentPage = 0
 	
-
 	init(_ views: [Page], hasDots: Bool) {
 		self.viewControllers = views.map { UIHostingController(rootView: $0) }
 		self.hasDots = hasDots

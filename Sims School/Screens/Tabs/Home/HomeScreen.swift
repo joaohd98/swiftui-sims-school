@@ -10,10 +10,14 @@ import SwiftUI
 
 struct HomeScreen: View {
 	@FetchRequest(entity: UserEntity.entity(), sortDescriptors: []) var users: FetchedResults<UserEntity>
+	@FetchRequest(entity: ClassEntity.entity(), sortDescriptors: []) var classes: FetchedResults<ClassEntity>
+	@FetchRequest(entity: AdsEntity.entity(), sortDescriptors: []) var ads: FetchedResults<AdsEntity>
 	@ObservedObject var props: HomeScreenModel = HomeScreenModel()
 	
 	func viewDidLoad() {
-		self.props.getFetchRequests(users: self.users)
+		self.props.getUserRequest(users: self.users)
+		self.props.getClassesRequest(storagedClasses: self.classes)
+		self.props.getAdsRequest(ads: self.ads)
 	}
 	
     var body: some View {
@@ -21,7 +25,9 @@ struct HomeScreen: View {
 			ScrollView {
 				VStack(alignment: .leading, spacing: 0) {
 					HomeScreenProfile(user: self.$props.user)
-					HomeScreenClasses(classes: self.$props.classes, currentClass: self.props.currentClass)
+					if self.props.classes.count > 0 {
+						HomeScreenClasses(classes: self.$props.classes, currentClass: self.props.currentClass)
+					}
 					HomeScreenAds()
 				}
 				.padding(.bottom, 10)

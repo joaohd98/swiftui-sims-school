@@ -34,11 +34,16 @@ struct CustomUIPageViewController: UIViewControllerRepresentable {
 			)
 		}
 		
-		
 		return pageViewController
 	}
 	
-	func updateUIViewController(_ pageViewController: UIPageViewController, context: Context) {}
+	func updateUIViewController(_ pageViewController: UIPageViewController, context: Context) {
+		if controllers.count > 0 {
+			pageViewController.setViewControllers(
+				[controllers[currentPage]], direction: .forward, animated: true
+			)
+		}
+	}
 	
 	class Coordinator: NSObject, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
 		var parent: CustomUIPageViewController

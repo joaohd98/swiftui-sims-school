@@ -104,14 +104,14 @@ class FirebaseDatabase {
 		])
 	}
 	
-	private func getClasses(onComplete:  @escaping (_ weekDays: [ClassesWeekDayResponse]) -> Void) {
+	private func getClasses(onComplete:  @escaping (_ weekDays: [ClassResponse]) -> Void) {
 		let documentClass = FirebaseDatabase.db.collection("classes").document(self.idClass)
 		
 		documentClass.getDocument { (document, error) in
 			if let document = document, document.exists {
 				
 				let days = document.data()!["days"] as! [[String: Any]]
-				let weekDays = days.map { ClassesWeekDayResponse(dictionary: $0)}
+				let weekDays = days.map { ClassResponse(dictionary: $0)}
 				
 				onComplete(weekDays)
 			}

@@ -9,14 +9,14 @@
 import SwiftUI
 
 struct HomeScreenClasses: View {
-	@Binding var classes: [ClassesResponse]
+	@Binding var classes: [ClassResponse]
 	@State var currentClass: Int
 	
-	func getCard(index: String) -> some View {
+	func getCard(actualClass: ClassResponse) -> some View {
 		VStack(alignment: .leading, spacing: 10) {
 			HStack(alignment: .center, spacing: 0) {
 				Spacer()
-				Text("22/07/3030 - Quarta \(index)")
+				Text("22/07/3030 - \(actualClass.weekDay)")
 					.foregroundColor(Color(CustomColor.white))
 					.font(.system(size: 14, weight: .medium))
 				Spacer()
@@ -24,13 +24,13 @@ struct HomeScreenClasses: View {
 			.padding(.vertical, 5)
 			.background(Color(CustomColor.gray))
 
-			Text("Gestão de projeto - Agile \(index)")
+			Text("\(actualClass.course)")
 				.foregroundColor(Color(CustomColor.gray))
 				.font(.system(size: 16, weight: .bold))
 				.multilineTextAlignment(.leading)
 				.padding(.horizontal, 10)
 
-			Text("Renato silva de lima \(index)")
+			Text("\(actualClass.teacher)")
 				.foregroundColor(Color(CustomColor.gray))
 				.font(.system(size: 16, weight: .medium))
 				.multilineTextAlignment(.leading)
@@ -38,7 +38,7 @@ struct HomeScreenClasses: View {
 
 			HStack(alignment: .center) {
 				Spacer()
-				Text("Paulista 7 - lab. 706 \(index)")
+				Text("\(actualClass.place)")
 					.font(.system(size: 14, weight: .bold))
 				Spacer()
 			}
@@ -49,7 +49,7 @@ struct HomeScreenClasses: View {
 	}
     var body: some View {
 		SlideHorizontal(
-			classes.map { self.getCard(index: $0.text) },
+			classes.map { self.getCard(actualClass: $0) },
 			hasDots: true
 		)
 		.frame(height: 170)
@@ -59,13 +59,7 @@ struct HomeScreenClasses: View {
 }
 
 struct HomeScreenClasses_Previews: PreviewProvider {
-	@State static var classes: [ClassesResponse] = [
-		ClassesResponse(text: "ABC"),
-		ClassesResponse(text: "ABC"),
-		ClassesResponse(text: "ABC"),
-		ClassesResponse(text: "ABC"),
-		ClassesResponse(text: "ABC")
-	]
+	@State static var classes: [ClassResponse] = []
 	@State static var currentClass: Int = 3
 	
     static var previews: some View {

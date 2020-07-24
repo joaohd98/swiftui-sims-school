@@ -37,7 +37,9 @@
 		DC64927E24BE1A2B00EDAC0E /* HomeScreenClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC64927D24BE1A2B00EDAC0E /* HomeScreenClasses.swift */; };
 		DC64928024BE1A3D00EDAC0E /* HomeScreenAds.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC64927F24BE1A3D00EDAC0E /* HomeScreenAds.swift */; };
 		DC74CF8424CB229000EFBFA0 /* ViewCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC74CF8324CB228F00EFBFA0 /* ViewCoreData.swift */; };
-		DC74CF8624CB247800EFBFA0 /* DatabaseEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC74CF8524CB247800EFBFA0 /* DatabaseEntity.swift */; };
+		DC74CF8824CB6CDF00EFBFA0 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC74CF8724CB6CDF00EFBFA0 /* Request.swift */; };
+		DC74CF8A24CB6CEB00EFBFA0 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC74CF8924CB6CEB00EFBFA0 /* Response.swift */; };
+		DC74CF8C24CB6D4100EFBFA0 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC74CF8B24CB6D4100EFBFA0 /* Service.swift */; };
 		DC7FCB8224C8719500406CDF /* LocationScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7FCB8124C8719500406CDF /* LocationScreen.swift */; };
 		DC7FCB8524C88CF600406CDF /* ShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7FCB8424C88CF600406CDF /* ShareSheet.swift */; };
 		DC7FCB8A24C8967A00406CDF /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7FCB8924C8967A00406CDF /* MapView.swift */; };
@@ -54,13 +56,12 @@
 		DC98E1BE24B8ED4B00D4BD76 /* ScreenSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC98E1BD24B8ED4B00D4BD76 /* ScreenSize.swift */; };
 		DC98E1C024B8EE8000D4BD76 /* PaddingTextFieldHorizontal.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC98E1BF24B8EE8000D4BD76 /* PaddingTextFieldHorizontal.swift */; };
 		DCA500C124AE5223006B4C63 /* CustomContainerGuest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA500C024AE5223006B4C63 /* CustomContainerGuest.swift */; };
-		DCAAF78D24C09D6F00F0518C /* ClassesWeekDayResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAAF78C24C09D6F00F0518C /* ClassesWeekDayResponse.swift */; };
 		DCAAF79024C0A86000F0518C /* HomeScreenPageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAAF78F24C0A86000F0518C /* HomeScreenPageModel.swift */; };
 		DCB672D824B242120064484D /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB672D724B242120064484D /* ActivityIndicator.swift */; };
 		DCB672DA24B2683D0064484D /* HexToUiColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB672D924B2683D0064484D /* HexToUiColor.swift */; };
-		DCB672DF24B29BB60064484D /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB672DE24B29BB60064484D /* Request.swift */; };
-		DCB672E124B29BC10064484D /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB672E024B29BC10064484D /* Response.swift */; };
-		DCB672E324B29BD10064484D /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB672E224B29BD10064484D /* Service.swift */; };
+		DCB672DF24B29BB60064484D /* UserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB672DE24B29BB60064484D /* UserRequest.swift */; };
+		DCB672E124B29BC10064484D /* UserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB672E024B29BC10064484D /* UserResponse.swift */; };
+		DCB672E324B29BD10064484D /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB672E224B29BD10064484D /* UserService.swift */; };
 		DCD9F3FE24CA2C6800B8DB6D /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD9F3FD24CA2C6800B8DB6D /* Assets.swift */; };
 		DCF043DF24AD16B600241062 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF043DE24AD16B600241062 /* AppDelegate.swift */; };
 		DCF043E124AD16B600241062 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF043E024AD16B600241062 /* SceneDelegate.swift */; };
@@ -112,7 +113,9 @@
 		DC64927D24BE1A2B00EDAC0E /* HomeScreenClasses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenClasses.swift; sourceTree = "<group>"; };
 		DC64927F24BE1A3D00EDAC0E /* HomeScreenAds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenAds.swift; sourceTree = "<group>"; };
 		DC74CF8324CB228F00EFBFA0 /* ViewCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCoreData.swift; sourceTree = "<group>"; };
-		DC74CF8524CB247800EFBFA0 /* DatabaseEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseEntity.swift; sourceTree = "<group>"; };
+		DC74CF8724CB6CDF00EFBFA0 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
+		DC74CF8924CB6CEB00EFBFA0 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		DC74CF8B24CB6D4100EFBFA0 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		DC7FCB8124C8719500406CDF /* LocationScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationScreen.swift; sourceTree = "<group>"; };
 		DC7FCB8424C88CF600406CDF /* ShareSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheet.swift; sourceTree = "<group>"; };
 		DC7FCB8924C8967A00406CDF /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
@@ -129,13 +132,12 @@
 		DC98E1BD24B8ED4B00D4BD76 /* ScreenSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenSize.swift; sourceTree = "<group>"; };
 		DC98E1BF24B8EE8000D4BD76 /* PaddingTextFieldHorizontal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingTextFieldHorizontal.swift; sourceTree = "<group>"; };
 		DCA500C024AE5223006B4C63 /* CustomContainerGuest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomContainerGuest.swift; sourceTree = "<group>"; };
-		DCAAF78C24C09D6F00F0518C /* ClassesWeekDayResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassesWeekDayResponse.swift; sourceTree = "<group>"; };
 		DCAAF78F24C0A86000F0518C /* HomeScreenPageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenPageModel.swift; sourceTree = "<group>"; };
 		DCB672D724B242120064484D /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		DCB672D924B2683D0064484D /* HexToUiColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexToUiColor.swift; sourceTree = "<group>"; };
-		DCB672DE24B29BB60064484D /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
-		DCB672E024B29BC10064484D /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
-		DCB672E224B29BD10064484D /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		DCB672DE24B29BB60064484D /* UserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRequest.swift; sourceTree = "<group>"; };
+		DCB672E024B29BC10064484D /* UserResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResponse.swift; sourceTree = "<group>"; };
+		DCB672E224B29BD10064484D /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		DCD9F3FD24CA2C6800B8DB6D /* Assets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
 		DCF043DB24AD16B600241062 /* Sims School.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sims School.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCF043DE24AD16B600241062 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -440,7 +442,6 @@
 			isa = PBXGroup;
 			children = (
 				DC7FCB8C24C8CE6000406CDF /* Database.swift */,
-				DC74CF8524CB247800EFBFA0 /* DatabaseEntity.swift */,
 				DC7FCB9024C8F8C200406CDF /* Session.swift */,
 				DCD9F3FD24CA2C6800B8DB6D /* Assets.swift */,
 			);
@@ -519,12 +520,14 @@
 			path = "Container Guest";
 			sourceTree = "<group>";
 		};
-		DCAAF78B24C09D2F00F0518C /* Classes */ = {
+		DCAAF78B24C09D2F00F0518C /* Class */ = {
 			isa = PBXGroup;
 			children = (
-				DCAAF78C24C09D6F00F0518C /* ClassesWeekDayResponse.swift */,
+				DC74CF8724CB6CDF00EFBFA0 /* Request.swift */,
+				DC74CF8924CB6CEB00EFBFA0 /* Response.swift */,
+				DC74CF8B24CB6D4100EFBFA0 /* Service.swift */,
 			);
-			path = Classes;
+			path = Class;
 			sourceTree = "<group>";
 		};
 		DCAAF78E24C0A84200F0518C /* Model */ = {
@@ -546,9 +549,9 @@
 		DCB672DD24B29B580064484D /* User */ = {
 			isa = PBXGroup;
 			children = (
-				DCB672DE24B29BB60064484D /* Request.swift */,
-				DCB672E024B29BC10064484D /* Response.swift */,
-				DCB672E224B29BD10064484D /* Service.swift */,
+				DCB672DE24B29BB60064484D /* UserRequest.swift */,
+				DCB672E024B29BC10064484D /* UserResponse.swift */,
+				DCB672E224B29BD10064484D /* UserService.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -679,7 +682,7 @@
 			isa = PBXGroup;
 			children = (
 				DCB672DD24B29B580064484D /* User */,
-				DCAAF78B24C09D2F00F0518C /* Classes */,
+				DCAAF78B24C09D2F00F0518C /* Class */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -842,9 +845,8 @@
 				DCF043DF24AD16B600241062 /* AppDelegate.swift in Sources */,
 				DC4D2D0D24C27D85008FD663 /* ClassesScreenSubjectDay.swift in Sources */,
 				DCF043FF24AD1D5900241062 /* Colors.swift in Sources */,
-				DC74CF8624CB247800EFBFA0 /* DatabaseEntity.swift in Sources */,
-				DCAAF78D24C09D6F00F0518C /* ClassesWeekDayResponse.swift in Sources */,
-				DCB672E124B29BC10064484D /* Response.swift in Sources */,
+				DCB672E124B29BC10064484D /* UserResponse.swift in Sources */,
+				DC74CF8A24CB6CEB00EFBFA0 /* Response.swift in Sources */,
 				DC64927C24BE179B00EDAC0E /* HomeScreenProfile.swift in Sources */,
 				DCD9F3FE24CA2C6800B8DB6D /* Assets.swift in Sources */,
 				DC4D2D0224C219FE008FD663 /* ClassesScreen.swift in Sources */,
@@ -869,11 +871,12 @@
 				DCF043FC24AD1ABD00241062 /* CustomInput.swift in Sources */,
 				DC64928024BE1A3D00EDAC0E /* HomeScreenAds.swift in Sources */,
 				DC98E1BB24B8BF5900D4BD76 /* UIInput.swift in Sources */,
+				DC74CF8824CB6CDF00EFBFA0 /* Request.swift in Sources */,
 				DC10078324C75D0300DB3EE7 /* MenuScreen.swift in Sources */,
 				DC10077C24C74AD200DB3EE7 /* PlayerView.swift in Sources */,
 				DC10078724C7628700DB3EE7 /* MenuScreenModel.swift in Sources */,
 				DCF6EEC924CB177A00C026E9 /* SimsSchool.xcdatamodeld in Sources */,
-				DCB672E324B29BD10064484D /* Service.swift in Sources */,
+				DCB672E324B29BD10064484D /* UserService.swift in Sources */,
 				DC98E1B224B8A18100D4BD76 /* LoginScreenSubmitButton.swift in Sources */,
 				DC07B47124C5EC7E00840714 /* TipsScreenList.swift in Sources */,
 				DCFD821E24C61492008E3C05 /* TipsScreenFullScreenImage.swift in Sources */,
@@ -885,8 +888,9 @@
 				DC10078B24C77DC200DB3EE7 /* MenuScreenLogout.swift in Sources */,
 				DCB672DA24B2683D0064484D /* HexToUiColor.swift in Sources */,
 				DC53D72624C0EB53004266CE /* CustomUIPageViewController.swift in Sources */,
-				DCB672DF24B29BB60064484D /* Request.swift in Sources */,
+				DCB672DF24B29BB60064484D /* UserRequest.swift in Sources */,
 				DC7FCB8A24C8967A00406CDF /* MapView.swift in Sources */,
+				DC74CF8C24CB6D4100EFBFA0 /* Service.swift in Sources */,
 				DCF0440D24AE2CF500241062 /* KeyboardHideInputHelper.swift in Sources */,
 				DC989EDD24BCEDCA003B79A6 /* HomeScreen.swift in Sources */,
 				DC4D2CFC24C1E635008FD663 /* ScoresScreenSemesters.swift in Sources */,

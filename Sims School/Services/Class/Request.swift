@@ -1,5 +1,5 @@
 //
-//  DatabaseEntity.swift
+//  Request.swift
 //  Sims School
 //
 //  Created by João Damazio on 24/07/20.
@@ -8,6 +8,6 @@
 
 import Foundation
 
-extension FirebaseDatabase {
-	
+struct ClassRequest {
+	var id_class: String
 }

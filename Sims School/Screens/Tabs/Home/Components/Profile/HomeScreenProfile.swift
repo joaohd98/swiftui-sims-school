@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct HomeScreenProfile: View {
-	@Binding var user: UserEntity?
+	@Binding var user: UserResponse?
 	
     var body: some View {
 		VStack(alignment: .leading, spacing: 5) {
@@ -72,7 +72,7 @@ struct HomeScreenProfile: View {
 }
 
 struct HomeScreenProfile_Previews: PreviewProvider {
-	@State static var user: UserEntity? = nil
+	@State static var user: UserResponse? = nil
 	
     static var previews: some View {
 		HomeScreenProfile(user: self.$user)

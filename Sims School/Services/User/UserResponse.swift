@@ -27,9 +27,20 @@ class UserResponse: ObservableObject {
 		)
 	}
 	
+	init(user: UserEntity) {
+		self.uid = user.uid!
+		self.name = user.name!
+		self.rm = user.rm!
+		self.id_class = user.id_class!
+		self.actual_class = user.actual_class!
+		self.course = user.course!
+		self.actual_class = user.actual_class!
+		self.profile_picture = user.profile_picture!
+		self.cover_picture = user.cover_picture!
+	}
+	
 	private func setPictures(coverPicture: String, profilePicture: String, group: DispatchGroup) {
 		group.enter()
-		
 		FirebaseDatabase.storage.reference().child(coverPicture).downloadURL { url, error in
 			if error == nil {
 				self.cover_picture = url
@@ -39,7 +50,7 @@ class UserResponse: ObservableObject {
 		}
 		
 		group.enter()
-		FirebaseDatabase.storage.reference().child(profilePicture).downloadURL { url, error in
+		FirebaseDatabase.storage.reference().child(profilePicture).downloadURL { url, error in			
 			if error == nil {
 				self.profile_picture = url
 			}
@@ -48,12 +59,7 @@ class UserResponse: ObservableObject {
 		}
 		
 	}
-	
-	func getContext(managedObjectContext: NSManagedObjectContext) {
-		
-		
-	}
-	
+
 	func saveContext(managedObjectContext: NSManagedObjectContext) {
 		do {
 			let user = UserEntity(context: managedObjectContext)
