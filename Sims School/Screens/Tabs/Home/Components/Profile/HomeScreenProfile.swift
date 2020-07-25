@@ -9,74 +9,77 @@
 import SwiftUI
 
 struct HomeScreenProfile: View {
+	@Environment(\.imageCache) var cache: ImageCache
 	@Binding var user: UserResponse?
 	
-    var body: some View {
+	var body: some View {
 		VStack(alignment: .leading, spacing: 5) {
-			Image("cover")
-				.resizable()
+			URLImage(url: user?.cover_picture, cache: cache, configuration: { $0.resizable() })
 				.frame(
 					width: UIScreen.screenWidth,
 					height: 125
-				)
+			)
 			VStack(alignment: .leading, spacing: 5) {
 				ZStack(alignment: .leading) {
-					Image("camera-plus")
-					.resizable()
-					.frame(
-						width: 75,
-						height: 75
-					)
+					URLImage(url: user?.profile_picture, cache: cache, configuration: { $0.resizable() })
+						.frame(
+							width: 75,
+							height: 75
+						)
+						.cornerRadius(75)
 				}
-				.padding()
-				.background(Color.white.shadow(radius: 2))
-
+				.padding(.all, 3)
+				.background(Color(UIColor.init { (trait) -> UIColor in
+					return trait.userInterfaceStyle == .dark ? .white : .black
+				}))
+				.cornerRadius(75)
 				VStack(alignment: .leading, spacing: 5) {
 					Text(self.user?.name ?? "")
 						.foregroundColor(Color(CustomColor.gray))
 						.font(.system(size: 16, weight: .bold))
-
+					
 					HStack {
 						Text("RM:")
 							.foregroundColor(Color(CustomColor.gray))
-							.font(.system(size: 14, weight: .bold))
-
+							.font(.system(size: 16, weight: .bold))
+						
 						Text(self.user?.rm ?? "")
 							.foregroundColor(Color(CustomColor.gray))
 							.font(.system(size: 14, weight: .semibold))
-
+						
 					}
 				}
-				.padding(.leading, 125)
-				.padding(.top, -50)
-
+				.padding(.leading, 95)
+				.padding(.top, -40)
+				
 				HStack(alignment: .firstTextBaseline) {
 					Text("Turma:")
 						.foregroundColor(Color(CustomColor.gray))
 						.font(.system(size: 16, weight: .bold))
-
+					
 					Text(self.user?.actual_class ?? "")
 						.foregroundColor(Color(CustomColor.gray))
-						.font(.system(size: 16, weight: .semibold))
+						.font(.system(size: 14, weight: .semibold))
 				}
-
+				.padding(.top, 5)
+				
 				Text(self.user?.course ?? "")
 					.foregroundColor(Color(CustomColor.gray))
 					.font(.system(size: 16, weight: .bold))
 			}
 			.padding()
-			.padding(.top, -75)
+			.padding(.top, -60)
 		}
 		.padding(.bottom, -20)
-
-    }
+		
+	}
 }
 
 struct HomeScreenProfile_Previews: PreviewProvider {
 	@State static var user: UserResponse? = nil
 	
-    static var previews: some View {
+	static var previews: some View {
 		HomeScreenProfile(user: self.$user)
 			.previewLayout(.fixed(width: UIScreen.screenWidth, height: 300))
-    }
+	}
 }
