@@ -13,11 +13,10 @@ struct URLImage: View {
     private let configuration: (Image) -> Image
 
 	init(url: URL?, cache: ImageCache? = nil, configuration: @escaping (Image) -> Image = { $0 }) {
-		print("url", url)
-		
 		if let url = url {
 			self.loader = ImageLoader(url: url, cache: cache)
 		}
+		
 		self.configuration = configuration
 	}
 		
@@ -33,7 +32,6 @@ struct URLImage: View {
 	
 	var body: some View {
 		image
-			.onAppear(perform: loader.load)
 			.onDisappear(perform: loader.cancel)
 	}
 }

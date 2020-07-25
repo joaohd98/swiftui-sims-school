@@ -27,6 +27,7 @@ class ImageLoader: ObservableObject {
 	init(url: URL, cache: ImageCache? = nil) {
 		self.url = url
 		self.cache = cache
+		self.load()
 	}
 	
 	deinit {
@@ -38,6 +39,7 @@ class ImageLoader: ObservableObject {
 		guard let url = self.url else { return }
 		
 		if let image = cache?[url] {
+			
 			self.image = image
 			return
 		}

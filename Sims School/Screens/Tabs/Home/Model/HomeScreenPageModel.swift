@@ -15,6 +15,10 @@ class HomeScreenModel: ObservableObject {
 	@Published var ads: [AdsResponse] = []
 	@Published var currentClass: Int = Calendar.current.component(.weekday, from: Date()) - 1
 	
+	init() {
+		
+	}
+	
 	func getUserRequest(users: FetchedResults<UserEntity>) {
 		if users.count > 0 {
 			self.user = UserResponse(user: users[0])
