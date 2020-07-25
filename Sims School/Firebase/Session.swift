@@ -11,7 +11,6 @@ class FirebaseSession: ObservableObject {
 //		if user != nil {
 //			FirebaseDatabase().initFirebaseDataBase(currentUser: user)
 //		}
-
 	}
 
 	func login() {

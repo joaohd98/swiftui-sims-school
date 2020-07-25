@@ -52,7 +52,7 @@ class FirebaseDatabase {
 		document.setData([
 			"days": [
 				[
-					"weekDay": "",
+					"weekDay": "Sunday",
 					"course": "",
 					"teacher": "",
 					"place": "",
@@ -94,7 +94,7 @@ class FirebaseDatabase {
 					"hasClass": true
 				],
 				[
-					"weekDay": "",
+					"weekDay": "Saturday",
 					"course": "",
 					"teacher": "",
 					"place": "",
