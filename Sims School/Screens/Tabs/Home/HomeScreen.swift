@@ -26,7 +26,7 @@ struct HomeScreen: View {
 				VStack(alignment: .leading, spacing: 0) {
 					HomeScreenProfile(user: self.$props.user)
 					if self.props.classes.count > 0 {
-						HomeScreenClasses(classes: self.$props.classes, currentClass: self.props.currentClass)
+						HomeScreenClasses(classes: self.$props.classes, currentClass: self.$props.currentClass)
 					}
 					HomeScreenAds()
 				}

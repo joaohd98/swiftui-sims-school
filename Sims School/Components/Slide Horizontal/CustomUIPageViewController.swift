@@ -29,6 +29,8 @@ struct CustomUIPageViewController: UIViewControllerRepresentable {
 		pageViewController.delegate = context.coordinator
 		
 		if controllers.count > 0 {
+			print("currentPage", currentPage)
+			
 			pageViewController.setViewControllers(
 				[controllers[currentPage]], direction: .forward, animated: true
 			)
@@ -37,13 +39,7 @@ struct CustomUIPageViewController: UIViewControllerRepresentable {
 		return pageViewController
 	}
 	
-	func updateUIViewController(_ pageViewController: UIPageViewController, context: Context) {
-		if controllers.count > 0 {
-			pageViewController.setViewControllers(
-				[controllers[currentPage]], direction: .forward, animated: true
-			)
-		}
-	}
+	func updateUIViewController(_ pageViewController: UIPageViewController, context: Context) {	}
 	
 	class Coordinator: NSObject, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
 		var parent: CustomUIPageViewController

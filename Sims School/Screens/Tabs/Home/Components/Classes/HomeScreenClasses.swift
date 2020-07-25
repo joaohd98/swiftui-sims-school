@@ -10,7 +10,7 @@ import SwiftUI
 
 struct HomeScreenClasses: View {
 	@Binding var classes: [ClassResponse]
-	@State var currentClass: Int
+	@Binding var currentClass: Int
 	
 	func getDate(weekDay: Int) -> String {
 		let cal = Calendar.current
@@ -86,11 +86,12 @@ struct HomeScreenClasses: View {
 	var body: some View {
 		SlideHorizontal(
 			classes.enumerated().map { (index, element) in self.getCard(actualClass: element, index: index) },
-			hasDots: true
+			hasDots: true,
+			currentPage: self.$currentClass
 		)
-			.frame(height: 160)
-			.padding(.top, 10)
-			.padding(.bottom, 20)
+		.frame(height: 160)
+		.padding(.top, 10)
+		.padding(.bottom, 20)
 	}
 }
 
@@ -99,6 +100,6 @@ struct HomeScreenClasses_Previews: PreviewProvider {
 	@State static var currentClass: Int = 3
 	
 	static var previews: some View {
-		HomeScreenClasses(classes: $classes, currentClass: currentClass)
+		HomeScreenClasses(classes: $classes, currentClass: $currentClass)
 	}
 }
