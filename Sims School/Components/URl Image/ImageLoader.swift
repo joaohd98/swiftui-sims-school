@@ -39,7 +39,6 @@ class ImageLoader: ObservableObject {
 		guard let url = self.url else { return }
 		
 		if let image = cache?[url] {
-			
 			self.image = image
 			return
 		}

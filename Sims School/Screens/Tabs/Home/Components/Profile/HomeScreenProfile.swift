@@ -10,7 +10,7 @@ import SwiftUI
 
 struct HomeScreenProfile: View {
 	@Environment(\.imageCache) var cache: ImageCache
-	@Binding var user: UserResponse?
+	var user: UserEntity?
 	
 	var body: some View {
 		VStack(alignment: .leading, spacing: 5) {
@@ -76,10 +76,10 @@ struct HomeScreenProfile: View {
 }
 
 struct HomeScreenProfile_Previews: PreviewProvider {
-	@State static var user: UserResponse? = nil
+	@State static var user: UserEntity? = nil
 	
 	static var previews: some View {
-		HomeScreenProfile(user: self.$user)
+		HomeScreenProfile(user: self.user)
 			.previewLayout(.fixed(width: UIScreen.screenWidth, height: 300))
 	}
 }
