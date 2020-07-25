@@ -28,14 +28,14 @@ struct HomeScreenClasses: View {
 		df.dateFormat = "dd/MM/yyyy"
 		
 		return df.string(from: dayInWeek)
-
+		
 	}
 	
 	func getCard(actualClass: ClassResponse, index: Int) -> some View {
 		let dateFormatted = self.getDate(weekDay: index)
 		
 		return (
-			VStack(alignment: .leading, spacing: 10) {
+			VStack(alignment: actualClass.hasClass ? .leading : .center, spacing: 10) {
 				HStack(alignment: .center, spacing: 0) {
 					Spacer()
 					Text("\(dateFormatted) - \(actualClass.weekDay)")
@@ -45,31 +45,38 @@ struct HomeScreenClasses: View {
 				}
 				.padding(.vertical, 5)
 				.background(Color(CustomColor.gray))
-				.frame(height: 25)
 				
-				Text("\(actualClass.course)")
-					.foregroundColor(Color(CustomColor.gray))
-					.font(.system(size: 16, weight: .bold))
-					.multilineTextAlignment(.leading)
-					.padding(.horizontal, 10)
-					.frame(height: 15)
-				
-				Text("\(actualClass.teacher)")
-					.foregroundColor(Color(CustomColor.gray))
-					.font(.system(size: 16, weight: .medium))
-					.multilineTextAlignment(.leading)
-					.padding(.horizontal, 10)
-					.frame(height: 15)
-				
-				HStack(alignment: .center) {
-					Spacer()
-					Text("\(actualClass.place)")
-						.font(.system(size: 14, weight: .bold))
-					Spacer()
+				if actualClass.hasClass {
+					Text("\(actualClass.course)")
+						.foregroundColor(Color(CustomColor.gray))
+						.font(.system(size: 16, weight: .bold))
+						.multilineTextAlignment(.leading)
+						.padding(.horizontal, 10)
+						.frame(height: 15)
+					
+					Text("\(actualClass.teacher)")
+						.foregroundColor(Color(CustomColor.gray))
+						.font(.system(size: 16, weight: .medium))
+						.multilineTextAlignment(.leading)
+						.padding(.horizontal, 10)
+						.frame(height: 15)
+					
+					HStack(alignment: .center) {
+						Spacer()
+						Text("\(actualClass.place)")
+							.font(.system(size: 14, weight: .bold))
+						Spacer()
+					}
+					.padding(.vertical, 10)
+					.frame(height: 30)
 				}
-				.padding(.vertical, 10)
-				.frame(height: 30)
-				
+				else {
+					Text("Não havera aulas nesse dia")
+						.font(.system(size: 20, weight: .bold))
+						.foregroundColor(Color(CustomColor.gray))
+						.padding(.top, 20)
+						.padding(.bottom, 30)
+				}
 			}
 			.border(Color.gray, width: 1)
 			.padding()
@@ -81,9 +88,9 @@ struct HomeScreenClasses: View {
 			classes.enumerated().map { (index, element) in self.getCard(actualClass: element, index: index) },
 			hasDots: true
 		)
-		.frame(height: 160)
-		.padding(.top, 10)
-		.padding(.bottom, 20)
+			.frame(height: 160)
+			.padding(.top, 10)
+			.padding(.bottom, 20)
 	}
 }
 
