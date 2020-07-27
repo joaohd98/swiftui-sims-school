@@ -10,14 +10,16 @@ import SwiftUI
 
 struct HomeScreenProfile: View {
 	@Environment(\.imageCache) var cache: ImageCache
+	@State var showActionSheetCamera: Bool = false
+	@State var showCapturingCamera: Bool = false
+	@State var image: Image = Image("")
+	@State var sourceType: UIImagePickerController.SourceType = .photoLibrary
+	
 	var user: UserEntity?
-	
-	func takePictureCover() {
-		
-	}
-	
-	func takePictureProfile() {
-		
+
+	func takePictureProfile(type: UIImagePickerController.SourceType) {
+		self.sourceType = type
+		self.showCapturingCamera.toggle()
 	}
 	
 	var body: some View {
@@ -25,9 +27,8 @@ struct HomeScreenProfile: View {
 			URLImage(url: user?.cover_picture, cache: cache, configuration: { $0.resizable() })
 				.frame(
 					width: UIScreen.screenWidth,
-					height: 125
-				)
-				.onTapGesture { self.takePictureCover() }
+					height: 100
+			)
 			VStack(alignment: .leading, spacing: 5) {
 				ZStack(alignment: .leading) {
 					URLImage(url: user?.profile_picture, cache: cache, configuration: { $0.resizable() })
@@ -35,8 +36,21 @@ struct HomeScreenProfile: View {
 							width: 75,
 							height: 75
 						)
-					.onTapGesture { self.takePictureProfile() }
-
+						.onTapGesture { self.showActionSheetCamera.toggle() }
+						.actionSheet(isPresented: $showActionSheetCamera) {
+							ActionSheet(title: Text(""), message: Text("Mudar foto de perfil"), buttons: [
+								.default(Text("Camera")) { self.takePictureProfile(type: .camera) },
+								.default(Text("Library")) { self.takePictureProfile(type: .photoLibrary)  },
+								.cancel()
+							])
+						}
+						.sheet(isPresented: $showCapturingCamera) {
+							CameraCaptureView(
+								showCameraView: self.$showCapturingCamera,
+								pickedImage: self.$image,
+								sourceType: self.$sourceType
+							)
+						}
 				}
 				.padding(.all, 3)
 				.background(Color(UIColor.init { (trait) -> UIColor in
@@ -77,7 +91,7 @@ struct HomeScreenProfile: View {
 			}
 			.padding()
 			.padding(.top, -50)
-		}		
+		}
 	}
 }
 

@@ -122,30 +122,26 @@ struct HomeScreenClasses: View {
 	}
 	
 	var body: some View {
-		print("classes", self.classes)
-		
-		return (
-			Group {
-				if status == .failed {
-					errorView
-						.transition(.opacity)
-						.zIndex(0)
-				}
-				else if status == .loading {
-					loadingView
-						.frame(height: 170)
-						.transition(.opacity)
-						.zIndex(1)
-					
-				}
-				else if status == .success {
-					successView
-						.frame(height: 170)
-						.transition(.opacity)
-						.zIndex(2)
-				}
+		Group {
+			if status == .failed {
+				errorView
+					.transition(.opacity)
+					.zIndex(0)
 			}
-		)
+			else if status == .loading {
+				loadingView
+					.frame(height: 170)
+					.transition(.opacity)
+					.zIndex(1)
+				
+			}
+			else if status == .success {
+				successView
+					.frame(height: 170)
+					.transition(.opacity)
+					.zIndex(2)
+			}
+		}
 	}
 }
 

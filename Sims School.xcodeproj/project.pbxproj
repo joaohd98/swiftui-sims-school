@@ -20,6 +20,7 @@
 		DC10078B24C77DC200DB3EE7 /* MenuScreenLogout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC10078A24C77DC200DB3EE7 /* MenuScreenLogout.swift */; };
 		DC198D3E24C3D2B000AF27B5 /* ClassesScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC198D3D24C3D2B000AF27B5 /* ClassesScreenModel.swift */; };
 		DC1D22DB24BE5C1F00E1855D /* SlideHorizontal.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1D22DA24BE5C1F00E1855D /* SlideHorizontal.swift */; };
+		DC24909324CF6ABB006746D0 /* CameraCaptureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC24909224CF6ABB006746D0 /* CameraCaptureView.swift */; };
 		DC4D2CFC24C1E635008FD663 /* ScoresScreenSemesters.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4D2CFB24C1E635008FD663 /* ScoresScreenSemesters.swift */; };
 		DC4D2CFF24C1E68D008FD663 /* ScoresScreenCardScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4D2CFE24C1E68D008FD663 /* ScoresScreenCardScore.swift */; };
 		DC4D2D0224C219FE008FD663 /* ClassesScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4D2D0124C219FE008FD663 /* ClassesScreen.swift */; };
@@ -103,6 +104,7 @@
 		DC10078A24C77DC200DB3EE7 /* MenuScreenLogout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScreenLogout.swift; sourceTree = "<group>"; };
 		DC198D3D24C3D2B000AF27B5 /* ClassesScreenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassesScreenModel.swift; sourceTree = "<group>"; };
 		DC1D22DA24BE5C1F00E1855D /* SlideHorizontal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideHorizontal.swift; sourceTree = "<group>"; };
+		DC24909224CF6ABB006746D0 /* CameraCaptureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraCaptureView.swift; sourceTree = "<group>"; };
 		DC4D2CFB24C1E635008FD663 /* ScoresScreenSemesters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoresScreenSemesters.swift; sourceTree = "<group>"; };
 		DC4D2CFE24C1E68D008FD663 /* ScoresScreenCardScore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoresScreenCardScore.swift; sourceTree = "<group>"; };
 		DC4D2D0124C219FE008FD663 /* ClassesScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassesScreen.swift; sourceTree = "<group>"; };
@@ -281,6 +283,14 @@
 				DC53D72524C0EB53004266CE /* CustomUIPageViewController.swift */,
 			);
 			path = "Slide Horizontal";
+			sourceTree = "<group>";
+		};
+		DC24909124CF6A96006746D0 /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				DC24909224CF6ABB006746D0 /* CameraCaptureView.swift */,
+			);
+			path = Camera;
 			sourceTree = "<group>";
 		};
 		DC4D2CF924C1E5C2008FD663 /* Components */ = {
@@ -677,6 +687,7 @@
 		DCF043F424AD16F900241062 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				DC24909124CF6A96006746D0 /* Camera */,
 				DCD5422F24CF504C0022E4AA /* Try Again */,
 				DC57924C24CBF36A0097CAC9 /* URl Image */,
 				DC7FCB8824C8966800406CDF /* Map View */,
@@ -928,6 +939,7 @@
 				DC74CF8424CB229000EFBFA0 /* ViewCoreData.swift in Sources */,
 				DC10078924C77D7100DB3EE7 /* MenuScreenOptions.swift in Sources */,
 				DCF043FC24AD1ABD00241062 /* CustomInput.swift in Sources */,
+				DC24909324CF6ABB006746D0 /* CameraCaptureView.swift in Sources */,
 				DC64928024BE1A3D00EDAC0E /* HomeScreenAds.swift in Sources */,
 				DC98E1BB24B8BF5900D4BD76 /* UIInput.swift in Sources */,
 				DC74CF8824CB6CDF00EFBFA0 /* ClassRequest.swift in Sources */,

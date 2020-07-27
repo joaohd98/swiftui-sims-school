@@ -12,7 +12,7 @@ import SwiftUI
 class HomeScreenModel: ObservableObject {
 	private var firstRun = true
 	@Published var user: UserResponse? = nil
-	@Published var classesStatus: NetworkRequestStatus = .failed
+	@Published var classesStatus: NetworkRequestStatus = .loading
 	@Published var classes: [ClassResponse] = []
 	@Published var randomAdStatus: NetworkRequestStatus = .loading
 	@Published var randomAd: AdsResponse = AdsResponse()
