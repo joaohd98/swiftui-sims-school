@@ -11,6 +11,7 @@ import SwiftUI
 struct SlideHorizontalDots: View {
     var numberOfPages: Int
     @Binding var currentPage: Int
+	var isLoading: Bool = false
 	
 	func getPoint(index: Int) -> String {
 		return self.currentPage == index ? "circle.fill" : "circle"
@@ -22,8 +23,11 @@ struct SlideHorizontalDots: View {
 				Image(systemName: self.getPoint(index: index))
 					.resizable()
 					.aspectRatio(contentMode: .fit)
-					.frame(width: 10, height: 10)
 					.foregroundColor(.blue)
+					.skeleton(with: self.isLoading)
+					.shape(type: .circle)
+					.frame(width: 10, height: 10)
+			
 			}
 		}
 	}

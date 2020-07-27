@@ -16,14 +16,11 @@ class ClassResponse: ObservableObject {
 	@Published var teacher: String
 	
 	init() {
-		/*
-		 *	Placeholder
-		 */
-		course = "course"
-		weekDay = "weekday"
+		course = ""
+		weekDay = ""
 		hasClass = true
-		teacher = "teacher"
-		place = "place"
+		teacher = ""
+		place = ""
 	}
 }
 

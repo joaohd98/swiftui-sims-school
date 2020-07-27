@@ -98,7 +98,10 @@ struct HomeScreenClasses: View {
 	}
 	
 	var loadingView: some View {
-		self.getCard(actualClass: ClassResponse(), index: 0)
+		VStack {
+			self.getCard(actualClass: ClassResponse(), index: 0)
+			SlideHorizontalDots(numberOfPages: 7, currentPage: self.$currentClass, isLoading: true)
+		}
 	}
 	
 	var successView: some View {

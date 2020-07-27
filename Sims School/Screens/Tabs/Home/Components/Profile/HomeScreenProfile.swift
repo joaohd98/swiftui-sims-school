@@ -16,6 +16,10 @@ struct HomeScreenProfile: View {
 		
 	}
 	
+	func takePictureProfile() {
+		
+	}
+	
 	var body: some View {
 		VStack(alignment: .leading, spacing: 5) {
 			URLImage(url: user?.cover_picture, cache: cache, configuration: { $0.resizable() })
@@ -31,6 +35,8 @@ struct HomeScreenProfile: View {
 							width: 75,
 							height: 75
 						)
+					.onTapGesture { self.takePictureProfile() }
+
 				}
 				.padding(.all, 3)
 				.background(Color(UIColor.init { (trait) -> UIColor in
