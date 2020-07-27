@@ -9,15 +9,16 @@
 import SwiftUI
 
 struct URLImage: View {
-	@ObservedObject var loader: ImageLoader = ImageLoader()
+	@ObservedObject var loader: ImageLoader
     private let configuration: (Image) -> Image
 
 	init(url: URL?, cache: ImageCache? = nil, configuration: @escaping (Image) -> Image = { $0 }) {
-		if let url = url {
-			self.loader = ImageLoader(url: url, cache: cache)
-		}
-		
+		self.loader = ImageLoader(cache: cache)
 		self.configuration = configuration
+
+		if let url = url {
+			self.loader.load(url: url)
+		}
 	}
 		
 	var image: some View {

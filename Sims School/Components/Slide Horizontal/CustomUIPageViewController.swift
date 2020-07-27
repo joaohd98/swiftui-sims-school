@@ -28,9 +28,7 @@ struct CustomUIPageViewController: UIViewControllerRepresentable {
 		pageViewController.dataSource = context.coordinator
 		pageViewController.delegate = context.coordinator
 		
-		if controllers.count > 0 {
-			print("currentPage", currentPage)
-			
+		if controllers.count > 0 {			
 			pageViewController.setViewControllers(
 				[controllers[currentPage]], direction: .forward, animated: true
 			)

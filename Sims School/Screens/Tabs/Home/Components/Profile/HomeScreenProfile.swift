@@ -18,7 +18,7 @@ struct HomeScreenProfile: View {
 				.frame(
 					width: UIScreen.screenWidth,
 					height: 125
-			)
+				)
 			VStack(alignment: .leading, spacing: 5) {
 				ZStack(alignment: .leading) {
 					URLImage(url: user?.profile_picture, cache: cache, configuration: { $0.resizable() })
@@ -26,13 +26,11 @@ struct HomeScreenProfile: View {
 							width: 75,
 							height: 75
 						)
-						.cornerRadius(75)
 				}
 				.padding(.all, 3)
 				.background(Color(UIColor.init { (trait) -> UIColor in
 					return trait.userInterfaceStyle == .dark ? .white : .black
 				}))
-				.cornerRadius(75)
 				VStack(alignment: .leading, spacing: 5) {
 					Text(self.user?.name ?? "")
 						.foregroundColor(Color(CustomColor.gray))
@@ -50,7 +48,7 @@ struct HomeScreenProfile: View {
 					}
 				}
 				.padding(.leading, 95)
-				.padding(.top, -40)
+				.padding(.top, -52)
 				
 				HStack(alignment: .firstTextBaseline) {
 					Text("Turma:")
@@ -61,16 +59,14 @@ struct HomeScreenProfile: View {
 						.foregroundColor(Color(CustomColor.gray))
 						.font(.system(size: 14, weight: .semibold))
 				}
-				.padding(.top, 5)
 				
 				Text(self.user?.course ?? "")
 					.foregroundColor(Color(CustomColor.gray))
 					.font(.system(size: 16, weight: .bold))
 			}
 			.padding()
-			.padding(.top, -60)
+			.padding(.top, -50)
 		}
-		.padding(.bottom, -20)
 		
 	}
 }

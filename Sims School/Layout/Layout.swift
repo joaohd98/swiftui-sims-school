@@ -11,15 +11,15 @@ import FirebaseAuth
 import FirebaseFirestore
 
 struct LayoutView: View {
+	@FetchRequest(entity: UserEntity.entity(), sortDescriptors: []) var users: FetchedResults<UserEntity>
     @EnvironmentObject var firebaseSession: FirebaseSession
 
 	var body: some View {		
 		return (
 			ZStack {
-				if firebaseSession.isLogged  {
+				if users.count > 0 && firebaseSession.isLogged  {
 					AnyView(TabsScreen())
 						.transition(.scale)
-
 				} else {
 					AnyView(LoginScreen())
 						.transition(.scale)

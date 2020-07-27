@@ -90,8 +90,6 @@ struct HomeScreenClasses: View {
 			currentPage: self.$currentClass
 		)
 		.frame(height: 160)
-		.padding(.top, 10)
-		.padding(.bottom, 20)
 	}
 }
 
