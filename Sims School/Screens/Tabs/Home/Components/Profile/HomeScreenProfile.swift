@@ -66,8 +66,7 @@ struct HomeScreenProfile: View {
 			}
 			.padding()
 			.padding(.top, -50)
-		}
-		
+		}		
 	}
 }
 

@@ -35,6 +35,7 @@ struct HomeScreenAds: View {
 			.sheet(isPresented: $showSafari) {
 				SafariView(url: URL(string: self.urlString)!)
 			}
+			.padding(.top, 30)
     }
 }
 

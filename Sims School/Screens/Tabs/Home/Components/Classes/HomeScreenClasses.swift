@@ -35,7 +35,7 @@ struct HomeScreenClasses: View {
 		let dateFormatted = self.getDate(weekDay: index)
 		
 		return (
-			VStack(alignment: actualClass.hasClass ? .leading : .center, spacing: 10) {
+			VStack(alignment: actualClass.hasClass ? .leading : .center, spacing: 0) {
 				HStack(alignment: .center, spacing: 0) {
 					Spacer()
 					Text("\(dateFormatted) - \(actualClass.weekDay)")
@@ -47,20 +47,19 @@ struct HomeScreenClasses: View {
 				.background(Color(CustomColor.gray))
 				
 				if actualClass.hasClass {
-					Text("\(actualClass.course)")
-						.foregroundColor(Color(CustomColor.gray))
-						.font(.system(size: 16, weight: .bold))
-						.multilineTextAlignment(.leading)
-						.padding(.horizontal, 10)
-						.frame(height: 15)
-					
-					Text("\(actualClass.teacher)")
-						.foregroundColor(Color(CustomColor.gray))
-						.font(.system(size: 16, weight: .medium))
-						.multilineTextAlignment(.leading)
-						.padding(.horizontal, 10)
-						.frame(height: 15)
-					
+					VStack(alignment: .leading, spacing: 2) {
+						Text("\(actualClass.course)")
+							.foregroundColor(Color(CustomColor.gray))
+							.font(.system(size: 16, weight: .bold))
+							.multilineTextAlignment(.leading)
+						
+						Text("\(actualClass.teacher)")
+							.foregroundColor(Color(CustomColor.gray))
+							.font(.system(size: 16, weight: .medium))
+							.multilineTextAlignment(.leading)
+					}
+					.padding(.all, 10)
+										
 					HStack(alignment: .center) {
 						Spacer()
 						Text("\(actualClass.place)")
@@ -68,14 +67,14 @@ struct HomeScreenClasses: View {
 						Spacer()
 					}
 					.padding(.vertical, 10)
-					.frame(height: 30)
 				}
+					
 				else {
 					Text("Não havera aulas nesse dia")
 						.font(.system(size: 20, weight: .bold))
 						.foregroundColor(Color(CustomColor.gray))
-						.padding(.top, 20)
-						.padding(.bottom, 30)
+						.padding(.top, 32)
+						.padding(.bottom, 44)
 				}
 			}
 			.border(Color.gray, width: 1)
@@ -89,7 +88,7 @@ struct HomeScreenClasses: View {
 			hasDots: true,
 			currentPage: self.$currentClass
 		)
-		.frame(height: 160)
+		.frame(height: 180)
 	}
 }
 
