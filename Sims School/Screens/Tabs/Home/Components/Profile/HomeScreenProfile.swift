@@ -12,6 +12,10 @@ struct HomeScreenProfile: View {
 	@Environment(\.imageCache) var cache: ImageCache
 	var user: UserEntity?
 	
+	func takePictureCover() {
+		
+	}
+	
 	var body: some View {
 		VStack(alignment: .leading, spacing: 5) {
 			URLImage(url: user?.cover_picture, cache: cache, configuration: { $0.resizable() })
@@ -19,6 +23,7 @@ struct HomeScreenProfile: View {
 					width: UIScreen.screenWidth,
 					height: 125
 				)
+				.onTapGesture { self.takePictureCover() }
 			VStack(alignment: .leading, spacing: 5) {
 				ZStack(alignment: .leading) {
 					URLImage(url: user?.profile_picture, cache: cache, configuration: { $0.resizable() })

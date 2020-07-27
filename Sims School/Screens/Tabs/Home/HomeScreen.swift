@@ -25,9 +25,9 @@ struct HomeScreen: View {
 			ScrollView {
 				VStack(alignment: .leading, spacing: 0) {
 					HomeScreenProfile(user: self.users[0])
-					if self.props.classes.count > 0 {
-						HomeScreenClasses(classes: self.$props.classes, currentClass: self.$props.currentClass)
-					}
+					HomeScreenClasses(
+						classes: self.$props.classes, currentClass: self.$props.currentClass, status: self.$props.classesStatus
+					)
 					if self.props.randomAd.status != .loading {
 						HomeScreenAds(randomAd: self.props.randomAd)
 					}

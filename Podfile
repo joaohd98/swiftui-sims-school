@@ -6,6 +6,7 @@ target 'Sims School' do
   use_frameworks!
 
   # Pods for swiftui-escola
+	pod 'SkeletonUI'
 
   # add the Firebase pod for Google Firebase
   pod 'Firebase/Analytics'

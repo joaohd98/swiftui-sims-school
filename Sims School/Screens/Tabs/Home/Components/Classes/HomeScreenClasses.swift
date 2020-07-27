@@ -7,10 +7,12 @@
 //
 
 import SwiftUI
+import SkeletonUI
 
 struct HomeScreenClasses: View {
 	@Binding var classes: [ClassResponse]
 	@Binding var currentClass: Int
+	@Binding var status: NetworkRequestStatus
 	
 	func getDate(weekDay: Int) -> String {
 		let cal = Calendar.current
@@ -45,25 +47,38 @@ struct HomeScreenClasses: View {
 				}
 				.padding(.vertical, 5)
 				.background(Color(CustomColor.gray))
-				
+				.skeleton(with: status == .loading)
+				.shape(type: .rectangle)
+				.frame(height: 30)
+			
 				if actualClass.hasClass {
-					VStack(alignment: .leading, spacing: 2) {
+					VStack(alignment: .leading, spacing: 10) {
 						Text("\(actualClass.course)")
 							.foregroundColor(Color(CustomColor.gray))
-							.font(.system(size: 16, weight: .bold))
+							.font(.system(size: 14, weight: .bold))
 							.multilineTextAlignment(.leading)
-						
+							.skeleton(with: status == .loading)
+							.multiline(lines: 1, scales: [0: 0.3])
+							.frame(height: 10)
+
 						Text("\(actualClass.teacher)")
 							.foregroundColor(Color(CustomColor.gray))
-							.font(.system(size: 16, weight: .medium))
+							.font(.system(size: 14, weight: .medium))
 							.multilineTextAlignment(.leading)
+							.skeleton(with: status == .loading)
+							.multiline(lines: 1, scales: [0: 0.3])
+							.frame(height: 10)
+
 					}
-					.padding(.all, 10)
-										
+					.padding(.horizontal, 10)
+					.padding(.vertical, 20)
+					
 					HStack(alignment: .center) {
 						Spacer()
 						Text("\(actualClass.place)")
-							.font(.system(size: 14, weight: .bold))
+							.font(.system(size: 16, weight: .bold))
+							.skeleton(with: status == .loading)
+							.frame(height: 12, alignment: .center)
 						Spacer()
 					}
 					.padding(.vertical, 10)
@@ -73,8 +88,8 @@ struct HomeScreenClasses: View {
 					Text("Não havera aulas nesse dia")
 						.font(.system(size: 20, weight: .bold))
 						.foregroundColor(Color(CustomColor.gray))
-						.padding(.top, 32)
-						.padding(.bottom, 44)
+						.padding(.top, 35)
+						.padding(.bottom, 45)
 				}
 			}
 			.border(Color.gray, width: 1)
@@ -82,21 +97,40 @@ struct HomeScreenClasses: View {
 		)
 	}
 	
-	var body: some View {
+	var loadingView: some View {
+		self.getCard(actualClass: ClassResponse(), index: 0)
+	}
+	
+	var successView: some View {
 		SlideHorizontal(
 			classes.enumerated().map { (index, element) in self.getCard(actualClass: element, index: index) },
 			hasDots: true,
 			currentPage: self.$currentClass
 		)
-		.frame(height: 180)
+	}
+	
+	var body: some View {
+		Group {
+			if status == .failed {
+				
+			}
+			else if status == .loading {
+				loadingView
+			}
+			else if status == .success {
+				successView
+			}
+		}
+		.frame(height: 170)
 	}
 }
 
 struct HomeScreenClasses_Previews: PreviewProvider {
 	@State static var classes: [ClassResponse] = []
 	@State static var currentClass: Int = 3
+	@State static var status: NetworkRequestStatus = .success
 	
 	static var previews: some View {
-		HomeScreenClasses(classes: $classes, currentClass: $currentClass)
+		HomeScreenClasses(classes: $classes, currentClass: $currentClass, status: $status)
 	}
 }

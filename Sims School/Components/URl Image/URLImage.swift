@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import SkeletonUI
 
 struct URLImage: View {
 	@ObservedObject var loader: ImageLoader
@@ -23,11 +24,9 @@ struct URLImage: View {
 		
 	var image: some View {
         Group {
-            if loader.image != nil {
-                configuration(Image(uiImage: loader.image!))
-            } else {
-				configuration(Image("placeholder"))
-            }
+			configuration((loader.image != nil) ? Image(uiImage: loader.image!) : Image("placeholder"))
+				.skeleton(with: loader.image == nil)
+				.shape(type: .rectangle)
         }
     }
 	
