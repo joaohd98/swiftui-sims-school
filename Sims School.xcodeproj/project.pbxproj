@@ -68,6 +68,7 @@
 		DCB672DF24B29BB60064484D /* UserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB672DE24B29BB60064484D /* UserRequest.swift */; };
 		DCB672E124B29BC10064484D /* UserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB672E024B29BC10064484D /* UserResponse.swift */; };
 		DCB672E324B29BD10064484D /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB672E224B29BD10064484D /* UserService.swift */; };
+		DCD5423124CF509E0022E4AA /* TryAgainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD5423024CF509E0022E4AA /* TryAgainView.swift */; };
 		DCD9F3FE24CA2C6800B8DB6D /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD9F3FD24CA2C6800B8DB6D /* Assets.swift */; };
 		DCF043DF24AD16B600241062 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF043DE24AD16B600241062 /* AppDelegate.swift */; };
 		DCF043E124AD16B600241062 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF043E024AD16B600241062 /* SceneDelegate.swift */; };
@@ -150,6 +151,7 @@
 		DCB672DE24B29BB60064484D /* UserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRequest.swift; sourceTree = "<group>"; };
 		DCB672E024B29BC10064484D /* UserResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResponse.swift; sourceTree = "<group>"; };
 		DCB672E224B29BD10064484D /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		DCD5423024CF509E0022E4AA /* TryAgainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TryAgainView.swift; sourceTree = "<group>"; };
 		DCD9F3FD24CA2C6800B8DB6D /* Assets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
 		DCF043DB24AD16B600241062 /* Sims School.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sims School.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCF043DE24AD16B600241062 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -594,6 +596,14 @@
 			path = User;
 			sourceTree = "<group>";
 		};
+		DCD5422F24CF504C0022E4AA /* Try Again */ = {
+			isa = PBXGroup;
+			children = (
+				DCD5423024CF509E0022E4AA /* TryAgainView.swift */,
+			);
+			path = "Try Again";
+			sourceTree = "<group>";
+		};
 		DCF043D224AD16B600241062 = {
 			isa = PBXGroup;
 			children = (
@@ -667,6 +677,7 @@
 		DCF043F424AD16F900241062 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				DCD5422F24CF504C0022E4AA /* Try Again */,
 				DC57924C24CBF36A0097CAC9 /* URl Image */,
 				DC7FCB8824C8966800406CDF /* Map View */,
 				DC7FCB8324C88CE400406CDF /* Share Sheet */,
@@ -905,6 +916,7 @@
 				DCF043F924AD191200241062 /* LoginScreen.swift in Sources */,
 				DC7FCB8524C88CF600406CDF /* ShareSheet.swift in Sources */,
 				DC7FCB8D24C8CE6000406CDF /* Database.swift in Sources */,
+				DCD5423124CF509E0022E4AA /* TryAgainView.swift in Sources */,
 				DC570CF224C7255D00C9AEDA /* CustomUIVideoPlayer.swift in Sources */,
 				DC4D2D0B24C27D70008FD663 /* ClassesScreenDaysWeek.swift in Sources */,
 				DCAAF79024C0A86000F0518C /* HomeScreenPageModel.swift in Sources */,

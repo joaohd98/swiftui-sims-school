@@ -12,7 +12,7 @@ import SwiftUI
 class HomeScreenModel: ObservableObject {
 	private var firstRun = true
 	@Published var user: UserResponse? = nil
-	@Published var classesStatus: NetworkRequestStatus = .loading
+	@Published var classesStatus: NetworkRequestStatus = .failed
 	@Published var classes: [ClassResponse] = []
 	@Published var randomAdStatus: NetworkRequestStatus = .loading
 	@Published var randomAd: AdsResponse = AdsResponse()
@@ -28,13 +28,13 @@ class HomeScreenModel: ObservableObject {
 		}
 	}
 	
-	private func getUserRequest(users: FetchedResults<UserEntity>) {
+	func getUserRequest(users: FetchedResults<UserEntity>) {
 		if users.count > 0 {
 			self.user = UserResponse(user: users[0])
 		}
 	}
 	
-	private func getClassesRequest(classes: FetchedResults<ClassEntity>) {
+	func getClassesRequest(classes: FetchedResults<ClassEntity>) {
 		if let id_class = self.user?.id_class {
 			ClassService.getClasses(
 				request: ClassRequest(id_class: id_class),
@@ -43,20 +43,20 @@ class HomeScreenModel: ObservableObject {
 					self.classesStatus = .success
 				},
 				onError: {
-					print("error")
+					self.classesStatus = .failed
 				}
 			)
 		}
 	}
 	
-	private  func getAdsRequest(ads: FetchedResults<AdsEntity>) {
+	func getAdsRequest(ads: FetchedResults<AdsEntity>) {		
 		AdsService.getAds(
 			onSucess: { ads in
 				self.randomAd = ads[Int.random(in: 0..<ads.count)]
 				self.randomAdStatus = .success
 			},
 			onError: {
-				print("error")
+				self.randomAdStatus = .failed
 			}
 		)
 	}

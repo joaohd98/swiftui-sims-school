@@ -13,6 +13,7 @@ struct HomeScreenClasses: View {
 	@Binding var classes: [ClassResponse]
 	@Binding var currentClass: Int
 	@Binding var status: NetworkRequestStatus
+	var tryAgain: () -> Void
 	
 	func getDate(weekDay: Int) -> String {
 		let cal = Calendar.current
@@ -50,7 +51,7 @@ struct HomeScreenClasses: View {
 				.skeleton(with: status == .loading)
 				.shape(type: .rectangle)
 				.frame(height: 30)
-			
+				
 				if actualClass.hasClass {
 					VStack(alignment: .leading, spacing: 10) {
 						Text("\(actualClass.course)")
@@ -60,7 +61,7 @@ struct HomeScreenClasses: View {
 							.skeleton(with: status == .loading)
 							.multiline(lines: 1, scales: [0: 0.3])
 							.frame(height: 10)
-
+						
 						Text("\(actualClass.teacher)")
 							.foregroundColor(Color(CustomColor.gray))
 							.font(.system(size: 14, weight: .medium))
@@ -68,7 +69,7 @@ struct HomeScreenClasses: View {
 							.skeleton(with: status == .loading)
 							.multiline(lines: 1, scales: [0: 0.3])
 							.frame(height: 10)
-
+						
 					}
 					.padding(.horizontal, 10)
 					.padding(.vertical, 20)
@@ -97,6 +98,14 @@ struct HomeScreenClasses: View {
 		)
 	}
 	
+	var errorView: some View {
+		TryAgainView(
+			text: "There was an error when tried to get the classes.",
+			onTryAgain: self.tryAgain
+		)
+			.padding(.horizontal)
+	}
+	
 	var loadingView: some View {
 		VStack {
 			self.getCard(actualClass: ClassResponse(), index: 0)
@@ -113,18 +122,30 @@ struct HomeScreenClasses: View {
 	}
 	
 	var body: some View {
-		Group {
-			if status == .failed {
-				
+		print("classes", self.classes)
+		
+		return (
+			Group {
+				if status == .failed {
+					errorView
+						.transition(.opacity)
+						.zIndex(0)
+				}
+				else if status == .loading {
+					loadingView
+						.frame(height: 170)
+						.transition(.opacity)
+						.zIndex(1)
+					
+				}
+				else if status == .success {
+					successView
+						.frame(height: 170)
+						.transition(.opacity)
+						.zIndex(2)
+				}
 			}
-			else if status == .loading {
-				loadingView
-			}
-			else if status == .success {
-				successView
-			}
-		}
-		.frame(height: 170)
+		)
 	}
 }
 
@@ -134,6 +155,6 @@ struct HomeScreenClasses_Previews: PreviewProvider {
 	@State static var status: NetworkRequestStatus = .success
 	
 	static var previews: some View {
-		HomeScreenClasses(classes: $classes, currentClass: $currentClass, status: $status)
+		HomeScreenClasses(classes: $classes, currentClass: $currentClass, status: $status, tryAgain: {})
 	}
 }

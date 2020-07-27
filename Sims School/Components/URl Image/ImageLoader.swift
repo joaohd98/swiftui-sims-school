@@ -10,16 +10,14 @@ import SwiftUI
 import Combine
 import Foundation
 
-class ImageLoader: ObservableObject {	
-	@Published var image: UIImage?
+class ImageLoader: ObservableObject {
 	@Published var url: URL?
+	@Published var image: UIImage = UIImage(named: "placeholder")!
 	@Published var hasError: Bool = false
-	
-	private static let imageProcessingQueue = DispatchQueue(label: "image-processing")
+	@Published var isLoading = false
 	
 	private var cancellable: URLSessionDataTask?
 	private var cache: ImageCache?
-	private var isLoading = false
 	
 	init(cache: ImageCache?) {
 		self.cache = cache
@@ -29,20 +27,26 @@ class ImageLoader: ObservableObject {
 		self.cancel()
 	}
 	
-	
 	func retry()  {
-		self.getImage()
-		self.hasError = false
+		DispatchQueue.main.async {
+			self.hasError = false
+			self.isLoading = true
+		}
+		
+		DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+			self.getImage()
+		})
 	}
 	
 	func load(url: URL?){
-		self.url = url
-		self.getImage()
+		DispatchQueue.main.async {
+			self.isLoading = true
+			self.url = url
+			self.getImage()
+		}
 	}
 	
-	private func getImage() {
-		guard !isLoading else { return }
-		
+	private func getImage() {		
 		if let image = cache?[self.url!] {
 			self.image = image
 			return
@@ -53,55 +57,22 @@ class ImageLoader: ObservableObject {
 			completionHandler: { (data, response, error) in
 				DispatchQueue.main.async {
 					if data != nil{
-						let image = UIImage(data: data!)
+						let image = UIImage(data: data!)!
 						self.image = image
 						self.cache(image)
 					}
 						
 					else {
 						self.hasError = true
-						self.cancellable?.cancel()
 					}
+					
+					self.isLoading = false
 				}
 			}
 		)
 		
 		cancellable?.resume()
 		
-		//		cancellable = URLSession.shared.dataTaskPublisher(for: self.url!)
-		//			.subscribe(on: Self.imageProcessingQueue)
-		//			.map { UIImage(data: $0.data) }
-		//			.mapError { error -> Error in
-		//				DispatchQueue.main.async {
-		//					if !self.hasError {
-		//						self.hasError.toggle()
-		//					}
-		//				}
-		//
-		//				return error
-		//			}
-		//			.handleEvents(receiveSubscription: { [weak self] _ in self?.onStart() },
-		//						  receiveOutput: { [weak self] in self?.cache($0) },
-		//						  receiveCompletion: { [weak self] _ in self?.onFinish() },
-		//						  receiveCancel: { [weak self] in self?.onFinish() })
-		//			.receive(on: DispatchQueue.main)
-		//			.replaceError(with: nil)
-		//			.assign(to: \.image, on: self)
-		
-	}
-	
-	private func onStart() {
-		isLoading = true
-		
-		DispatchQueue.main.async {
-			if self.hasError {
-				self.hasError.toggle()
-			}
-		}
-	}
-	
-	private func onFinish() {
-		isLoading = false
 	}
 	
 	private func cache(_ image: UIImage?) {

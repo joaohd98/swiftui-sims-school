@@ -24,8 +24,8 @@ struct URLImage: View {
 		
 	var image: some View {
         ZStack {
-			configuration((loader.image != nil) ? Image(uiImage: loader.image!) : Image("placeholder"))
-				.skeleton(with: loader.image == nil)
+			configuration(Image(uiImage: loader.image))
+				.skeleton(with: loader.isLoading)
 				.shape(type: .rectangle)
 			
 			if loader.hasError {

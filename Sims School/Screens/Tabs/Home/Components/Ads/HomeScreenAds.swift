@@ -14,6 +14,7 @@ struct HomeScreenAds: View {
 	@State var showSafari = false
 	var randomAd: AdsResponse
 	@Binding var status: NetworkRequestStatus
+	var tryAgain: () -> Void
 
 	func getImage(url: URL?) -> some View {
 		Button(action: {
@@ -32,13 +33,41 @@ struct HomeScreenAds: View {
 		.disabled(self.status == .loading)
 	}
 	
+	var errorView: some View {
+		TryAgainView(
+			text: "There was an error when tried to get the ads.",
+			onTryAgain: self.tryAgain
+		)
+		.padding(.horizontal)
+	}
+	
+	var successView: some View {
+		 self.getImage(url: self.randomAd.image)
+			 .frame(height: 175)
+			 .sheet(isPresented: $showSafari) {
+				 SafariView(url: self.randomAd.url!)
+		 }
+	}
+	
 	var body: some View {
-		self.getImage(url: self.randomAd.image)
-			.frame(height: 175)
-			.sheet(isPresented: $showSafari) {
-				SafariView(url: self.randomAd.url!)
-		}
-		.padding(.top, 30)
+		print("ads", self.randomAd)
+		
+		return (
+			Group {
+				if status == .failed {
+					errorView
+						.transition(.opacity)
+						.zIndex(0)
+				}
+				else {
+					successView
+						.transition(.opacity)
+						.zIndex(1)
+				}
+			}
+			.padding(.top, 30)
+
+		)
 	}
 }
 
@@ -47,6 +76,6 @@ struct HomeScreenAds_Previews: PreviewProvider {
 	@State static var status: NetworkRequestStatus = .success
 
 	static var previews: some View {
-		HomeScreenAds(randomAd: adResponse, status: $status)
+		HomeScreenAds(randomAd: adResponse, status: $status, tryAgain: {})
 	}
 }
