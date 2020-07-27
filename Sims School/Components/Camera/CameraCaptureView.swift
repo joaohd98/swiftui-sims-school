@@ -10,8 +10,8 @@ import SwiftUI
 
 struct CameraCaptureView: UIViewControllerRepresentable {
 	@Binding var showCameraView: Bool
-	@Binding var pickedImage: Image
 	@Binding var sourceType: UIImagePickerController.SourceType
+	var onTakePicture: (_ pictureData: Data) -> Void
 
 	func makeUIViewController(context: UIViewControllerRepresentableContext<CameraCaptureView>) -> UIImagePickerController {
 		let cameraViewController = UIImagePickerController()
@@ -36,9 +36,14 @@ struct CameraCaptureView: UIViewControllerRepresentable {
 			self.parent = cameraView
 		}
 		
-		func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+		func imagePickerController(_ picker: UIImagePickerController,
+								   didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
 			let uiImage = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
-			parent.pickedImage = Image(uiImage: uiImage)
+			
+			if let data = uiImage.pngData() {
+				self.parent.onTakePicture(data)
+			}
+			
 			parent.showCameraView = false
 		}
 		
@@ -50,10 +55,9 @@ struct CameraCaptureView: UIViewControllerRepresentable {
 
 struct CameraCaptureView_Previews: PreviewProvider {
 	@State static var isShown: Bool = true
-	@State static var image: Image = Image("")
 	@State static var sourceType: UIImagePickerController.SourceType = .photoLibrary
 
 	static var previews: some View {
-		CameraCaptureView(showCameraView: $isShown, pickedImage: $image, sourceType: $sourceType)
+		CameraCaptureView(showCameraView: $isShown, sourceType: $sourceType, onTakePicture: { _ in })
 	}
 }

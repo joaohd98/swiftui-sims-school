@@ -44,6 +44,16 @@ class UserService {
 			}
 		}
 	}
+	
+	static func updatePicture(user: UserResponse) {
+		let db = FirebaseDatabase.db
+		let docUser = db.collection("user").document(user.uid)
+		let url = "profile-pictures/\(user.uid).jpg"
+	
+		docUser.updateData(["profile_picture": url]) { (error) in
+			print("error", error)
+		}
+	}
 }
 
 

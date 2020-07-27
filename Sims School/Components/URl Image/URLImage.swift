@@ -17,7 +17,7 @@ struct URLImage: View {
 		self.loader = ImageLoader(cache: cache)
 		self.configuration = configuration
 
-		if self.loader.url == nil, let url = url {
+		if let url = url {
 			self.loader.load(url: url)
 		}
 	}

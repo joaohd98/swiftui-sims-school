@@ -15,7 +15,11 @@ struct HomeScreenProfile: View {
 	@State var image: Image = Image("")
 	@State var sourceType: UIImagePickerController.SourceType = .photoLibrary
 	
-	var user: UserEntity?
+	var user: UserResponse
+	
+	init(user: UserEntity) {
+		self.user = UserResponse(user: user)
+	}
 
 	func takePictureProfile(type: UIImagePickerController.SourceType) {
 		self.sourceType = type
@@ -24,18 +28,15 @@ struct HomeScreenProfile: View {
 	
 	var body: some View {
 		VStack(alignment: .leading, spacing: 5) {
-			URLImage(url: user?.cover_picture, cache: cache, configuration: { $0.resizable() })
+			URLImage(url: user.cover_picture, cache: cache, configuration: { $0.resizable() })
 				.frame(
 					width: UIScreen.screenWidth,
 					height: 100
 			)
 			VStack(alignment: .leading, spacing: 5) {
 				ZStack(alignment: .leading) {
-					URLImage(url: user?.profile_picture, cache: cache, configuration: { $0.resizable() })
-						.frame(
-							width: 75,
-							height: 75
-						)
+					URLImage(url: user.profile_picture, cache: cache, configuration: { $0.resizable() })
+						.frame(width: 75, height: 75)
 						.onTapGesture { self.showActionSheetCamera.toggle() }
 						.actionSheet(isPresented: $showActionSheetCamera) {
 							ActionSheet(title: Text(""), message: Text("Mudar foto de perfil"), buttons: [
@@ -47,8 +48,8 @@ struct HomeScreenProfile: View {
 						.sheet(isPresented: $showCapturingCamera) {
 							CameraCaptureView(
 								showCameraView: self.$showCapturingCamera,
-								pickedImage: self.$image,
-								sourceType: self.$sourceType
+								sourceType: self.$sourceType,
+								onTakePicture: { data in self.user.setPicturePhoto(data) }
 							)
 						}
 				}
@@ -57,7 +58,7 @@ struct HomeScreenProfile: View {
 					return trait.userInterfaceStyle == .dark ? .white : .black
 				}))
 				VStack(alignment: .leading, spacing: 5) {
-					Text(self.user?.name ?? "")
+					Text(self.user.name)
 						.foregroundColor(Color(CustomColor.gray))
 						.font(.system(size: 16, weight: .bold))
 					
@@ -66,7 +67,7 @@ struct HomeScreenProfile: View {
 							.foregroundColor(Color(CustomColor.gray))
 							.font(.system(size: 16, weight: .bold))
 						
-						Text(self.user?.rm ?? "")
+						Text(self.user.rm)
 							.foregroundColor(Color(CustomColor.gray))
 							.font(.system(size: 14, weight: .semibold))
 						
@@ -80,12 +81,12 @@ struct HomeScreenProfile: View {
 						.foregroundColor(Color(CustomColor.gray))
 						.font(.system(size: 16, weight: .bold))
 					
-					Text(self.user?.actual_class ?? "")
+					Text(self.user.actual_class)
 						.foregroundColor(Color(CustomColor.gray))
 						.font(.system(size: 14, weight: .semibold))
 				}
 				
-				Text(self.user?.course ?? "")
+				Text(self.user.course)
 					.foregroundColor(Color(CustomColor.gray))
 					.font(.system(size: 16, weight: .bold))
 			}
@@ -96,7 +97,7 @@ struct HomeScreenProfile: View {
 }
 
 struct HomeScreenProfile_Previews: PreviewProvider {
-	@State static var user: UserEntity? = nil
+	@State static var user: UserEntity = UserEntity()
 	
 	static var previews: some View {
 		HomeScreenProfile(user: self.user)

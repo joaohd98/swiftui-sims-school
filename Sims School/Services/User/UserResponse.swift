@@ -13,7 +13,36 @@ class UserResponse: ObservableObject {
 	@Published var profile_picture: URL?
 	@Published var cover_picture: URL?
 	
-	init(dictionary: [String: Any], group: DispatchGroup) {
+	init() {
+		self.uid = ""
+		self.name = ""
+		self.rm = ""
+		self.id_class = ""
+		self.actual_class = ""
+		self.course = ""
+	}
+	
+	func setPicturePhoto(_ pictureData: Data) {
+		let storageRef = FirebaseDatabase.storage.reference()
+		let pictureRef = storageRef.child("profile-pictures/\(self.uid).jpg")
+
+		pictureRef.putData(pictureData, metadata: nil) { (metadata, error) in
+		  pictureRef.downloadURL { (url, error) in
+			guard let downloadURL = url else { return }
+			
+			self.profile_picture = downloadURL
+			
+			UserService.updatePicture(user: self)
+		  }
+		}
+	}
+}
+
+
+extension UserResponse {
+	convenience init(dictionary: [String: Any], group: DispatchGroup) {
+		self.init()
+		
 		self.uid = dictionary["uid"] as! String
 		self.name = dictionary["name"] as! String
 		self.rm = dictionary["rm"] as! String
@@ -27,7 +56,9 @@ class UserResponse: ObservableObject {
 		)
 	}
 	
-	init(user: UserEntity) {
+	convenience init(user: UserEntity) {
+		self.init()
+
 		self.uid = user.uid!
 		self.name = user.name!
 		self.rm = user.rm!
@@ -50,7 +81,7 @@ class UserResponse: ObservableObject {
 		}
 		
 		group.enter()
-		FirebaseDatabase.storage.reference().child(profilePicture).downloadURL { url, error in			
+		FirebaseDatabase.storage.reference().child(profilePicture).downloadURL { url, error in
 			if error == nil {
 				self.profile_picture = url
 			}
@@ -78,6 +109,4 @@ class UserResponse: ObservableObject {
 			print("Error saving managed object context: \(error)")
 		}
 	}
-	
 }
-
