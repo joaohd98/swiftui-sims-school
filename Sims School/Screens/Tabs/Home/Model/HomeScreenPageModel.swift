@@ -28,8 +28,8 @@ class HomeScreenModel: ObservableObject {
 			ClassService.getClasses(
 				request: ClassRequest(id_class: id_class),
 				onSucess: { classes in
-					self.classesStatus = .success
 					self.classes = classes
+					self.classesStatus = .success
 				},
 				onError: {
 					print("error")
@@ -41,9 +41,8 @@ class HomeScreenModel: ObservableObject {
 	func getAdsRequest(ads: FetchedResults<AdsEntity>) {
 		AdsService.getAds(
 			onSucess: { ads in
-				let count = ads.count
-				self.randomAd = ads[Int.random(in: 0..<count)]
-				self.randomAd.status = .success
+				self.randomAd = ads[Int.random(in: 0..<ads.count)]
+				self.randomAdStatus = .success
 			},
 			onError: {
 				print("error")

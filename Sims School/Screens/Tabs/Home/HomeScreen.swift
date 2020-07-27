@@ -28,9 +28,7 @@ struct HomeScreen: View {
 					HomeScreenClasses(
 						classes: self.$props.classes, currentClass: self.$props.currentClass, status: self.$props.classesStatus
 					)
-					if self.props.randomAd.status != .loading {
-						HomeScreenAds(randomAd: self.props.randomAd)
-					}
+					HomeScreenAds(randomAd: self.props.randomAd, status: self.$props.randomAdStatus)
 				}
 				.padding(.bottom, 10)
 				.navigationBarTitle("Home", displayMode: .inline)

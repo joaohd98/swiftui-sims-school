@@ -9,12 +9,11 @@
 import Foundation
 
 class AdsResponse: ObservableObject {
-	@Published var status: NetworkRequestStatus
 	@Published var image: URL!
 	@Published var url: URL!
 	
 	init() {
-		self.status = .loading
+
 	}
 }
 
