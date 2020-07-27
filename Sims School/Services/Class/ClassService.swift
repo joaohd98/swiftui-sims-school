@@ -17,7 +17,7 @@ class ClassService {
 		let db = FirebaseDatabase.db
 		let docUser = db.collection("classes").document(request.id_class)
 
-		docUser.getDocument { (document, error) in
+		docUser.getDocument(source: .server) { (document, error) in
 			if let document = document, document.exists, let dictionary = document.data() {
 				
 				let days = dictionary["days"] as! [[String: Any]]

@@ -15,14 +15,12 @@ struct HomeScreen: View {
 	@ObservedObject var props: HomeScreenModel = HomeScreenModel()
 	
 	func viewDidLoad() {
-		self.props.getUserRequest(users: self.users)
-		self.props.getClassesRequest(storagedClasses: self.classes)
-		self.props.getAdsRequest(ads: self.ads)
+		self.props.initProps(users: users, classes: classes, ads: ads)
 	}
 	
     var body: some View {
 		CustomContainerSignIn {
-			ScrollView {
+			ScrollView(.vertical, showsIndicators: false) {
 				VStack(alignment: .leading, spacing: 0) {
 					HomeScreenProfile(user: self.users[0])
 					HomeScreenClasses(

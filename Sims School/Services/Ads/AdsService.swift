@@ -16,7 +16,7 @@ class AdsService {
 		let db = FirebaseDatabase.db
 		let doc = db.collection("ads").document("all")
 
-		doc.getDocument { (document, error) in
+		doc.getDocument(source: .server) { (document, error) in
 			if let document = document, document.exists, let dictionary = document.data() {
 				
 				let group = DispatchGroup()

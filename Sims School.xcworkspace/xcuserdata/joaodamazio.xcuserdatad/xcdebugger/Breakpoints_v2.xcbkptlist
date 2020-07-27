@@ -7,81 +7,33 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "A3055B32-6276-4808-8E5C-824AEB5D4DE7"
-            shouldBeEnabled = "No"
+            uuid = "0A557448-4933-4B7B-B4D3-541B114114A2"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Sims School/Components/URl Image/ImageLoader.swift"
+            filePath = "Sims School/Services/Ads/AdsResponse.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "35"
-            endingLineNumber = "35"
-            landmarkName = "load(url:)"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "init(dictionary:group:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "BA67CD37-8576-4C4B-ACA6-35B29B614811"
-            shouldBeEnabled = "No"
+            uuid = "C701FBB7-DD24-466F-AF81-7201EC7DBC70"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Sims School/Components/URl Image/ImageLoader.swift"
+            filePath = "Sims School/Services/Ads/AdsResponse.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "62"
-            endingLineNumber = "62"
-            landmarkName = "cache(_:)"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "init(dictionary:group:)"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "D62FD194-8665-4366-93B4-E8854058C1CB"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Sims School/Components/URl Image/ImageLoader.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61"
-            landmarkName = "cache(_:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "D62FD194-8665-4366-93B4-E8854058C1CB - b37947e4722118"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Sims_School.ImageLoader.(cache in _1000427F3D3A877140032FEB4688E682)(Swift.Optional&lt;__C.UIImage&gt;) -&gt; ()"
-                  moduleName = "Sims School"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/joaodamazio/Desktop/swiftui-escola/Sims%20School/Components/URl%20Image/ImageLoader.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "69"
-                  endingLineNumber = "69"
-                  offsetFromSymbolStart = "338">
-               </Location>
-               <Location
-                  uuid = "D62FD194-8665-4366-93B4-E8854058C1CB - 400ec4241c69f689"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (__C.UIImage) -&gt; Swift.Optional&lt;()&gt; in Sims_School.ImageLoader.(cache in _1000427F3D3A877140032FEB4688E682)(Swift.Optional&lt;__C.UIImage&gt;) -&gt; ()"
-                  moduleName = "Sims School"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/joaodamazio/Desktop/swiftui-escola/Sims%20School/Components/URl%20Image/ImageLoader.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "69"
-                  endingLineNumber = "69"
-                  offsetFromSymbolStart = "126">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -10,6 +10,7 @@ import Foundation
 import SwiftUI
 
 class HomeScreenModel: ObservableObject {
+	private var firstRun = true
 	@Published var user: UserResponse? = nil
 	@Published var classesStatus: NetworkRequestStatus = .loading
 	@Published var classes: [ClassResponse] = []
@@ -17,13 +18,23 @@ class HomeScreenModel: ObservableObject {
 	@Published var randomAd: AdsResponse = AdsResponse()
 	@Published var currentClass: Int = Calendar.current.component(.weekday, from: Date()) - 1
 	
-	func getUserRequest(users: FetchedResults<UserEntity>) {
+	func initProps(users: FetchedResults<UserEntity>, classes: FetchedResults<ClassEntity>, ads: FetchedResults<AdsEntity>) {
+		if firstRun {
+			self.getUserRequest(users: users)
+			self.getClassesRequest(classes: classes)
+			self.getAdsRequest(ads: ads)
+			
+			firstRun.toggle()
+		}
+	}
+	
+	private func getUserRequest(users: FetchedResults<UserEntity>) {
 		if users.count > 0 {
 			self.user = UserResponse(user: users[0])
 		}
 	}
 	
-	func getClassesRequest(storagedClasses: FetchedResults<ClassEntity>) {
+	private func getClassesRequest(classes: FetchedResults<ClassEntity>) {
 		if let id_class = self.user?.id_class {
 			ClassService.getClasses(
 				request: ClassRequest(id_class: id_class),
@@ -38,7 +49,7 @@ class HomeScreenModel: ObservableObject {
 		}
 	}
 	
-	func getAdsRequest(ads: FetchedResults<AdsEntity>) {
+	private  func getAdsRequest(ads: FetchedResults<AdsEntity>) {
 		AdsService.getAds(
 			onSucess: { ads in
 				self.randomAd = ads[Int.random(in: 0..<ads.count)]

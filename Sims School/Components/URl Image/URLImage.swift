@@ -23,10 +23,21 @@ struct URLImage: View {
 	}
 		
 	var image: some View {
-        Group {
+        ZStack {
 			configuration((loader.image != nil) ? Image(uiImage: loader.image!) : Image("placeholder"))
 				.skeleton(with: loader.image == nil)
 				.shape(type: .rectangle)
+			
+			if loader.hasError {
+				Button(action: {
+					self.loader.retry()
+				}) {
+					Image(systemName: "arrow.clockwise")
+						.resizable()
+						.frame(width: 20, height: 20, alignment: .center)
+				}
+			}
+			
         }
     }
 	
