@@ -9,9 +9,6 @@
 import Foundation
 
 class FirebaseAssets {
-
 	static var ads: [[String: String]] = []
-	
 	static var tips: [[String: Any]] = []
-	
 }

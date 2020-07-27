@@ -9,13 +9,20 @@
 import Foundation
 
 class AdsResponse: ObservableObject {
-	@Published var image: URL?
-	@Published var url: URL?
+	@Published var status: NetworkRequestStatus
+	@Published var image: URL!
+	@Published var url: URL!
+	
+	init() {
+		self.status = .loading
+	}
+}
 
-	init(dictionary: [String: Any], group: DispatchGroup) {
+extension AdsResponse {
+	convenience init(dictionary: [String: Any], group: DispatchGroup) {
+		self.init()
 		self.url = URL(string: dictionary["url"] as! String)
 
-		
 		group.enter()
 		let image = dictionary["image"] as! String
 		FirebaseDatabase.storage.reference().child(image).downloadURL { url, error in
@@ -27,7 +34,8 @@ class AdsResponse: ObservableObject {
 		}
 	}
 	
-	init(ads: AdsEntity) {
+	convenience init(ads: AdsEntity) {
+		self.init()
 		self.image = ads.image!
 		self.url = ads.url!
 	}

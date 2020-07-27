@@ -12,7 +12,7 @@ import SwiftUI
 class HomeScreenModel: ObservableObject {
 	@Published var user: UserResponse? = nil
 	@Published var classes: [ClassResponse] = []
-	@Published var ads: [AdsResponse] = []
+	@Published var randomAd: AdsResponse = AdsResponse()
 	@Published var currentClass: Int = Calendar.current.component(.weekday, from: Date()) - 1
 	
 	func getUserRequest(users: FetchedResults<UserEntity>) {
@@ -38,8 +38,9 @@ class HomeScreenModel: ObservableObject {
 	func getAdsRequest(ads: FetchedResults<AdsEntity>) {
 		AdsService.getAds(
 			onSucess: { ads in
-				self.ads = ads
-				print("ads", ads)
+				let count = ads.count
+				self.randomAd = ads[Int.random(in: 0..<count)]
+				self.randomAd.status = .success
 			},
 			onError: {
 				print("error")
