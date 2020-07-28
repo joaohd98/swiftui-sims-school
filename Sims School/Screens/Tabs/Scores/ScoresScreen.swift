@@ -25,7 +25,10 @@ struct ScoresScreen: View {
 					status: self.$props.scoresStatus,
 					actualSemester: self.$props.actualSemester
 				)
-				ScoresScreenCardScore()
+				ScoresScreenCardScore(
+					score: self.props.scores.count > 0 ? self.props.scores[self.props.actualSemester] : nil,
+					status: self.$props.scoresStatus
+				)
 			}
 			.onAppear(perform: self.viewDidLoad)
 			.navigationBarTitle("Score")
