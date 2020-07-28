@@ -8,8 +8,14 @@
 
 import SwiftUI
 
+private enum Situation {
+	case approved
+	case disapproved
+	case recovery
+}
+
 struct ScoresScreenCardScore: View {
-	var courses: [(av1: Int, av2: Int, name: String, skips: Int)] = []
+	var courses: [ScoresCoursesResponse] = []
 	@Binding var status: NetworkRequestStatus
 	@State var progressValue: Float = 0.80
 	
@@ -22,59 +28,76 @@ struct ScoresScreenCardScore: View {
 	}
 	
 	
-	func getScoreCircle() -> some View {
+	private func getScoreCircle(text: String, percentage: Double, situation: Situation) -> some View {
+		let color = Color(situation == .approved ? CustomColor.success : situation == .recovery ? CustomColor.warning : CustomColor.danger)
+		
 		return (
 			ZStack {
-				Circle()
+				Capsule()
 					.stroke(lineWidth: 5)
 					.opacity(0.3)
-					.foregroundColor(Color(CustomColor.success))
+					.foregroundColor(color)
 				
-				Circle()
-					.trim(from: 0.0, to: CGFloat(min(self.progressValue, 1.0)))
+				Capsule()
+					.trim(from: 0.0, to: CGFloat(min(percentage, 1.0)))
 					.stroke(style: StrokeStyle(lineWidth: 5, lineCap: .round, lineJoin: .round))
-					.foregroundColor(Color(CustomColor.success))
-					.rotationEffect(Angle(degrees: 270.0))
+					.foregroundColor(color)
+					.rotationEffect(text.count > 3 ?  Angle(degrees: 0) : Angle(degrees: 270.0))
+
 				
-				
-				Text("9.5")
-					.bold()
-				
+				Text(text)
+					.font(.system(size: 14, weight: .semibold))
 			}
 		)
 	}
 	
-	func getScoreBar() -> some View {
+	func getScoreBar(value: Int) -> some View {
+		let color = Color(value >= 7 ? CustomColor.success : value >= 4 ? CustomColor.warning : CustomColor.danger)
+
 		return (
 			GeometryReader { geometry in
 				ZStack(alignment: .leading) {
 					Rectangle()
 						.frame(width: geometry.size.width , height: geometry.size.height)
 						.opacity(0.3)
-						.foregroundColor(Color(CustomColor.success))
+						.foregroundColor(color)
 					
 					Rectangle()
 						.frame(
 							width: min(
-								CGFloat(self.progressValue) * geometry.size.width, geometry.size.width
+								CGFloat(Double(value) / 10) * geometry.size.width, geometry.size.width
 							),
 							height: geometry.size.height
-						)
-						.foregroundColor(Color(CustomColor.success))
+					)
+						.foregroundColor(color)
 						.animation(.linear)
 				}.cornerRadius(45.0)
 			}
 		)
 	}
 	
-	func getCard() -> some View {
+	func getCard(course: ScoresCoursesResponse) -> some View {
 		let isLoading = status == .loading
+		
+		let scoreAvarege = Double(course.av1 + course.av2) / 2.0
+		let scoreAvaregePercentage = scoreAvarege / 10
+		let scoreAvaregeSituation: Situation = scoreAvarege >= 7 ? .approved : scoreAvarege >= 4 ? .recovery : .disapproved
+		
+		
+		let skips = "\(course.skips)%"
+		let skipsPercentage = Double(course.skips) / 100
+		let skipsSituation: Situation = course.skips >= 85 ? .approved : course.skips >= 75 ? .recovery : .disapproved
+		
+		
+		let situation: Situation =  skipsSituation == .recovery || scoreAvaregeSituation == .recovery ? .recovery : skipsSituation == .disapproved || scoreAvaregeSituation == .disapproved ? .disapproved : .approved
+		
+		let situationText = situation == .recovery ? "Recovery" : situation == .disapproved ? "Disapproved" : "Approved"
 		
 		return (
 			VStack(spacing: 20) {
-				Text("COMUNICAÇÃO E CONTEXTO SOCIAL DA VIDA URBANA")
+				Text(course.name)
 					.skeleton(with: isLoading)
-					.frame(height: isLoading ? 32 : nil)
+					.frame(height: isLoading ? 24 : nil)
 					.foregroundColor(Color(CustomColor.gray))
 					.font(.system(size: 14, weight: .bold))
 					.padding(.horizontal, 2)
@@ -83,13 +106,21 @@ struct ScoresScreenCardScore: View {
 					HStack(alignment: .firstTextBaseline, spacing: 20) {
 						VStack(spacing: 10) {
 							Text("Média")
-							self.getScoreCircle()
+							self.getScoreCircle(
+								text: String(scoreAvarege),
+								percentage: scoreAvaregePercentage,
+								situation: scoreAvaregeSituation
+							)
 								.skeleton(with: isLoading)
 								.frame(width: 55, height: 55, alignment: .center)
 						}
 						VStack(spacing: 10) {
 							Text("Faltas")
-							self.getScoreCircle()
+							self.getScoreCircle(
+								text: skips,
+								percentage: skipsPercentage,
+								situation: skipsSituation
+							)
 								.skeleton(with: isLoading)
 								.frame(width: 55, height: 55, alignment: .center)
 							
@@ -97,9 +128,13 @@ struct ScoresScreenCardScore: View {
 						Spacer()
 						VStack(spacing: 10) {
 							Text("Situação")
-							self.getScoreCircle()
+							self.getScoreCircle(
+								text: situationText,
+								percentage: 1,
+								situation: situation
+							)
 								.skeleton(with: isLoading)
-								.frame(width: 55, height: 55, alignment: .center)
+								.frame(width: 100, height: 55, alignment: .center)
 							
 						}
 					}
@@ -109,12 +144,12 @@ struct ScoresScreenCardScore: View {
 							HStack {
 								Text("AV1")
 								Spacer()
-								Text("9")
+								Text(String(course.av1))
 									.skeleton(with: isLoading)
 									.shape(type: .rectangle)
 									.frame(width: isLoading ? 15 : nil, height: isLoading ? 25 : nil)
 							}
-							self.getScoreBar()
+							self.getScoreBar(value: course.av1)
 								.skeleton(with: isLoading)
 								.frame(height: isLoading ? 15 : nil)
 							
@@ -124,12 +159,12 @@ struct ScoresScreenCardScore: View {
 							HStack {
 								Text("AV2")
 								Spacer()
-								Text("7")
+								Text(String(course.av2))
 									.skeleton(with: isLoading)
 									.shape(type: .rectangle)
 									.frame(width: isLoading ? 15 : nil, height: isLoading ? 25 : nil)
 							}
-							self.getScoreBar()
+							self.getScoreBar(value: course.av2)
 								.skeleton(with: isLoading)
 								.frame(height: isLoading ? 15 : nil)
 						}
@@ -144,7 +179,7 @@ struct ScoresScreenCardScore: View {
 					.stroke(lineWidth: 1)
 					.foregroundColor(.white)
 					.shadow(color: .gray, radius: 2, x: 0, y: 2)
-				)
+			)
 				.padding(.all, 15)
 		)
 	}
@@ -152,7 +187,7 @@ struct ScoresScreenCardScore: View {
 	var loadingView: some View {
 		Group {
 			ForEach(0..<3) { _ in
-				self.getCard()
+				self.getCard(course: ScoresCoursesResponse())
 			}
 		}
 	}
@@ -160,7 +195,7 @@ struct ScoresScreenCardScore: View {
 	var successView: some View {
 		Group {
 			ForEach(self.courses, id: \.name) { course in
-				self.getCard()
+				self.getCard(course: course)
 			}
 		}
 	}

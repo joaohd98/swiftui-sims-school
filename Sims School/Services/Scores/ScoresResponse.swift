@@ -10,7 +10,7 @@ import Foundation
 
 class ScoresResponse: ObservableObject, Identifiable {
 	@Published var number: Int
-	@Published var courses: [(av1: Int, av2: Int, name: String, skips: Int)]
+	@Published var courses: [ScoresCoursesResponse]
 	
 	init() {
 		self.number = 0
@@ -26,20 +26,11 @@ extension ScoresResponse {
 		self.number = dictionary["number"] as! Int
 		let courses = dictionary["courses"] as! NSArray
 		
-		
 		courses.forEach { course in
 			let course = course as! [String: Any]
 			
-			self.courses.append((
-				av1: course["av1"] as! Int,
-				av2: course["av2"] as! Int,
-				name: course["name"] as! String,
-				skips: course["skips"] as! Int
-			))
+			self.courses.append(ScoresCoursesResponse(dictionary: course))
 		}
-		
-		print("courses", self.courses)
-		
 	}
 }
 

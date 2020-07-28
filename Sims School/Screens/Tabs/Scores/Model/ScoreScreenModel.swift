@@ -35,7 +35,7 @@ class ScoreScreenModel: ObservableObject {
 				request: ScoresRequest(id: id),
 				onSucess: { scores in
 					self.scores = scores
-					self.actualSemester = scores.count - 1
+					self.actualSemester = scores.count
 					self.scoresStatus = .success
 				},
 				onError: {

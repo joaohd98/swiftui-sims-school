@@ -26,7 +26,7 @@ struct ScoresScreen: View {
 					actualSemester: self.$props.actualSemester
 				)
 				ScoresScreenCardScore(
-					score: self.props.scores.count > 0 ? self.props.scores[self.props.actualSemester] : nil,
+					score: self.props.scores.count > 0 ? self.props.scores[self.props.actualSemester - 1] : nil,
 					status: self.$props.scoresStatus
 				)
 			}
