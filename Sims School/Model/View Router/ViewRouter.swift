@@ -28,9 +28,5 @@ struct TabInformation {
 
 class ViewRouter: ObservableObject {
 	@Published var currentView: TabsRoutes = .HomeScreen
-	@Published var tabRoutes: [TabsRoutes: TabInformation] = [:]
-	
-	init() {
-	
-	}
+	@Published var tabRoutes: [TabInformation] = []
 }

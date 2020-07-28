@@ -11,6 +11,7 @@ import SwiftUI
 
 class HomeScreenModel: ObservableObject {
 	var user: UserResponse? = nil
+	var firstRun: Bool = true
 	@Published var classesStatus: NetworkRequestStatus = .loading
 	@Published var classes: [ClassResponse] = []
 	@Published var randomAdStatus: NetworkRequestStatus = .loading
@@ -18,9 +19,13 @@ class HomeScreenModel: ObservableObject {
 	@Published var currentClass: Int = Calendar.current.component(.weekday, from: Date()) - 1
 	
 	func initProps(users: FetchedResults<UserEntity>, classes: FetchedResults<ClassEntity>, ads: FetchedResults<AdsEntity>) {
-		self.getUserRequest(users: users)
-		self.getClassesRequest(classes: classes)
-		self.getAdsRequest(ads: ads)
+		if self.firstRun {
+			self.getUserRequest(users: users)
+			self.getClassesRequest(classes: classes)
+			self.getAdsRequest(ads: ads)
+			
+			self.firstRun.toggle()
+		}
 	}
 	
 	func getUserRequest(users: FetchedResults<UserEntity>) {
