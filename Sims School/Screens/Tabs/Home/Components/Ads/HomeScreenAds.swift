@@ -10,7 +10,6 @@ import SwiftUI
 import SkeletonUI
 
 struct HomeScreenAds: View {
-	@Environment(\.imageCache) var cache: ImageCache
 	@State var showSafari = false
 	var randomAd: AdsResponse
 	@Binding var status: NetworkRequestStatus
@@ -20,7 +19,7 @@ struct HomeScreenAds: View {
 		Button(action: {
 			self.showSafari.toggle()
 		}) {
-			URLImage(url: url, cache: self.cache, configuration: { $0.resizable().renderingMode(.original) })
+			URLImage(url: url, configuration: { $0.resizable().renderingMode(.original) })
 				.skeleton(with: self.status == .loading)
 				.shape(type: .rectangle)
 				.frame(height: 175)
@@ -63,6 +62,7 @@ struct HomeScreenAds: View {
 			}
 		}
 		.padding(.top, 30)
+
 	}
 }
 

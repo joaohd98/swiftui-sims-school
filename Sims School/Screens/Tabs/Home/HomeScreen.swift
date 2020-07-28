@@ -38,7 +38,7 @@ struct HomeScreen: View {
 		CustomContainerSignIn {
 			ScrollView(.vertical, showsIndicators: false) {
 				VStack(alignment: .leading, spacing: 0) {
-					HomeScreenProfile(user: self.users[0])
+					HomeScreenProfile(userEntity: self.users[0])
 					HomeScreenClasses(
 						classes: self.$props.classes,
 						currentClass: self.$props.currentClass,

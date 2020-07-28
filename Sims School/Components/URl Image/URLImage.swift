@@ -10,16 +10,12 @@ import SwiftUI
 import SkeletonUI
 
 struct URLImage: View {
-	@ObservedObject var loader: ImageLoader
-    private let configuration: (Image) -> Image
+	@ObservedObject private var loader: ImageLoader
+	let configuration: (Image) -> Image
 
-	init(url: URL?, cache: ImageCache? = nil, configuration: @escaping (Image) -> Image = { $0 }) {
-		self.loader = ImageLoader(cache: cache)
+	init(url: URL?, configuration: @escaping (Image) -> Image = { $0 }) {
 		self.configuration = configuration
-
-		if let url = url {
-			self.loader.load(url: url)
-		}
+		self.loader = ImageLoader(url: url)
 	}
 		
 	var image: some View {
@@ -37,7 +33,6 @@ struct URLImage: View {
 						.frame(width: 20, height: 20, alignment: .center)
 				}
 			}
-			
         }
     }
 	

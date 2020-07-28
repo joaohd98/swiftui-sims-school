@@ -24,15 +24,16 @@ class UserResponse: ObservableObject {
 	
 	func setPicturePhoto(_ pictureData: Data) {
 		let storageRef = FirebaseDatabase.storage.reference()
-		let pictureRef = storageRef.child("profile-pictures/\(self.uid).jpg")
+		let url = "profile-pictures/\(self.uid).png"
+		let pictureRef = storageRef.child(url)
 
 		pictureRef.putData(pictureData, metadata: nil) { (metadata, error) in
-		  pictureRef.downloadURL { (url, error) in
-			guard let downloadURL = url else { return }
+		  pictureRef.downloadURL { (urlNew, error) in
+			guard let downloadURL = urlNew else { return }
 			
 			self.profile_picture = downloadURL
 			
-			UserService.updatePicture(user: self)
+			UserService.updatePicture(user: self, url: url)
 		  }
 		}
 	}

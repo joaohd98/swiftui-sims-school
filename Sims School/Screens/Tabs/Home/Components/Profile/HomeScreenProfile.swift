@@ -9,17 +9,11 @@
 import SwiftUI
 
 struct HomeScreenProfile: View {
-	@Environment(\.imageCache) var cache: ImageCache
 	@State var showActionSheetCamera: Bool = false
 	@State var showCapturingCamera: Bool = false
-	@State var image: Image = Image("")
+	@State var showAlertCamera: Bool = false
 	@State var sourceType: UIImagePickerController.SourceType = .photoLibrary
-	
-	var user: UserResponse
-	
-	init(user: UserEntity) {
-		self.user = UserResponse(user: user)
-	}
+	var userEntity: UserEntity
 
 	func takePictureProfile(type: UIImagePickerController.SourceType) {
 		self.sourceType = type
@@ -28,37 +22,46 @@ struct HomeScreenProfile: View {
 	
 	var body: some View {
 		VStack(alignment: .leading, spacing: 5) {
-			URLImage(url: user.cover_picture, cache: cache, configuration: { $0.resizable() })
+			URLImage(url: userEntity.cover_picture, configuration: { $0.resizable() })
 				.frame(
 					width: UIScreen.screenWidth,
 					height: 100
 			)
 			VStack(alignment: .leading, spacing: 5) {
 				ZStack(alignment: .leading) {
-					URLImage(url: user.profile_picture, cache: cache, configuration: { $0.resizable() })
+					URLImage(url: userEntity.profile_picture, configuration: { $0.resizable() })
 						.frame(width: 75, height: 75)
 						.onTapGesture { self.showActionSheetCamera.toggle() }
 						.actionSheet(isPresented: $showActionSheetCamera) {
-							ActionSheet(title: Text(""), message: Text("Mudar foto de perfil"), buttons: [
+							ActionSheet(title: Text(""), message: Text("Change profile picture"), buttons: [
 								.default(Text("Camera")) { self.takePictureProfile(type: .camera) },
 								.default(Text("Library")) { self.takePictureProfile(type: .photoLibrary)  },
 								.cancel()
 							])
-						}
-						.sheet(isPresented: $showCapturingCamera) {
-							CameraCaptureView(
-								showCameraView: self.$showCapturingCamera,
-								sourceType: self.$sourceType,
-								onTakePicture: { data in self.user.setPicturePhoto(data) }
-							)
-						}
+					}
+					.sheet(isPresented: $showCapturingCamera) {
+						CameraCaptureView(
+							showCameraView: self.$showCapturingCamera,
+							sourceType: self.$sourceType,
+							onTakePicture: { data in
+								self.showAlertCamera.toggle()
+							}
+						)
+					}
+					.alert(isPresented: self.$showAlertCamera) {
+						Alert(
+							title: Text("There was an error when changing profile picture"),
+							message: Text("Try again later"),
+							dismissButton: .default(Text("OK"))
+						)
+					}
 				}
 				.padding(.all, 3)
 				.background(Color(UIColor.init { (trait) -> UIColor in
 					return trait.userInterfaceStyle == .dark ? .white : .black
 				}))
 				VStack(alignment: .leading, spacing: 5) {
-					Text(self.user.name)
+					Text(self.userEntity.name)
 						.foregroundColor(Color(CustomColor.gray))
 						.font(.system(size: 16, weight: .bold))
 					
@@ -67,7 +70,7 @@ struct HomeScreenProfile: View {
 							.foregroundColor(Color(CustomColor.gray))
 							.font(.system(size: 16, weight: .bold))
 						
-						Text(self.user.rm)
+						Text(self.userEntity.rm)
 							.foregroundColor(Color(CustomColor.gray))
 							.font(.system(size: 14, weight: .semibold))
 						
@@ -81,12 +84,12 @@ struct HomeScreenProfile: View {
 						.foregroundColor(Color(CustomColor.gray))
 						.font(.system(size: 16, weight: .bold))
 					
-					Text(self.user.actual_class)
+					Text(self.userEntity.actual_class)
 						.foregroundColor(Color(CustomColor.gray))
 						.font(.system(size: 14, weight: .semibold))
 				}
 				
-				Text(self.user.course)
+				Text(self.userEntity.course)
 					.foregroundColor(Color(CustomColor.gray))
 					.font(.system(size: 16, weight: .bold))
 			}
@@ -100,7 +103,7 @@ struct HomeScreenProfile_Previews: PreviewProvider {
 	@State static var user: UserEntity = UserEntity()
 	
 	static var previews: some View {
-		HomeScreenProfile(user: self.user)
+		HomeScreenProfile(userEntity: self.user)
 			.previewLayout(.fixed(width: UIScreen.screenWidth, height: 300))
 	}
 }

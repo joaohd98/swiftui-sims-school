@@ -11,16 +11,29 @@ import Combine
 import Foundation
 
 class ImageLoader: ObservableObject {
+	static var cache = NSCache<NSString, UIImage>()
 	@Published var url: URL?
 	@Published var image: UIImage = UIImage(named: "placeholder")!
 	@Published var hasError: Bool = false
-	@Published var isLoading = false
-	
+	@Published var isLoading = true
+	@Published var finished = false
+
 	private var cancellable: URLSessionDataTask?
-	private var cache: ImageCache?
-	
-	init(cache: ImageCache?) {
-		self.cache = cache
+
+	init(url: URL?) {
+		if let url = url{
+			self.url = url
+		
+			if let cachedImage = ImageLoader.cache.object(forKey: url.absoluteString as NSString) {
+				image = cachedImage
+				self.isLoading.toggle()
+				self.finished.toggle()
+			}
+				
+			else {
+				self.getImage()
+			}
+		}
 	}
 	
 	deinit {
@@ -38,20 +51,7 @@ class ImageLoader: ObservableObject {
 		})
 	}
 	
-	func load(url: URL?){
-		DispatchQueue.main.async {
-			self.isLoading = true
-			self.url = url
-			self.getImage()
-		}
-	}
-	
-	private func getImage() {		
-		if let image = cache?[self.url!] {
-			self.image = image
-			return
-		}
-		
+	private func getImage() {
 		cancellable = URLSession.shared.dataTask(
 			with: self.url!,
 			completionHandler: { (data, response, error) in
@@ -59,7 +59,8 @@ class ImageLoader: ObservableObject {
 					if data != nil{
 						let image = UIImage(data: data!)!
 						self.image = image
-						self.cache(image)
+						self.setCache(image)
+						self.finished.toggle()
 					}
 						
 					else {
@@ -75,9 +76,9 @@ class ImageLoader: ObservableObject {
 		
 	}
 	
-	private func cache(_ image: UIImage?) {
-		if let url = self.url {
-			image.map { cache?[url] = $0 }
+	private func setCache(_ image: UIImage) {
+		if let url = self.url,  {
+			ImageLoader.cache.setObject(image, forKey: url.absoluteString as NSString)
 		}
 	}
 	
