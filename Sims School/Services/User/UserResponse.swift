@@ -107,7 +107,7 @@ extension UserResponse {
 		
 	}
 	
-	func updateContext(userEntity: UserEntity, managedObjectContext: NSManagedObjectContext) {
+	func updateContext(_ userEntity: UserEntity, managedObjectContext: NSManagedObjectContext) {
 		do {
 			userEntity.setValue(self.name, forKey: "name")
 			userEntity.setValue(self.rm, forKey: "rm")

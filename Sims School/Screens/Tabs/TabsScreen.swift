@@ -11,12 +11,13 @@ import FirebaseAuth
 
 struct TabsScreen: View {
 	@ObservedObject var viewRouter = ViewRouter()
+	@ObservedObject var propsHome = HomeScreenModel()
 	
-	init() {		
+	init() {
 		viewRouter.tabRoutes[.HomeScreen] = TabInformation(
 			name: "Home",
 			icon: "house.fill",
-			screen: AnyView(HomeScreen()),
+			screen: AnyView( HomeScreen(props: self.propsHome)),
 			type: .HomeScreen
 		)
 		

@@ -24,7 +24,7 @@ class HomeScreenModel: ObservableObject {
 	}
 	
 	func getUserRequest(users: FetchedResults<UserEntity>) {
-		if users.count > 0 {			
+		if users.count > 0 {
 			self.user = UserResponse(user: users[0])
 		}
 	}
@@ -43,7 +43,7 @@ class HomeScreenModel: ObservableObject {
 		}
 	}
 	
-	func getAdsRequest(ads: FetchedResults<AdsEntity>) {		
+	func getAdsRequest(ads: FetchedResults<AdsEntity>) {
 		AdsService.getAds(
 			onSucess: { ads in
 				self.randomAd = ads[Int.random(in: 0..<ads.count)]

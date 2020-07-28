@@ -33,20 +33,16 @@ class CoreDataHelper {
 	
 	private func delete(entity: String)
 	{
-		let scene = UIApplication.shared.connectedScenes.first
-		if let sceneDelegate : SceneDelegate = (scene?.delegate as? SceneDelegate) {
-			let context = sceneDelegate.persistentContainer.viewContext
-			
-			let deleteFetch = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
-			let deleteRequest = NSBatchDeleteRequest(fetchRequest: deleteFetch)
-			
-			do {
-				try context.execute(deleteRequest)
-				try context.save()
-			} catch {
-				print ("There was an error")
-			}
+		let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+		let deleteFetch = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
+		let deleteRequest = NSBatchDeleteRequest(fetchRequest: deleteFetch)
+		
+		do {
+			try context.execute(deleteRequest)
+			try context.save()
+		} catch {
+			print ("There was an error")
 		}
-
+		
 	}
 }

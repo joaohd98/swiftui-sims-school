@@ -16,7 +16,7 @@ struct HomeScreenProfile: View {
 	@State var showAlertCamera: Bool = false
 	@State var sourceType: UIImagePickerController.SourceType = .photoLibrary
 	var userEntity: UserEntity
-
+	
 	func takePictureProfile(type: UIImagePickerController.SourceType) {
 		self.sourceType = type
 		self.showCapturingCamera.toggle()
@@ -40,29 +40,27 @@ struct HomeScreenProfile: View {
 								.default(Text("Library")) { self.takePictureProfile(type: .photoLibrary)  },
 								.cancel()
 							])
-					}
-					.sheet(isPresented: $showCapturingCamera) {
+						}
+						.sheet(isPresented: $showCapturingCamera) {
 						CameraCaptureView(
 							showCameraView: self.$showCapturingCamera,
 							sourceType: self.$sourceType,
 							onTakePicture: { data in
 								self.changingPicture.toggle()
-
+								
 								let user = UserResponse(user: self.userEntity)
-
+								
 								user.setPicturePhoto(pictureData: data) { error in
 									
 									if error != nil {
 										self.showAlertCamera.toggle()
 										return
 									}
-									
-									self.userEntity.profile_picture = user.profile_picture
-									
-									user.updateContext(userEntity: self.userEntity, managedObjectContext: self.managedObjectContext)
+								
+									user.updateContext(self.userEntity, managedObjectContext: self.managedObjectContext)
 									self.changingPicture.toggle()
 								}
-							}
+						}
 						)
 					}
 					.alert(isPresented: self.$showAlertCamera) {
@@ -118,7 +116,7 @@ struct HomeScreenProfile: View {
 
 struct HomeScreenProfile_Previews: PreviewProvider {
 	@State static var user: UserEntity = UserEntity()
-	
+
 	static var previews: some View {
 		HomeScreenProfile(userEntity: self.user)
 			.previewLayout(.fixed(width: UIScreen.screenWidth, height: 300))

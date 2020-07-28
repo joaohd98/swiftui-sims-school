@@ -11,21 +11,23 @@ import FirebaseAuth
 import FirebaseFirestore
 
 struct LayoutView: View {
-	@FetchRequest(entity: UserEntity.entity(), sortDescriptors: []) var users: FetchedResults<UserEntity>
-    @EnvironmentObject var firebaseSession: FirebaseSession
-
-	var body: some View {		
+	@EnvironmentObject var firebaseSession: FirebaseSession
+	
+	var body: some View {
+		let isLoggedLocal = firebaseSession.defaults.object(forKey: "isLogged") as? Bool ?? false
+		
 		return (
-			ZStack {
-				if users.count > 0 && firebaseSession.isLogged  {
-					AnyView(TabsScreen())
+			Group {
+				if isLoggedLocal && firebaseSession.isLogged  {
+					TabsScreen()
 						.transition(.scale)
 				} else {
-					AnyView(LoginScreen())
+					LoginScreen()
 						.transition(.scale)
 				}
 			}
 		)
+		
 	}
 	
 }

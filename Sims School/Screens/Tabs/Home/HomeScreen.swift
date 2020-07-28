@@ -9,10 +9,15 @@
 import SwiftUI
 
 struct HomeScreen: View {
+	@Environment(\.managedObjectContext) var managedObjectContext
 	@FetchRequest(entity: UserEntity.entity(), sortDescriptors: []) var users: FetchedResults<UserEntity>
 	@FetchRequest(entity: ClassEntity.entity(), sortDescriptors: []) var classes: FetchedResults<ClassEntity>
 	@FetchRequest(entity: AdsEntity.entity(), sortDescriptors: []) var ads: FetchedResults<AdsEntity>
-	@ObservedObject var props = HomeScreenModel()
+	@ObservedObject var props: HomeScreenModel
+	
+	init(props: HomeScreenModel) {
+		self.props = props
+	}
 	
 	func viewDidLoad() {
 		self.props.initProps(users: users, classes: classes, ads: ads)
@@ -35,34 +40,39 @@ struct HomeScreen: View {
 	}
 	
 	var body: some View {
-		CustomContainerSignIn {
-			ScrollView(.vertical, showsIndicators: false) {
-				VStack(alignment: .leading, spacing: 0) {
-					HomeScreenProfile(userEntity: self.users[0])
-					HomeScreenClasses(
-						classes: self.$props.classes,
-						currentClass: self.$props.currentClass,
-						status: self.$props.classesStatus,
-						tryAgain: self.tryAgainClass
-					)
-					HomeScreenAds(
-						randomAd: self.props.randomAd,
-						status: self.$props.randomAdStatus,
-						tryAgain: self.tryAgainAds
-					)
-				}
-				.padding(.bottom, 10)
-				.navigationBarTitle("Home", displayMode: .inline)
-				.onAppear {
-					self.viewDidLoad()
+		return (
+			CustomContainerSignIn {
+				ScrollView(.vertical, showsIndicators: false) {
+					VStack(alignment: .leading, spacing: 0) {
+						HomeScreenProfile(userEntity: self.users[0])
+						HomeScreenClasses(
+							classes: self.$props.classes,
+							currentClass: self.$props.currentClass,
+							status: self.$props.classesStatus,
+							tryAgain: self.tryAgainClass
+						)
+						HomeScreenAds(
+							randomAd: self.props.randomAd,
+							status: self.$props.randomAdStatus,
+							tryAgain: self.tryAgainAds
+						)
+					}
+					.padding(.bottom, 10)
+					.navigationBarTitle("Home", displayMode: .inline)
+					.onAppear {
+						self.viewDidLoad()
+					}
 				}
 			}
-		}
+		)
+		
 	}
 }
 
 struct HomeScreen_Previews: PreviewProvider {
+	@State static var props = HomeScreenModel()
+	
 	static var previews: some View {
-		HomeScreen()
+		HomeScreen(props: props)
 	}
 }
