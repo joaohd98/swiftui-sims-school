@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ScoresResponse: ObservableObject {
+class ScoresResponse: ObservableObject, Identifiable {
 	@Published var number: Int
 	@Published var courses: [(av1: Int, av2: Int, name: String, skips: Int)]
 	

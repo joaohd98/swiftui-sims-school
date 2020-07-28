@@ -13,7 +13,8 @@ class ScoreScreenModel: ObservableObject {
 	var firstRun: Bool = true
 	@Published var scores: [ScoresResponse] = []
 	@Published var scoresStatus: NetworkRequestStatus = .loading
-
+	@Published var actualSemester: Int = 0
+	
 	func initProps(users: FetchedResults<UserEntity>, scores: FetchedResults<ScoreEntity>) {
 		if firstRun {
 			self.getUserRequest(users: users)
@@ -34,6 +35,8 @@ class ScoreScreenModel: ObservableObject {
 				request: ScoresRequest(id: id),
 				onSucess: { scores in
 					self.scores = scores
+	
+					self.actualSemester = scores.count - 1
 					
 					self.scoresStatus = .success
 				},

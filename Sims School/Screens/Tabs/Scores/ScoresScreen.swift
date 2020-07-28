@@ -19,8 +19,12 @@ struct ScoresScreen: View {
 	
     var body: some View {
 		CustomContainerSignIn {
-			ScrollView {
-				ScoresScreenSemesters()
+			ScrollView(showsIndicators: false) {
+				ScoresScreenSemesters(
+					scores: self.$props.scores,
+					status: self.$props.scoresStatus,
+					actualSemester: self.$props.actualSemester
+				)
 				ScoresScreenCardScore()
 			}
 			.onAppear(perform: self.viewDidLoad)

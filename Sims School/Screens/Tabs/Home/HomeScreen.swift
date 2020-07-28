@@ -9,7 +9,6 @@
 import SwiftUI
 
 struct HomeScreen: View {
-	@Environment(\.managedObjectContext) var managedObjectContext
 	@FetchRequest(entity: UserEntity.entity(), sortDescriptors: []) var users: FetchedResults<UserEntity>
 	@FetchRequest(entity: ClassEntity.entity(), sortDescriptors: []) var classes: FetchedResults<ClassEntity>
 	@FetchRequest(entity: AdsEntity.entity(), sortDescriptors: []) var ads: FetchedResults<AdsEntity>
