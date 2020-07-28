@@ -22,6 +22,10 @@
 		DC1D22DB24BE5C1F00E1855D /* SlideHorizontal.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1D22DA24BE5C1F00E1855D /* SlideHorizontal.swift */; };
 		DC24909324CF6ABB006746D0 /* CameraCaptureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC24909224CF6ABB006746D0 /* CameraCaptureView.swift */; };
 		DC4563F524D0801600F3F846 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4563F424D0801600F3F846 /* ImageCache.swift */; };
+		DC4563F824D08D2E00F3F846 /* ScoreScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4563F724D08D2E00F3F846 /* ScoreScreenModel.swift */; };
+		DC4563FB24D08E1B00F3F846 /* ScoresResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4563FA24D08E1B00F3F846 /* ScoresResponse.swift */; };
+		DC4563FD24D08E2C00F3F846 /* ScoresService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4563FC24D08E2C00F3F846 /* ScoresService.swift */; };
+		DC4563FF24D08E4800F3F846 /* ScoresRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4563FE24D08E4800F3F846 /* ScoresRequest.swift */; };
 		DC4D2CFC24C1E635008FD663 /* ScoresScreenSemesters.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4D2CFB24C1E635008FD663 /* ScoresScreenSemesters.swift */; };
 		DC4D2CFF24C1E68D008FD663 /* ScoresScreenCardScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4D2CFE24C1E68D008FD663 /* ScoresScreenCardScore.swift */; };
 		DC4D2D0224C219FE008FD663 /* ClassesScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4D2D0124C219FE008FD663 /* ClassesScreen.swift */; };
@@ -106,6 +110,10 @@
 		DC1D22DA24BE5C1F00E1855D /* SlideHorizontal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideHorizontal.swift; sourceTree = "<group>"; };
 		DC24909224CF6ABB006746D0 /* CameraCaptureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraCaptureView.swift; sourceTree = "<group>"; };
 		DC4563F424D0801600F3F846 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
+		DC4563F724D08D2E00F3F846 /* ScoreScreenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreScreenModel.swift; sourceTree = "<group>"; };
+		DC4563FA24D08E1B00F3F846 /* ScoresResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoresResponse.swift; sourceTree = "<group>"; };
+		DC4563FC24D08E2C00F3F846 /* ScoresService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoresService.swift; sourceTree = "<group>"; };
+		DC4563FE24D08E4800F3F846 /* ScoresRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoresRequest.swift; sourceTree = "<group>"; };
 		DC4D2CFB24C1E635008FD663 /* ScoresScreenSemesters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoresScreenSemesters.swift; sourceTree = "<group>"; };
 		DC4D2CFE24C1E68D008FD663 /* ScoresScreenCardScore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoresScreenCardScore.swift; sourceTree = "<group>"; };
 		DC4D2D0124C219FE008FD663 /* ClassesScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassesScreen.swift; sourceTree = "<group>"; };
@@ -293,6 +301,24 @@
 			path = Camera;
 			sourceTree = "<group>";
 		};
+		DC4563F624D08D0A00F3F846 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DC4563F724D08D2E00F3F846 /* ScoreScreenModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		DC4563F924D08DBA00F3F846 /* Scores */ = {
+			isa = PBXGroup;
+			children = (
+				DC4563FE24D08E4800F3F846 /* ScoresRequest.swift */,
+				DC4563FA24D08E1B00F3F846 /* ScoresResponse.swift */,
+				DC4563FC24D08E2C00F3F846 /* ScoresService.swift */,
+			);
+			path = Scores;
+			sourceTree = "<group>";
+		};
 		DC4D2CF924C1E5C2008FD663 /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -399,6 +425,7 @@
 		DC64927424BDF25100EDAC0E /* Scores */ = {
 			isa = PBXGroup;
 			children = (
+				DC4563F624D08D0A00F3F846 /* Model */,
 				DC4D2CF924C1E5C2008FD663 /* Components */,
 				DC64927524BDF27400EDAC0E /* ScoresScreen.swift */,
 			);
@@ -744,6 +771,7 @@
 		DCF0440A24AE224200241062 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				DC4563F924D08DBA00F3F846 /* Scores */,
 				DC57924724CBEC220097CAC9 /* Ads */,
 				DCB672DD24B29B580064484D /* User */,
 				DCAAF78B24C09D2F00F0518C /* Class */,
@@ -938,12 +966,15 @@
 				DC4D2D0924C27D5F008FD663 /* ClassesScreenCalendar.swift in Sources */,
 				DC74CF8424CB229000EFBFA0 /* RemoveAllCoreData.swift in Sources */,
 				DC10078924C77D7100DB3EE7 /* MenuScreenOptions.swift in Sources */,
+				DC4563FB24D08E1B00F3F846 /* ScoresResponse.swift in Sources */,
 				DCF043FC24AD1ABD00241062 /* CustomInput.swift in Sources */,
 				DC24909324CF6ABB006746D0 /* CameraCaptureView.swift in Sources */,
 				DC64928024BE1A3D00EDAC0E /* HomeScreenAds.swift in Sources */,
 				DC98E1BB24B8BF5900D4BD76 /* UIInput.swift in Sources */,
 				DC74CF8824CB6CDF00EFBFA0 /* ClassRequest.swift in Sources */,
 				DC10078324C75D0300DB3EE7 /* MenuScreen.swift in Sources */,
+				DC4563F824D08D2E00F3F846 /* ScoreScreenModel.swift in Sources */,
+				DC4563FF24D08E4800F3F846 /* ScoresRequest.swift in Sources */,
 				DC10077C24C74AD200DB3EE7 /* PlayerView.swift in Sources */,
 				DC10078724C7628700DB3EE7 /* MenuScreenModel.swift in Sources */,
 				DC57924E24CBF3FF0097CAC9 /* URLImage.swift in Sources */,
@@ -952,6 +983,7 @@
 				DC98E1B224B8A18100D4BD76 /* LoginScreenSubmitButton.swift in Sources */,
 				DC07B47124C5EC7E00840714 /* TipsScreenList.swift in Sources */,
 				DCFD821E24C61492008E3C05 /* TipsScreenFullScreenImage.swift in Sources */,
+				DC4563FD24D08E2C00F3F846 /* ScoresService.swift in Sources */,
 				DCF043E124AD16B600241062 /* SceneDelegate.swift in Sources */,
 				DC53D72A24C0ECC9004266CE /* SlideHorizontalDots.swift in Sources */,
 				DC64927324BDEEB300EDAC0E /* ViewRouter.swift in Sources */,

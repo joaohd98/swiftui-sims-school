@@ -12,7 +12,8 @@ import FirebaseAuth
 struct TabsScreen: View {
 	@ObservedObject var viewRouter = ViewRouter()
 	@ObservedObject var propsHome = HomeScreenModel()
-	
+	@ObservedObject var propsScore = ScoreScreenModel()
+
 	init() {
 		self.viewRouter.tabRoutes.append(
 			TabInformation(
@@ -27,7 +28,7 @@ struct TabsScreen: View {
 			TabInformation(
 				name: "Scores",
 				icon: "lightbulb.fill",
-				screen: AnyView(ScoresScreen()),
+				screen: AnyView(ScoresScreen(props: self.propsScore)),
 				type: .ScoresScreen
 			)
 		)

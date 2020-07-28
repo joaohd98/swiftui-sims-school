@@ -34,7 +34,7 @@ struct HomeScreenAds: View {
 	
 	var errorView: some View {
 		TryAgainView(
-			text: "There was an error when tried to get the ads.",
+			text: "There was an error when trying to get the ads.",
 			onTryAgain: self.tryAgain
 		)
 			.padding(.horizontal)

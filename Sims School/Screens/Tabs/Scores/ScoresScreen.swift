@@ -9,19 +9,30 @@
 import SwiftUI
 
 struct ScoresScreen: View {
+	@FetchRequest(entity: UserEntity.entity(), sortDescriptors: []) var users: FetchedResults<UserEntity>
+	@FetchRequest(entity: ScoreEntity.entity(), sortDescriptors: []) var scores: FetchedResults<ScoreEntity>
+	@ObservedObject var props: ScoreScreenModel
+	
+	func viewDidLoad() {
+		props.initProps(users: self.users, scores: self.scores)
+	}
+	
     var body: some View {
 		CustomContainerSignIn {
 			ScrollView {
 				ScoresScreenSemesters()
 				ScoresScreenCardScore()
 			}
+			.onAppear(perform: self.viewDidLoad)
 			.navigationBarTitle("Score")
 		}
     }
 }
 
 struct ScoresScreen_Previews: PreviewProvider {
+	static let props = ScoreScreenModel()
+	
     static var previews: some View {
-        ScoresScreen()
+		ScoresScreen(props: self.props)
     }
 }

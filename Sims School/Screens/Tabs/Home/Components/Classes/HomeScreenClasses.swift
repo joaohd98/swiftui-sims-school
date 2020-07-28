@@ -100,7 +100,7 @@ struct HomeScreenClasses: View {
 	
 	var errorView: some View {
 		TryAgainView(
-			text: "There was an error when tried to get the classes.",
+			text: "There was an error when trying to get the classes.",
 			onTryAgain: self.tryAgain
 		)
 			.padding(.horizontal)

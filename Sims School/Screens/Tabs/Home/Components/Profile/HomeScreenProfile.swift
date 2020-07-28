@@ -95,7 +95,7 @@ struct HomeScreenProfile: View {
 				.padding(.top, -52)
 				
 				HStack(alignment: .firstTextBaseline) {
-					Text("Turma:")
+					Text("Class:")
 						.foregroundColor(Color(CustomColor.gray))
 						.font(.system(size: 16, weight: .bold))
 					
