@@ -11,12 +11,13 @@ import Combine
 import Foundation
 
 class ImageLoader: ObservableObject {
-	static var cache = NSCache<NSString, UIImage>()
 	@Published var url: URL?
 	@Published var image: UIImage = UIImage(named: "placeholder")!
 	@Published var hasError: Bool = false
 	@Published var isLoading = true
 	@Published var finished = false
+
+	static var cache = NSCache<NSString, ImageCache>()
 
 	private var cancellable: URLSessionDataTask?
 
@@ -25,7 +26,7 @@ class ImageLoader: ObservableObject {
 			self.url = url
 		
 			if let cachedImage = ImageLoader.cache.object(forKey: url.absoluteString as NSString) {
-				image = cachedImage
+				image = cachedImage.image
 				self.isLoading.toggle()
 				self.finished.toggle()
 			}
@@ -78,7 +79,10 @@ class ImageLoader: ObservableObject {
 	
 	private func setCache(_ image: UIImage) {
 		if let url = self.url  {
-			ImageLoader.cache.setObject(image, forKey: url.absoluteString as NSString)
+			let cacheImage = ImageCache()
+			cacheImage.image = image
+			
+			ImageLoader.cache.setObject(cacheImage, forKey: url.absoluteString as NSString)
 		}
 	}
 	

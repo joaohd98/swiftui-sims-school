@@ -50,7 +50,7 @@ struct HomeScreenClasses: View {
 				.background(Color(CustomColor.gray))
 				.skeleton(with: status == .loading)
 				.shape(type: .rectangle)
-				.frame(height: 30)
+				.frame(height: 28)
 				
 				if actualClass.hasClass {
 					VStack(alignment: .leading, spacing: 10) {
