@@ -22,19 +22,34 @@ class UserResponse: ObservableObject {
 		self.course = ""
 	}
 	
-	func setPicturePhoto(_ pictureData: Data) {
+	func setPicturePhoto(pictureData: Data, onComplete: @escaping (_ error: Error?) -> Void) {
 		let storageRef = FirebaseDatabase.storage.reference()
-		let url = "profile-pictures/\(self.uid).png"
-		let pictureRef = storageRef.child(url)
+		let refURL = "profile-pictures/\(self.uid).png"
+		let pictureRef = storageRef.child(refURL)
 
 		pictureRef.putData(pictureData, metadata: nil) { (metadata, error) in
-		  pictureRef.downloadURL { (urlNew, error) in
-			guard let downloadURL = urlNew else { return }
+			if error != nil {
+				onComplete(error)
+				return
+			}
 			
-			self.profile_picture = downloadURL
-			
-			UserService.updatePicture(user: self, url: url)
-		  }
+			pictureRef.downloadURL { (url, error) in
+				if error != nil {
+					onComplete(error)
+					return
+				}
+				
+				self.profile_picture = url!
+				
+				UserService.updatePicture(user: self, refURL: refURL) { error in
+					if error != nil {
+						onComplete(error)
+						return
+					}
+					
+					onComplete(nil)
+				}
+			}
 		}
 	}
 }
@@ -59,7 +74,7 @@ extension UserResponse {
 	
 	convenience init(user: UserEntity) {
 		self.init()
-
+		
 		self.uid = user.uid!
 		self.name = user.name!
 		self.rm = user.rm!
@@ -91,7 +106,24 @@ extension UserResponse {
 		}
 		
 	}
-
+	
+	func updateContext(userEntity: UserEntity, managedObjectContext: NSManagedObjectContext) {
+		do {
+			userEntity.setValue(self.name, forKey: "name")
+			userEntity.setValue(self.rm, forKey: "rm")
+			userEntity.setValue(self.actual_class, forKey: "actual_class")
+			userEntity.setValue(self.id_class, forKey: "id_class")
+			userEntity.setValue(self.course, forKey: "course")
+			userEntity.setValue(self.profile_picture, forKey: "profile_picture")
+			userEntity.setValue(self.cover_picture, forKey: "cover_picture")
+			
+			try managedObjectContext.save()
+		} catch {
+			print("Error saving managed object context: \(error)")
+		}
+		
+	}
+	
 	func saveContext(managedObjectContext: NSManagedObjectContext) {
 		do {
 			let user = UserEntity(context: managedObjectContext)

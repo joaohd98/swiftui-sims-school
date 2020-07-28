@@ -12,7 +12,7 @@ struct HomeScreen: View {
 	@FetchRequest(entity: UserEntity.entity(), sortDescriptors: []) var users: FetchedResults<UserEntity>
 	@FetchRequest(entity: ClassEntity.entity(), sortDescriptors: []) var classes: FetchedResults<ClassEntity>
 	@FetchRequest(entity: AdsEntity.entity(), sortDescriptors: []) var ads: FetchedResults<AdsEntity>
-	@ObservedObject var props: HomeScreenModel = HomeScreenModel()
+	@ObservedObject var props = HomeScreenModel()
 	
 	func viewDidLoad() {
 		self.props.initProps(users: users, classes: classes, ads: ads)

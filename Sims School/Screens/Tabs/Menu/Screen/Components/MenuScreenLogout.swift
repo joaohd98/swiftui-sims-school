@@ -8,6 +8,7 @@
 
 import SwiftUI
 import FirebaseAuth
+import CoreData
 
 struct MenuScreenLogout: View {
     @EnvironmentObject var firebaseSession: FirebaseSession
@@ -15,6 +16,8 @@ struct MenuScreenLogout: View {
 	
 	func logout() {
 		try! Auth.auth().signOut()
+		
+		CoreDataHelper.shared.deleteAllData()
 		self.firebaseSession.logout()
 	}
 	
@@ -23,6 +26,7 @@ struct MenuScreenLogout: View {
 			Divider()
 			Button(action: {
 				withAnimation {
+					
 					self.logout()
 				}
 			}) {

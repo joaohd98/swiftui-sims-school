@@ -77,7 +77,7 @@ class ImageLoader: ObservableObject {
 	}
 	
 	private func setCache(_ image: UIImage) {
-		if let url = self.url,  {
+		if let url = self.url  {
 			ImageLoader.cache.setObject(image, forKey: url.absoluteString as NSString)
 		}
 	}

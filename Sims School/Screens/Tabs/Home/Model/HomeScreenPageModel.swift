@@ -10,8 +10,7 @@ import Foundation
 import SwiftUI
 
 class HomeScreenModel: ObservableObject {
-	private var firstRun = true
-	@Published var user: UserResponse? = nil
+	var user: UserResponse? = nil
 	@Published var classesStatus: NetworkRequestStatus = .loading
 	@Published var classes: [ClassResponse] = []
 	@Published var randomAdStatus: NetworkRequestStatus = .loading
@@ -19,17 +18,13 @@ class HomeScreenModel: ObservableObject {
 	@Published var currentClass: Int = Calendar.current.component(.weekday, from: Date()) - 1
 	
 	func initProps(users: FetchedResults<UserEntity>, classes: FetchedResults<ClassEntity>, ads: FetchedResults<AdsEntity>) {
-		if firstRun {
-			self.getUserRequest(users: users)
-			self.getClassesRequest(classes: classes)
-			self.getAdsRequest(ads: ads)
-			
-			firstRun.toggle()
-		}
+		self.getUserRequest(users: users)
+		self.getClassesRequest(classes: classes)
+		self.getAdsRequest(ads: ads)
 	}
 	
 	func getUserRequest(users: FetchedResults<UserEntity>) {
-		if users.count > 0 {
+		if users.count > 0 {			
 			self.user = UserResponse(user: users[0])
 		}
 	}
@@ -44,8 +39,7 @@ class HomeScreenModel: ObservableObject {
 				},
 				onError: {
 					self.classesStatus = .failed
-				}
-			)
+				})
 		}
 	}
 	

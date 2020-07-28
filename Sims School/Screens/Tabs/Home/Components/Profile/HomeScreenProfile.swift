@@ -9,8 +9,10 @@
 import SwiftUI
 
 struct HomeScreenProfile: View {
+	@Environment(\.managedObjectContext) var managedObjectContext
 	@State var showActionSheetCamera: Bool = false
 	@State var showCapturingCamera: Bool = false
+	@State var changingPicture: Bool = false
 	@State var showAlertCamera: Bool = false
 	@State var sourceType: UIImagePickerController.SourceType = .photoLibrary
 	var userEntity: UserEntity
@@ -29,7 +31,7 @@ struct HomeScreenProfile: View {
 			)
 			VStack(alignment: .leading, spacing: 5) {
 				ZStack(alignment: .leading) {
-					URLImage(url: userEntity.profile_picture, configuration: { $0.resizable() })
+					URLImage(url: self.changingPicture ? nil : userEntity.profile_picture, configuration: { $0.resizable() })
 						.frame(width: 75, height: 75)
 						.onTapGesture { self.showActionSheetCamera.toggle() }
 						.actionSheet(isPresented: $showActionSheetCamera) {
@@ -44,7 +46,22 @@ struct HomeScreenProfile: View {
 							showCameraView: self.$showCapturingCamera,
 							sourceType: self.$sourceType,
 							onTakePicture: { data in
-								self.showAlertCamera.toggle()
+								self.changingPicture.toggle()
+
+								let user = UserResponse(user: self.userEntity)
+
+								user.setPicturePhoto(pictureData: data) { error in
+									
+									if error != nil {
+										self.showAlertCamera.toggle()
+										return
+									}
+									
+									self.userEntity.profile_picture = user.profile_picture
+									
+									user.updateContext(userEntity: self.userEntity, managedObjectContext: self.managedObjectContext)
+									self.changingPicture.toggle()
+								}
 							}
 						)
 					}

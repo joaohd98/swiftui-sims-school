@@ -45,12 +45,19 @@ class UserService {
 		}
 	}
 	
-	static func updatePicture(user: UserResponse, url: String) {
+	static func updatePicture(user: UserResponse, refURL: String, onComplete: @escaping (_ error: Error?) -> Void) {
 		let db = FirebaseDatabase.db
 		let docUser = db.collection("user").document(user.uid)
 	
-		docUser.updateData(["profile_picture": url]) { (error) in
-			print("error", error)
+		docUser.updateData(["profile_picture": refURL]) { (error) in
+			if error != nil {
+				onComplete(error)
+				return
+			}
+			
+			ImageLoader.cache.removeObject(forKey: refURL as NSString)
+			
+			onComplete(nil)
 		}
 	}
 }
