@@ -68,8 +68,10 @@ struct ScoresScreenSemesters: View {
 					self.successView
 				}
 			}
-			.padding(.horizontal)
+			.padding(.horizontal, 30)
 		}
+		.frame(width: UIScreen.screenWidth)
+		.disabled(self.status == .loading)
 	}
 }
 

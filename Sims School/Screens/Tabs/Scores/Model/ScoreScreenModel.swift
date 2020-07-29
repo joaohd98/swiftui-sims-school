@@ -14,7 +14,7 @@ class ScoreScreenModel: ObservableObject {
 	@Published var scores: [ScoresResponse] = []
 	@Published var scoresStatus: NetworkRequestStatus = .loading
 	@Published var actualSemester: Int = 0
-
+	
 	func initProps(users: FetchedResults<UserEntity>, scores: FetchedResults<ScoreEntity>) {
 		if firstRun {
 			self.getUserRequest(users: users)
@@ -30,17 +30,19 @@ class ScoreScreenModel: ObservableObject {
 	}
 	
 	func getScoresRequest(scores: FetchedResults<ScoreEntity>) {
-		if let id = self.user?.uid {
-			ScoresService.getScores(
-				request: ScoresRequest(id: id),
-				onSucess: { scores in
-					self.scores = scores
-					self.actualSemester = scores.count
-					self.scoresStatus = .success
+		DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+			if let id = self.user?.uid {
+				ScoresService.getScores(
+					request: ScoresRequest(id: id),
+					onSucess: { scores in
+						self.scores = scores
+						self.actualSemester = scores.count
+						self.scoresStatus = .success
 				},
-				onError: {
-					self.scoresStatus = .failed
+					onError: {
+						self.scoresStatus = .failed
 				})
-		}
+			}
+		}		
 	}
 }

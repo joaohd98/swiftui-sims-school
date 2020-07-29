@@ -43,7 +43,8 @@ struct ScoresScreenCardScore: View {
 					.stroke(style: StrokeStyle(lineWidth: 5, lineCap: .round, lineJoin: .round))
 					.foregroundColor(color)
 					.rotationEffect(text.count > 3 ?  Angle(degrees: 0) : Angle(degrees: 270.0))
-
+					.animation(.linear)
+				
 				
 				Text(text)
 					.font(.system(size: 14, weight: .semibold))
@@ -51,9 +52,9 @@ struct ScoresScreenCardScore: View {
 		)
 	}
 	
-	func getScoreBar(value: Int) -> some View {
+	private func getScoreBar(value: Int) -> some View {
 		let color = Color(value >= 7 ? CustomColor.success : value >= 4 ? CustomColor.warning : CustomColor.danger)
-
+		
 		return (
 			GeometryReader { geometry in
 				ZStack(alignment: .leading) {
@@ -184,6 +185,15 @@ struct ScoresScreenCardScore: View {
 		)
 	}
 	
+	
+	var cancelView: some View {
+		Group {
+			ForEach(0..<3) { _ in
+				self.getCard(course: ScoresCoursesResponse())
+			}
+		}
+	}
+	
 	var loadingView: some View {
 		Group {
 			ForEach(0..<3) { _ in
@@ -202,7 +212,10 @@ struct ScoresScreenCardScore: View {
 	
 	var body: some View {
 		Group {
-			if status == .loading {
+			if status == .failed {
+				
+			}
+			else if status == .loading {
 				loadingView
 			}
 			else {
