@@ -7,11 +7,13 @@
 //
 
 import SwiftUI
+import Introspect
 
 struct ScoresScreenSemesters: View {
 	@Binding var scores: [ScoresResponse]
 	@Binding var status: NetworkRequestStatus
 	@Binding var actualSemester: Int
+	@State var isFirstOffset: Bool = true
 	
 	func getColors(number: Int) -> (Color, Color) {
 		let fontColor = self.actualSemester != number ? Color(CustomColor.gray) : Color.white
@@ -66,6 +68,16 @@ struct ScoresScreenSemesters: View {
 				}
 				else {
 					self.successView
+				}
+			}
+			.introspectScrollView { scrollView in
+				if self.status == .success && self.isFirstOffset {
+					
+					let x = self.actualSemester > 5 ?
+						scrollView.contentSize.width - scrollView.bounds.size.width + scrollView.contentInset.right
+						: 0
+					scrollView.contentOffset = CGPoint(x: x, y: 0)
+					self.isFirstOffset.toggle()
 				}
 			}
 			.padding(.horizontal, 30)
