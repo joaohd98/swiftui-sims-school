@@ -11,6 +11,7 @@ import SwiftUI
 struct ClassesScreenCalendar: View {
 	@Binding var calendar: [CalendarResponse]
 	@Binding var modalVisible: Bool
+	@State var firstOffset = true
 	
 	func getCircle(response: CalendarCourseResponse) -> some View {
 		Group {
@@ -29,7 +30,8 @@ struct ClassesScreenCalendar: View {
 				}
 			}
 			else {
-				EmptyView()
+				Circle()
+					.opacity(0)
 					.frame(width: 10, height: 10, alignment: .center)
 			}
 		}
@@ -87,7 +89,8 @@ struct ClassesScreenCalendar: View {
 	
 	var body: some View {
 		let year = String(Calendar.current.component(.year, from: Date()))
-		
+		let month = Calendar.current.component(.month, from: Date())
+
 		return (
 			ScrollView {
 				ForEach(self.calendar, id: \.name) { calendar in
@@ -101,6 +104,24 @@ struct ClassesScreenCalendar: View {
 				}
 				.padding(.bottom, 10)
 			}
+			.introspectScrollView(customize: { scrollView in
+				if self.calendar.count > 0 && self.firstOffset {
+					var height = 0.0
+							
+					if month == self.calendar.count - 1 {
+						height = Double(scrollView.contentSize.height - scrollView.bounds.size.height + scrollView.contentInset.bottom)
+					}
+					
+					else if month > 0 {
+						let realMonth = month - 1
+						height = Double(realMonth * 300 - 20 * realMonth)
+					}
+					
+					scrollView.contentOffset = .init(x: 0, y: height)
+								
+					self.firstOffset.toggle()
+				}
+			})
 		)
 	}
 }
