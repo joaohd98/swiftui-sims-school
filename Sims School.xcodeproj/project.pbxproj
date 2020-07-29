@@ -26,6 +26,8 @@
 		DC26355A24D17AFC00CFBF4F /* CalendarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC26355924D17AFC00CFBF4F /* CalendarService.swift */; };
 		DC26355C24D1BB9400CFBF4F /* CalendarWeekResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC26355B24D1BB9400CFBF4F /* CalendarWeekResponse.swift */; };
 		DC26355E24D1C58B00CFBF4F /* CalendarCourseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC26355D24D1C58B00CFBF4F /* CalendarCourseResponse.swift */; };
+		DC26356124D22A4800CFBF4F /* LottieAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC26356024D22A4800CFBF4F /* LottieAnimation.swift */; };
+		DC26356424D22B4900CFBF4F /* calendar-animation.json in Resources */ = {isa = PBXBuildFile; fileRef = DC26356324D22B4900CFBF4F /* calendar-animation.json */; };
 		DC4563F524D0801600F3F846 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4563F424D0801600F3F846 /* ImageCache.swift */; };
 		DC4563F824D08D2E00F3F846 /* ScoreScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4563F724D08D2E00F3F846 /* ScoreScreenModel.swift */; };
 		DC4563FB24D08E1B00F3F846 /* ScoresResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4563FA24D08E1B00F3F846 /* ScoresResponse.swift */; };
@@ -120,6 +122,8 @@
 		DC26355924D17AFC00CFBF4F /* CalendarService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarService.swift; sourceTree = "<group>"; };
 		DC26355B24D1BB9400CFBF4F /* CalendarWeekResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarWeekResponse.swift; sourceTree = "<group>"; };
 		DC26355D24D1C58B00CFBF4F /* CalendarCourseResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCourseResponse.swift; sourceTree = "<group>"; };
+		DC26356024D22A4800CFBF4F /* LottieAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieAnimation.swift; sourceTree = "<group>"; };
+		DC26356324D22B4900CFBF4F /* calendar-animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "calendar-animation.json"; sourceTree = "<group>"; };
 		DC4563F424D0801600F3F846 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		DC4563F724D08D2E00F3F846 /* ScoreScreenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreScreenModel.swift; sourceTree = "<group>"; };
 		DC4563FA24D08E1B00F3F846 /* ScoresResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoresResponse.swift; sourceTree = "<group>"; };
@@ -323,6 +327,22 @@
 				DC26355924D17AFC00CFBF4F /* CalendarService.swift */,
 			);
 			path = Calendar;
+			sourceTree = "<group>";
+		};
+		DC26355F24D22A3900CFBF4F /* Lottie animation */ = {
+			isa = PBXGroup;
+			children = (
+				DC26356024D22A4800CFBF4F /* LottieAnimation.swift */,
+			);
+			path = "Lottie animation";
+			sourceTree = "<group>";
+		};
+		DC26356224D22B3A00CFBF4F /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				DC26356324D22B4900CFBF4F /* calendar-animation.json */,
+			);
+			path = Animations;
 			sourceTree = "<group>";
 		};
 		DC4563F624D08D0A00F3F846 /* Model */ = {
@@ -740,6 +760,7 @@
 		DCF043F424AD16F900241062 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				DC26355F24D22A3900CFBF4F /* Lottie animation */,
 				DC24909124CF6A96006746D0 /* Camera */,
 				DCD5422F24CF504C0022E4AA /* Try Again */,
 				DC57924C24CBF36A0097CAC9 /* URl Image */,
@@ -768,6 +789,7 @@
 		DCF043FD24AD1C5700241062 /* Theme */ = {
 			isa = PBXGroup;
 			children = (
+				DC26356224D22B3A00CFBF4F /* Animations */,
 				DCF043FE24AD1D5900241062 /* Colors.swift */,
 				DCF0440324AD2BB000241062 /* Images.swift */,
 			);
@@ -900,6 +922,7 @@
 				DC98E1AF24B8A07F00D4BD76 /* GoogleService-Info.plist in Resources */,
 				DCF043E824AD16B800241062 /* Preview Assets.xcassets in Resources */,
 				DCF043E524AD16B800241062 /* Assets.xcassets in Resources */,
+				DC26356424D22B4900CFBF4F /* calendar-animation.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -957,6 +980,7 @@
 				DCF0440424AD2BB000241062 /* Images.swift in Sources */,
 				DCA500C124AE5223006B4C63 /* CustomContainerGuest.swift in Sources */,
 				DC989EE524BD0006003B79A6 /* Layout.swift in Sources */,
+				DC26356124D22A4800CFBF4F /* LottieAnimation.swift in Sources */,
 				DC05771924BD6104005CC9BC /* CustomContainerSignIn.swift in Sources */,
 				DCB63E4424CF109900620C8D /* NetworkRequestStatus.swift in Sources */,
 				DC4D2CFF24C1E68D008FD663 /* ScoresScreenCardScore.swift in Sources */,

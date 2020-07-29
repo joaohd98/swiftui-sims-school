@@ -340,6 +340,7 @@ PODS:
   - GTMSessionFetcher/Core (1.4.0)
   - Introspect (0.1.0)
   - leveldb-library (1.22)
+  - lottie-ios (3.1.8)
   - nanopb (1.30905.0):
     - nanopb/decode (= 1.30905.0)
     - nanopb/encode (= 1.30905.0)
@@ -354,6 +355,7 @@ DEPENDENCIES:
   - Firebase/Firestore
   - Firebase/Storage
   - Introspect
+  - lottie-ios
   - SkeletonUI
 
 SPEC REPOS:
@@ -379,6 +381,7 @@ SPEC REPOS:
     - GTMSessionFetcher
     - Introspect
     - leveldb-library
+    - lottie-ios
     - nanopb
     - PromisesObjC
     - SkeletonUI
@@ -405,10 +408,11 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 6f5c8abbab8a9bce4bb3f057e317728ec6182b10
   Introspect: ad32f2b7b9e7ac2c008b9dfec3d5325fbd3660fa
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
+  lottie-ios: 48fac6be217c76937e36e340e2d09cf7b10b7f5f
   nanopb: c43f40fadfe79e8b8db116583945847910cbabc9
   PromisesObjC: b48e0338dbbac2207e611750777895f7a5811b75
   SkeletonUI: 988ca03dce53050e7194830031d645807a8e1a38
 
-PODFILE CHECKSUM: ff2052a8616fbd5738664a606729fcecb572044f
+PODFILE CHECKSUM: d45cddf262a2b5fdb9a07aedb735275e3f4ac3e9
 
 COCOAPODS: 1.8.4

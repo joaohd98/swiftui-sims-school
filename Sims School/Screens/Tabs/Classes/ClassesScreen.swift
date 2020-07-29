@@ -18,25 +18,56 @@ struct ClassesScreen: View {
 		self.props.initProps(users: self.users, calendar: self.calendar)
 	}
 	
+	var errorView: some View {
+		TryAgainView(
+			text: "There was an error when trying to get the calendar.",
+			onTryAgain: {
+				self.props.calendarStatus = .loading
+				
+				DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+					self.props.getCalendarRequest(calendar: self.calendar)
+				}
+			}
+		)
+	}
+	
+	var loadingView: some View {
+		LottieAnimation(animationText: "calendar-animation")
+			.frame(height: UIScreen.screenHeight)
+	}
+	
+	var successView: some View {
+		VStack(spacing: 0) {
+			ClassesScreenDaysWeek()
+			ClassesScreenCalendar(
+				calendar: self.$props.calendar,
+				dayOfYear: self.$props.dayOfYear,
+				modalVisible: self.$props.isModalVisible
+			)
+		}
+		.navigationBarTitle("Classes", displayMode: .inline)
+		.onAppear { self.viewDidLoad()}
+		.sheet(isPresented: self.$props.isModalVisible) {
+			ClassesScreenSubjectDay(
+				calendar: self.props.calendar,
+				dayOfYear: self.$props.dayOfYear
+			)
+		}
+	}
+	
 	var body: some View {
 		CustomContainerSignIn {			
-			VStack(spacing: 0) {
-				ClassesScreenDaysWeek()
-				ClassesScreenCalendar(
-					calendar: self.$props.calendar,
-					dayOfYear: self.$props.dayOfYear,
-					modalVisible: self.$props.isModalVisible
-				)
+			if self.props.calendarStatus == .failed {
+				self.loadingView
 			}
-			.navigationBarTitle("Classes", displayMode: .inline)
-			.onAppear { self.viewDidLoad()}
-			.sheet(isPresented: self.$props.isModalVisible) {
-				ClassesScreenSubjectDay(
-					calendar: self.props.calendar,
-					dayOfYear: self.$props.dayOfYear
-				)
+			else if self.props.calendarStatus == .loading {
+				self.loadingView
+			}
+			else {
+				self.loadingView
 			}
 		}
+		.onAppear { self.viewDidLoad() }
 	}
 }
 
