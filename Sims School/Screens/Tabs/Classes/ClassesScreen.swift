@@ -10,14 +10,21 @@ import SwiftUI
 import Foundation
 
 struct ClassesScreen: View {
-	@ObservedObject var props: ClassesScreenModel = ClassesScreenModel()
+	@FetchRequest(entity: UserEntity.entity(), sortDescriptors: []) var users: FetchedResults<UserEntity>
+	@FetchRequest(entity: CalendarEntity.entity(), sortDescriptors: []) var calendar: FetchedResults<CalendarEntity>
+	@ObservedObject var props: ClassesScreenModel
+	
+	func viewDidLoad() {
+		self.props.initProps(users: self.users, calendar: self.calendar)
+	}
 	
 	var body: some View {
 		CustomContainerSignIn {			
 			VStack(spacing: 0) {
 				ClassesScreenDaysWeek()
-				ClassesScreenCalendar(modalVisible: self.$props.isModalVisible)
+				ClassesScreenCalendar(calendar: self.$props.calendar, modalVisible: self.$props.isModalVisible)
 			}
+			.onAppear { self.viewDidLoad()}
 			.sheet(isPresented: self.$props.isModalVisible) {
 				ClassesScreenSubjectDay()
 			}
@@ -27,7 +34,9 @@ struct ClassesScreen: View {
 }
 
 struct ClassesScreen_Previews: PreviewProvider {
+	static let props = ClassesScreenModel()
+	
 	static var previews: some View {
-		ClassesScreen()
+		ClassesScreen(props: props)
 	}
 }

@@ -17,3 +17,19 @@ class CalendarWeekResponse: ObservableObject {
 		days = []
 	}
 }
+
+extension CalendarWeekResponse {
+	convenience init(dictionary: [String: Any]) {
+		self.init()
+		
+		self.weekNumber = dictionary["weekNumber"] as! Int
+		let days = dictionary["days"] as! NSArray
+		
+		days.forEach { day in
+			let day = day as! [String: Any]
+			
+			self.days.append(CalendarCourseResponse(dictionary: day))
+		}
+	
+	}
+}

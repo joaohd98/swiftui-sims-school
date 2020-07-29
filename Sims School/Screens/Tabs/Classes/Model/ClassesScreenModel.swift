@@ -10,29 +10,40 @@ import SwiftUI
 import FirebaseAuth
 
 class ClassesScreenModel: ObservableObject {
-	let year = String(Calendar.current.component(.year, from: Date()))
-	var months: [String: [String]] = [
-		"January" : [],
-		"February" : [],
-		"March" : [],
-		"April" : [],
-		"May" : [],
-		"June" : [],
-		"July" : [],
-		"August" : [],
-		"September" : [],
-		"October" : [],
-		"November": [],
-		"December": []
-	]
-	
+	var user: UserResponse? = nil
+	var firstRun: Bool = true
+	@Published var calendarStatus: NetworkRequestStatus = .loading
+	@Published var calendar: [CalendarResponse] = []
 	@Published var isModalVisible: Bool = false
+
+	func initProps(users: FetchedResults<UserEntity>, calendar: FetchedResults<CalendarEntity>) {
+		if firstRun {
+			self.getUserRequest(users: users)
+			self.getCalendarRequest(calendar: calendar)
+			firstRun.toggle()
+		}
+	}
 	
-	init() {
-		
-//		var interval = Date.allDatesFromMonth(month: month, year: year)
-//		let weekCount = Calendar.current.component(.weekOfMonth, from: interval.last!)
-		
+	func getUserRequest(users: FetchedResults<UserEntity>) {
+		if users.count > 0 {
+			self.user = UserResponse(user: users[0])
+		}
+	}
+	
+	func getCalendarRequest(calendar: FetchedResults<CalendarEntity>) {
+		DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+			if let id_class = self.user?.id_class {
+				CalendarService.getCalendar(
+					request: CalendarRequest(id_class: id_class),
+					onSucess: { calendar in
+						self.calendar = calendar
+						self.calendarStatus = .success
+					},
+					onError: {
+						self.calendarStatus = .failed
+					})
+			}
+		}
 	}
 
 }

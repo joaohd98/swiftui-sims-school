@@ -7,3 +7,7 @@
 //
 
 import Foundation
+
+struct CalendarRequest {
+	let id_class: String
+}

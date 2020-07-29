@@ -26,7 +26,6 @@ class FirebaseDatabase {
 			self.addAds()
 			self.addScores(user: user)
 			self.addTips()
-			
 		}
 	}
 	
@@ -162,6 +161,7 @@ class FirebaseDatabase {
 					
 					weekResponse["day"] = dateFormatter.string(from: date)
 					weekResponse["course"] = course
+					weekResponse["weekday"] = date.getDayOfWeek() - 1
 					weekResponse["homework"] = course != "" && randomNumber >= 2 ? "Final Homework" : ""
 					weekResponse["test"] = course != "" && randomNumber >= 3 ? "Final Test" :  ""
 					
