@@ -14,7 +14,7 @@ private struct Subject: Hashable {
 	let title: String
 	let message: String
 }
- 
+
 struct ClassesScreenSubjectDay: View {
 	let weekdays = ["S", "M", "T", "W", "T", "F", "S"]
 	var days: [CalendarCourseResponse] = []
@@ -34,7 +34,7 @@ struct ClassesScreenSubjectDay: View {
 		}
 	}
 	
-	func daysSelection() -> some View {
+	private func daysSelection() -> some View {
 		let courseSelected = self.days[self.dayOfYear]
 		
 		let backgroundColors = Gradient(colors: [
@@ -75,7 +75,51 @@ struct ClassesScreenSubjectDay: View {
 		
 	}
 	
-	func dayContent() -> some View {
+	private func dayOff() -> some View {
+		VStack(spacing: 30) {
+			Spacer()
+			Image("garfield-relaxing")
+			Text("Enjoy your day off")
+				.font(.system(size: 16, weight: .bold))
+			Spacer()
+
+		}
+	}
+	
+	private func dayRegular(subjects: [Subject]) -> some View {
+		ForEach(subjects.indices, id: \.description) { index in
+			Group {
+				if subjects[index].title != "" {
+					if index > 0 {
+						HStack(alignment: .firstTextBaseline, spacing: 20) {
+							Rectangle()
+								.fill(Color(UIColor { (trait) -> UIColor in return trait.userInterfaceStyle == .dark ? .white : .black}))
+								.frame(width: 2, height: 60)
+								.padding(.leading, 10)
+							Spacer()
+						}
+					}
+					HStack(alignment: .firstTextBaseline, spacing: 20) {
+						VStack {
+							Image(systemName: subjects[index].icon)
+								.resizable()
+								.frame(width: 25, height: 25, alignment: .center)
+								.padding(.bottom, -15)
+						}
+						VStack(alignment: .leading, spacing: 5) {
+							Text(subjects[index].title)
+								.font(.system(size: 16, weight: .semibold))
+							Text(subjects[index].message)
+								.font(.system(size: 14, weight: .semibold))
+						}
+						Spacer()
+					}
+				}
+			}
+		}
+	}
+	
+	private func dayContent() -> some View {
 		let courseSelected = self.days[self.dayOfYear]
 		let subjects = [
 			Subject(icon: "studentdesk", title: courseSelected.course, message: courseSelected.teacher),
@@ -83,40 +127,13 @@ struct ClassesScreenSubjectDay: View {
 			Subject(icon: "paperclip", title: courseSelected.test, message: "Individual"),
 		]
 		
-		print("courseSelected", courseSelected.day)
-		print("courseSelected", courseSelected.course)
-
 		return (
 			VStack(spacing: 2) {
-				ForEach(subjects.indices, id: \.description) { index in
-					Group {
-						if subjects[index].title != "" {
-							if index > 0 {
-								HStack(alignment: .firstTextBaseline, spacing: 20) {
-									Rectangle()
-										.fill(Color(UIColor { (trait) -> UIColor in return trait.userInterfaceStyle == .dark ? .white : .black}))
-										.frame(width: 2, height: 60)
-										.padding(.leading, 10)
-									Spacer()
-								}
-							}
-							HStack(alignment: .firstTextBaseline, spacing: 20) {
-								VStack {
-									Image(systemName: subjects[index].icon)
-										.resizable()
-										.frame(width: 25, height: 25, alignment: .center)
-										.padding(.bottom, -15)
-								}
-								VStack(alignment: .leading, spacing: 5) {
-									Text(subjects[index].title)
-										.font(.system(size: 16, weight: .semibold))
-									Text(subjects[index].message)
-										.font(.system(size: 14, weight: .semibold))
-								}
-								Spacer()
-							}
-						}
-					}
+				if courseSelected.course != "" {
+					self.dayRegular(subjects: subjects)
+				}
+				else {
+					self.dayOff()
 				}
 			}
 			.padding()
