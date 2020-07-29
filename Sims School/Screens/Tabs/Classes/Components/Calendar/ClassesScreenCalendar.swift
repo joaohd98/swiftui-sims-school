@@ -10,7 +10,7 @@ import SwiftUI
 
 struct ClassesScreenCalendar: View {
 	@Binding var calendar: [CalendarResponse]
-	@Binding var courseSelected: CalendarCourseResponse
+	@Binding var dayOfYear: Int
 	@Binding var modalVisible: Bool
 	@State var firstOffset = true
 	
@@ -66,7 +66,7 @@ struct ClassesScreenCalendar: View {
 			Group {
 				Spacer()
 				Button(action: {
-					self.courseSelected = response
+					self.dayOfYear = Date.dateFromString(response.day).getDayOfYear()
 					self.modalVisible.toggle()
 				}) {
 					self.getCalendarContent(response: response)
@@ -131,10 +131,10 @@ struct ClassesScreenCalendar: View {
 
 struct ClassesScreenCalendar_Previews: PreviewProvider {
 	@State static var calendar: [CalendarResponse] = []
-	@State static var courseSelected: CalendarCourseResponse = CalendarCourseResponse()
+	@State static var dayOfYear: Int = 0
 	@State static var modalVisible: Bool = true
 	
 	static var previews: some View {
-		ClassesScreenCalendar(calendar: $calendar, courseSelected: $courseSelected,  modalVisible: $modalVisible)
+		ClassesScreenCalendar(calendar: $calendar, dayOfYear: $dayOfYear,  modalVisible: $modalVisible)
 	}
 }

@@ -24,15 +24,18 @@ struct ClassesScreen: View {
 				ClassesScreenDaysWeek()
 				ClassesScreenCalendar(
 					calendar: self.$props.calendar,
-					courseSelected: self.$props.courseSelected,
+					dayOfYear: self.$props.dayOfYear,
 					modalVisible: self.$props.isModalVisible
 				)
 			}
+			.navigationBarTitle("Classes", displayMode: .inline)
 			.onAppear { self.viewDidLoad()}
 			.sheet(isPresented: self.$props.isModalVisible) {
-				ClassesScreenSubjectDay(courseSelected: self.$props.courseSelected)
+				ClassesScreenSubjectDay(
+					calendar: self.props.calendar,
+					dayOfYear: self.$props.dayOfYear
+				)
 			}
-			.navigationBarTitle("Classes", displayMode: .inline)
 		}
 	}
 }

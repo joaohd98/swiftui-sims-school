@@ -46,11 +46,14 @@ extension Date {
 		return weeks.weekOfMonth! + 1
 
 	}
+
+	func getDayOfYear() -> Int {
+		return (Calendar.current.ordinality(of: .day, in: .year, for: self) ?? 1) - 1
+	}
 	
 	func getDayOfWeek() -> Int {
 		return Calendar.current.dateComponents([.weekday], from: self).weekday!
 	}
-	
 	
 	func getDay() -> Int {
 		return Calendar.current.dateComponents([.day], from: self).day!
