@@ -55,12 +55,22 @@ struct ClassesScreenCalendar: View {
 		)
 	}
 	
-	func getCourseResponse(days: [CalendarCourseResponse], weekNumber: Int) -> CalendarCourseResponse {
-		let day = days.first { (response) -> Bool in
-			response.weekday == weekNumber
-		}
+	func getDaysCalendarContent(days: [CalendarCourseResponse], weekNumber: Int) -> some View {
+		let response = days.first { res in res.weekday == weekNumber } ?? CalendarCourseResponse()
 		
-		return day ?? CalendarCourseResponse()
+		return (
+			Group {
+				Spacer()
+				Button(action: {
+					self.modalVisible.toggle()
+				}) {
+					self.getCalendarContent(response: response)
+				}
+				.disabled(response.course == "")
+				Spacer()
+			}
+			
+		)
 	}
 	
 	func getDaysCalendar(calendar: CalendarResponse) -> some View {
@@ -68,14 +78,7 @@ struct ClassesScreenCalendar: View {
 			ForEach(calendar.weeks, id: \.weekNumber) { week in
 				HStack(alignment: .center) {
 					ForEach(0..<7) { weekNumber in
-						Spacer()
-						Button(action: {
-							self.modalVisible.toggle()
-						}) {
-							self.getCalendarContent(response: self.getCourseResponse(days: week.days, weekNumber: weekNumber))
-						}
-						.disabled(false)
-						Spacer()
+						self.getDaysCalendarContent(days: week.days, weekNumber: weekNumber)
 					}
 				}
 			}
