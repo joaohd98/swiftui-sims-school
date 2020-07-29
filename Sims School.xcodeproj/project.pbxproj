@@ -21,6 +21,11 @@
 		DC198D3E24C3D2B000AF27B5 /* ClassesScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC198D3D24C3D2B000AF27B5 /* ClassesScreenModel.swift */; };
 		DC1D22DB24BE5C1F00E1855D /* SlideHorizontal.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1D22DA24BE5C1F00E1855D /* SlideHorizontal.swift */; };
 		DC24909324CF6ABB006746D0 /* CameraCaptureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC24909224CF6ABB006746D0 /* CameraCaptureView.swift */; };
+		DC26355624D17ADC00CFBF4F /* CalendarRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC26355524D17ADC00CFBF4F /* CalendarRequest.swift */; };
+		DC26355824D17AF000CFBF4F /* CalendarResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC26355724D17AF000CFBF4F /* CalendarResponse.swift */; };
+		DC26355A24D17AFC00CFBF4F /* CalendarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC26355924D17AFC00CFBF4F /* CalendarService.swift */; };
+		DC26355C24D1BB9400CFBF4F /* CalendarWeekResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC26355B24D1BB9400CFBF4F /* CalendarWeekResponse.swift */; };
+		DC26355E24D1C58B00CFBF4F /* CalendarCourseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC26355D24D1C58B00CFBF4F /* CalendarCourseResponse.swift */; };
 		DC4563F524D0801600F3F846 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4563F424D0801600F3F846 /* ImageCache.swift */; };
 		DC4563F824D08D2E00F3F846 /* ScoreScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4563F724D08D2E00F3F846 /* ScoreScreenModel.swift */; };
 		DC4563FB24D08E1B00F3F846 /* ScoresResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4563FA24D08E1B00F3F846 /* ScoresResponse.swift */; };
@@ -110,6 +115,11 @@
 		DC198D3D24C3D2B000AF27B5 /* ClassesScreenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassesScreenModel.swift; sourceTree = "<group>"; };
 		DC1D22DA24BE5C1F00E1855D /* SlideHorizontal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideHorizontal.swift; sourceTree = "<group>"; };
 		DC24909224CF6ABB006746D0 /* CameraCaptureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraCaptureView.swift; sourceTree = "<group>"; };
+		DC26355524D17ADC00CFBF4F /* CalendarRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarRequest.swift; sourceTree = "<group>"; };
+		DC26355724D17AF000CFBF4F /* CalendarResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarResponse.swift; sourceTree = "<group>"; };
+		DC26355924D17AFC00CFBF4F /* CalendarService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarService.swift; sourceTree = "<group>"; };
+		DC26355B24D1BB9400CFBF4F /* CalendarWeekResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarWeekResponse.swift; sourceTree = "<group>"; };
+		DC26355D24D1C58B00CFBF4F /* CalendarCourseResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCourseResponse.swift; sourceTree = "<group>"; };
 		DC4563F424D0801600F3F846 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		DC4563F724D08D2E00F3F846 /* ScoreScreenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreScreenModel.swift; sourceTree = "<group>"; };
 		DC4563FA24D08E1B00F3F846 /* ScoresResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoresResponse.swift; sourceTree = "<group>"; };
@@ -301,6 +311,18 @@
 				DC24909224CF6ABB006746D0 /* CameraCaptureView.swift */,
 			);
 			path = Camera;
+			sourceTree = "<group>";
+		};
+		DC26355424D17AAC00CFBF4F /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				DC26355524D17ADC00CFBF4F /* CalendarRequest.swift */,
+				DC26355724D17AF000CFBF4F /* CalendarResponse.swift */,
+				DC26355B24D1BB9400CFBF4F /* CalendarWeekResponse.swift */,
+				DC26355D24D1C58B00CFBF4F /* CalendarCourseResponse.swift */,
+				DC26355924D17AFC00CFBF4F /* CalendarService.swift */,
+			);
+			path = Calendar;
 			sourceTree = "<group>";
 		};
 		DC4563F624D08D0A00F3F846 /* Model */ = {
@@ -774,6 +796,7 @@
 		DCF0440A24AE224200241062 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				DC26355424D17AAC00CFBF4F /* Calendar */,
 				DC4563F924D08DBA00F3F846 /* Scores */,
 				DC57924724CBEC220097CAC9 /* Ads */,
 				DCB672DD24B29B580064484D /* User */,
@@ -941,6 +964,7 @@
 				DC98E1B524B8AA3E00D4BD76 /* LoginScreenLogo.swift in Sources */,
 				DCF043DF24AD16B600241062 /* AppDelegate.swift in Sources */,
 				DC4D2D0D24C27D85008FD663 /* ClassesScreenSubjectDay.swift in Sources */,
+				DC26355E24D1C58B00CFBF4F /* CalendarCourseResponse.swift in Sources */,
 				DCF043FF24AD1D5900241062 /* Colors.swift in Sources */,
 				DCAB5BED24D0C31700A49F0F /* ScoresCoursesResponse.swift in Sources */,
 				DCB672E124B29BC10064484D /* UserResponse.swift in Sources */,
@@ -985,7 +1009,9 @@
 				DCF6EEC924CB177A00C026E9 /* SimsSchool.xcdatamodeld in Sources */,
 				DCB672E324B29BD10064484D /* UserService.swift in Sources */,
 				DC98E1B224B8A18100D4BD76 /* LoginScreenSubmitButton.swift in Sources */,
+				DC26355A24D17AFC00CFBF4F /* CalendarService.swift in Sources */,
 				DC07B47124C5EC7E00840714 /* TipsScreenList.swift in Sources */,
+				DC26355C24D1BB9400CFBF4F /* CalendarWeekResponse.swift in Sources */,
 				DCFD821E24C61492008E3C05 /* TipsScreenFullScreenImage.swift in Sources */,
 				DC4563FD24D08E2C00F3F846 /* ScoresService.swift in Sources */,
 				DCF043E124AD16B600241062 /* SceneDelegate.swift in Sources */,
@@ -1003,7 +1029,9 @@
 				DC989EDD24BCEDCA003B79A6 /* HomeScreen.swift in Sources */,
 				DC4D2CFC24C1E635008FD663 /* ScoresScreenSemesters.swift in Sources */,
 				DC98E1BE24B8ED4B00D4BD76 /* ScreenSize.swift in Sources */,
+				DC26355624D17ADC00CFBF4F /* CalendarRequest.swift in Sources */,
 				DCF0440924AE1E0400241062 /* FormModel.swift in Sources */,
+				DC26355824D17AF000CFBF4F /* CalendarResponse.swift in Sources */,
 				DC98E1B924B8AE3900D4BD76 /* LoginScreenModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -14,7 +14,7 @@ import FirebaseStorage
 class FirebaseDatabase {	
 	static var db: Firestore = Firestore.firestore()
 	static var storage: Storage = Storage.storage()
-
+	
 	//var idClass = UUID().uuidString
 	private var idClass = "0CA31E26-3FD2-4FFC-83E7-1736330"
 	
@@ -26,7 +26,7 @@ class FirebaseDatabase {
 			self.addAds()
 			self.addScores(user: user)
 			self.addTips()
-
+			
 		}
 	}
 	
@@ -122,32 +122,62 @@ class FirebaseDatabase {
 	private func addCalendar() {
 		let documentCalendar = FirebaseDatabase.db.collection("calendar").document(self.idClass)
 		let year = String(Calendar.current.component(.year, from: Date()))
-
-		var calendar: [[String: Any]] = []
-
+		
+		let months = [
+			"January", "February", "March",
+			"April", "May", "June",
+			"July", "August", "September",
+			"October", "November", "December"
+		]
+		
+		
 		self.getClasses { (weekDays) in
+			var calendarResponse: [[String: Any]] = []
 
-			for month in 1...12 {
-				let days = Date.allDatesFromMonth(month: String(month), year: year)
-
+			months.enumerated().forEach {  (index, month) in
+				var response: [String: Any] = [:]
+				response["name"] = month
+				
+				let days = Date.allDatesFromMonth(month: String(index + 1), year: year)
+				
+				let weeksCount = Calendar.current.component(.weekOfMonth, from: days.last!)
+				var weeksResponse: [[String: Any]] = []
+				
+				for index in 0..<weeksCount {
+					weeksResponse.append([
+						"weekNumber": index + 1,
+						"days": []
+					])
+				}
+				
 				days.forEach { (date) in
+					let weekActual = Calendar.current.component(.weekOfMonth, from: date) - 1
 					let dateFormatter = DateFormatter()
 					dateFormatter.dateFormat = "dd/MM/yyyy"
-
+					
 					let randomNumber = Int.random(in: 1...4)
 					let course = weekDays[date.getDayOfWeek() - 1].course
 					
-					calendar.append([
-						"day": dateFormatter.string(from: date),
-						"course": course,
-						"homework": course == "" && randomNumber >= 2 ? "Final Homework" : "",
-						"test": course == "" && randomNumber >= 3 ? "Final Test" :  ""
-					])
+					var weekResponse: [String: Any] = [:]
+					
+					weekResponse["day"] = dateFormatter.string(from: date)
+					weekResponse["course"] = course
+					weekResponse["homework"] = course != "" && randomNumber >= 2 ? "Final Homework" : ""
+					weekResponse["test"] = course != "" && randomNumber >= 3 ? "Final Test" :  ""
+					
+					var copy = weeksResponse[weekActual]["days"] as! [[String: Any]]
+					copy.append(weekResponse)
+					weeksResponse[weekActual]["days"] = copy
 				}
+				
+				response["weeks"] = weeksResponse
+				calendarResponse.append(response)
 			}
-		
-			documentCalendar.setData(["day": calendar])
 			
+			print("calendar", calendarResponse)
+			
+			documentCalendar.setData(["months": calendarResponse])
+
 		}
 	}
 	
@@ -159,7 +189,7 @@ class FirebaseDatabase {
 		self.getClasses { (weekDays) in
 			
 			for index in 1...8 {
-			
+				
 				var courses: [[String: Any]] = []
 				
 				weekDays.forEach { day in
@@ -180,20 +210,20 @@ class FirebaseDatabase {
 			}
 			
 			document.setData(["semesters": semesters])
-
+			
 		}
 		
 	}
 	
 	private func addTips() {
-//		let collection = db.collection("tips")
-//		let document = collection.document(self.idClass)
+		//		let collection = db.collection("tips")
+		//		let document = collection.document(self.idClass)
 		
 	}
 	
 	
 	private func addAds() {
-	
+		
 	}
 	
 }

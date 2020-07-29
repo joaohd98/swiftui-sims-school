@@ -68,7 +68,7 @@ struct ClassesScreenSubjectDay: View {
 			}
 			HStack(alignment: .firstTextBaseline, spacing: 20) {
 				Rectangle()
-					.fill(Color.black)
+					.fill(Color(UIColor { (trait) -> UIColor in return trait.userInterfaceStyle == .dark ? .white : .black}))
 					.frame(width: 2, height: 50)
 					.padding(.leading, 10)
 				Spacer()
@@ -90,7 +90,7 @@ struct ClassesScreenSubjectDay: View {
 			}
 			HStack(alignment: .firstTextBaseline, spacing: 20) {
 				Rectangle()
-					.fill(Color.black)
+					.fill(Color(UIColor { (trait) -> UIColor in return trait.userInterfaceStyle == .dark ? .white : .black}))
 					.frame(width: 2, height: 50)
 					.padding(.leading, 10)
 				Spacer()
