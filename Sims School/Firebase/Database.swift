@@ -80,7 +80,7 @@ class FirebaseDatabase {
 				],
 				[
 					"weekDay": "Thursday",
-					"course": "Artificial intelligence and machine learning",
+					"course": "Artificial Intelligence and Machine Learning",
 					"teacher": "Tony Stark",
 					"place": "Hell’s Kitchen - Lab 88",
 					"hasClass": true
@@ -154,16 +154,18 @@ class FirebaseDatabase {
 					let dateFormatter = DateFormatter()
 					dateFormatter.dateFormat = "dd/MM/yyyy"
 					
-					let randomNumber = Int.random(in: 1...4)
+					let randomNumber = Int.random(in: 2...4)
 					let course = weekDays[date.getDayOfWeek() - 1].course
-					
+					let teacher = weekDays[date.getDayOfWeek() - 1].teacher
+
 					var weekResponse: [String: Any] = [:]
 					
 					weekResponse["day"] = dateFormatter.string(from: date)
 					weekResponse["course"] = course
+					weekResponse["teacher"] = teacher
 					weekResponse["weekday"] = date.getDayOfWeek() - 1
-					weekResponse["homework"] = course != "" && randomNumber >= 2 ? "Final Homework" : ""
-					weekResponse["test"] = course != "" && randomNumber >= 3 ? "Final Test" :  ""
+					weekResponse["homework"] = course != "" && randomNumber >= 3 ? "Final Homework" : ""
+					weekResponse["test"] = course != "" && randomNumber >= 4 ? "Final Test" :  ""
 					
 					var copy = weeksResponse[weekActual]["days"] as! [[String: Any]]
 					copy.append(weekResponse)

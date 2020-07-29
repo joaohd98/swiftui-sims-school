@@ -22,11 +22,15 @@ struct ClassesScreen: View {
 		CustomContainerSignIn {			
 			VStack(spacing: 0) {
 				ClassesScreenDaysWeek()
-				ClassesScreenCalendar(calendar: self.$props.calendar, modalVisible: self.$props.isModalVisible)
+				ClassesScreenCalendar(
+					calendar: self.$props.calendar,
+					courseSelected: self.$props.courseSelected,
+					modalVisible: self.$props.isModalVisible
+				)
 			}
 			.onAppear { self.viewDidLoad()}
 			.sheet(isPresented: self.$props.isModalVisible) {
-				ClassesScreenSubjectDay()
+				ClassesScreenSubjectDay(courseSelected: self.$props.courseSelected)
 			}
 			.navigationBarTitle("Classes", displayMode: .inline)
 		}

@@ -10,6 +10,7 @@ import SwiftUI
 
 struct ClassesScreenCalendar: View {
 	@Binding var calendar: [CalendarResponse]
+	@Binding var courseSelected: CalendarCourseResponse
 	@Binding var modalVisible: Bool
 	@State var firstOffset = true
 	
@@ -18,15 +19,16 @@ struct ClassesScreenCalendar: View {
 			if response.course != "" {
 				if response.homework != "" || response.test != "" {
 					Circle()
-						.stroke(lineWidth: 1)
-						.foregroundColor(Color(CustomColor.success))
+						.fill(Color(CustomColor.success))
 						.frame(width: 10, height: 10, alignment: .center)
 				}
 					
 				else {
 					Circle()
-						.fill(Color(CustomColor.success))
+						.stroke(lineWidth: 1)
+						.foregroundColor(Color(CustomColor.success))
 						.frame(width: 10, height: 10, alignment: .center)
+					
 				}
 			}
 			else {
@@ -64,6 +66,7 @@ struct ClassesScreenCalendar: View {
 			Group {
 				Spacer()
 				Button(action: {
+					self.courseSelected = response
 					self.modalVisible.toggle()
 				}) {
 					self.getCalendarContent(response: response)
@@ -90,7 +93,7 @@ struct ClassesScreenCalendar: View {
 	var body: some View {
 		let year = String(Calendar.current.component(.year, from: Date()))
 		let month = Calendar.current.component(.month, from: Date())
-
+		
 		return (
 			ScrollView {
 				ForEach(self.calendar, id: \.name) { calendar in
@@ -107,18 +110,18 @@ struct ClassesScreenCalendar: View {
 			.introspectScrollView(customize: { scrollView in
 				if self.calendar.count > 0 && self.firstOffset {
 					var height = 0.0
-							
+					
 					if month == self.calendar.count - 1 {
 						height = Double(scrollView.contentSize.height - scrollView.bounds.size.height + scrollView.contentInset.bottom)
 					}
-					
+						
 					else if month > 0 {
 						let realMonth = month - 1
 						height = Double(realMonth * 300 - 20 * realMonth)
 					}
 					
 					scrollView.contentOffset = .init(x: 0, y: height)
-								
+					
 					self.firstOffset.toggle()
 				}
 			})
@@ -128,9 +131,10 @@ struct ClassesScreenCalendar: View {
 
 struct ClassesScreenCalendar_Previews: PreviewProvider {
 	@State static var calendar: [CalendarResponse] = []
+	@State static var courseSelected: CalendarCourseResponse = CalendarCourseResponse()
 	@State static var modalVisible: Bool = true
 	
 	static var previews: some View {
-		ClassesScreenCalendar(calendar: $calendar, modalVisible: $modalVisible)
+		ClassesScreenCalendar(calendar: $calendar, courseSelected: $courseSelected,  modalVisible: $modalVisible)
 	}
 }

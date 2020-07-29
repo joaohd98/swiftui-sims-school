@@ -14,6 +14,7 @@ class ClassesScreenModel: ObservableObject {
 	var firstRun: Bool = true
 	@Published var calendarStatus: NetworkRequestStatus = .loading
 	@Published var calendar: [CalendarResponse] = []
+	@Published var courseSelected: CalendarCourseResponse = CalendarCourseResponse()
 	@Published var isModalVisible: Bool = false
 
 	func initProps(users: FetchedResults<UserEntity>, calendar: FetchedResults<CalendarEntity>) {

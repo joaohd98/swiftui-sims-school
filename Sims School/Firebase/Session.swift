@@ -7,11 +7,11 @@ class FirebaseSession: ObservableObject {
 	let defaults = UserDefaults.standard
 
 	init() {
-		let user = Auth.auth().currentUser
-
-		if user != nil {
-			FirebaseDatabase().initFirebaseDataBase(currentUser: user)
-		}
+//		let user = Auth.auth().currentUser
+//
+//		if user != nil {
+//			FirebaseDatabase().initFirebaseDataBase(currentUser: user)
+//		}
 	}
 
 	func login() {
