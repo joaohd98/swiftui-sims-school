@@ -54,7 +54,7 @@ class FirebaseAssets {
 			"url":  "http://demonssouls.wikidot.com/"
 		],
 		[
-			"image": "gstips/picture-vertical/megaman.jpg",
+			"image": "tips/picture-vertical/megaman.jpg",
 			"url":  "http://megaman.capcom.com/"
 		],
 		[
@@ -78,7 +78,7 @@ class FirebaseAssets {
 			"url":  "https://www.eurogamer.pt/articles/2020-06-12-astros-playroom-anunciado-e-estara-incluido-em-todas-as-ps5"
 		],
 		[
-			"video": "gs://swiftui-sims-school.appspot.com/tips/video-vertical/wizard.mp4",
+			"video": "tips/video-vertical/wizard.mp4",
 			"url":  "https://magic.wizards.com/pt-br"
 		],
 		[

@@ -38,15 +38,16 @@ extension TipsResponse  {
 			self.medias.append(TipsMediasResponse(dictionary: media))
 		}
 		
-		group.enter()
 		let media = self.medias.randomElement()!
+		
+		group.enter()
 		self.getThumbnail(media: media) { image in
 			if let image = image {
 				self.thumbnail = image
 			}
-			
 			group.leave()
 		}
+		
 	}
 	
 	func getThumbnail(media: TipsMediasResponse, completion: @escaping ((_ image: UIImage?)->Void)) {
@@ -56,7 +57,7 @@ extension TipsResponse  {
 					if type == .image {
 						self.getThumbnailFromImage(url: url, completion: completion)
 					}
-					else {
+					if type == .video {
 						self.getThumbnailFromVideo(url: url, completion: completion)
 					}
 				}
@@ -83,20 +84,28 @@ extension TipsResponse  {
 		}
 	}
 	
-	private func getThumbnailFromVideo(url: URL, completion: @escaping ((_ image: UIImage?)->Void)) {
+	private func getThumbnailFromVideo(url: URL, completion: @escaping ((_ image: UIImage?) -> Void)) {
 		DispatchQueue.global().async {
 			let asset = AVAsset(url: url)
 			let imageGenerator = AVAssetImageGenerator(asset: asset)
+			imageGenerator.appliesPreferredTrackTransform = true
+
+			let time = CMTimeMakeWithSeconds(Float64(15), preferredTimescale: 100)
 
 			do {
-				let thumbnailImage = try imageGenerator.copyCGImage(at: CMTimeMake(value: 0, timescale: 0) , actualTime: nil)
+				let thumbnailImage = try imageGenerator.copyCGImage(at: time , actualTime: nil)
 				let image = UIImage(cgImage: thumbnailImage)
 				
 				URLSession.shared.setCacheIMG(image, url: url)
 				
-				completion(image)
+				DispatchQueue.main.async {
+					completion(image)
+				}
+				
 			} catch {
-				completion(nil)
+				DispatchQueue.main.async {
+					completion(nil)
+				}
 			}
 		}
 	}
@@ -104,6 +113,9 @@ extension TipsResponse  {
 	private func getThumbnailFromImage(url: URL, completion: @escaping ((_ image: UIImage?) -> Void)) {
 		DispatchQueue.global().async {
 			URLSession.shared.downloadImageAndCache(url: url) { image in
+				print("mediaABC", self.name)
+				print("mediaABC1", image != nil)
+
 				completion(image)
 			}
 		}

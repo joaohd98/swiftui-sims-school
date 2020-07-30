@@ -7,16 +7,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "F38EA354-9217-4ACE-9D36-D08B5CE77CB2"
+            uuid = "FCEF03D2-D02F-45FA-8976-A4223AB61D3E"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Sims School/Screens/Tabs/Tips/Model/TipsScreenModel.swift"
+            filePath = "Sims School/Services/Tips/TipsResponse.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
-            landmarkName = "getTipsRequest(tips:)"
+            startingLineNumber = "120"
+            endingLineNumber = "120"
+            landmarkName = "getThumbnailFromImage(url:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AB15BCD7-0C0A-448C-BAF2-6DAF0B4335E5"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Sims School/Services/Tips/TipsResponse.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
+            landmarkName = "getThumbnailFromImage(url:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
