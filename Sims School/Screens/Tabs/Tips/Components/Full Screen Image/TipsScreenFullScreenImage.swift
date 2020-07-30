@@ -10,35 +10,33 @@ import SwiftUI
 import AVKit
 
 struct TipsScreenFullScreenImage: View {
-	let statusIMG: String = Int.random(in: 0...1) % 2 == 0 ? "cover-ps4" : "vertical-image"
-	let urlVideo = Int.random(in: 0...1) % 2 == 0 ?
-		URL(string: "https://bit.ly/swswift")! :
-		URL(fileURLWithPath: Bundle.main.path(forResource: "video-vertical", ofType:"mov")!)
-
+	@Binding var tips: [TipsResponse]
+	@Binding var fullScreenIndex: (tips: Int, medias: Int)
 	@State var progress: Int = 0
-	
-	func isVerticalImage() -> Bool {
-		let imageSource = UIImage(named: self.statusIMG)!
-		let screenHeight = UIScreen.screenHeight
-		
-		let imageWidth = imageSource.size.width * imageSource.scale
-		let imageHeight = imageSource.size.height * imageSource.scale
-		
-		return screenHeight < imageHeight && imageHeight > imageWidth / 2
-	}
-	
-	func isVerticalVideo() -> Bool {
+	@Environment(\.presentationMode) var presentationMode
 
-		let videoTrack = AVAsset(url: self.urlVideo).tracks(withMediaType: AVMediaType.video).first!
-		
-		let transformedVideoSize = videoTrack.naturalSize.applying(videoTrack.preferredTransform)
-			
-		return abs(transformedVideoSize.width) < abs(transformedVideoSize.height)
-	}
+//	func isVerticalImage() -> Bool {
+//		let imageSource = UIImage(named: self.statusIMG)!
+//		let screenHeight = UIScreen.screenHeight
+//		
+//		let imageWidth = imageSource.size.width * imageSource.scale
+//		let imageHeight = imageSource.size.height * imageSource.scale
+//		
+//		return screenHeight < imageHeight && imageHeight > imageWidth / 2
+//	}
+//	
+//	func isVerticalVideo() -> Bool {
+//
+//		let videoTrack = AVAsset(url: self.urlVideo).tracks(withMediaType: AVMediaType.video).first!
+//		
+//		let transformedVideoSize = videoTrack.naturalSize.applying(videoTrack.preferredTransform)
+//			
+//		return abs(transformedVideoSize.width) < abs(transformedVideoSize.height)
+//	}
 	
-	func progressBar() -> some View {
+	func progressBar(tip: TipsResponse) -> some View {
 		let progressValue = CGFloat.random(in: 0 ... 0.5)
-		let statusQuantity = Int.random(in: 3 ... 10)
+		let statusQuantity = tip.medias.count
 		let padding = CGFloat(10)
 		let size = UIScreen.screenWidth / CGFloat(statusQuantity) - padding
 		
@@ -67,9 +65,9 @@ struct TipsScreenFullScreenImage: View {
 		)
 	}
 	
-	func backButton() -> some View {
+	func backButton(tip: TipsResponse) -> some View {
 		Button(action: {
-			
+			self.presentationMode.wrappedValue.dismiss()
 		}) {
 			HStack(spacing: 10) {
 				Image(systemName: "chevron.left")
@@ -77,48 +75,49 @@ struct TipsScreenFullScreenImage: View {
 					.aspectRatio(contentMode: .fit)
 					.frame(width: 20, height: 20, alignment: .center)
 					.foregroundColor(Color.white)
-				Text("Analise e desenvolvimento")
+				Text(tip.name)
 					.foregroundColor(Color.white)
-					.font(.system(size: 16, weight: .semibold))
+					.font(.system(size: 14, weight: .semibold))
 			}
 			.frame(maxWidth: .infinity, alignment: .leading)
-			.padding(.vertical, 5)
+			.padding(.vertical, 10)
+			.padding(.horizontal, 20)
+
 		}
 	}
 	
-	func getVerticalImage() -> some View {
-		Image(self.statusIMG)
-			.resizable()
-			.clipped()
-	}
+//	func getVerticalImage() -> some View {
+//		Image(self.statusIMG)
+//			.resizable()
+//			.clipped()
+//	}
+//
+//	func getHorizontalImage() -> some View {
+//		Image(self.statusIMG)
+//			.resizable()
+//			.scaledToFit()
+//			.frame(width: UIScreen.screenWidth, height: UIScreen.screenHeight / CGFloat(2))
+//			.clipped()
+//			.padding(.vertical, 10)
+//	}
+//
+//	func getVerticalVideo() -> some View {
+//		VideoView(videoURL: self.urlVideo, previewLength: 60)
+//			.frame(width: nil, height: nil, alignment: .center)
+//
+//	}
+//
+//	func getHorizontalVideo() -> some View {
+//		VideoView(videoURL: self.urlVideo, previewLength: 60)
+//			.frame(width: nil, height: UIScreen.screenHeight / 3.5, alignment: .center)
+//	}
 	
-	func getHorizontalImage() -> some View {
-		Image(self.statusIMG)
-			.resizable()
-			.scaledToFit()
-			.frame(width: UIScreen.screenWidth, height: UIScreen.screenHeight / CGFloat(2))
-			.clipped()
-			.padding(.vertical, 10)
-	}
-	
-	func getVerticalVideo() -> some View {
-		VideoView(videoURL: self.urlVideo, previewLength: 60)
-			.frame(width: nil, height: nil, alignment: .center)
-		
-	}
-	
-	func getHorizontalVideo() -> some View {
-		VideoView(videoURL: self.urlVideo, previewLength: 60)
-			.frame(width: nil, height: UIScreen.screenHeight / 3.5, alignment: .center)
-	}
-	
-	func getFooterOpenLink() -> some View {
+	func getFooterOpenLink(link: URL) -> some View {
 		VStack(spacing: 10) {
 			Divider()
 				.background(Color.white)
-			
 			Button(action: {
-				
+				UIApplication.shared.open(link)
 			}) {
 				VStack(spacing: 0) {
 					Image(systemName: "chevron.up")
@@ -137,28 +136,33 @@ struct TipsScreenFullScreenImage: View {
 	}
 	
 	var body: some View {
-		let isVertical = self.isVerticalVideo()
+		let tip = self.tips[self.fullScreenIndex.tips]
+		let media = tip.medias[self.fullScreenIndex.medias]
 		
 		return (
 			VStack {
-				self.progressBar()
-				self.backButton()
-				if !isVertical {
-					Spacer()
-					self.getHorizontalVideo()
-				}
+				self.progressBar(tip: tip)
+				self.backButton(tip: tip)
+//				if !isVertical {
+//					Spacer()
+//					self.getHorizontalVideo()
+//				}
 				Spacer()
-				self.getFooterOpenLink()
+				self.getFooterOpenLink(link: media.url)
 			}
 			.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .top)
-			.background(isVertical ? AnyView(self.getVerticalVideo()) : AnyView(Color.black))
+//			.background(isVertical ? AnyView(self.getVerticalVideo()) : AnyView(Color.black))
+			.background(Color.black)
 			.edgesIgnoringSafeArea(.all)
 		)
 	}
 }
 
 struct TipsScreenFullScreenImage_Previews: PreviewProvider {
+	@State static var tips: [TipsResponse] = [TipsResponse()]
+	@State static var fullScreenIndex: (tips: Int, medias: Int) = (tips: 0, medias: 0)
+	
 	static var previews: some View {
-		TipsScreenFullScreenImage()
+		TipsScreenFullScreenImage(tips: $tips, fullScreenIndex: $fullScreenIndex)
 	}
 }

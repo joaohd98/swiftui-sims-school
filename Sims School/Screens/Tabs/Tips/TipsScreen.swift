@@ -22,7 +22,6 @@ struct TipsScreen: View {
 			text: "There was an error when trying to get the tips.",
 			onTryAgain: {
 				self.props.tipsStatus = .loading
-				
 				DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
 					self.props.getTipsRequest(tips: self.tips)
 				}
@@ -32,10 +31,18 @@ struct TipsScreen: View {
 	}
 	
 	var defaultView: some View {
-		TipsScreenList(tips: self.$props.tips, status: self.$props.tipsStatus, showFullScreen: self.$props.showFullScreen)
+		TipsScreenList(
+			tips: self.$props.tips,
+			status: self.$props.tipsStatus,
+			fullScreenIndex: self.$props.fullScreenIndex,
+			showFullScreen: self.$props.showFullScreen
+		)
 			.disabled(self.props.tipsStatus == .loading)
 			.sheet(isPresented: self.$props.showFullScreen) {
-				TipsScreenFullScreenImage()
+				TipsScreenFullScreenImage(
+					tips: self.$props.tips,
+					fullScreenIndex: self.$props.fullScreenIndex
+				)
 			}
 	}
 	
