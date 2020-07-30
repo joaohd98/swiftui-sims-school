@@ -12,10 +12,13 @@ import AVKit
 struct TipsScreenFullScreenImage: View {
 	@Binding var tips: [TipsResponse]
 	@Binding var fullScreenIndex: (tips: Int, medias: Int)
-	@State var progress: Int = 0
-	@State var status: NetworkRequestStatus = .loading
 	@Environment(\.presentationMode) var presentationMode
-
+	@ObservedObject var props = TipsScreenFullScreenImageModel()
+	
+	func viewDidLoad(tip: TipsResponse, media: TipsMediasResponse) {
+		self.props.initProps(tip: tip, media: media)
+	}
+	
 	func progressBar(tip: TipsResponse) -> some View {
 		let progressValue = CGFloat.random(in: 0 ... 0.5)
 		let statusQuantity = tip.medias.count
@@ -95,7 +98,14 @@ struct TipsScreenFullScreenImage: View {
 		TryAgainView(
 			text: "There was an error when trying to get the tip.",
 			onTryAgain: {
+				self.props.status = .loading
 				
+				let tip = self.tips[self.fullScreenIndex.tips]
+				let media = tip.medias[self.fullScreenIndex.medias]
+				
+				DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+					self.props.getMediaRequest(media: media)
+				}
 			},
 			color: .white
 		)
@@ -107,9 +117,7 @@ struct TipsScreenFullScreenImage: View {
 	}
 	
 	var successView: some View {
-		Group {
-			EmptyView()
-		}
+		self.props.getImage()
 	}
 	
 	var body: some View {
@@ -120,24 +128,24 @@ struct TipsScreenFullScreenImage: View {
 			VStack {
 				self.progressBar(tip: tip)
 				self.backButton(tip: tip)
-				if status == .failed {
-					Spacer()
+				Spacer()
+				if self.props.status == .failed {
 					self.failedView
 				}
-				else if status == .loading {
-					Spacer()
+				else if self.props.status == .loading {
 					self.loadingView
 				}
 				else {
 					self.successView
 				}
 				Spacer()
-				if status == .success {
+				if self.props.status == .success {
 					self.getFooterOpenLink(link: media.url)
 				}
 			}
+			.onAppear { self.viewDidLoad(tip: tip, media: media) }
 			.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .top)
-			.background(Color.black)
+			.background(self.props.getBackground())
 			.edgesIgnoringSafeArea(.all)
 		)
 	}

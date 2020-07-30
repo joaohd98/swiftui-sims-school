@@ -7,11 +7,43 @@
 //
 
 import Foundation
+import UIKit
+import SwiftUI
+import AVFoundation
 
 class TipsMediasResponse: ObservableObject {
 	@Published var url: URL!
 	@Published var image: String!
 	@Published var video: String!
+	
+	func getMedia(completion: @escaping ((_ url: URL?, _ image: UIImage?, _ video: VideoView?) -> Void)) {
+		let isVideo = self.video != nil
+		
+		DispatchQueue.global().async {
+			FirebaseDatabase.storage.reference().child(isVideo ? self.video : self.image).downloadURL { url, error in
+				if error == nil, let url = url {
+					if isVideo {
+						completion(url, nil, VideoView(videoURL: url))
+					}
+						
+					else {
+						URLSession.shared.downloadImageAndCache(url: url) { image in
+							if let image = image {
+								completion(url, image , nil)
+							}
+							else {
+								completion(url, nil, nil)
+							}
+						}
+					}
+				}
+				else {
+					completion(nil, nil, nil)
+				}
+			}
+		}
+	}
+	
 }
 
 extension TipsMediasResponse  {
