@@ -12,14 +12,14 @@ import SkeletonUI
 struct URLImage: View {
 	@ObservedObject private var loader: ImageLoader
 	let configuration: (Image) -> Image
-
+	
 	init(url: URL?, configuration: @escaping (Image) -> Image = { $0 }) {
 		self.configuration = configuration
 		self.loader = ImageLoader(url: url)
 	}
-		
-	var image: some View {
-        ZStack {
+
+	var body: some View {
+		ZStack {
 			configuration(Image(uiImage: loader.image))
 				.skeleton(with: loader.isLoading)
 				.shape(type: .rectangle)
@@ -33,12 +33,7 @@ struct URLImage: View {
 						.frame(width: 20, height: 20, alignment: .center)
 				}
 			}
-        }
-    }
-	
-	var body: some View {
-		image
-			.onDisappear(perform: loader.cancel)
+		}
 	}
 }
 

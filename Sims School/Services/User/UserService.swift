@@ -55,7 +55,7 @@ class UserService {
 				return
 			}
 			
-			ImageLoader.cache.removeObject(forKey: refURL as NSString)
+			URLSession.cacheIMG.removeObject(forKey: refURL as NSString)
 			
 			onComplete(nil)
 		}
