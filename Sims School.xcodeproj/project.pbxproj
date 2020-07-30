@@ -44,6 +44,11 @@
 		DC53D72A24C0ECC9004266CE /* SlideHorizontalDots.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC53D72924C0ECC9004266CE /* SlideHorizontalDots.swift */; };
 		DC53D72D24C121B8004266CE /* SafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC53D72C24C121B8004266CE /* SafariView.swift */; };
 		DC570CF224C7255D00C9AEDA /* CustomUIVideoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC570CF124C7255D00C9AEDA /* CustomUIVideoPlayer.swift */; };
+		DC577C5A24D3051A001104F7 /* TipsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC577C5924D3051A001104F7 /* TipsResponse.swift */; };
+		DC577C5C24D30529001104F7 /* TipsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC577C5B24D30529001104F7 /* TipsRequest.swift */; };
+		DC577C5E24D30538001104F7 /* TipsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC577C5D24D30538001104F7 /* TipsService.swift */; };
+		DC577C6024D3060C001104F7 /* TipsMediasResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC577C5F24D3060C001104F7 /* TipsMediasResponse.swift */; };
+		DC577C6324D307D0001104F7 /* TipsScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC577C6224D307D0001104F7 /* TipsScreenModel.swift */; };
 		DC57924924CBEC680097CAC9 /* AdsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC57924824CBEC680097CAC9 /* AdsResponse.swift */; };
 		DC57924B24CBEC760097CAC9 /* AdsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC57924A24CBEC760097CAC9 /* AdsService.swift */; };
 		DC57924E24CBF3FF0097CAC9 /* URLImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC57924D24CBF3FF0097CAC9 /* URLImage.swift */; };
@@ -140,6 +145,11 @@
 		DC53D72924C0ECC9004266CE /* SlideHorizontalDots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideHorizontalDots.swift; sourceTree = "<group>"; };
 		DC53D72C24C121B8004266CE /* SafariView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariView.swift; sourceTree = "<group>"; };
 		DC570CF124C7255D00C9AEDA /* CustomUIVideoPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIVideoPlayer.swift; sourceTree = "<group>"; };
+		DC577C5924D3051A001104F7 /* TipsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsResponse.swift; sourceTree = "<group>"; };
+		DC577C5B24D30529001104F7 /* TipsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsRequest.swift; sourceTree = "<group>"; };
+		DC577C5D24D30538001104F7 /* TipsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsService.swift; sourceTree = "<group>"; };
+		DC577C5F24D3060C001104F7 /* TipsMediasResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsMediasResponse.swift; sourceTree = "<group>"; };
+		DC577C6224D307D0001104F7 /* TipsScreenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsScreenModel.swift; sourceTree = "<group>"; };
 		DC57924824CBEC680097CAC9 /* AdsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsResponse.swift; sourceTree = "<group>"; };
 		DC57924A24CBEC760097CAC9 /* AdsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsService.swift; sourceTree = "<group>"; };
 		DC57924D24CBF3FF0097CAC9 /* URLImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLImage.swift; sourceTree = "<group>"; };
@@ -240,6 +250,7 @@
 		DC07B46C24C5DA5200840714 /* Tips */ = {
 			isa = PBXGroup;
 			children = (
+				DC577C6124D307A3001104F7 /* Model */,
 				DC07B46F24C5EC5100840714 /* Components */,
 				DC07B46D24C5DA7400840714 /* TipsScreen.swift */,
 			);
@@ -438,6 +449,25 @@
 				DC10077B24C74AD200DB3EE7 /* PlayerView.swift */,
 			);
 			path = "Player Video";
+			sourceTree = "<group>";
+		};
+		DC577C5824D30505001104F7 /* Tips */ = {
+			isa = PBXGroup;
+			children = (
+				DC577C5B24D30529001104F7 /* TipsRequest.swift */,
+				DC577C5924D3051A001104F7 /* TipsResponse.swift */,
+				DC577C5F24D3060C001104F7 /* TipsMediasResponse.swift */,
+				DC577C5D24D30538001104F7 /* TipsService.swift */,
+			);
+			path = Tips;
+			sourceTree = "<group>";
+		};
+		DC577C6124D307A3001104F7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DC577C6224D307D0001104F7 /* TipsScreenModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		DC57924724CBEC220097CAC9 /* Ads */ = {
@@ -818,6 +848,7 @@
 		DCF0440A24AE224200241062 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				DC577C5824D30505001104F7 /* Tips */,
 				DC26355424D17AAC00CFBF4F /* Calendar */,
 				DC4563F924D08DBA00F3F846 /* Scores */,
 				DC57924724CBEC220097CAC9 /* Ads */,
@@ -993,6 +1024,7 @@
 				DCAB5BED24D0C31700A49F0F /* ScoresCoursesResponse.swift in Sources */,
 				DCB672E124B29BC10064484D /* UserResponse.swift in Sources */,
 				DC74CF8A24CB6CEB00EFBFA0 /* ClassResponse.swift in Sources */,
+				DC577C5E24D30538001104F7 /* TipsService.swift in Sources */,
 				DCAC37EC24CCB06300ADF421 /* ImageLoader.swift in Sources */,
 				DC64927C24BE179B00EDAC0E /* HomeScreenProfile.swift in Sources */,
 				DCD9F3FE24CA2C6800B8DB6D /* Assets.swift in Sources */,
@@ -1032,17 +1064,21 @@
 				DC57924E24CBF3FF0097CAC9 /* URLImage.swift in Sources */,
 				DCF6EEC924CB177A00C026E9 /* SimsSchool.xcdatamodeld in Sources */,
 				DCB672E324B29BD10064484D /* UserService.swift in Sources */,
+				DC577C5C24D30529001104F7 /* TipsRequest.swift in Sources */,
 				DC98E1B224B8A18100D4BD76 /* LoginScreenSubmitButton.swift in Sources */,
 				DC26355A24D17AFC00CFBF4F /* CalendarService.swift in Sources */,
 				DC07B47124C5EC7E00840714 /* TipsScreenList.swift in Sources */,
 				DC26355C24D1BB9400CFBF4F /* CalendarWeekResponse.swift in Sources */,
 				DCFD821E24C61492008E3C05 /* TipsScreenFullScreenImage.swift in Sources */,
 				DC4563FD24D08E2C00F3F846 /* ScoresService.swift in Sources */,
+				DC577C5A24D3051A001104F7 /* TipsResponse.swift in Sources */,
 				DCF043E124AD16B600241062 /* SceneDelegate.swift in Sources */,
 				DC53D72A24C0ECC9004266CE /* SlideHorizontalDots.swift in Sources */,
 				DC64927324BDEEB300EDAC0E /* ViewRouter.swift in Sources */,
 				DC07B46E24C5DA7400840714 /* TipsScreen.swift in Sources */,
+				DC577C6324D307D0001104F7 /* TipsScreenModel.swift in Sources */,
 				DCF0440F24AE393500241062 /* FormRules.swift in Sources */,
+				DC577C6024D3060C001104F7 /* TipsMediasResponse.swift in Sources */,
 				DC10078B24C77DC200DB3EE7 /* MenuScreenLogout.swift in Sources */,
 				DCB672DA24B2683D0064484D /* HexToUiColor.swift in Sources */,
 				DC53D72624C0EB53004266CE /* CustomUIPageViewController.swift in Sources */,

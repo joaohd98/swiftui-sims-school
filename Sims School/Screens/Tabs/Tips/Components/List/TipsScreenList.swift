@@ -9,10 +9,11 @@
 import SwiftUI
 
 struct TipsScreenList: View {
-	@Binding var showModal: Bool
+	@Binding var tips: [TipsResponse]
+	@Binding var status: NetworkRequestStatus
+	@Binding var showFullScreen: Bool
 	
-	func statusSeparator() -> some View {
-		let statusQuantity = Int.random(in: 1 ... 10)
+	func statusSeparator(statusQuantity: Int) -> some View {
 		let size = CGFloat(min(1.0 / CGFloat(statusQuantity), 1.0))
 		var trim: [(from: CGFloat, to: CGFloat)] = []
 
@@ -39,34 +40,41 @@ struct TipsScreenList: View {
 		)
 	}
 	
-	func imageQuantityItems() -> some View {
+	func imageQuantityItems(tip: TipsResponse) -> some View {
 		return (
 			ZStack {
 				Image("cover-ps4")
 					.renderingMode(.original)
 					.frame(width: 42, height: 42, alignment: .center)
 					.cornerRadius(25)
-				self.statusSeparator()
-			
+					.skeleton(with: status == .loading)
+					.shape(type: .circle)
+				if status != .loading {
+					self.statusSeparator(statusQuantity: tip.medias.count)
+				}
 			}
 		)
 	}
 	
-	func getItem() -> some View {
+	func getItem(tip: TipsResponse) -> some View {
 		Button(action: {
-			self.showModal = true
+			self.showFullScreen = true
 		}) {
 			HStack(spacing: 20) {
-				self.imageQuantityItems()
+				self.imageQuantityItems(tip: tip)
 					.frame(width: 50, height: 50, alignment: .center)
 				VStack(alignment: .leading) {
-					Text("Analise e desenvolvimento")
+					Group {
+						Text(tip.name)
+						.skeleton(with: status == .loading)
+						.frame(height: status == .loading ? 20 : 40, alignment: .leading)
 						.lineLimit(2)
-						.font(.system(size: 12, weight: .bold))
-						.frame(height: 40, alignment: .leading)
+						.font(.system(size: 12, weight: .semibold))
 						.foregroundColor(Color(UIColor.init { (trait) -> UIColor in
 							return trait.userInterfaceStyle == .dark ? .white : .black
 						}))
+					}
+					.frame(height: 40, alignment: .leading)
 					Divider()
 				}
 				Spacer()
@@ -76,24 +84,39 @@ struct TipsScreenList: View {
 		}
 	}
 	
+	var loadingView: some View {
+		ForEach(0..<10) { _ in
+			self.getItem(tip: TipsResponse())
+		}
+	}
+	
+	var successView: some View {
+		ForEach(self.tips, id: \.name) { tip in
+			self.getItem(tip: tip)
+		}
+	}
+	
     var body: some View {
-		Group {
-			self.getItem()
-			self.getItem()
-			self.getItem()
-			self.getItem()
-			self.getItem()
-			self.getItem()
-			self.getItem()
+		ScrollView {
+			if status == .loading {
+				self.loadingView
+				.frame(width: UIScreen.screenWidth)
+
+			}
+			else {
+				self.successView
+			}
 		}
 		.padding(.top, 15)
     }
 }
 
 struct TipsScreenList_Previews: PreviewProvider {
-	@State static var showModal: Bool = false
+	@State static var tips: [TipsResponse] = [TipsResponse()]
+	@State static var status: NetworkRequestStatus = .success
+	@State static var showFullscreen: Bool = false
 
     static var previews: some View {
-        TipsScreenList(showModal: $showModal)
+		TipsScreenList(tips: $tips, status: $status, showFullScreen: $showFullscreen)
     }
 }

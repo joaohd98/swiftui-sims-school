@@ -57,8 +57,7 @@ class ImageLoader: ObservableObject {
 			with: self.url!,
 			completionHandler: { (data, response, error) in
 				DispatchQueue.main.async {
-					if data != nil{
-						let image = UIImage(data: data!)!
+					if data != nil, let image = UIImage(data: data!) {
 						self.image = image
 						self.setCache(image)
 						self.finished.toggle()

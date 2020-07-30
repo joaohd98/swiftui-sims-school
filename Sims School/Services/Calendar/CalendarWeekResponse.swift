@@ -23,11 +23,9 @@ extension CalendarWeekResponse {
 		self.init()
 		
 		self.weekNumber = dictionary["weekNumber"] as! Int
-		let days = dictionary["days"] as! NSArray
+		let days = dictionary["days"] as! [[String: Any]]
 		
-		days.forEach { day in
-			let day = day as! [String: Any]
-			
+		days.forEach { day in			
 			self.days.append(CalendarCourseResponse(dictionary: day))
 		}
 	

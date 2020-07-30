@@ -9,16 +9,47 @@
 import SwiftUI
 
 struct TipsScreen: View {
-	@State var showModal: Bool = false
+	@FetchRequest(entity: UserEntity.entity(), sortDescriptors: []) var users: FetchedResults<UserEntity>
+	@FetchRequest(entity: TipsEntity.entity(), sortDescriptors: []) var tips: FetchedResults<TipsEntity>
+	@ObservedObject var props: TipsScreenModel
+	
+	func viewDidLoad() {
+		self.props.initProps(users: self.users, tips: self.tips)
+	}
+	
+	var errorView: some View {
+		TryAgainView(
+			text: "There was an error when trying to get the tips.",
+			onTryAgain: {
+				self.props.tipsStatus = .loading
+				
+				DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+					self.props.getTipsRequest(tips: self.tips)
+				}
+		}
+		)
+			.padding(.horizontal)
+	}
+	
+	var defaultView: some View {
+		TipsScreenList(tips: self.$props.tips, status: self.$props.tipsStatus, showFullScreen: self.$props.showFullScreen)
+			.disabled(self.props.tipsStatus == .loading)
+			.sheet(isPresented: self.$props.showFullScreen) {
+				TipsScreenFullScreenImage()
+			}
+	}
 	
 	var body: some View {
 		CustomContainerSignIn {
-			ScrollView {
-				TipsScreenList(showModal: self.$showModal)
+			Group {
+				if self.props.tipsStatus == .failed {
+					self.errorView
+				}
+				else {
+					self.defaultView
+				}
 			}
-			.sheet(isPresented: self.$showModal) {
-				TipsScreenFullScreenImage()
-			}
+			.onAppear { self.viewDidLoad() }
 			.navigationBarTitle("Tips")
 		}
 		
@@ -26,7 +57,8 @@ struct TipsScreen: View {
 }
 
 struct TipsScreen_Previews: PreviewProvider {
+	
 	static var previews: some View {
-		TipsScreen()
+		TipsScreen(props: TipsScreenModel())
 	}
 }

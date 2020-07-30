@@ -14,6 +14,7 @@ struct TabsScreen: View {
 	@ObservedObject var propsHome = HomeScreenModel()
 	@ObservedObject var propsScore = ScoreScreenModel()
 	@ObservedObject var propsClasses = ClassesScreenModel()
+	@ObservedObject var propsTips = TipsScreenModel()
 
 	init() {
 		self.viewRouter.tabRoutes.append(
@@ -47,7 +48,7 @@ struct TabsScreen: View {
 			TabInformation(
 				name: "Tips",
 				icon: "tray.full.fill",
-				screen: AnyView(TipsScreen()),
+				screen: AnyView(TipsScreen(props: propsTips)),
 				type: .TipsScreen
 			)
 		)
