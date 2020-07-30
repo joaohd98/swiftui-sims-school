@@ -41,22 +41,18 @@ struct TipsScreenList: View {
 	}
 	
 	func imageQuantityItems(tip: TipsResponse) -> some View {
-		let Thumbnail = (tip.thumbnail != nil) ? Image(uiImage: tip.thumbnail) : Image("cover-ps4")
-		
-		return (
-			ZStack {
-				Thumbnail
-					.resizable()
-					.renderingMode(.original)
-					.frame(width: 42, height: 42, alignment: .center)
-					.cornerRadius(25)
-					.skeleton(with: status == .loading)
-					.shape(type: .circle)
-				if status != .loading {
-					self.statusSeparator(statusQuantity: tip.medias.count)
-				}
+		ZStack {
+			Image(uiImage: tip.thumbnail)
+				.resizable()
+				.renderingMode(.original)
+				.frame(width: 42, height: 42, alignment: .center)
+				.cornerRadius(25)
+				.skeleton(with: status == .loading)
+				.shape(type: .circle)
+			if status != .loading {
+				self.statusSeparator(statusQuantity: tip.medias.count)
 			}
-		)
+		}
 	}
 	
 	func getItem(tip: TipsResponse) -> some View {
@@ -104,7 +100,6 @@ struct TipsScreenList: View {
 			if status == .loading {
 				self.loadingView
 					.frame(width: UIScreen.screenWidth)
-				
 			}
 			else {
 				self.successView

@@ -18,11 +18,12 @@ private enum TypeMedia {
 class TipsResponse: ObservableObject {
 	@Published var name: String
 	@Published var medias: [TipsMediasResponse]
-	@Published var thumbnail: UIImage!
+	@Published var thumbnail: UIImage
 	
 	init() {
 		name = ""
 		medias = []
+		self.thumbnail = UIImage()
 	}
 }
 
@@ -40,7 +41,10 @@ extension TipsResponse  {
 		group.enter()
 		let media = self.medias.randomElement()!
 		self.getThumbnail(media: media) { image in
-			self.thumbnail = image
+			if let image = image {
+				self.thumbnail = image
+			}
+			
 			group.leave()
 		}
 	}
@@ -85,7 +89,7 @@ extension TipsResponse  {
 			let imageGenerator = AVAssetImageGenerator(asset: asset)
 
 			do {
-				let thumbnailImage = try imageGenerator.copyCGImage(at: CMTimeMake(value: 30, timescale: 200) , actualTime: nil)
+				let thumbnailImage = try imageGenerator.copyCGImage(at: CMTimeMake(value: 0, timescale: 0) , actualTime: nil)
 				let image = UIImage(cgImage: thumbnailImage)
 				
 				URLSession.shared.setCacheIMG(image, url: url)
