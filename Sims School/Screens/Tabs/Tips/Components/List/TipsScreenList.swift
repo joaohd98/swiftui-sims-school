@@ -16,7 +16,7 @@ struct TipsScreenList: View {
 	func statusSeparator(statusQuantity: Int) -> some View {
 		let size = CGFloat(min(1.0 / CGFloat(statusQuantity), 1.0))
 		var trim: [(from: CGFloat, to: CGFloat)] = []
-
+		
 		for i in 1...statusQuantity {
 			let isSingular = statusQuantity == 1
 			let minusFrom = CGFloat(i - 1) * size + (isSingular ? 0 : 0.025)
@@ -41,9 +41,12 @@ struct TipsScreenList: View {
 	}
 	
 	func imageQuantityItems(tip: TipsResponse) -> some View {
+		let Thumbnail = (tip.thumbnail != nil) ? Image(uiImage: tip.thumbnail) : Image("cover-ps4")
+		
 		return (
 			ZStack {
-				Image("cover-ps4")
+				Thumbnail
+					.resizable()
 					.renderingMode(.original)
 					.frame(width: 42, height: 42, alignment: .center)
 					.cornerRadius(25)
@@ -66,13 +69,13 @@ struct TipsScreenList: View {
 				VStack(alignment: .leading) {
 					Group {
 						Text(tip.name)
-						.skeleton(with: status == .loading)
-						.frame(height: status == .loading ? 20 : 40, alignment: .leading)
-						.lineLimit(2)
-						.font(.system(size: 12, weight: .semibold))
-						.foregroundColor(Color(UIColor.init { (trait) -> UIColor in
-							return trait.userInterfaceStyle == .dark ? .white : .black
-						}))
+							.skeleton(with: status == .loading)
+							.frame(height: status == .loading ? 20 : 40, alignment: .leading)
+							.lineLimit(2)
+							.font(.system(size: 12, weight: .semibold))
+							.foregroundColor(Color(UIColor.init { (trait) -> UIColor in
+								return trait.userInterfaceStyle == .dark ? .white : .black
+							}))
 					}
 					.frame(height: 40, alignment: .leading)
 					Divider()
@@ -96,27 +99,27 @@ struct TipsScreenList: View {
 		}
 	}
 	
-    var body: some View {
+	var body: some View {
 		ScrollView {
 			if status == .loading {
 				self.loadingView
-				.frame(width: UIScreen.screenWidth)
-
+					.frame(width: UIScreen.screenWidth)
+				
 			}
 			else {
 				self.successView
 			}
 		}
 		.padding(.top, 15)
-    }
+	}
 }
 
 struct TipsScreenList_Previews: PreviewProvider {
 	@State static var tips: [TipsResponse] = [TipsResponse()]
 	@State static var status: NetworkRequestStatus = .success
 	@State static var showFullscreen: Bool = false
-
-    static var previews: some View {
+	
+	static var previews: some View {
 		TipsScreenList(tips: $tips, status: $status, showFullScreen: $showFullscreen)
-    }
+	}
 }

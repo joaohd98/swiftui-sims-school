@@ -22,7 +22,7 @@ class AdsService {
 				let group = DispatchGroup()
 
 				let ads = dictionary["ads"] as! [[String: Any]]
-				let response = ads.map { AdsResponse(dictionary: $0, group: group) }
+				let response = ads.parallel.map { AdsResponse(dictionary: $0, group: group) }
 				
 				group.notify(queue: .main) {
 					onSucess(response)

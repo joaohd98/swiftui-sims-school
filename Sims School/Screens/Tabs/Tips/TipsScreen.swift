@@ -26,9 +26,9 @@ struct TipsScreen: View {
 				DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
 					self.props.getTipsRequest(tips: self.tips)
 				}
-		}
+			}
 		)
-			.padding(.horizontal)
+		.padding(.horizontal)
 	}
 	
 	var defaultView: some View {

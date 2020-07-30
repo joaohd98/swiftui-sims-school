@@ -40,10 +40,6 @@ class TipsScreenModel: ObservableObject {
 					onSucess: { tips in
 						self.tips = tips
 						self.tipsStatus = .success
-						print("tips", tips)
-						print("tips", tips[0].name)
-						print("tips", tips[0].medias)
-
 					},
 					onError: {
 						self.tipsStatus = .failed

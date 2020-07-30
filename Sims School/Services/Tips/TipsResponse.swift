@@ -10,6 +10,11 @@ import Foundation
 import AVFoundation
 import UIKit
 
+private enum TypeMedia {
+	case image
+	case video
+}
+
 class TipsResponse: ObservableObject {
 	@Published var name: String
 	@Published var medias: [TipsMediasResponse]
@@ -22,7 +27,7 @@ class TipsResponse: ObservableObject {
 }
 
 extension TipsResponse  {
-	convenience init(dictionary: [String: Any]) {
+	convenience init(dictionary: [String: Any], group: DispatchGroup) {
 		self.init()
 		
 		self.name = dictionary["name"] as! String
@@ -32,46 +37,70 @@ extension TipsResponse  {
 			self.medias.append(TipsMediasResponse(dictionary: media))
 		}
 		
-		let media = self.medias.randomElement()!		
+		group.enter()
+		let media = self.medias.randomElement()!
+		self.getThumbnail(media: media) { image in
+			self.thumbnail = image
+			group.leave()
+		}
 	}
 	
-
-	private func getThumbnailFromImage(url: URL, completion: @escaping ((_ image: UIImage?)->Void)) {
-		DispatchQueue.global().async {
-			let asset = AVAsset(url: url)
-			let avAssetImageGenerator = AVAssetImageGenerator(asset: asset)
-			avAssetImageGenerator.appliesPreferredTrackTransform = true
-			let thumnailTime = CMTimeMake(value: 2, timescale: 1)
-			do {
-				let cgThumbImage = try avAssetImageGenerator.copyCGImage(at: thumnailTime, actualTime: nil)
-				let thumbNailImage = UIImage(cgImage: cgThumbImage)
-				DispatchQueue.main.async {
-					completion(thumbNailImage)
+	func getThumbnail(media: TipsMediasResponse, completion: @escaping ((_ image: UIImage?)->Void)) {
+		let stringToUrl: (_ value: String, _ type: TypeMedia) -> Void = { (value, type)  in
+			FirebaseDatabase.storage.reference().child(value).downloadURL { url, error in
+				if error == nil, let url = url {
+					if type == .image {
+						self.getThumbnailFromImage(url: url, completion: completion)
+					}
+					else {
+						self.getThumbnailFromVideo(url: url, completion: completion)
+					}
 				}
-			} catch {
-				DispatchQueue.main.async {
+				else {
 					completion(nil)
 				}
 			}
 		}
+		
+		if let cache = URLSession.shared.getCacheIMG(url: media.url) {
+			completion(cache.image)
+		}
+			
+		else if let image = media.image {
+			stringToUrl(image, .image)
+		}
+			
+		else if let video = media.video {
+			stringToUrl(video, .video)
+		}
+			
+		else {
+			completion(nil)
+		}
 	}
 	
-	private func getThumbnailImageFromVideoUrl(url: URL, completion: @escaping ((_ image: UIImage?)->Void)) {
-		DispatchQueue.global().async { //1
-			let asset = AVAsset(url: url) //2
-			let avAssetImageGenerator = AVAssetImageGenerator(asset: asset) //3
-			avAssetImageGenerator.appliesPreferredTrackTransform = true //4
-			let thumnailTime = CMTimeMake(value: 2, timescale: 1) //5
+	private func getThumbnailFromVideo(url: URL, completion: @escaping ((_ image: UIImage?)->Void)) {
+		DispatchQueue.global().async {
+			let asset = AVAsset(url: url)
+			let imageGenerator = AVAssetImageGenerator(asset: asset)
+
 			do {
-				let cgThumbImage = try avAssetImageGenerator.copyCGImage(at: thumnailTime, actualTime: nil) //6
-				let thumbNailImage = UIImage(cgImage: cgThumbImage) //7
-				DispatchQueue.main.async { //8
-					completion(thumbNailImage) //9
-				}
+				let thumbnailImage = try imageGenerator.copyCGImage(at: CMTimeMake(value: 30, timescale: 200) , actualTime: nil)
+				let image = UIImage(cgImage: thumbnailImage)
+				
+				URLSession.shared.setCacheIMG(image, url: url)
+				
+				completion(image)
 			} catch {
-				DispatchQueue.main.async {
-					completion(nil) //11
-				}
+				completion(nil)
+			}
+		}
+	}
+	
+	private func getThumbnailFromImage(url: URL, completion: @escaping ((_ image: UIImage?) -> Void)) {
+		DispatchQueue.global().async {
+			URLSession.shared.downloadImageAndCache(url: url) { image in
+				completion(image)
 			}
 		}
 	}

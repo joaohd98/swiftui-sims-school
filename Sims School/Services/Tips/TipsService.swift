@@ -20,9 +20,14 @@ class TipsService {
 		doc.getDocument(source: .server) { (document, error) in
 			if let document = document, document.exists, let dictionary = document.data() {
 				let tips = dictionary["tips"] as! [[String: Any]]
-				let response = tips.map { TipsResponse(dictionary: $0) }
 				
-				onSucess(response)
+				let group = DispatchGroup()
+
+				let response = tips.parallel.map { TipsResponse(dictionary: $0, group: group) }
+
+				group.notify(queue: .main) {
+					onSucess(response)
+				}
 			}
 				
 			else {
