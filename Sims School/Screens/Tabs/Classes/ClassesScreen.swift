@@ -59,12 +59,16 @@ struct ClassesScreen: View {
 		CustomContainerSignIn {			
 			if self.props.calendarStatus == .failed {
 				self.errorView
+				.transition(.opacity)
+
 			}
 			else if self.props.calendarStatus == .loading {
 				self.loadingView
+					.transition(.opacity)
 			}
 			else {
 				self.successView
+					.transition(.opacity)
 			}
 		}
 		.onAppear { self.viewDidLoad() }
