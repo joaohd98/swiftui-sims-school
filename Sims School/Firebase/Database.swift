@@ -132,7 +132,7 @@ class FirebaseDatabase {
 		
 		self.getClasses { (weekDays) in
 			var calendarResponse: [[String: Any]] = []
-
+			
 			months.enumerated().forEach {  (index, month) in
 				var response: [String: Any] = [:]
 				response["name"] = month
@@ -157,7 +157,7 @@ class FirebaseDatabase {
 					let randomNumber = Int.random(in: 2...4)
 					let course = weekDays[date.getDayOfWeek() - 1].course
 					let teacher = weekDays[date.getDayOfWeek() - 1].teacher
-
+					
 					var weekResponse: [String: Any] = [:]
 					
 					weekResponse["day"] = dateFormatter.string(from: date)
@@ -176,10 +176,8 @@ class FirebaseDatabase {
 				calendarResponse.append(response)
 			}
 			
-			print("calendar", calendarResponse)
-			
 			documentCalendar.setData(["months": calendarResponse])
-
+			
 		}
 	}
 	
@@ -218,13 +216,47 @@ class FirebaseDatabase {
 	}
 	
 	private func addTips() {
-		//		let collection = db.collection("tips")
-		//		let document = collection.document(self.idClass)
+		let collection = FirebaseDatabase.db.collection("tips")
+		let document = collection.document(self.idClass)
 		
+		self.getClasses { (weekDays) in
+			var elements: [[String: Any]] = []
+			
+			weekDays.forEach { week in
+				if week.course != ""{
+					elements.append([
+						"name": week.course,
+						"medias": []
+					])
+				}
+			}
+			
+			var tips = FirebaseAssets.tips
+			
+			while tips.count > 0 {
+				let arrayKey = Int(arc4random_uniform(UInt32(tips.count)))
+				let randomTip = tips[arrayKey]
+				
+				let index = Int.random(in: 0..<elements.count)
+				
+				var existingItems = elements[index]["medias"] as! [[String: Any]]
+				existingItems.append(randomTip)
+				elements[index]["medias"] = existingItems
+	
+				tips.remove(at: arrayKey)
+			}
+			
+			document.setData(["tips": elements])
+			
+		}
 	}
 	
 	
 	private func addAds() {
+		let collection = FirebaseDatabase.db.collection("ads")
+		let document = collection.document("all")
+		
+		document.setData(["ads": FirebaseAssets.ads])
 		
 	}
 	
