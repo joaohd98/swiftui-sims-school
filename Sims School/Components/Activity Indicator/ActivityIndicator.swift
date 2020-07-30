@@ -11,7 +11,8 @@ import SwiftUI
 struct ActivityIndicator: UIViewRepresentable {
 	@State var shouldAnimate: Bool = true
 	@State var color: UIColor = .white
-
+	@State var transform: CGAffineTransform? = nil
+	
 	func makeUIView(context: Context) -> UIActivityIndicatorView {
 		return UIActivityIndicatorView()
 	}
@@ -23,6 +24,10 @@ struct ActivityIndicator: UIViewRepresentable {
 			uiView.stopAnimating()
 		}
 		
+		if let transform = self.transform {
+			uiView.transform = transform
+		}
+
 		uiView.color = self.color
 	}
 }

@@ -13,27 +13,9 @@ struct TipsScreenFullScreenImage: View {
 	@Binding var tips: [TipsResponse]
 	@Binding var fullScreenIndex: (tips: Int, medias: Int)
 	@State var progress: Int = 0
+	@State var status: NetworkRequestStatus = .loading
 	@Environment(\.presentationMode) var presentationMode
 
-//	func isVerticalImage() -> Bool {
-//		let imageSource = UIImage(named: self.statusIMG)!
-//		let screenHeight = UIScreen.screenHeight
-//		
-//		let imageWidth = imageSource.size.width * imageSource.scale
-//		let imageHeight = imageSource.size.height * imageSource.scale
-//		
-//		return screenHeight < imageHeight && imageHeight > imageWidth / 2
-//	}
-//	
-//	func isVerticalVideo() -> Bool {
-//
-//		let videoTrack = AVAsset(url: self.urlVideo).tracks(withMediaType: AVMediaType.video).first!
-//		
-//		let transformedVideoSize = videoTrack.naturalSize.applying(videoTrack.preferredTransform)
-//			
-//		return abs(transformedVideoSize.width) < abs(transformedVideoSize.height)
-//	}
-	
 	func progressBar(tip: TipsResponse) -> some View {
 		let progressValue = CGFloat.random(in: 0 ... 0.5)
 		let statusQuantity = tip.medias.count
@@ -86,32 +68,6 @@ struct TipsScreenFullScreenImage: View {
 		}
 	}
 	
-//	func getVerticalImage() -> some View {
-//		Image(self.statusIMG)
-//			.resizable()
-//			.clipped()
-//	}
-//
-//	func getHorizontalImage() -> some View {
-//		Image(self.statusIMG)
-//			.resizable()
-//			.scaledToFit()
-//			.frame(width: UIScreen.screenWidth, height: UIScreen.screenHeight / CGFloat(2))
-//			.clipped()
-//			.padding(.vertical, 10)
-//	}
-//
-//	func getVerticalVideo() -> some View {
-//		VideoView(videoURL: self.urlVideo, previewLength: 60)
-//			.frame(width: nil, height: nil, alignment: .center)
-//
-//	}
-//
-//	func getHorizontalVideo() -> some View {
-//		VideoView(videoURL: self.urlVideo, previewLength: 60)
-//			.frame(width: nil, height: UIScreen.screenHeight / 3.5, alignment: .center)
-//	}
-	
 	func getFooterOpenLink(link: URL) -> some View {
 		VStack(spacing: 10) {
 			Divider()
@@ -135,6 +91,27 @@ struct TipsScreenFullScreenImage: View {
 		.padding(.bottom, 25)
 	}
 	
+	var failedView: some View {
+		TryAgainView(
+			text: "There was an error when trying to get the tip.",
+			onTryAgain: {
+				
+			},
+			color: .white
+		)
+		.padding(.horizontal)
+	}
+	
+	var loadingView: some View {
+		ActivityIndicator(transform: CGAffineTransform(scaleX: 3, y: 3))
+	}
+	
+	var successView: some View {
+		Group {
+			EmptyView()
+		}
+	}
+	
 	var body: some View {
 		let tip = self.tips[self.fullScreenIndex.tips]
 		let media = tip.medias[self.fullScreenIndex.medias]
@@ -143,15 +120,23 @@ struct TipsScreenFullScreenImage: View {
 			VStack {
 				self.progressBar(tip: tip)
 				self.backButton(tip: tip)
-//				if !isVertical {
-//					Spacer()
-//					self.getHorizontalVideo()
-//				}
+				if status == .failed {
+					Spacer()
+					self.failedView
+				}
+				else if status == .loading {
+					Spacer()
+					self.loadingView
+				}
+				else {
+					self.successView
+				}
 				Spacer()
-				self.getFooterOpenLink(link: media.url)
+				if status == .success {
+					self.getFooterOpenLink(link: media.url)
+				}
 			}
 			.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .top)
-//			.background(isVertical ? AnyView(self.getVerticalVideo()) : AnyView(Color.black))
 			.background(Color.black)
 			.edgesIgnoringSafeArea(.all)
 		)

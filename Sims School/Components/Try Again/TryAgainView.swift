@@ -11,7 +11,8 @@ import SwiftUI
 struct TryAgainView: View {
 	var text: String
 	var onTryAgain: () ->  Void
-	
+	var color: Color? = nil
+
     var body: some View {
 		let borderColor = Color(UIColor { (trait) -> UIColor in
 			return trait.userInterfaceStyle == .dark ? .white : .gray
@@ -24,9 +25,12 @@ struct TryAgainView: View {
 					Image(systemName: "exclamationmark.triangle")
 						.resizable()
 						.frame(width: 30, height: 30, alignment: .center)
+						.foregroundColor(color ?? nil)
 					Text(self.text)
+						.foregroundColor(color ?? nil)
 						.font(.system(size: 13, weight: .medium))
 					Text("Check your internet connection and try again!")
+						.foregroundColor(color ?? nil)
 						.font(.system(size: 13, weight: .medium))
 					Button(action: self.onTryAgain) {
 						Text("Try Again")
@@ -38,7 +42,7 @@ struct TryAgainView: View {
 			.overlay(
 				RoundedRectangle(cornerRadius: 12)
 					.stroke(lineWidth: 1)
-					.foregroundColor(borderColor)
+					.foregroundColor(color ?? borderColor)
 			)
 
 		)
