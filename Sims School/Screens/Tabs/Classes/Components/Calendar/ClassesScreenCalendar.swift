@@ -107,6 +107,8 @@ struct ClassesScreenCalendar: View {
 				}
 				.padding(.bottom, 10)
 			}
+			.transition(.opacity)
+			.opacity(self.firstOffset ? 0 : 1)
 			.introspectScrollView(customize: { scrollView in
 				if self.calendar.count > 0 && self.firstOffset {
 					var height = 0.0
@@ -122,7 +124,9 @@ struct ClassesScreenCalendar: View {
 					
 					scrollView.contentOffset = .init(x: 0, y: height)
 					
-					self.firstOffset.toggle()
+					withAnimation {
+						self.firstOffset.toggle()
+					}
 				}
 			})
 		)

@@ -12,10 +12,17 @@ import Foundation
 struct ClassesScreen: View {
 	@FetchRequest(entity: UserEntity.entity(), sortDescriptors: []) var users: FetchedResults<UserEntity>
 	@FetchRequest(entity: CalendarEntity.entity(), sortDescriptors: []) var calendar: FetchedResults<CalendarEntity>
+	@State var hasNotLoadYet: Bool = true
 	@ObservedObject var props: ClassesScreenModel
 	
 	func viewDidLoad() {
 		self.props.initProps(users: self.users, calendar: self.calendar)
+	
+		DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+			if self.hasNotLoadYet {
+				self.hasNotLoadYet.toggle()
+			}
+		}
 	}
 	
 	var errorView: some View {
@@ -56,15 +63,15 @@ struct ClassesScreen: View {
 	}
 	
 	var body: some View {
-		CustomContainerSignIn {			
-			if self.props.calendarStatus == .failed {
+		CustomContainerSignIn {
+			if self.hasNotLoadYet || self.props.calendarStatus == .loading {
+				self.loadingView
+					.transition(.opacity)
+			}
+			else if self.props.calendarStatus == .failed {
 				self.errorView
 				.transition(.opacity)
 
-			}
-			else if self.props.calendarStatus == .loading {
-				self.loadingView
-					.transition(.opacity)
 			}
 			else {
 				self.successView
