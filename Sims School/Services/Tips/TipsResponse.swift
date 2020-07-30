@@ -113,9 +113,6 @@ extension TipsResponse  {
 	private func getThumbnailFromImage(url: URL, completion: @escaping ((_ image: UIImage?) -> Void)) {
 		DispatchQueue.global().async {
 			URLSession.shared.downloadImageAndCache(url: url) { image in
-				print("mediaABC", self.name)
-				print("mediaABC1", image != nil)
-
 				completion(image)
 			}
 		}
