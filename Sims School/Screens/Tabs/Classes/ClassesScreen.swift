@@ -36,6 +36,7 @@ struct ClassesScreen: View {
 				}
 			}
 		)
+		.padding(.horizontal)
 	}
 	
 	var loadingView: some View {

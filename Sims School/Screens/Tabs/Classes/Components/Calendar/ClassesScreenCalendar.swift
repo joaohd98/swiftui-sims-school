@@ -74,7 +74,6 @@ struct ClassesScreenCalendar: View {
 				.disabled(response.course == "")
 				Spacer()
 			}
-			
 		)
 	}
 	
@@ -82,9 +81,13 @@ struct ClassesScreenCalendar: View {
 		VStack {
 			ForEach(calendar.weeks, id: \.weekNumber) { week in
 				HStack(alignment: .center) {
-					ForEach(0..<7) { weekNumber in
-						self.getDaysCalendarContent(days: week.days, weekNumber: weekNumber)
-					}
+					self.getDaysCalendarContent(days: week.days, weekNumber: 0)
+					self.getDaysCalendarContent(days: week.days, weekNumber: 1)
+					self.getDaysCalendarContent(days: week.days, weekNumber: 2)
+					self.getDaysCalendarContent(days: week.days, weekNumber: 3)
+					self.getDaysCalendarContent(days: week.days, weekNumber: 4)
+					self.getDaysCalendarContent(days: week.days, weekNumber: 5)
+					self.getDaysCalendarContent(days: week.days, weekNumber: 6)
 				}
 			}
 		}
