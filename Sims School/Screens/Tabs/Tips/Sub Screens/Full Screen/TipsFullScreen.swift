@@ -9,51 +9,59 @@
 import SwiftUI
 import AVKit
 
+private typealias AllAnimations = ExclusiveGesture<GestureStateGesture<SequenceGesture<LongPressGesture, DragGesture>, Bool>, _EndedGesture<DragGesture>>
+
 struct TipsFullScreen: View {
 	@Environment(\.presentationMode) var presentationMode
 	@Binding var tips: [TipsResponse]
 	@Binding var fullScreenIndex: (tips: Int, medias: Int)
     @GestureState var isDetectingPress = false
 	@ObservedObject var props = TipsFullScreenModel()
+	@State var tapLocation: CGFloat = 0
 
 	func viewDidLoad(tip: TipsResponse, media: TipsMediasResponse) {
 		self.props.initProps(tip: tip, media: media)
 	}
-
-	func tapHandler(value: DragGesture.Value) {
-		let x = value.location.x
-		let half = UIScreen.screenWidth / 2
-
-		if x > half {
-			if self.fullScreenIndex.medias + 1 == self.tips[self.fullScreenIndex.tips].medias.count {
-				if self.fullScreenIndex.tips + 1 == self.tips.count {
-					self.presentationMode.wrappedValue.dismiss()
+	
+	private func getGestures() -> AllAnimations {
+		return self.longPressHandler().exclusively(before: self.tapHandler())
+	}
+	
+	private func tapHandler() -> _EndedGesture<DragGesture> {
+		DragGesture(minimumDistance: 0, coordinateSpace: .global).onEnded { value in
+			let x = value.location.x
+			let half = UIScreen.screenWidth / 2
+			if x > half {
+				if self.fullScreenIndex.medias + 1 == self.tips[self.fullScreenIndex.tips].medias.count {
+					if self.fullScreenIndex.tips + 1 == self.tips.count {
+						self.presentationMode.wrappedValue.dismiss()
+					}
+					else {
+						self.fullScreenIndex = (tips: self.fullScreenIndex.tips + 1, medias: 0)
+					}
 				}
 				else {
-					self.fullScreenIndex = (tips: self.fullScreenIndex.tips + 1, medias: 0)
+					self.fullScreenIndex.medias += 1
 				}
 			}
 			else {
-				self.fullScreenIndex.medias += 1
-			}
-		}
-		else {
-			if self.fullScreenIndex.medias - 1 == -1 {
-				if self.fullScreenIndex.tips - 1 == -1 {
-					self.presentationMode.wrappedValue.dismiss()
+				if self.fullScreenIndex.medias - 1 == -1 {
+					if self.fullScreenIndex.tips - 1 == -1 {
+						self.presentationMode.wrappedValue.dismiss()
+					}
+					else {
+						self.fullScreenIndex = (tips: self.fullScreenIndex.tips - 1, medias: 0)
+					}
 				}
 				else {
-					self.fullScreenIndex = (tips: self.fullScreenIndex.tips - 1, medias: 0)
+					self.fullScreenIndex.medias -= 1
 				}
-			}
-			else {
-				self.fullScreenIndex.medias -= 1
 			}
 		}
 	}
-	
-	func longPressHandler() -> GestureStateGesture<SequenceGesture<LongPressGesture, DragGesture>, Bool> {
-		LongPressGesture(minimumDuration: 0.2)
+
+	private func longPressHandler() -> GestureStateGesture<SequenceGesture<LongPressGesture, DragGesture>, Bool> {
+		LongPressGesture(minimumDuration: 0.15)
 		.sequenced(before: DragGesture(minimumDistance: 0, coordinateSpace: .local))
 		.updating($isDetectingPress) { value, state, _ in
 			switch value {
@@ -118,10 +126,7 @@ struct TipsFullScreen: View {
 						self.successView
 					}
 				}
-//				.gesture(DragGesture(minimumDistance: 0, coordinateSpace: .global).onChanged { value in
-//					self.tapHandler(value: value)
-//				})
-				.gesture(self.longPressHandler())
+				.gesture(self.getGestures())
 				if self.props.status == .success {
 					TipsFullScreenOpenLink(
 						link: media.url,
