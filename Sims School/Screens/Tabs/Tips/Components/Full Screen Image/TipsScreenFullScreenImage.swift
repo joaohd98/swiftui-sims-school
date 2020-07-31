@@ -19,11 +19,55 @@ struct TipsScreenFullScreenImage: View {
 		self.props.initProps(tip: tip, media: media)
 	}
 	
+	func tapHandler(x: CGFloat) {
+		let half = UIScreen.screenWidth / 2
+		
+		if x > half {
+			if fullScreenIndex.medias + 1 == tips[fullScreenIndex.tips].medias.count {
+				if fullScreenIndex.tips + 1 == tips.count {
+					self.presentationMode.wrappedValue.dismiss()
+				}
+				else {
+					fullScreenIndex.tips += 1
+				}
+			}
+			else {
+				fullScreenIndex.medias += 1
+			}
+		}
+		else {
+			if fullScreenIndex.medias - 1 == -1 {
+				if fullScreenIndex.tips - 1 == -1 {
+					self.presentationMode.wrappedValue.dismiss()
+				}
+				else {
+					fullScreenIndex.tips -= 1
+				}
+			}
+			else {
+				fullScreenIndex.medias -= 1
+			}
+		}
+	}
+	
+	
 	func progressBar(tip: TipsResponse) -> some View {
-		let progressValue = CGFloat.random(in: 0 ... 0.5)
+		let progressValue = CGFloat.random(in: 0 ... 1)
 		let statusQuantity = tip.medias.count
-		let padding = CGFloat(10)
-		let size = UIScreen.screenWidth / CGFloat(statusQuantity) - padding
+		let size = UIScreen.screenWidth / CGFloat(statusQuantity) - 10
+		
+		let getWidth: (_ index: Int) -> CGFloat = { index in
+			let actualndex = self.fullScreenIndex.medias
+			
+			if index > actualndex {
+				return 0
+			}
+			if index < actualndex {
+				return size
+			}
+			
+			return min(CGFloat(progressValue) * size, size)
+		}
 		
 		return (
 			HStack {
@@ -36,7 +80,7 @@ struct TipsScreenFullScreenImage: View {
 						
 						Rectangle()
 							.frame(
-								width: min(CGFloat(progressValue) * size, size),
+								width: getWidth(index),
 								height: 6,
 								alignment: .leading
 						)
@@ -46,6 +90,7 @@ struct TipsScreenFullScreenImage: View {
 					.cornerRadius(45.0)
 				}
 			}
+			.opacity(self.props.isLongPressing ? 0 : 1)
 			.padding(.vertical, 10)
 		)
 	}
@@ -65,31 +110,37 @@ struct TipsScreenFullScreenImage: View {
 					.font(.system(size: 14, weight: .semibold))
 			}
 			.frame(maxWidth: .infinity, alignment: .leading)
+			.opacity(self.props.isLongPressing ? 0 : 1)
 			.padding(.vertical, 10)
 			.padding(.horizontal, 20)
-
+			
 		}
 	}
 	
 	func getFooterOpenLink(link: URL) -> some View {
-		VStack(spacing: 10) {
-			Divider()
-				.background(Color.white)
-			Button(action: {
-				UIApplication.shared.open(link)
-			}) {
+		Button(action: {
+			UIApplication.shared.open(link)
+		}) {
+			VStack(spacing: 10) {
+				if !self.props.isVerticalIMG && !self.props.isVerticalVideo {
+					Divider()
+						.frame(height: 2)
+						.background(Color.white)
+				}
+				
 				VStack(spacing: 0) {
 					Image(systemName: "chevron.up")
 						.resizable()
 						.aspectRatio(contentMode: .fit)
-						.frame(width: 18, height: 18, alignment: .center)
+						.frame(width: 22, height: 22, alignment: .center)
 						.foregroundColor(Color.white)
 					Text("Open")
 						.foregroundColor(Color.white)
-						.font(.system(size: 14, weight: .semibold))
+						.font(.system(size: 16, weight: .bold))
 				}
 			}
 		}
+		.opacity(self.props.isLongPressing ? 0 : 1)
 		.padding(.horizontal, 10)
 		.padding(.bottom, 25)
 	}
@@ -106,10 +157,10 @@ struct TipsScreenFullScreenImage: View {
 				DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
 					self.props.getMediaRequest(media: media)
 				}
-			},
+		},
 			color: .white
 		)
-		.padding(.horizontal)
+			.padding(.horizontal)
 	}
 	
 	var loadingView: some View {
@@ -124,21 +175,39 @@ struct TipsScreenFullScreenImage: View {
 		let tip = self.tips[self.fullScreenIndex.tips]
 		let media = tip.medias[self.fullScreenIndex.medias]
 		
+		let tapGesture =  DragGesture(minimumDistance: 0, coordinateSpace: .global)
+			.onChanged { value in
+				self.tapHandler(x: value.location.x)
+			}
+		
 		return (
 			VStack {
 				self.progressBar(tip: tip)
 				self.backButton(tip: tip)
-				Spacer()
-				if self.props.status == .failed {
-					self.failedView
+				Group {
+					Spacer()
+					if self.props.status == .failed {
+						self.failedView
+					}
+					else if self.props.status == .loading {
+						self.loadingView
+					}
+					else {
+						self.successView
+					}
+					Spacer()
 				}
-				else if self.props.status == .loading {
-					self.loadingView
-				}
-				else {
-					self.successView
-				}
-				Spacer()
+				.contentShape(Rectangle())
+				.gesture(tapGesture)
+//					.onLongPressGesture(minimumDuration: 1, pressing: { _ in
+//						print("isPressing...")
+//						if !self.props.isLongPressing {
+//							self.props.isLongPressing.toggle()
+//						}
+//					}) {
+//						print("stop...")
+//						self.props.isLongPressing.toggle()
+//				}
 				if self.props.status == .success {
 					self.getFooterOpenLink(link: media.url)
 				}
@@ -146,7 +215,6 @@ struct TipsScreenFullScreenImage: View {
 			.onAppear { self.viewDidLoad(tip: tip, media: media) }
 			.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .top)
 			.background(self.props.getBackground())
-			.edgesIgnoringSafeArea(.all)
 		)
 	}
 }

@@ -10,8 +10,8 @@ import SwiftUI
 import AVKit
 
 class PlayerView: UIView {
-	private let playerLayer = AVPlayerLayer()
-	private var previewTimer: Timer?
+	let playerLayer = AVPlayerLayer()
+	var previewTimer: Timer?
 	var previewLength: Double
 	
 	init(frame: CGRect, url: URL, previewLength:Double) {

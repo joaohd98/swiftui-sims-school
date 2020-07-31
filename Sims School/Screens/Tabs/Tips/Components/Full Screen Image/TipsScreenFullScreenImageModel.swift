@@ -14,6 +14,7 @@ import UIKit
 class TipsScreenFullScreenImageModel: ObservableObject {
 	@Published var status: NetworkRequestStatus = .loading
 	@Published var progress: Int = 0
+	@Published var isLongPressing: Bool = false
 	
 	var isVerticalVideo: Bool = false
 	var isVerticalIMG: Bool = false
@@ -26,7 +27,7 @@ class TipsScreenFullScreenImageModel: ObservableObject {
 	}
 	
 	func getMediaRequest(media: TipsMediasResponse) {
-		media.getMedia { (url, image, video) in
+		media.getMedia{ (url, image, video) in
 			if let image = image {
 				self.uiImage = image
 				self.status = .success
@@ -89,7 +90,7 @@ class TipsScreenFullScreenImageModel: ObservableObject {
 	private func getVerticalImage(_ uiImage: UIImage) -> some View {
 		Image(uiImage: uiImage)
 			.resizable()
-			.frame(width: UIScreen.screenWidth, height: UIScreen.screenHeight)
+			.frame(width: UIScreen.screenWidth, height: UIScreen.screenHeight  - 20)
 			.clipped()
 	}
 
@@ -104,7 +105,7 @@ class TipsScreenFullScreenImageModel: ObservableObject {
 	
 	private func getVerticalVideo(_ videoView: VideoView) -> some View {
 		videoView
-			.frame(width: nil, height: nil, alignment: .center)
+			.frame(width: nil, height: UIScreen.screenHeight - 20, alignment: .center)
 
 	}
 

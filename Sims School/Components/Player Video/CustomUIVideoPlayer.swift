@@ -10,6 +10,7 @@ import SwiftUI
 import AVKit
 
 struct VideoView: UIViewRepresentable {
+//	@Published hasToPause: Bool
 	var videoURL: URL
 	var previewLength: Double?
 	   
@@ -17,8 +18,13 @@ struct VideoView: UIViewRepresentable {
 		return PlayerView(frame: .zero, url: videoURL, previewLength: previewLength ?? 15)
 	}
 
-	func updateUIView(_ uiView: PlayerView, context: Context) {
-	
+	func updateUIView(_ playerView: PlayerView, context: Context) {
+//		if self.hasToPause {
+//			playerView.playerLayer.player?.pause()
+//		}
+//		else {
+//			playerView.playerLayer.player?.pause()
+//		}
 	}
 	
 }
