@@ -1,5 +1,5 @@
 //
-//  TipsScreenFullScreenImageMedia.swift
+//  TipsFullScreenModel.swift
 //  Sims School
 //
 //  Created by João Damazio on 30/07/20.
@@ -11,16 +11,15 @@ import Foundation
 import AVFoundation
 import UIKit
 
-class TipsScreenFullScreenImageModel: ObservableObject {
+class TipsFullScreenModel: ObservableObject {
 	@Published var status: NetworkRequestStatus = .loading
-	@Published var progress: Int = 0
+	@Published var progress: CGFloat = 0
 	@Published var isLongPressing: Bool = false
+	@Published var uiImage: UIImage!
+	@Published var videoView: VideoView!
 	
 	var isVerticalVideo: Bool = false
 	var isVerticalIMG: Bool = false
-	
-	var uiImage: UIImage!
-	var videoView: VideoView!
 	
 	func initProps(tip: TipsResponse, media: TipsMediasResponse) {
 		self.getMediaRequest(media: media)

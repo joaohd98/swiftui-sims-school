@@ -37,13 +37,13 @@ struct TipsScreen: View {
 			fullScreenIndex: self.$props.fullScreenIndex,
 			showFullScreen: self.$props.showFullScreen
 		)
-			.disabled(self.props.tipsStatus == .loading)
-			.sheet(isPresented: self.$props.showFullScreen) {
-				TipsScreenFullScreenImage(
-					tips: self.$props.tips,
-					fullScreenIndex: self.$props.fullScreenIndex
-				)
-			}
+		.disabled(self.props.tipsStatus == .loading)
+		.sheet(isPresented: self.$props.showFullScreen) {
+			TipsFullScreen(
+				tips: self.$props.tips,
+				fullScreenIndex: self.$props.fullScreenIndex
+			)
+		}
 	}
 	
 	var body: some View {

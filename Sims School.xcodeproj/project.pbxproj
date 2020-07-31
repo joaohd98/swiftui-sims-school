@@ -28,6 +28,10 @@
 		DC26355E24D1C58B00CFBF4F /* CalendarCourseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC26355D24D1C58B00CFBF4F /* CalendarCourseResponse.swift */; };
 		DC26356124D22A4800CFBF4F /* LottieAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC26356024D22A4800CFBF4F /* LottieAnimation.swift */; };
 		DC26356424D22B4900CFBF4F /* calendar-animation.json in Resources */ = {isa = PBXBuildFile; fileRef = DC26356324D22B4900CFBF4F /* calendar-animation.json */; };
+		DC357AB524D463F5007A23D9 /* TipsFullScreenProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC357AB424D463F5007A23D9 /* TipsFullScreenProgressBar.swift */; };
+		DC357AB824D4640C007A23D9 /* TipsFullScreenBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC357AB724D4640C007A23D9 /* TipsFullScreenBackButton.swift */; };
+		DC357ABA24D4641F007A23D9 /* TipsFullScreenContainerMedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC357AB924D4641F007A23D9 /* TipsFullScreenContainerMedia.swift */; };
+		DC357ABC24D46441007A23D9 /* TipsFullScreenOpenLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC357ABB24D46441007A23D9 /* TipsFullScreenOpenLink.swift */; };
 		DC4563F524D0801600F3F846 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4563F424D0801600F3F846 /* ImageCache.swift */; };
 		DC4563F824D08D2E00F3F846 /* ScoreScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4563F724D08D2E00F3F846 /* ScoreScreenModel.swift */; };
 		DC4563FB24D08E1B00F3F846 /* ScoresResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4563FA24D08E1B00F3F846 /* ScoresResponse.swift */; };
@@ -51,7 +55,7 @@
 		DC577C6324D307D0001104F7 /* TipsScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC577C6224D307D0001104F7 /* TipsScreenModel.swift */; };
 		DC577C6524D3215C001104F7 /* UrlImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC577C6424D3215C001104F7 /* UrlImage.swift */; };
 		DC577C6724D339CF001104F7 /* ConcurrentSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC577C6624D339CF001104F7 /* ConcurrentSequence.swift */; };
-		DC577C6924D36930001104F7 /* TipsScreenFullScreenImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC577C6824D36930001104F7 /* TipsScreenFullScreenImageModel.swift */; };
+		DC577C6924D36930001104F7 /* TipsFullScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC577C6824D36930001104F7 /* TipsFullScreenModel.swift */; };
 		DC57924924CBEC680097CAC9 /* AdsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC57924824CBEC680097CAC9 /* AdsResponse.swift */; };
 		DC57924B24CBEC760097CAC9 /* AdsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC57924A24CBEC760097CAC9 /* AdsService.swift */; };
 		DC57924E24CBF3FF0097CAC9 /* URLImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC57924D24CBF3FF0097CAC9 /* URLImage.swift */; };
@@ -104,7 +108,7 @@
 		DCF0440D24AE2CF500241062 /* KeyboardHideInputHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF0440C24AE2CF500241062 /* KeyboardHideInputHelper.swift */; };
 		DCF0440F24AE393500241062 /* FormRules.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF0440E24AE393500241062 /* FormRules.swift */; };
 		DCF6EEC924CB177A00C026E9 /* SimsSchool.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DCF6EEC724CB177A00C026E9 /* SimsSchool.xcdatamodeld */; };
-		DCFD821E24C61492008E3C05 /* TipsScreenFullScreenImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCFD821D24C61492008E3C05 /* TipsScreenFullScreenImage.swift */; };
+		DCFD821E24C61492008E3C05 /* TipsFullScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCFD821D24C61492008E3C05 /* TipsFullScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -132,6 +136,10 @@
 		DC26355D24D1C58B00CFBF4F /* CalendarCourseResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCourseResponse.swift; sourceTree = "<group>"; };
 		DC26356024D22A4800CFBF4F /* LottieAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieAnimation.swift; sourceTree = "<group>"; };
 		DC26356324D22B4900CFBF4F /* calendar-animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "calendar-animation.json"; sourceTree = "<group>"; };
+		DC357AB424D463F5007A23D9 /* TipsFullScreenProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsFullScreenProgressBar.swift; sourceTree = "<group>"; };
+		DC357AB724D4640C007A23D9 /* TipsFullScreenBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsFullScreenBackButton.swift; sourceTree = "<group>"; };
+		DC357AB924D4641F007A23D9 /* TipsFullScreenContainerMedia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsFullScreenContainerMedia.swift; sourceTree = "<group>"; };
+		DC357ABB24D46441007A23D9 /* TipsFullScreenOpenLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsFullScreenOpenLink.swift; sourceTree = "<group>"; };
 		DC4563F424D0801600F3F846 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		DC4563F724D08D2E00F3F846 /* ScoreScreenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreScreenModel.swift; sourceTree = "<group>"; };
 		DC4563FA24D08E1B00F3F846 /* ScoresResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoresResponse.swift; sourceTree = "<group>"; };
@@ -155,7 +163,7 @@
 		DC577C6224D307D0001104F7 /* TipsScreenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsScreenModel.swift; sourceTree = "<group>"; };
 		DC577C6424D3215C001104F7 /* UrlImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlImage.swift; sourceTree = "<group>"; };
 		DC577C6624D339CF001104F7 /* ConcurrentSequence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcurrentSequence.swift; sourceTree = "<group>"; };
-		DC577C6824D36930001104F7 /* TipsScreenFullScreenImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsScreenFullScreenImageModel.swift; sourceTree = "<group>"; };
+		DC577C6824D36930001104F7 /* TipsFullScreenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsFullScreenModel.swift; sourceTree = "<group>"; };
 		DC57924824CBEC680097CAC9 /* AdsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsResponse.swift; sourceTree = "<group>"; };
 		DC57924A24CBEC760097CAC9 /* AdsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsService.swift; sourceTree = "<group>"; };
 		DC57924D24CBF3FF0097CAC9 /* URLImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLImage.swift; sourceTree = "<group>"; };
@@ -210,7 +218,7 @@
 		DCF0440C24AE2CF500241062 /* KeyboardHideInputHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardHideInputHelper.swift; sourceTree = "<group>"; };
 		DCF0440E24AE393500241062 /* FormRules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormRules.swift; sourceTree = "<group>"; };
 		DCF6EEC824CB177A00C026E9 /* SimsSchool.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SimsSchool.xcdatamodel; sourceTree = "<group>"; };
-		DCFD821D24C61492008E3C05 /* TipsScreenFullScreenImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsScreenFullScreenImage.swift; sourceTree = "<group>"; };
+		DCFD821D24C61492008E3C05 /* TipsFullScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsFullScreen.swift; sourceTree = "<group>"; };
 		E3B0308193EC0AD9A9EBDCFD /* Pods-swiftui-escola.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-swiftui-escola.release.xcconfig"; path = "Target Support Files/Pods-swiftui-escola/Pods-swiftui-escola.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -256,9 +264,8 @@
 		DC07B46C24C5DA5200840714 /* Tips */ = {
 			isa = PBXGroup;
 			children = (
-				DC577C6124D307A3001104F7 /* Model */,
-				DC07B46F24C5EC5100840714 /* Components */,
-				DC07B46D24C5DA7400840714 /* TipsScreen.swift */,
+				DC357AAF24D45FF3007A23D9 /* Screen */,
+				DC357AB024D46000007A23D9 /* Sub Screens */,
 			);
 			path = Tips;
 			sourceTree = "<group>";
@@ -267,7 +274,7 @@
 			isa = PBXGroup;
 			children = (
 				DCFD821B24C61413008E3C05 /* List */,
-				DCFD821C24C6142A008E3C05 /* Full Screen Image */,
+				DCFD821C24C6142A008E3C05 /* Full Screen */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -360,6 +367,53 @@
 				DC26356324D22B4900CFBF4F /* calendar-animation.json */,
 			);
 			path = Animations;
+			sourceTree = "<group>";
+		};
+		DC357AAF24D45FF3007A23D9 /* Screen */ = {
+			isa = PBXGroup;
+			children = (
+				DC577C6124D307A3001104F7 /* Model */,
+				DC07B46F24C5EC5100840714 /* Components */,
+				DC07B46D24C5DA7400840714 /* TipsScreen.swift */,
+			);
+			path = Screen;
+			sourceTree = "<group>";
+		};
+		DC357AB024D46000007A23D9 /* Sub Screens */ = {
+			isa = PBXGroup;
+			children = (
+				DC357AB224D463C6007A23D9 /* Full Screen */,
+			);
+			path = "Sub Screens";
+			sourceTree = "<group>";
+		};
+		DC357AB124D46031007A23D9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DC577C6824D36930001104F7 /* TipsFullScreenModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		DC357AB224D463C6007A23D9 /* Full Screen */ = {
+			isa = PBXGroup;
+			children = (
+				DC357AB324D463D6007A23D9 /* Components */,
+				DC357AB124D46031007A23D9 /* Model */,
+				DCFD821D24C61492008E3C05 /* TipsFullScreen.swift */,
+			);
+			path = "Full Screen";
+			sourceTree = "<group>";
+		};
+		DC357AB324D463D6007A23D9 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				DC357AB424D463F5007A23D9 /* TipsFullScreenProgressBar.swift */,
+				DC357AB724D4640C007A23D9 /* TipsFullScreenBackButton.swift */,
+				DC357AB924D4641F007A23D9 /* TipsFullScreenContainerMedia.swift */,
+				DC357ABB24D46441007A23D9 /* TipsFullScreenOpenLink.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		DC4563F624D08D0A00F3F846 /* Model */ = {
@@ -887,13 +941,11 @@
 			path = List;
 			sourceTree = "<group>";
 		};
-		DCFD821C24C6142A008E3C05 /* Full Screen Image */ = {
+		DCFD821C24C6142A008E3C05 /* Full Screen */ = {
 			isa = PBXGroup;
 			children = (
-				DCFD821D24C61492008E3C05 /* TipsScreenFullScreenImage.swift */,
-				DC577C6824D36930001104F7 /* TipsScreenFullScreenImageModel.swift */,
 			);
-			path = "Full Screen Image";
+			path = "Full Screen";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1020,6 +1072,7 @@
 				DC57924B24CBEC760097CAC9 /* AdsService.swift in Sources */,
 				DCF0440424AD2BB000241062 /* Images.swift in Sources */,
 				DCA500C124AE5223006B4C63 /* CustomContainerGuest.swift in Sources */,
+				DC357AB524D463F5007A23D9 /* TipsFullScreenProgressBar.swift in Sources */,
 				DC989EE524BD0006003B79A6 /* Layout.swift in Sources */,
 				DC26356124D22A4800CFBF4F /* LottieAnimation.swift in Sources */,
 				DC05771924BD6104005CC9BC /* CustomContainerSignIn.swift in Sources */,
@@ -1054,7 +1107,8 @@
 				DC4D2D0B24C27D70008FD663 /* ClassesScreenDaysWeek.swift in Sources */,
 				DCAAF79024C0A86000F0518C /* HomeScreenPageModel.swift in Sources */,
 				DC7FCB9124C8F8C200406CDF /* Session.swift in Sources */,
-				DC577C6924D36930001104F7 /* TipsScreenFullScreenImageModel.swift in Sources */,
+				DC357ABA24D4641F007A23D9 /* TipsFullScreenContainerMedia.swift in Sources */,
+				DC577C6924D36930001104F7 /* TipsFullScreenModel.swift in Sources */,
 				DC89F04724BD704B001964FC /* TabsScreen.swift in Sources */,
 				DC577C6524D3215C001104F7 /* UrlImage.swift in Sources */,
 				DC64927624BDF27400EDAC0E /* ScoresScreen.swift in Sources */,
@@ -1067,6 +1121,7 @@
 				DC24909324CF6ABB006746D0 /* CameraCaptureView.swift in Sources */,
 				DC64928024BE1A3D00EDAC0E /* HomeScreenAds.swift in Sources */,
 				DC98E1BB24B8BF5900D4BD76 /* UIInput.swift in Sources */,
+				DC357AB824D4640C007A23D9 /* TipsFullScreenBackButton.swift in Sources */,
 				DC74CF8824CB6CDF00EFBFA0 /* ClassRequest.swift in Sources */,
 				DC10078324C75D0300DB3EE7 /* MenuScreen.swift in Sources */,
 				DC4563F824D08D2E00F3F846 /* ScoreScreenModel.swift in Sources */,
@@ -1081,7 +1136,7 @@
 				DC26355A24D17AFC00CFBF4F /* CalendarService.swift in Sources */,
 				DC07B47124C5EC7E00840714 /* TipsScreenList.swift in Sources */,
 				DC26355C24D1BB9400CFBF4F /* CalendarWeekResponse.swift in Sources */,
-				DCFD821E24C61492008E3C05 /* TipsScreenFullScreenImage.swift in Sources */,
+				DCFD821E24C61492008E3C05 /* TipsFullScreen.swift in Sources */,
 				DC4563FD24D08E2C00F3F846 /* ScoresService.swift in Sources */,
 				DC577C5A24D3051A001104F7 /* TipsResponse.swift in Sources */,
 				DCF043E124AD16B600241062 /* SceneDelegate.swift in Sources */,
@@ -1098,6 +1153,7 @@
 				DC7FCB8A24C8967A00406CDF /* MapView.swift in Sources */,
 				DC74CF8C24CB6D4100EFBFA0 /* ClassService.swift in Sources */,
 				DCF0440D24AE2CF500241062 /* KeyboardHideInputHelper.swift in Sources */,
+				DC357ABC24D46441007A23D9 /* TipsFullScreenOpenLink.swift in Sources */,
 				DC989EDD24BCEDCA003B79A6 /* HomeScreen.swift in Sources */,
 				DC4D2CFC24C1E635008FD663 /* ScoresScreenSemesters.swift in Sources */,
 				DC98E1BE24B8ED4B00D4BD76 /* ScreenSize.swift in Sources */,
