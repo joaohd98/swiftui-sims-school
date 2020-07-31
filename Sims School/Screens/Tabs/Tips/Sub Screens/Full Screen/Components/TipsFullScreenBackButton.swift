@@ -11,7 +11,7 @@ import SwiftUI
 struct TipsFullScreenBackButton: View {
 	@Environment(\.presentationMode) var presentationMode
 	var tip: TipsResponse
-	var visible: Bool
+	var isVisible: Bool
 
     var body: some View {
 		Button(action: {
@@ -28,7 +28,7 @@ struct TipsFullScreenBackButton: View {
 					.font(.system(size: 14, weight: .semibold))
 			}
 			.frame(maxWidth: .infinity, alignment: .leading)
-			.opacity(self.visible ? 1 : 0)
+			.opacity(self.isVisible ? 1 : 0)
 			.padding(.vertical, 10)
 			.padding(.horizontal, 20)
 			

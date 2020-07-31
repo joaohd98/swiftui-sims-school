@@ -10,11 +10,12 @@ import SwiftUI
 import AVKit
 
 struct TipsFullScreen: View {
+	@Environment(\.presentationMode) var presentationMode
 	@Binding var tips: [TipsResponse]
 	@Binding var fullScreenIndex: (tips: Int, medias: Int)
+    @GestureState var isDetectingPress = false
 	@ObservedObject var props = TipsFullScreenModel()
-	@Environment(\.presentationMode) var presentationMode
-	
+
 	func viewDidLoad(tip: TipsResponse, media: TipsMediasResponse) {
 		self.props.initProps(tip: tip, media: media)
 	}
@@ -47,6 +48,19 @@ struct TipsFullScreen: View {
 			}
 			else {
 				self.fullScreenIndex.medias -= 1
+			}
+		}
+	}
+	
+	func longPressHandler() -> GestureStateGesture<SequenceGesture<LongPressGesture, DragGesture>, Bool> {
+		LongPressGesture(minimumDuration: 0.2)
+		.sequenced(before: DragGesture(minimumDistance: 0, coordinateSpace: .local))
+		.updating($isDetectingPress) { value, state, _ in
+			switch value {
+				  case .second(true, nil):
+					  state = true
+				  default:
+					  break
 			}
 		}
 	}
@@ -87,11 +101,11 @@ struct TipsFullScreen: View {
 					progress: self.props.progress,
 					actualIndex: self.fullScreenIndex.medias,
 					statusQuantity: self.tips.count,
-					isVisible: !self.props.isLongPressing
+					isVisible: !self.isDetectingPress
 				)
 				TipsFullScreenBackButton(
 					tip: tip,
-					visible: !self.props.isLongPressing
+					isVisible: !self.isDetectingPress
 				)
 				TipsFullScreenContainerMedia {
 					if self.props.status == .failed {
@@ -104,14 +118,15 @@ struct TipsFullScreen: View {
 						self.successView
 					}
 				}
-				.gesture(DragGesture(minimumDistance: 0, coordinateSpace: .global).onChanged { value in
-					self.tapHandler(value: value)
-				})
+//				.gesture(DragGesture(minimumDistance: 0, coordinateSpace: .global).onChanged { value in
+//					self.tapHandler(value: value)
+//				})
+				.gesture(self.longPressHandler())
 				if self.props.status == .success {
 					TipsFullScreenOpenLink(
 						link: media.url,
 						isVertical: !self.props.isVerticalIMG && !self.props.isVerticalVideo,
-						isVisible: !self.props.isLongPressing
+						isVisible: !self.isDetectingPress
 					)
 				}
 			}

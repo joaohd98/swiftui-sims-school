@@ -17,7 +17,7 @@ class TipsFullScreenModel: ObservableObject {
 	@Published var isLongPressing: Bool = false
 	@Published var uiImage: UIImage!
 	@Published var videoView: VideoView!
-	
+
 	var isVerticalVideo: Bool = false
 	var isVerticalIMG: Bool = false
 	
