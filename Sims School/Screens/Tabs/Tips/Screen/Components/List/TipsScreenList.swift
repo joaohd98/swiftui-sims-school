@@ -11,7 +11,7 @@ import SwiftUI
 struct TipsScreenList: View {
 	@Binding var tips: [TipsResponse]
 	@Binding var status: NetworkRequestStatus
-	@Binding var fullScreenIndex: (tips: Int, medias: Int)
+	@Binding var fullScreenIndex: Int
 	@Binding var showFullScreen: Bool
 	
 	func statusSeparator(statusQuantity: Int) -> some View {
@@ -62,7 +62,7 @@ struct TipsScreenList: View {
 				item.name == tip.name
 			})!
 			
-			self.fullScreenIndex = (tips: index, medias: 0)
+			self.fullScreenIndex = index
 			self.showFullScreen = true
 		}) {
 			HStack(spacing: 20) {
@@ -118,7 +118,7 @@ struct TipsScreenList: View {
 struct TipsScreenList_Previews: PreviewProvider {
 	@State static var tips: [TipsResponse] = [TipsResponse()]
 	@State static var status: NetworkRequestStatus = .success
-	@State static var fullScreenIndex: (tips: Int, medias: Int) = (tips: 0, medias: 0)
+	@State static var fullScreenIndex: Int = 0
 	@State static var showFullscreen: Bool = false
 	
 	static var previews: some View {

@@ -12,8 +12,10 @@ import UIKit
 import Combine
 
 struct CustomUIPageViewController: UIViewControllerRepresentable {
+	@Environment(\.presentationMode) var presentationMode
 	var controllers: [UIViewController]
 	@Binding var currentPage: Int
+	var isInModal: Bool = false
 	
 	func makeCoordinator() -> Coordinator {
 		Coordinator(self)
@@ -27,6 +29,10 @@ struct CustomUIPageViewController: UIViewControllerRepresentable {
 		
 		pageViewController.dataSource = context.coordinator
 		pageViewController.delegate = context.coordinator
+		
+		if isInModal {
+			pageViewController.view.backgroundColor = .black
+		}
 		
 		if controllers.count > 0 {			
 			pageViewController.setViewControllers(
@@ -55,6 +61,10 @@ struct CustomUIPageViewController: UIViewControllerRepresentable {
 			}
 			
 			if index == 0 {
+				if self.parent.isInModal {
+					return nil
+				}
+				
 				return parent.controllers.last
 			}
 			
@@ -70,6 +80,10 @@ struct CustomUIPageViewController: UIViewControllerRepresentable {
 			}
 			
 			if index + 1 == parent.controllers.count {
+				if self.parent.isInModal {
+					return nil
+				}
+				
 				return parent.controllers.first
 			}
 			
@@ -84,5 +98,6 @@ struct CustomUIPageViewController: UIViewControllerRepresentable {
 				parent.currentPage = index
 			}
 		}
+		
 	}
 }

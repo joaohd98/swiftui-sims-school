@@ -17,12 +17,26 @@ class TipsFullScreenModel: ObservableObject {
 	@Published var isLongPressing: Bool = false
 	@Published var uiImage: UIImage!
 	@Published var videoView: VideoView!
-
+	
 	var isVerticalVideo: Bool = false
 	var isVerticalIMG: Bool = false
 	
-	func initProps(tip: TipsResponse, media: TipsMediasResponse) {
-		self.getMediaRequest(media: media)
+	func initProps(media: TipsMediasResponse) {
+		self.clearData()
+
+		DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+			self.getMediaRequest(media: media)
+		})
+	}
+	
+	func clearData() {
+		self.status = .loading
+		self.progress = 0
+		self.isLongPressing = false
+		self.uiImage = nil
+		self.videoView = nil
+		self.isVerticalIMG = false
+		self.isVerticalVideo = false
 	}
 	
 	func getMediaRequest(media: TipsMediasResponse) {
@@ -42,30 +56,30 @@ class TipsFullScreenModel: ObservableObject {
 			}
 		}
 	}
-
+	
 	func getImage() -> some View {
 		if let uiImage = self.uiImage, !isVerticalIMG {
 			return AnyView(getHorizontalImage(uiImage))
 		}
-		
+			
 		else if let videoView = self.videoView, !isVerticalVideo {
 			return AnyView(getHorizontalVideo(videoView))
 		}
-		
+			
 		else {
 			return AnyView(EmptyView())
 		}
 	}
-
+	
 	func getBackground() -> AnyView {
 		if let uiImage = self.uiImage, isVerticalIMG {
 			return AnyView(getVerticalImage(uiImage))
 		}
-		
+			
 		else if let videoView = self.videoView, isVerticalVideo {
 			return AnyView(getVerticalVideo(videoView))
 		}
-		
+			
 		else {
 			return AnyView(Color.black)
 		}
@@ -74,25 +88,25 @@ class TipsFullScreenModel: ObservableObject {
 	private func isVerticalImage(imageSource: UIImage)  {
 		let imageWidth = imageSource.size.width * imageSource.scale
 		let imageHeight = imageSource.size.height * imageSource.scale
-
+		
 		self.isVerticalIMG = imageWidth < imageHeight
 	}
-
+	
 	private func isVerticalVideo(url: URL) {
 		let videoTrack = AVAsset(url: url).tracks(withMediaType: AVMediaType.video).first!
-
+		
 		let transformedVideoSize = videoTrack.naturalSize.applying(videoTrack.preferredTransform)
-
+		
 		self.isVerticalVideo = abs(transformedVideoSize.width) < abs(transformedVideoSize.height)
 	}
-
+	
 	private func getVerticalImage(_ uiImage: UIImage) -> some View {
 		Image(uiImage: uiImage)
 			.resizable()
 			.frame(width: UIScreen.screenWidth, height: UIScreen.screenHeight  - 20)
 			.clipped()
 	}
-
+	
 	private func getHorizontalImage(_ uiImage: UIImage) -> some View {
 		Image(uiImage: uiImage)
 			.resizable()
@@ -105,13 +119,13 @@ class TipsFullScreenModel: ObservableObject {
 	private func getVerticalVideo(_ videoView: VideoView) -> some View {
 		videoView
 			.frame(width: nil, height: UIScreen.screenHeight - 20, alignment: .center)
-
+		
 	}
-
+	
 	private func getHorizontalVideo(_ videoView: VideoView) -> some View {
 		videoView
 			.frame(width: nil, height: UIScreen.screenHeight / 3.5, alignment: .center)
 	}
-
+	
 }
 

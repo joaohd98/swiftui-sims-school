@@ -9,136 +9,29 @@
 import SwiftUI
 import AVKit
 
-private typealias AllAnimations = ExclusiveGesture<GestureStateGesture<SequenceGesture<LongPressGesture, DragGesture>, Bool>, _EndedGesture<DragGesture>>
+
 
 struct TipsFullScreen: View {
-	@Environment(\.presentationMode) var presentationMode
 	@Binding var tips: [TipsResponse]
-	@Binding var fullScreenIndex: (tips: Int, medias: Int)
-    @GestureState var isDetectingPress = false
-	@ObservedObject var props = TipsFullScreenModel()
-	@State var tapLocation: CGFloat = 0
-
-	func viewDidLoad(tip: TipsResponse, media: TipsMediasResponse) {
-		self.props.initProps(tip: tip, media: media)
-	}
-	
-	private func getGestures() -> AllAnimations {
-		return self.longPressHandler().exclusively(before: self.tapHandler())
-	}
-	
-	private func tapHandler() -> _EndedGesture<DragGesture> {
-		DragGesture(minimumDistance: 0, coordinateSpace: .global).onEnded { value in
-			let x = value.location.x
-			let half = UIScreen.screenWidth / 2
-			if x > half {
-				if self.fullScreenIndex.medias + 1 == self.tips[self.fullScreenIndex.tips].medias.count {
-					if self.fullScreenIndex.tips + 1 == self.tips.count {
-						self.presentationMode.wrappedValue.dismiss()
-					}
-					else {
-						self.fullScreenIndex = (tips: self.fullScreenIndex.tips + 1, medias: 0)
-					}
-				}
-				else {
-					self.fullScreenIndex.medias += 1
-				}
-			}
-			else {
-				if self.fullScreenIndex.medias - 1 == -1 {
-					if self.fullScreenIndex.tips - 1 == -1 {
-						self.presentationMode.wrappedValue.dismiss()
-					}
-					else {
-						self.fullScreenIndex = (tips: self.fullScreenIndex.tips - 1, medias: 0)
-					}
-				}
-				else {
-					self.fullScreenIndex.medias -= 1
-				}
-			}
-		}
-	}
-
-	private func longPressHandler() -> GestureStateGesture<SequenceGesture<LongPressGesture, DragGesture>, Bool> {
-		LongPressGesture(minimumDuration: 0.15)
-		.sequenced(before: DragGesture(minimumDistance: 0, coordinateSpace: .local))
-		.updating($isDetectingPress) { value, state, _ in
-			switch value {
-				  case .second(true, nil):
-					  state = true
-				  default:
-					  break
-			}
-		}
-	}
-
-	var failedView: some View {
-		TryAgainView(
-			text: "There was an error when trying to get the tip.",
-			onTryAgain: {
-				self.props.status = .loading
-				
-				let tip = self.tips[self.fullScreenIndex.tips]
-				let media = tip.medias[self.fullScreenIndex.medias]
-				
-				DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-					self.props.getMediaRequest(media: media)
-				}
-			},
-			color: .white
-		)
-		.padding(.horizontal)
-	}
-	
-	var loadingView: some View {
-		ActivityIndicator(transform: CGAffineTransform(scaleX: 3, y: 3))
-	}
-	
-	var successView: some View {
-		self.props.getImage()
-	}
+	@Binding var tipIndex: Int
+	@State var mediaIndex: Int = 0
 	
 	var body: some View {
-		let tip = self.tips[self.fullScreenIndex.tips]
-		let media = tip.medias[self.fullScreenIndex.medias]
-
-		return (
-			VStack {
-				TipsFullScreenProgressBar(
-					progress: self.props.progress,
-					actualIndex: self.fullScreenIndex.medias,
-					statusQuantity: self.tips.count,
-					isVisible: !self.isDetectingPress
+		SlideHorizontal(
+			self.tips.enumerated().map {(index, tip) in
+				TipsFullScreenPage(
+					tips: tips,
+					tipSelected: self.tips[index],
+					tipSelectedIndex: tipIndex,
+					mediaIndex: $mediaIndex,
+					currentTipIndex: self.$tipIndex
 				)
-				TipsFullScreenBackButton(
-					tip: tip,
-					isVisible: !self.isDetectingPress
-				)
-				TipsFullScreenContainerMedia {
-					if self.props.status == .failed {
-						self.failedView
-					}
-					else if self.props.status == .loading {
-						self.loadingView
-					}
-					else {
-						self.successView
-					}
-				}
-				.gesture(self.getGestures())
-				if self.props.status == .success {
-					TipsFullScreenOpenLink(
-						link: media.url,
-						isVertical: !self.props.isVerticalIMG && !self.props.isVerticalVideo,
-						isVisible: !self.isDetectingPress
-					)
-				}
-			}
-			.onAppear { self.viewDidLoad(tip: tip, media:  media) }
-			.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .top)
-			.background(self.props.getBackground())
+			},
+			hasDots: false,
+			currentPage: $tipIndex,
+			isInModal: true
 		)
+		.background(Color.black)
 	}
 }
 

@@ -16,7 +16,7 @@ class TipsScreenModel: ObservableObject {
 	@Published var showFullScreen: Bool = false
 	@Published var tipsStatus: NetworkRequestStatus = .loading
 	@Published var tips: [TipsResponse] = []
-	@Published var fullScreenIndex: (tips: Int, medias: Int) = (tips: 0, medias: 0)
+	@Published var fullScreenIndex: Int = 0
 
 	func initProps(users: FetchedResults<UserEntity>, tips: FetchedResults<TipsEntity>) {
 		if firstRun {

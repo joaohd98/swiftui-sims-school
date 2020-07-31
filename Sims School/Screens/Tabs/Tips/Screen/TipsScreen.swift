@@ -41,7 +41,7 @@ struct TipsScreen: View {
 		.sheet(isPresented: self.$props.showFullScreen) {
 			TipsFullScreen(
 				tips: self.$props.tips,
-				fullScreenIndex: self.$props.fullScreenIndex
+				tipIndex: self.$props.fullScreenIndex
 			)
 		}
 	}
