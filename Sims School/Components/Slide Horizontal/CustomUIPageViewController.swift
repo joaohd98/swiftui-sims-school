@@ -98,6 +98,5 @@ struct CustomUIPageViewController: UIViewControllerRepresentable {
 				parent.currentPage = index
 			}
 		}
-		
 	}
 }
