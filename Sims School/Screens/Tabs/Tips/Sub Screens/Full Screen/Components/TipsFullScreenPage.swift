@@ -19,28 +19,12 @@ struct TipsFullScreenPage: View {
 	@ObservedObject var props = TipsFullScreenModel()
 	
 	func viewDidLoad() {
-		self.props.initProps(media: self.tipSelected.medias[self.tipSelectedIndex])
+//		self.props.initProps(media: self.tipSelected.medias[self.tipSelectedIndex])
 	}
 	
 	func viewDidUnload() {
 	}
-	
-	func getRotationValue(geometry: GeometryProxy) -> Double {
-		let index = self.tipSelectedIndex
-		let fullscreenIndex = self.currentTipIndex
-		let geometryGlobal = geometry.frame(in: .global)
 		
-		if index == fullscreenIndex {
-			return Double(geometryGlobal.minX / 4)
-		}
-		
-		if index == fullscreenIndex + 1 ||  index == fullscreenIndex - 1 {
-			return Double(geometryGlobal.minX / -4)
-		}
-		
-		return 0
-	}
-	
 	var failedView: some View {
 		TryAgainView(
 			text: "There was an error when trying to get the tip.",
@@ -59,7 +43,7 @@ struct TipsFullScreenPage: View {
 	}
 	
 	var loadingView: some View {
-		ActivityIndicator(transform: CGAffineTransform(scaleX: 3, y: 3))
+		ActivityIndicator(color: .black, transform: CGAffineTransform(scaleX: 3, y: 3))
 	}
 	
 	var successView: some View {
@@ -103,17 +87,16 @@ struct TipsFullScreenPage: View {
 					)
 				}
 			}
+			.background(self.props.getBackground())
 			.onAppear { self.viewDidLoad() }
 			.onDisappear { print("abc")  }
 			.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .top)
 			.rotation3DEffect(
-				Angle(degrees: self.getRotationValue(geometry: geometry)),
+				Angle(degrees: Double(geometry.frame(in: .global).minX / 5)),
 				axis: (x: 0, y: 10, z: 0)
 			)
-			.background(self.props.getBackground())
 		}
 		.background(Color.black)
-		
 	}
 }
 

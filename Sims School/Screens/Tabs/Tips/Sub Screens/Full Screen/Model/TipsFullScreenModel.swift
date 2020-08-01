@@ -81,7 +81,17 @@ class TipsFullScreenModel: ObservableObject {
 		}
 			
 		else {
-			return AnyView(Color.black)
+			let backgroundColors = Gradient(colors: [
+				Color(UIColor.hexStringToUIColor(hex: "#cccccc")),
+				Color(UIColor.hexStringToUIColor(hex: "#e5e5e5"))
+			])
+				
+			
+			let gradient = LinearGradient(
+				gradient: backgroundColors, startPoint: .top, endPoint: .bottom
+			)
+			
+			return AnyView(gradient)
 		}
 		
 	}
