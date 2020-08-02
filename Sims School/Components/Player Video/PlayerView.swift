@@ -11,11 +11,8 @@ import AVKit
 
 class PlayerView: UIView {
 	let playerLayer = AVPlayerLayer()
-	var previewTimer: Timer?
-	var previewLength: Double
 	
-	init(frame: CGRect, url: URL, previewLength:Double) {
-		self.previewLength = previewLength
+	init(frame: CGRect, url: URL) {
 		super.init(frame: frame)
 		
 		// Create the video player using the URL passed in.
@@ -27,16 +24,11 @@ class PlayerView: UIView {
 		playerLayer.player = player
 		playerLayer.videoGravity = .resizeAspectFill // Resizes content to fill whole video layer.
 		playerLayer.backgroundColor = UIColor.black.cgColor
-		
-		previewTimer = Timer.scheduledTimer(withTimeInterval: previewLength, repeats: true, block: { (timer) in
-			player.seek(to: CMTime(seconds: 0, preferredTimescale: CMTimeScale(1)))
-		})
-		
+				
 		layer.addSublayer(playerLayer)
 	}
 	
 	required init?(coder: NSCoder) {
-		self.previewLength = 15
 		super.init(coder: coder)
 	}
 	

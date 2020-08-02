@@ -34,6 +34,7 @@ struct TipsFullScreenContainerMedia<Content: View>: View {
 			}
 			else {
 				self.tip.mediasIndex += 1
+				self.tip.getMedia().getMediaRequest()
 			}
 		}
 		else {
@@ -44,6 +45,7 @@ struct TipsFullScreenContainerMedia<Content: View>: View {
 			}
 			else {
 				self.tip.mediasIndex -= 1
+				self.tip.getMedia().getMediaRequest()
 			}
 		}
 	}

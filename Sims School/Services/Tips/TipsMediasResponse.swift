@@ -34,19 +34,21 @@ class TipsMediasResponse: ObservableObject {
 	}
 	
 	func getMediaRequest() {
-		self.getMedia{ (url, image, video) in
-			if let image = image {
-				self.uiImage = image
-				self.status = .success
-				self.isVerticalImage(imageSource: image)
-			}
-			else if let video = video {
-				self.videoView = video
-				self.status = .success
-				self.isVerticalVideo(url: url!)
-			}
-			else {
-				self.status = .failed
+		DispatchQueue.global().async {
+			self.getMedia{ (url, image, video) in
+				if let image = image {
+					self.uiImage = image
+					self.status = .success
+					self.isVerticalImage(imageSource: image)
+				}
+				else if let video = video {
+					self.videoView = video
+					self.status = .success
+					self.isVerticalVideo(url: url!)
+				}
+				else {
+					self.status = .failed
+				}
 			}
 		}
 	}

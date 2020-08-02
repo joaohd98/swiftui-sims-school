@@ -12,10 +12,9 @@ import AVKit
 struct VideoView: UIViewRepresentable {
 //	@Published hasToPause: Bool
 	var videoURL: URL
-	var previewLength: Double?
 	   
 	func makeUIView(context: Context) -> PlayerView {
-		return PlayerView(frame: .zero, url: videoURL, previewLength: previewLength ?? 15)
+		return PlayerView(frame: .zero, url: videoURL)
 	}
 
 	func updateUIView(_ playerView: PlayerView, context: Context) {
@@ -31,10 +30,9 @@ struct VideoView: UIViewRepresentable {
 
 struct CustomUIVideoPlayer_Previews: PreviewProvider {
 	@State static var videoURL = "https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8"
-	@State static var previewLength = 10.0
 	
 	static var previews: some View {
-		VideoView(videoURL: URL(string: videoURL)!, previewLength: previewLength)
+		VideoView(videoURL: URL(string: videoURL)!)
 	}
 }
 

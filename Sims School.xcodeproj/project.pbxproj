@@ -55,7 +55,6 @@
 		DC577C6324D307D0001104F7 /* TipsScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC577C6224D307D0001104F7 /* TipsScreenModel.swift */; };
 		DC577C6524D3215C001104F7 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC577C6424D3215C001104F7 /* Cache.swift */; };
 		DC577C6724D339CF001104F7 /* ConcurrentSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC577C6624D339CF001104F7 /* ConcurrentSequence.swift */; };
-		DC577C6924D36930001104F7 /* TipsFullScreenModelBackup.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC577C6824D36930001104F7 /* TipsFullScreenModelBackup.swift */; };
 		DC57924924CBEC680097CAC9 /* AdsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC57924824CBEC680097CAC9 /* AdsResponse.swift */; };
 		DC57924B24CBEC760097CAC9 /* AdsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC57924A24CBEC760097CAC9 /* AdsService.swift */; };
 		DC57924E24CBF3FF0097CAC9 /* URLImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC57924D24CBF3FF0097CAC9 /* URLImage.swift */; };
@@ -167,7 +166,6 @@
 		DC577C6224D307D0001104F7 /* TipsScreenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsScreenModel.swift; sourceTree = "<group>"; };
 		DC577C6424D3215C001104F7 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		DC577C6624D339CF001104F7 /* ConcurrentSequence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcurrentSequence.swift; sourceTree = "<group>"; };
-		DC577C6824D36930001104F7 /* TipsFullScreenModelBackup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsFullScreenModelBackup.swift; sourceTree = "<group>"; };
 		DC57924824CBEC680097CAC9 /* AdsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsResponse.swift; sourceTree = "<group>"; };
 		DC57924A24CBEC760097CAC9 /* AdsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsService.swift; sourceTree = "<group>"; };
 		DC57924D24CBF3FF0097CAC9 /* URLImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLImage.swift; sourceTree = "<group>"; };
@@ -421,7 +419,6 @@
 				DC357AB924D4641F007A23D9 /* TipsFullScreenContainerMedia.swift */,
 				DC357ABB24D46441007A23D9 /* TipsFullScreenOpenLink.swift */,
 				DC5919A824D49E99002CEE22 /* TipsFullScreenPage.swift */,
-				DC577C6824D36930001104F7 /* TipsFullScreenModelBackup.swift */,
 				DC662B5224D712B200D8B6EB /* TipsFullScreenImage.swift */,
 			);
 			path = Components;
@@ -1121,7 +1118,6 @@
 				DCAAF79024C0A86000F0518C /* HomeScreenPageModel.swift in Sources */,
 				DC7FCB9124C8F8C200406CDF /* Session.swift in Sources */,
 				DC357ABA24D4641F007A23D9 /* TipsFullScreenContainerMedia.swift in Sources */,
-				DC577C6924D36930001104F7 /* TipsFullScreenModelBackup.swift in Sources */,
 				DC89F04724BD704B001964FC /* TabsScreen.swift in Sources */,
 				DC577C6524D3215C001104F7 /* Cache.swift in Sources */,
 				DC64927624BDF27400EDAC0E /* ScoresScreen.swift in Sources */,
