@@ -37,6 +37,7 @@ struct SlideHorizontal<Page: View>: View {
 			CustomUIPageViewController(
 				controllers: viewControllers,
 				currentPage: $currentPage,
+				isInModal: isInModal,
 				currentPageCallBack: currentPageCallBack,
 				isSlidingCallBack: isSlidingCallBack
 			)

@@ -27,12 +27,10 @@ struct TipsFullScreen: View {
 			},
 			hasDots: false,
 			currentPageCallBack: { number in
-				print(number)
 			},
 			isSlidingCallBack: { isSliding in
-				print(isSliding)
 			},
-			isInModal: false
+			isInModal: true
 		)
 
 	}

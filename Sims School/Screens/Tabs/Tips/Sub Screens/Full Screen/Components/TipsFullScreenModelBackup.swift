@@ -24,9 +24,7 @@ class TipsFullScreenModelCopy: ObservableObject {
 	func initProps(media: TipsMediasResponse) {
 		self.clearData()
 
-		DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
-			self.getMediaRequest(media: media)
-		})
+		self.getMediaRequest(media: media)
 	}
 	
 	func clearData() {

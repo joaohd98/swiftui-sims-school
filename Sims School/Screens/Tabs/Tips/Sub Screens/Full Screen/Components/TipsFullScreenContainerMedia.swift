@@ -20,6 +20,7 @@ struct TipsFullScreenContainerMedia<Content: View>: View {
 		self._goPage = goPage
 		self._isDetectingPress = isDetectingPress
 		self.content = content
+		
 	}
 	
 	
@@ -29,7 +30,7 @@ struct TipsFullScreenContainerMedia<Content: View>: View {
 		let half = UIScreen.screenWidth / 2
 				
 		if x > half {
-			if self.tip.mediasIndex == self.tip.medias.count {
+			if self.tip.mediasIndex - 1 == self.tip.medias.count {
 				if let index = self.tip.indicies.nextTip {
 					self.goPage = index
 				}
