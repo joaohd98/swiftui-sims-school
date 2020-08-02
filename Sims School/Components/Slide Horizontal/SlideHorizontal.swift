@@ -10,31 +10,35 @@ import SwiftUI
 struct SlideHorizontal<Page: View>: View {
     var viewControllers: [UIHostingController<Page>]
 	var hasDots: Bool
-	@Binding var currentPage: Int
-	@Binding var isSliding: Bool
 	var isInModal: Bool
+		
+	@State var currentPage: Int = 0
+	@State var isSliding = false
+	
+	var currentPageCallBack: (Int) -> Void
+	var isSlidingCallBack: (Bool) -> Void
 	
 	init(
 		_ views: [Page],
 		hasDots: Bool,
-		currentPage: Binding<Int>,
-		isSliding: Binding<Bool> = Binding.constant(false),
+		currentPageCallBack: @escaping (Int) -> Void = { _ in },
+		isSlidingCallBack: @escaping (Bool) -> Void = { _ in },
 		isInModal: Bool = false) {
 		
 		self.viewControllers = views.map { UIHostingController(rootView: $0) }
 		self.hasDots = hasDots
-		self._currentPage = currentPage
 		self.isInModal = isInModal
-		self._isSliding = isSliding
+		self.currentPageCallBack = currentPageCallBack
+		self.isSlidingCallBack = isSlidingCallBack
 	}
 
     var body: some View {
 		VStack(alignment: .center, spacing: 0) {
 			CustomUIPageViewController(
 				controllers: viewControllers,
-				isInModal: isInModal,
 				currentPage: $currentPage,
-				isSliding: $isSliding
+				currentPageCallBack: currentPageCallBack,
+				isSlidingCallBack: isSlidingCallBack
 			)
 			if self.hasDots {
 				SlideHorizontalDots(numberOfPages: viewControllers.count, currentPage: $currentPage)
@@ -43,16 +47,4 @@ struct SlideHorizontal<Page: View>: View {
     }
 }
 
-struct SlideHorizontal_Previews: PreviewProvider {
-	@State static var currentPage: Int = 0
-	static func getExampleView() -> some View {
-		ZStack {
-			EmptyView()
-		}
-	}
-
-    static var previews: some View {
-		SlideHorizontal([getExampleView(), getExampleView(), getExampleView()], hasDots: false, currentPage: $currentPage)
-            .aspectRatio(3 / 2, contentMode: .fit)
-    }
-}
+ 

@@ -11,16 +11,16 @@ import SwiftUI
 struct TipsFullScreenPage: View {
 	@ObservedObject var tip: TipsResponse
 	@Binding var isSliding: Bool
-	@Binding var currentSlide: Int
+	@Binding var goPage: Int?
 	var isActual: Bool
 
 	@State var isDetectingPress = false
 	@ObservedObject var props = TipsFullScreenModelCopy()
 	
-	init(tip: TipsResponse, isSliding: Binding<Bool>, currentSlide: Binding<Int>, isActual: Bool) {
+	init(tip: TipsResponse, isSliding: Binding<Bool>, goPage: Binding<Int?>, isActual: Bool) {
 		self.tip = tip
 		self._isSliding = isSliding
-		self._currentSlide = currentSlide
+		self._goPage = goPage
 		self.isActual = isActual
 		self._isDetectingPress = State(initialValue: false)
 	}
@@ -64,7 +64,7 @@ struct TipsFullScreenPage: View {
 				)
 				TipsFullScreenContainerMedia(
 					tip: self.tip,
-					currentSlide: self.$currentSlide,
+					goPage: self.$goPage,
 					isDetectingPress: self.$isDetectingPress) {
 					if self.props.status == .failed {
 						self.failedView

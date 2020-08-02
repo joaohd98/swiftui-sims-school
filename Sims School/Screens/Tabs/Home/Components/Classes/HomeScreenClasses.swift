@@ -103,7 +103,7 @@ struct HomeScreenClasses: View {
 			text: "There was an error when trying to get the classes.",
 			onTryAgain: self.tryAgain
 		)
-			.padding(.horizontal)
+		.padding(.horizontal)
 	}
 	
 	var loadingView: some View {
@@ -114,10 +114,16 @@ struct HomeScreenClasses: View {
 	}
 	
 	var successView: some View {
-		SlideHorizontal(
-			classes.enumerated().map { (index, element) in self.getCard(actualClass: element, index: index) },
-			hasDots: true,
-			currentPage: self.$currentClass
+		print("classes", classes)
+		
+		return (
+			SlideHorizontal(
+				classes.enumerated().map { (index, element) in self.getCard(actualClass: element, index: index) },
+				hasDots: true,
+				currentPageCallBack: { page in
+					self.currentClass = page
+				}
+			)
 		)
 	}
 	

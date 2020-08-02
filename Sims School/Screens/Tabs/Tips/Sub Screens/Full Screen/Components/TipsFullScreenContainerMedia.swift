@@ -10,26 +10,28 @@ import SwiftUI
 
 struct TipsFullScreenContainerMedia<Content: View>: View {
 	@ObservedObject var tip: TipsResponse
-	@Binding var currentSlide: Int
+	@Binding var goPage: Int?
 	@Binding var isDetectingPress: Bool
 	var content: () -> Content
 
-	init(tip: TipsResponse, currentSlide: Binding<Int>, isDetectingPress: Binding<Bool>,
+	init(tip: TipsResponse, goPage: Binding<Int?>, isDetectingPress: Binding<Bool>,
 		 @ViewBuilder content: @escaping () -> Content) {
 		self.tip = tip
-		self._currentSlide = currentSlide
+		self._goPage = goPage
 		self._isDetectingPress = isDetectingPress
 		self.content = content
 	}
+	
+	
 
 	func tapHandler(location: CGPoint) {
 		let x = location.x
 		let half = UIScreen.screenWidth / 2
 				
 		if x > half {
-			if self.tip.mediasIndex + 1 == self.tip.medias.count {
+			if self.tip.mediasIndex == self.tip.medias.count {
 				if let index = self.tip.indicies.nextTip {
-					self.currentSlide = index
+					self.goPage = index
 				}
 			}
 			else {
@@ -39,7 +41,7 @@ struct TipsFullScreenContainerMedia<Content: View>: View {
 		else {
 			if self.tip.mediasIndex - 1 == -1 {
 				if let index = self.tip.indicies.prevTip {
-					self.currentSlide = index
+					self.goPage = index
 				}
 			}
 			else {

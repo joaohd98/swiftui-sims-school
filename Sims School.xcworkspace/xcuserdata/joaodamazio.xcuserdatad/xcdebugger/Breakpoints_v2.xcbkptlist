@@ -7,38 +7,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "DC82FED3-AD0F-439F-957C-D971B979291E"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Sims School/Components/Slide Horizontal/CustomUIPageViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
-            landmarkName = "pageViewController(_:viewControllerBefore:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "402D4116-5316-4B40-95B4-A6665320F933"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Sims School/Components/Slide Horizontal/CustomUIPageViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "84"
-            endingLineNumber = "84"
-            landmarkName = "pageViewController(_:viewControllerAfter:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "A0E9DB2A-9DA2-486F-BECD-B54EE93ED4A2"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -46,8 +14,8 @@
             filePath = "Sims School/Screens/Tabs/Tips/Sub Screens/Full Screen/Components/TipsFullScreenContainerMedia.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "46"
-            endingLineNumber = "46"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
             landmarkName = "tapHandler(location:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -141,6 +109,134 @@
                   startingLineNumber = "15"
                   endingLineNumber = "15"
                   offsetFromSymbolStart = "215">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B61EF71D-EF6C-4323-A9C5-D50A393AE3CF"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Sims School/Screens/Tabs/Tips/Sub Screens/Full Screen/Components/TipsFullScreenContainerMedia.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "tapHandler(location:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "ADE52B11-6852-49F2-B13F-E0FB9169F9ED"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Sims School/Screens/Tabs/Tips/Sub Screens/Full Screen/Components/TipsFullScreenContainerMedia.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "tapHandler(location:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9237A5D3-5A38-4B29-9B99-9966CCC66D09"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Sims School/Screens/Tabs/Tips/Sub Screens/Full Screen/Components/TipsFullScreenContainerMedia.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "tapHandler(location:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "77D4C96A-A9EF-4787-AC09-A45BFC966D2A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Sims School/Screens/Tabs/Tips/Sub Screens/Full Screen/Components/TipsFullScreenContainerMedia.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "tapHandler(location:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FB138C2E-B69E-4D25-9A04-D28EE35DACFA"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Sims School/Screens/Tabs/Tips/Sub Screens/Full Screen/Components/TipsFullScreenContainerMedia.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "tapHandler(location:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "257172E8-0184-421F-991B-258D0EC9937E"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Sims School/Components/Slide Horizontal/SlideHorizontal.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "init(_:hasDots:currentPageCallBack:isSlidingCallBack:isInModal:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "257172E8-0184-421F-991B-258D0EC9937E - 2a4b0887c03bb4b2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "default argument 2 of Sims_School.SlideHorizontal.init(_: Swift.Array&lt;A&gt;, hasDots: Swift.Bool, currentPageCallBack: (Swift.Int) -&gt; (), isSlidingCallBack: (Swift.Bool) -&gt; (), isInModal: Swift.Bool) -&gt; Sims_School.SlideHorizontal&lt;A&gt;"
+                  moduleName = "Sims School"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/joaodamazio/Desktop/swiftui-escola/Sims%20School/Components/Slide%20Horizontal/SlideHorizontal.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "8">
+               </Location>
+               <Location
+                  uuid = "257172E8-0184-421F-991B-258D0EC9937E - 3faf15d2feb9790c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Int) -&gt; () in default argument 2 of Sims_School.SlideHorizontal.init(_: Swift.Array&lt;A&gt;, hasDots: Swift.Bool, currentPageCallBack: (Swift.Int) -&gt; (), isSlidingCallBack: (Swift.Bool) -&gt; (), isInModal: Swift.Bool) -&gt; Sims_School.SlideHorizontal&lt;A&gt;"
+                  moduleName = "Sims School"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/joaodamazio/Desktop/swiftui-escola/Sims%20School/Components/Slide%20Horizontal/SlideHorizontal.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "24"
+                  endingLineNumber = "24"
+                  offsetFromSymbolStart = "4">
                </Location>
             </Locations>
          </BreakpointContent>

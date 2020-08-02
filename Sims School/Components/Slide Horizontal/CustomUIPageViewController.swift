@@ -13,10 +13,11 @@ import Combine
 
 struct CustomUIPageViewController: UIViewControllerRepresentable {
 	var controllers: [UIViewController]
-	var isInModal: Bool = false
 	@Binding var currentPage: Int
-	@Binding var isSliding: Bool
-
+	var isInModal: Bool = false
+	var currentPageCallBack: (Int) -> Void
+	var isSlidingCallBack: (Bool) -> Void
+	
 	func makeCoordinator() -> Coordinator {
 		Coordinator(self)
 	}
@@ -34,17 +35,20 @@ struct CustomUIPageViewController: UIViewControllerRepresentable {
 			pageViewController.view.backgroundColor = .black
 		}
 		
-	
-		if controllers.count > 0 {			
+		else {
 			pageViewController.setViewControllers(
-				[controllers[currentPage]], direction: .forward, animated: true
-			)
+			[controllers[currentPage]], direction: .forward, animated: true)
 		}
-		
+	
 		return pageViewController
 	}
 	
-	func updateUIViewController(_ pageViewController: UIPageViewController, context: Context) {	}
+	func updateUIViewController(_ pageViewController: UIPageViewController, context: Context) {
+		if isInModal {
+			pageViewController.setViewControllers(
+				[controllers[currentPage]], direction: .forward, animated: true)
+		}
+	}
 	
 	class Coordinator: NSObject, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
 		var parent: CustomUIPageViewController
@@ -92,18 +96,21 @@ struct CustomUIPageViewController: UIViewControllerRepresentable {
 		}
 		
 		func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
-			self.parent.isSliding.toggle()
+			self.parent.isSlidingCallBack(true)
 		}
-	
+		
 		func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
 			if completed,
 				let visibleViewController = pageViewController.viewControllers?.first,
 				let index = parent.controllers.firstIndex(of: visibleViewController) {
-	
 				parent.currentPage = index
+				
+				self.parent.currentPageCallBack(index)
+				
 			}
-			
-			self.parent.isSliding.toggle()
+		
+			self.parent.isSlidingCallBack(false)
 		}
+		
 	}
 }

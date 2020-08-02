@@ -14,11 +14,13 @@ import UIKit
 class TipsFullScreenModel: ObservableObject {
 	@Published var tips: [TipsResponse]
 	@Published var index: Int
+	@Published var goPage: Int?
 	@Published var isSliding: Bool
 	
 	init(tips: [TipsResponse], index: Int) {
 		self.tips = tips
 		self.index = index
+		self.goPage = nil
 		self.isSliding = false
 	}
 }
