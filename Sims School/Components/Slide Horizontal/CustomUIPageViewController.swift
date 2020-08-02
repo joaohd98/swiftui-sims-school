@@ -34,6 +34,7 @@ struct CustomUIPageViewController: UIViewControllerRepresentable {
 			pageViewController.view.backgroundColor = .black
 		}
 		
+	
 		if controllers.count > 0 {			
 			pageViewController.setViewControllers(
 				[controllers[currentPage]], direction: .forward, animated: true

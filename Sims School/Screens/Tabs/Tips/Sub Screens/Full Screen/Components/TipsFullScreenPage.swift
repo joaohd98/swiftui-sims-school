@@ -9,19 +9,20 @@
 import SwiftUI
 
 struct TipsFullScreenPage: View {
-	@Binding var tip: TipsResponse
-	var isActual: Bool
+	@ObservedObject var tip: TipsResponse
 	@Binding var isSliding: Bool
 	@Binding var currentSlide: Int
+	var isActual: Bool
 
 	@State var isDetectingPress = false
-	@ObservedObject var props = TipsFullScreenModel()
+	@ObservedObject var props = TipsFullScreenModelCopy()
 	
-	init(tip: Binding<TipsResponse>, isActual: Bool, isSliding: Binding<Bool>, currentSlide: Binding<Int>) {
-		self._tip = tip
-		self.isActual = isActual
+	init(tip: TipsResponse, isSliding: Binding<Bool>, currentSlide: Binding<Int>, isActual: Bool) {
+		self.tip = tip
 		self._isSliding = isSliding
 		self._currentSlide = currentSlide
+		self.isActual = isActual
+		self._isDetectingPress = State(initialValue: false)
 	}
 		
 	var failedView: some View {
@@ -53,9 +54,8 @@ struct TipsFullScreenPage: View {
 		GeometryReader { geometry in
 			VStack {
 				TipsFullScreenProgressBar(
+					tip: self.tip,
 					progress: self.props.progress,
-					actualIndex: self.tip.mediasIndex,
-					statusQuantity: self.tip.medias.count,
 					isVisible: !self.isDetectingPress && !self.isSliding
 				)
 				TipsFullScreenBackButton(
@@ -63,7 +63,7 @@ struct TipsFullScreenPage: View {
 					isVisible: !self.isDetectingPress && !self.isSliding
 				)
 				TipsFullScreenContainerMedia(
-					tip: self.$tip,
+					tip: self.tip,
 					currentSlide: self.$currentSlide,
 					isDetectingPress: self.$isDetectingPress) {
 					if self.props.status == .failed {

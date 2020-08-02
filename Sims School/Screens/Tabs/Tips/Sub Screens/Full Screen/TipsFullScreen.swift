@@ -7,28 +7,27 @@
 //
 
 import SwiftUI
-import AVKit
-
-
 
 struct TipsFullScreen: View {
-	@Binding var tips: [TipsResponse]
-	@Binding var tipIndex: Int
-	@State var isSliding: Bool = false
+	@ObservedObject var props: TipsFullScreenModel
+	
+	init(tips: [TipsResponse], tipIndex: Int) {
+		self.props = TipsFullScreenModel(tips: tips, index: tipIndex)
+	}
 	
 	var body: some View {
 		SlideHorizontal(
-			self.tips.enumerated().map { (index, tip) in
+			self.props.tips.enumerated().map { (index, tip) in
 				TipsFullScreenPage(
-					tip: self.$tips[index],
-					isActual: self.tipIndex == tip.index,
-					isSliding: self.$isSliding,
-					currentSlide: self.$tipIndex
+					tip: self.props.tips[index],
+					isSliding: self.$props.isSliding,
+					currentSlide: self.$props.index,
+					isActual: self.props.index == tip.index
 				)
 			},
 			hasDots: false,
-			currentPage: $tipIndex,
-			isSliding: $isSliding,
+			currentPage: self.$props.index,
+			isSliding: self.$props.isSliding,
 			isInModal: true
 		)
 	}

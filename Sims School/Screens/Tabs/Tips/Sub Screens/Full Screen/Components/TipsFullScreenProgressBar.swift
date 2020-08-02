@@ -9,23 +9,21 @@
 import SwiftUI
 
 struct TipsFullScreenProgressBar: View {
+	@ObservedObject var tip: TipsResponse
 	var progress: CGFloat
-	var actualIndex: Int
-	var statusQuantity: Int
 	var isVisible: Bool
 	var size: CGFloat
 	
-	init(progress: CGFloat, actualIndex: Int, statusQuantity: Int, isVisible: Bool) {
+	init(tip: TipsResponse, progress: CGFloat, isVisible: Bool) {
+		self.tip = tip
 		self.progress = progress
-		self.actualIndex = actualIndex
-		self.statusQuantity = statusQuantity
 		self.isVisible = isVisible
 
-		self.size = UIScreen.screenWidth / CGFloat(statusQuantity) - 10
+		self.size = UIScreen.screenWidth / CGFloat(tip.medias.count) - 10
 	}
 
 	func getWidthBar(_ index: Int) -> CGFloat {
-		let actualndex = self.actualIndex
+		let actualndex = self.tip.mediasIndex
 		
 		if index > actualndex {
 			return 0
@@ -39,7 +37,7 @@ struct TipsFullScreenProgressBar: View {
 	
     var body: some View {
 		HStack {
-			ForEach(0..<statusQuantity) { index in
+			ForEach(self.tip.medias.indices) { index in
 				ZStack(alignment: .leading) {
 					Rectangle()
 						.frame(width: self.size, height: 6, alignment: .center)

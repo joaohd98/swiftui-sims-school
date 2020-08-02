@@ -55,7 +55,7 @@
 		DC577C6324D307D0001104F7 /* TipsScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC577C6224D307D0001104F7 /* TipsScreenModel.swift */; };
 		DC577C6524D3215C001104F7 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC577C6424D3215C001104F7 /* Cache.swift */; };
 		DC577C6724D339CF001104F7 /* ConcurrentSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC577C6624D339CF001104F7 /* ConcurrentSequence.swift */; };
-		DC577C6924D36930001104F7 /* TipsFullScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC577C6824D36930001104F7 /* TipsFullScreenModel.swift */; };
+		DC577C6924D36930001104F7 /* TipsFullScreenModelBackup.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC577C6824D36930001104F7 /* TipsFullScreenModelBackup.swift */; };
 		DC57924924CBEC680097CAC9 /* AdsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC57924824CBEC680097CAC9 /* AdsResponse.swift */; };
 		DC57924B24CBEC760097CAC9 /* AdsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC57924A24CBEC760097CAC9 /* AdsService.swift */; };
 		DC57924E24CBF3FF0097CAC9 /* URLImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC57924D24CBF3FF0097CAC9 /* URLImage.swift */; };
@@ -66,6 +66,7 @@
 		DC64927C24BE179B00EDAC0E /* HomeScreenProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC64927B24BE179B00EDAC0E /* HomeScreenProfile.swift */; };
 		DC64927E24BE1A2B00EDAC0E /* HomeScreenClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC64927D24BE1A2B00EDAC0E /* HomeScreenClasses.swift */; };
 		DC64928024BE1A3D00EDAC0E /* HomeScreenAds.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC64927F24BE1A3D00EDAC0E /* HomeScreenAds.swift */; };
+		DC73635424D66FBC00D3202F /* TipsFullScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC73635324D66FBC00D3202F /* TipsFullScreenModel.swift */; };
 		DC74CF8424CB229000EFBFA0 /* RemoveAllCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC74CF8324CB228F00EFBFA0 /* RemoveAllCoreData.swift */; };
 		DC74CF8824CB6CDF00EFBFA0 /* ClassRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC74CF8724CB6CDF00EFBFA0 /* ClassRequest.swift */; };
 		DC74CF8A24CB6CEB00EFBFA0 /* ClassResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC74CF8924CB6CEB00EFBFA0 /* ClassResponse.swift */; };
@@ -165,7 +166,7 @@
 		DC577C6224D307D0001104F7 /* TipsScreenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsScreenModel.swift; sourceTree = "<group>"; };
 		DC577C6424D3215C001104F7 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		DC577C6624D339CF001104F7 /* ConcurrentSequence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcurrentSequence.swift; sourceTree = "<group>"; };
-		DC577C6824D36930001104F7 /* TipsFullScreenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsFullScreenModel.swift; sourceTree = "<group>"; };
+		DC577C6824D36930001104F7 /* TipsFullScreenModelBackup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsFullScreenModelBackup.swift; sourceTree = "<group>"; };
 		DC57924824CBEC680097CAC9 /* AdsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsResponse.swift; sourceTree = "<group>"; };
 		DC57924A24CBEC760097CAC9 /* AdsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsService.swift; sourceTree = "<group>"; };
 		DC57924D24CBF3FF0097CAC9 /* URLImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLImage.swift; sourceTree = "<group>"; };
@@ -176,6 +177,7 @@
 		DC64927B24BE179B00EDAC0E /* HomeScreenProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenProfile.swift; sourceTree = "<group>"; };
 		DC64927D24BE1A2B00EDAC0E /* HomeScreenClasses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenClasses.swift; sourceTree = "<group>"; };
 		DC64927F24BE1A3D00EDAC0E /* HomeScreenAds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenAds.swift; sourceTree = "<group>"; };
+		DC73635324D66FBC00D3202F /* TipsFullScreenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsFullScreenModel.swift; sourceTree = "<group>"; };
 		DC74CF8324CB228F00EFBFA0 /* RemoveAllCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveAllCoreData.swift; sourceTree = "<group>"; };
 		DC74CF8724CB6CDF00EFBFA0 /* ClassRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassRequest.swift; sourceTree = "<group>"; };
 		DC74CF8924CB6CEB00EFBFA0 /* ClassResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassResponse.swift; sourceTree = "<group>"; };
@@ -394,7 +396,7 @@
 		DC357AB124D46031007A23D9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				DC577C6824D36930001104F7 /* TipsFullScreenModel.swift */,
+				DC73635324D66FBC00D3202F /* TipsFullScreenModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -417,6 +419,7 @@
 				DC357AB924D4641F007A23D9 /* TipsFullScreenContainerMedia.swift */,
 				DC357ABB24D46441007A23D9 /* TipsFullScreenOpenLink.swift */,
 				DC5919A824D49E99002CEE22 /* TipsFullScreenPage.swift */,
+				DC577C6824D36930001104F7 /* TipsFullScreenModelBackup.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1114,7 +1117,7 @@
 				DCAAF79024C0A86000F0518C /* HomeScreenPageModel.swift in Sources */,
 				DC7FCB9124C8F8C200406CDF /* Session.swift in Sources */,
 				DC357ABA24D4641F007A23D9 /* TipsFullScreenContainerMedia.swift in Sources */,
-				DC577C6924D36930001104F7 /* TipsFullScreenModel.swift in Sources */,
+				DC577C6924D36930001104F7 /* TipsFullScreenModelBackup.swift in Sources */,
 				DC89F04724BD704B001964FC /* TabsScreen.swift in Sources */,
 				DC577C6524D3215C001104F7 /* Cache.swift in Sources */,
 				DC64927624BDF27400EDAC0E /* ScoresScreen.swift in Sources */,
@@ -1155,6 +1158,7 @@
 				DCF0440F24AE393500241062 /* FormRules.swift in Sources */,
 				DC577C6024D3060C001104F7 /* TipsMediasResponse.swift in Sources */,
 				DC10078B24C77DC200DB3EE7 /* MenuScreenLogout.swift in Sources */,
+				DC73635424D66FBC00D3202F /* TipsFullScreenModel.swift in Sources */,
 				DCB672DA24B2683D0064484D /* HexToUiColor.swift in Sources */,
 				DC53D72624C0EB53004266CE /* CustomUIPageViewController.swift in Sources */,
 				DCB672DF24B29BB60064484D /* UserRequest.swift in Sources */,

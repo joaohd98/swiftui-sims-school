@@ -40,8 +40,8 @@ struct TipsScreen: View {
 		.disabled(self.props.tipsStatus == .loading)
 		.sheet(isPresented: self.$props.showFullScreen) {
 			TipsFullScreen(
-				tips: self.$props.tips,
-				tipIndex: self.$props.fullScreenIndex
+				tips: self.props.tips,
+				tipIndex: self.props.fullScreenIndex
 			)
 		}
 	}

@@ -9,15 +9,14 @@
 import SwiftUI
 
 struct TipsFullScreenContainerMedia<Content: View>: View {
-	@Environment(\.presentationMode) var presentationMode
-	@Binding var tip: TipsResponse
+	@ObservedObject var tip: TipsResponse
 	@Binding var currentSlide: Int
 	@Binding var isDetectingPress: Bool
 	var content: () -> Content
 
-	init(tip: Binding<TipsResponse>, currentSlide: Binding<Int>, isDetectingPress: Binding<Bool>,
+	init(tip: TipsResponse, currentSlide: Binding<Int>, isDetectingPress: Binding<Bool>,
 		 @ViewBuilder content: @escaping () -> Content) {
-		self._tip = tip
+		self.tip = tip
 		self._currentSlide = currentSlide
 		self._isDetectingPress = isDetectingPress
 		self.content = content
@@ -32,9 +31,6 @@ struct TipsFullScreenContainerMedia<Content: View>: View {
 				if let index = self.tip.indicies.nextTip {
 					self.currentSlide = index
 				}
-				else {
-					self.presentationMode.wrappedValue.dismiss()
-				}
 			}
 			else {
 				self.tip.mediasIndex += 1
@@ -45,15 +41,11 @@ struct TipsFullScreenContainerMedia<Content: View>: View {
 				if let index = self.tip.indicies.prevTip {
 					self.currentSlide = index
 				}
-				else {
-					self.presentationMode.wrappedValue.dismiss()
-				}
 			}
 			else {
 				self.tip.mediasIndex -= 1
 			}
 		}
-		
 	}
 	
 	func tapContinous(isPressing: Bool) {

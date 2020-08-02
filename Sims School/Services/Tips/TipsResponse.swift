@@ -22,6 +22,7 @@ class TipsResponse: ObservableObject {
 	@Published var index: Int
 	@Published var mediasIndex: Int
 	@Published var indicies: (prevTip: Int?, nextTip: Int?)
+	@Published var test: Bool = false
 
 	init() {
 		name = ""
