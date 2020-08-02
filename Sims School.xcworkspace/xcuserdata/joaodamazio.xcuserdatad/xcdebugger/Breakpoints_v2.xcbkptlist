@@ -14,8 +14,8 @@
             filePath = "Sims School/Screens/Tabs/Tips/Sub Screens/Full Screen/Components/TipsFullScreenContainerMedia.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "49"
-            endingLineNumber = "49"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
             landmarkName = "tapHandler(location:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -123,8 +123,8 @@
             filePath = "Sims School/Screens/Tabs/Tips/Sub Screens/Full Screen/Components/TipsFullScreenContainerMedia.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "35"
-            endingLineNumber = "35"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
             landmarkName = "tapHandler(location:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -139,8 +139,8 @@
             filePath = "Sims School/Screens/Tabs/Tips/Sub Screens/Full Screen/Components/TipsFullScreenContainerMedia.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
             landmarkName = "tapHandler(location:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -155,8 +155,8 @@
             filePath = "Sims School/Screens/Tabs/Tips/Sub Screens/Full Screen/Components/TipsFullScreenContainerMedia.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "44"
-            endingLineNumber = "44"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
             landmarkName = "tapHandler(location:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -171,8 +171,8 @@
             filePath = "Sims School/Screens/Tabs/Tips/Sub Screens/Full Screen/Components/TipsFullScreenContainerMedia.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
             landmarkName = "tapHandler(location:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -187,8 +187,8 @@
             filePath = "Sims School/Screens/Tabs/Tips/Sub Screens/Full Screen/Components/TipsFullScreenContainerMedia.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
             landmarkName = "tapHandler(location:)"
             landmarkType = "7">
          </BreakpointContent>

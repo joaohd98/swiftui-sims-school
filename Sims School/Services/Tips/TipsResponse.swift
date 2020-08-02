@@ -32,6 +32,10 @@ class TipsResponse: ObservableObject {
 		mediasIndex = 0
 		indicies = (prevTip: nil, nextTip: nil)
 	}
+	
+	func getMedia() -> TipsMediasResponse {
+		return medias[mediasIndex]
+	}
 }
 
 extension TipsResponse  {

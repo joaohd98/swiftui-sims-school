@@ -21,7 +21,7 @@ struct TipsFullScreen: View {
 				TipsFullScreenPage(
 					tip: self.props.tips[index],
 					isSliding: self.$props.isSliding,
-					goPage: self.$props.goPage,
+					currentSlide: self.$props.index,
 					isActual: self.props.index == tip.index
 				)
 			},
