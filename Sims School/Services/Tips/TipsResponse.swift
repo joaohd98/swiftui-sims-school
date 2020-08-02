@@ -19,11 +19,17 @@ class TipsResponse: ObservableObject {
 	@Published var name: String
 	@Published var medias: [TipsMediasResponse]
 	@Published var thumbnail: UIImage
-	
+	@Published var index: Int
+	@Published var mediasIndex: Int
+	@Published var indicies: (prevTip: Int?, nextTip: Int?)
+
 	init() {
 		name = ""
 		medias = []
-		self.thumbnail = UIImage()
+		thumbnail = UIImage()
+		index = 0
+		mediasIndex = 0
+		indicies = (prevTip: nil, nextTip: nil)
 	}
 }
 

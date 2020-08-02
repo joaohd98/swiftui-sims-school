@@ -14,19 +14,16 @@ import AVKit
 struct TipsFullScreen: View {
 	@Binding var tips: [TipsResponse]
 	@Binding var tipIndex: Int
-	@State var mediaIndex: Int = 0
 	@State var isSliding: Bool = false
-
+	
 	var body: some View {
 		SlideHorizontal(
-			self.tips.enumerated().map {(index, tip) in
+			self.tips.enumerated().map { (index, tip) in
 				TipsFullScreenPage(
-					tips: tips,
-					tipSelected: self.tips[index],
-					tipSelectedIndex: index,
-					mediaIndex: self.$mediaIndex,
-					currentTipIndex: self.$tipIndex,
-					isSliding: self.$isSliding
+					tip: self.$tips[index],
+					isActual: self.tipIndex == tip.index,
+					isSliding: self.$isSliding,
+					currentSlide: self.$tipIndex
 				)
 			},
 			hasDots: false,

@@ -10,55 +10,50 @@ import SwiftUI
 
 struct TipsFullScreenContainerMedia<Content: View>: View {
 	@Environment(\.presentationMode) var presentationMode
-	var tips: [TipsResponse]
-	var tipSelected: TipsResponse
-	var tipSelectedIndex: Int
-	@Binding var mediaIndex: Int
-	@Binding var currentTipIndex: Int
+	@Binding var tip: TipsResponse
+	@Binding var currentSlide: Int
 	@Binding var isDetectingPress: Bool
 	var content: () -> Content
-	
-	init(tips: [TipsResponse], tipSelectedIndex: Int, mediaIndex: Binding<Int>, isDetectingPress: Binding<Bool>,
-		 currentTipIndex: Binding<Int>, @ViewBuilder content: @escaping () -> Content) {
-		self.tips = tips
-		self.tipSelected = tips[tipSelectedIndex]
-		self.tipSelectedIndex = tipSelectedIndex
+
+	init(tip: Binding<TipsResponse>, currentSlide: Binding<Int>, isDetectingPress: Binding<Bool>,
+		 @ViewBuilder content: @escaping () -> Content) {
+		self._tip = tip
+		self._currentSlide = currentSlide
 		self._isDetectingPress = isDetectingPress
-		self._mediaIndex = mediaIndex
-		self._currentTipIndex = currentTipIndex
 		self.content = content
 	}
-	
+
 	func tapHandler(location: CGPoint) {
 		let x = location.x
 		let half = UIScreen.screenWidth / 2
 				
 		if x > half {
-			if self.mediaIndex + 1 == self.tipSelected.medias.count {
-				if self.tipSelectedIndex + 1 == self.tips.count {
-					self.presentationMode.wrappedValue.dismiss()
+			if self.tip.mediasIndex + 1 == self.tip.medias.count {
+				if let index = self.tip.indicies.nextTip {
+					self.currentSlide = index
 				}
 				else {
-					//self.fullScreenIndex = (tips: self.fullScreenIndex.tips + 1, medias: 0)
+					self.presentationMode.wrappedValue.dismiss()
 				}
 			}
 			else {
-				self.mediaIndex += 1
+				self.tip.mediasIndex += 1
 			}
 		}
 		else {
-			if self.mediaIndex - 1 == -1 {
-				if self.tipSelectedIndex - 1 == -1 {
-					self.presentationMode.wrappedValue.dismiss()
+			if self.tip.mediasIndex - 1 == -1 {
+				if let index = self.tip.indicies.prevTip {
+					self.currentSlide = index
 				}
 				else {
-//						self.fullScreenIndex = (tips: self.fullScreenIndex.tips - 1, medias: 0)
+					self.presentationMode.wrappedValue.dismiss()
 				}
 			}
 			else {
-				self.mediaIndex -= 1
+				self.tip.mediasIndex -= 1
 			}
 		}
+		
 	}
 	
 	func tapContinous(isPressing: Bool) {
