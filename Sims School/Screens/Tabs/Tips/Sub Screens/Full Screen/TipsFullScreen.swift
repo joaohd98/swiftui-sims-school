@@ -15,9 +15,8 @@ struct TipsFullScreen: View {
 	@Binding var tips: [TipsResponse]
 	@Binding var tipIndex: Int
 	@State var mediaIndex: Int = 0
-	
-	
-	
+	@State var isSliding: Bool = false
+
 	var body: some View {
 		SlideHorizontal(
 			self.tips.enumerated().map {(index, tip) in
@@ -25,16 +24,16 @@ struct TipsFullScreen: View {
 					tips: tips,
 					tipSelected: self.tips[index],
 					tipSelectedIndex: index,
-					mediaIndex: $mediaIndex,
-					currentTipIndex: self.$tipIndex
+					mediaIndex: self.$mediaIndex,
+					currentTipIndex: self.$tipIndex,
+					isSliding: self.$isSliding
 				)
 			},
 			hasDots: false,
 			currentPage: $tipIndex,
+			isSliding: $isSliding,
 			isInModal: true
 		)
-		.background(Color.white)
-
 	}
 }
 

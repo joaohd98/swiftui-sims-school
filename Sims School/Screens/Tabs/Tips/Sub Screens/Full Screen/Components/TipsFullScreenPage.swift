@@ -14,11 +14,13 @@ struct TipsFullScreenPage: View {
 	var tipSelectedIndex: Int
 	@Binding var mediaIndex: Int
 	@Binding var currentTipIndex: Int
-	
+	@Binding var isSliding: Bool
+
 	@State var isDetectingPress = false
 	@ObservedObject var props = TipsFullScreenModel()
 	
 	func viewDidLoad() {
+		print("actual", tipSelected.name)
 //		self.props.initProps(media: self.tipSelected.medias[self.tipSelectedIndex])
 	}
 	
@@ -57,11 +59,11 @@ struct TipsFullScreenPage: View {
 					progress: self.props.progress,
 					actualIndex: self.mediaIndex,
 					statusQuantity: self.tipSelected.medias.count,
-					isVisible: !self.isDetectingPress
+					isVisible: !self.isDetectingPress && !self.isSliding
 				)
 				TipsFullScreenBackButton(
 					tip: self.tipSelected,
-					isVisible: !self.isDetectingPress
+					isVisible: !self.isDetectingPress && !self.isSliding
 				)
 				TipsFullScreenContainerMedia(
 					tips: self.tips,
@@ -83,13 +85,13 @@ struct TipsFullScreenPage: View {
 					TipsFullScreenOpenLink(
 						link: self.tipSelected.medias[self.mediaIndex].url,
 						isVertical: !self.props.isVerticalIMG && !self.props.isVerticalVideo,
-						isVisible: !self.isDetectingPress
+						isVisible: !self.isDetectingPress && !self.isSliding
 					)
 				}
 			}
 			.background(self.props.getBackground())
 			.onAppear { self.viewDidLoad() }
-			.onDisappear { print("abc")  }
+			.onDisappear { self.viewDidUnload()  }
 			.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .top)
 			.rotation3DEffect(
 				Angle(degrees: Double(geometry.frame(in: .global).minX / 5)),

@@ -12,11 +12,11 @@ import UIKit
 import Combine
 
 struct CustomUIPageViewController: UIViewControllerRepresentable {
-	@Environment(\.presentationMode) var presentationMode
 	var controllers: [UIViewController]
-	@Binding var currentPage: Int
 	var isInModal: Bool = false
-	
+	@Binding var currentPage: Int
+	@Binding var isSliding: Bool
+
 	func makeCoordinator() -> Coordinator {
 		Coordinator(self)
 	}
@@ -90,13 +90,19 @@ struct CustomUIPageViewController: UIViewControllerRepresentable {
 			return parent.controllers[index + 1]
 		}
 		
+		func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
+			self.parent.isSliding.toggle()
+		}
+	
 		func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
 			if completed,
 				let visibleViewController = pageViewController.viewControllers?.first,
 				let index = parent.controllers.firstIndex(of: visibleViewController) {
-				
+	
 				parent.currentPage = index
 			}
+			
+			self.parent.isSliding.toggle()
 		}
 	}
 }

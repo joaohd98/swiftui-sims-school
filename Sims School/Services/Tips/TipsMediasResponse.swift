@@ -15,6 +15,8 @@ class TipsMediasResponse: ObservableObject {
 	@Published var url: URL!
 	@Published var image: String!
 	@Published var video: String!
+	@Published var uiImage: UIImage!
+	@Published var videoView: VideoView!
 	
 	func getMedia(completion: @escaping ((_ url: URL?, _ image: UIImage?, _ video: VideoView?) -> Void)) {
 		let isVideo = self.video != nil
