@@ -27,6 +27,7 @@ struct TipsFullScreen: View {
 			},
 			hasDots: false,
 			currentPageCallBack: { number in
+				self.props.index = number
 			},
 			isSlidingCallBack: { isSliding in
 			},

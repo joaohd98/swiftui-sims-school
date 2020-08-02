@@ -9,41 +9,45 @@
 import SwiftUI
 
 struct TipsFullScreenImage: View {
-	@Binding var media: TipsMediasResponse
+	@ObservedObject var tip: TipsResponse
 
 	func getHorizontalImage(_ uiImage: UIImage) -> some View {
 		Image(uiImage: uiImage)
 			.resizable()
 			.scaledToFit()
-			.frame(width: UIScreen.screenWidth, height: UIScreen.screenHeight / 2)
+			.frame(width: UIScreen.screenWidth, height: UIScreen.screenHeight / 2.5)
 			.clipped()
 			.padding(.vertical, 10)
 	}
 	
 	func getHorizontalVideo(_ videoView: VideoView) -> some View {
 		videoView
-			.frame(width: nil, height: UIScreen.screenHeight / 3.5, alignment: .center)
+			.frame(width: nil, height: UIScreen.screenHeight / 2.5, alignment: .center)
 	}
 	
     var body: some View {
-		Group {
-			if self.media.uiImage != nil && !self.media.isVerticalIMG {
-				self.getHorizontalImage(self.media.uiImage!)
+		let media = self.tip.getMedia()
+		
+		return (
+			Group {
+				if media.uiImage != nil && !media.isVerticalIMG {
+					self.getHorizontalImage(media.uiImage!)
+				}
+				else if media.videoView != nil && !media.isVerticalVideo {
+					self.getHorizontalVideo(media.videoView!)
+				}
+				else {
+					EmptyView()
+				}
 			}
-			else if self.media.videoView != nil && !self.media.isVerticalVideo {
-				self.getHorizontalVideo(self.media.videoView!)
-			}
-			else {
-				EmptyView()
-			}
-		}
+		)
     }
 }
 
 struct TipsFullScreenImage_Previews: PreviewProvider {
-	@State static var media = TipsMediasResponse()
+	@State static var tip = TipsResponse()
 	
     static var previews: some View {
-		TipsFullScreenImage(media: $media)
+		TipsFullScreenImage(tip: tip)
     }
 }

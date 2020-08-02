@@ -23,10 +23,13 @@ struct TipsFullScreenPage: View {
 		self.isActual = isActual
 		self._isDetectingPress = State(initialValue: false)
 		
-		if self.currentSlide == self.tip.index {
+		if isActual {
 			self.tip.getMedia().getMediaRequest()
 		}
 		
+		else {
+			
+		}
 	}
 	
 	func getBackground() -> AnyView {
@@ -90,7 +93,7 @@ struct TipsFullScreenPage: View {
 	}
 	
 	var successView: some View {
-		TipsFullScreenImage(media: self.$tip.medias[self.tip.mediasIndex])
+		TipsFullScreenImage(tip: self.tip)
 	}
 	
 	var body: some View {

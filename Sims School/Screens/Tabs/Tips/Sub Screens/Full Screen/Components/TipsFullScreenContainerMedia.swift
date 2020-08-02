@@ -20,11 +20,8 @@ struct TipsFullScreenContainerMedia<Content: View>: View {
 		self._currentSlide = currentSlide
 		self._isDetectingPress = isDetectingPress
 		self.content = content
-	
 	}
 	
-	
-
 	func tapHandler(location: CGPoint) {
 		let x = location.x
 		let half = UIScreen.screenWidth / 2
@@ -66,7 +63,7 @@ struct TipsFullScreenContainerMedia<Content: View>: View {
 				tappedContinous:  { hasPress in
 					self.tapContinous(isPressing: hasPress)
 				})
-			.overlay(self.content())
+			.background(self.content())
 		}
 	}
 }

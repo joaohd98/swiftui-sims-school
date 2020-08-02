@@ -35,19 +35,14 @@ struct CustomUIPageViewController: UIViewControllerRepresentable {
 			pageViewController.view.backgroundColor = .black
 		}
 		
-		else {
-			pageViewController.setViewControllers(
+		pageViewController.setViewControllers(
 			[controllers[currentPage]], direction: .forward, animated: true)
-		}
 	
 		return pageViewController
 	}
 	
 	func updateUIViewController(_ pageViewController: UIPageViewController, context: Context) {
-		if isInModal {
-			pageViewController.setViewControllers(
-				[controllers[currentPage]], direction: .forward, animated: true)
-		}
+
 	}
 	
 	class Coordinator: NSObject, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
