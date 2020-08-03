@@ -28,8 +28,8 @@ struct TipsFullScreen: View {
 					tip: self.props.tips[index],
 					nav: self.nav,
 					presentationMode: self.presentationMode,
-					isSliding: self.isSliding,
-					isDetectingPress: self.isDetectingPress,
+					isSliding: self.$isSliding,
+					isDetectingPress: self.$isDetectingPress,
 					currentSlide: self.$index
 				)
  			},
@@ -40,7 +40,7 @@ struct TipsFullScreen: View {
 				self.index = number
 			},
 			isSlidingCallBack: { isSliding in
-				self.isSliding = isSliding
+				self.isSliding.toggle()
 			},
 			isInModal: true
 		)

@@ -15,77 +15,14 @@ class TipsFullScreenPageModel: ObservableObject {
 	@Published var medias: [TipsMediasResponse]
 	@Published var currentMedia: Int
 	@Published var nav: SlideHorizontalNav
-	@Published var isDetectingPress: Bool
-	@Published var isSliding: Bool
 	var timer: Timer?
 	
-	init(tip: TipsResponse, nav: SlideHorizontalNav, isDetectingPress: Bool, isSliding: Bool) {
+	init(tip: TipsResponse, nav: SlideHorizontalNav) {
 		self.tip = tip
 		self.medias = tip.medias
 		self.nav = nav
-		self.isDetectingPress = isDetectingPress
-		self.isSliding  = isSliding
 		self.currentMedia = 0
 	}
-	
-	func setTimeImage() {
-		var seconds = 10.0
-		let interval = 0.1
-		let valueProgress = (1 / seconds) / 10
-		
-		self.timer = Timer.scheduledTimer(withTimeInterval: interval, repeats: true) { timer in
-			if !self.isDetectingPress && !self.isSliding {
-				let media = self.medias[self.currentMedia]
-				
-				seconds -= interval
-				media.progress += valueProgress
-				
-				if seconds < 0 {
-					timer.invalidate()
-					
-					if self.currentMedia + 1 >= self.medias.count {
-					}
-					else {
-					}
-				}
-				
-				self.medias[self.currentMedia] = media
-			}
-		}
-	}
-	
-	func setTimeVideo() {
-		let media = self.medias[self.currentMedia]
-		
-		var seconds = media.videoDuration
-		let interval = 0.1
-		let valueProgress = (1 / seconds) / 10
-		
-		self.timer = Timer.scheduledTimer(withTimeInterval: interval, repeats: true) { timer in
-			
-			if !self.isDetectingPress && !self.isSliding {
-				let media = self.medias[self.currentMedia]
-				
-				seconds -= interval
-				media.progress += valueProgress
-								
-				if seconds <= 0 {
-					timer.invalidate()
-					
-					if self.currentMedia + 1 >= self.medias.count {
-
-					}
-					else {
-
-					}
-					
-				}
-				
-				self.medias[self.currentMedia] = media
-			}
-		}
-	}
-	
 
 	func changeStatus (value: Int) {
 		self.currentMedia += value
@@ -105,13 +42,6 @@ class TipsFullScreenPageModel: ObservableObject {
 			media.progress = 0
 			self.medias[index] = media
 			
-			if media.image != nil {
-				self.setTimeImage()
-			}
-			else {
-				self.setTimeVideo()
-			}
-			
 			return
 		}
 		
@@ -128,7 +58,6 @@ class TipsFullScreenPageModel: ObservableObject {
 					media.isVerticalImage(imageSource: image)
 					
 					self.medias[index] = media
-					self.setTimeImage()
 					
 				}
 				else if let video = video {
@@ -137,7 +66,6 @@ class TipsFullScreenPageModel: ObservableObject {
 					media.isVerticalVideo(url: url!) {
 						media.status = .success
 						self.medias[index] = media
-						self.setTimeVideo()
 					}
 					
 				}
