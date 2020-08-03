@@ -15,6 +15,7 @@ class TipsMediasResponse: ObservableObject {
 	@Published var url: URL!
 	@Published var image: String?
 	@Published var video: String?
+	@Published var videoDuration: Int64
 	@Published var uiImage: UIImage?
 	@Published var videoView: VideoView?
 	@Published var status: NetworkRequestStatus
@@ -25,24 +26,13 @@ class TipsMediasResponse: ObservableObject {
 	init() {
 		self.image = nil
 		self.video = nil
+		self.videoDuration = 0
 		self.uiImage = nil
 		self.videoView = nil
 		self.status = .loading
 		self.progress = 0
 		self.isVerticalVideo = false
 		self.isVerticalIMG = false
-	}
-	
-	init(media: TipsMediasResponse) {
-		self.url = media.url
-		self.image = media.image
-		self.video = media.video
-		self.uiImage = media.uiImage
-		self.videoView = media.videoView
-		self.status = media.status
-		self.progress = media.progress
-		self.isVerticalVideo = media.isVerticalVideo
-		self.isVerticalIMG = media.isVerticalIMG
 	}
 	
 	func isVerticalImage(imageSource: UIImage)  {
@@ -60,8 +50,10 @@ class TipsMediasResponse: ObservableObject {
 			let videoTrack = videoTrack.tracks(withMediaType: AVMediaType.video).first!
 			let transformedVideoSize = videoTrack.naturalSize.applying(videoTrack.preferredTransform)
 			
+			
 			DispatchQueue.main.async {
 				self.isVerticalVideo = abs(transformedVideoSize.width) < abs(transformedVideoSize.height)
+				
 				completion()
 			}
 		}

@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import SwiftUI
 
 class TipsService {
 	static func getTips(
@@ -52,6 +53,7 @@ class TipsService {
 	
 	static func getMedia(
 		media: TipsMediasResponse,
+		hasPause: Binding<Bool>,
 		completion: @escaping ((_ url: URL?, _ image: UIImage?, _ video: VideoView?) -> Void)) {
 		let isVideo = media.video != nil
 		

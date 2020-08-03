@@ -13,14 +13,18 @@ struct TipsFullScreenPage: View {
 	@Binding var nav: SlideHorizontalNav
 	@Binding var currentSlide: Int
 	@Binding var isSliding: Bool
-	var initialSlide: Bool = true
+	@Binding var isDetectingPress: Bool
+	var timer: Timer?
 
-	init(tip: TipsResponse, nav: Binding<SlideHorizontalNav>, isSliding: Binding<Bool>, currentSlide: Binding<Int>) {
-		self.props = TipsFullScreenPageModel(tip: tip)
+	init(tip: TipsResponse, nav: Binding<SlideHorizontalNav>, isSliding: Binding<Bool>,
+		 isDetectingPress: Binding<Bool>, currentSlide: Binding<Int>) {
+		
+		self.props = TipsFullScreenPageModel(tip: tip, nav: nav, isDetectingPress: isDetectingPress)
 		self._nav = nav
 		self._isSliding = isSliding
+		self._isDetectingPress = isDetectingPress
 		self._currentSlide = currentSlide
-		
+
 		if self.currentSlide == self.props.tip.index {
 			self.props.mediaRequest()
 		}
@@ -94,11 +98,6 @@ struct TipsFullScreenPage: View {
 	
 	var body: some View {
 		let media = self.getActualMedia()
-		
-		print(self.props.tip.name)
-		print(media.url)
-		print(media.status)
-
 				
 		return (
 			GeometryReader { geometry in
@@ -107,18 +106,18 @@ struct TipsFullScreenPage: View {
 						tip: self.props.tip,
 						currentMedia: self.props.currentMedia,
 						progress: media.progress,
-						isVisible: !self.props.isDetectingPress && !self.isSliding
+						isVisible: !self.isDetectingPress && !self.isSliding
 					)
 					TipsFullScreenBackButton(
 						tip: self.props.tip,
-						isVisible: !self.props.isDetectingPress && !self.isSliding
+						isVisible: !self.isDetectingPress && !self.isSliding
 					)
 					TipsFullScreenContainerMedia(
 						tip: self.props.tip,
 						status: media.status,
 						currentMedia: self.$props.currentMedia,
 						nav: self.$nav,
-						isDetectingPress: self.$props.isDetectingPress,
+						isDetectingPress: self.$isDetectingPress,
 						onChangeStatus: { value in  self.props.changeStatus(value: value) }) {
 							if media.status == .failed {
 								self.failedView
@@ -134,7 +133,7 @@ struct TipsFullScreenPage: View {
 						TipsFullScreenOpenLink(
 							link: media.url,
 							isVertical: media.isVerticalIMG && media.isVerticalVideo,
-							isVisible: !self.props.isDetectingPress && !self.isSliding
+							isVisible: !self.isDetectingPress && !self.isSliding
 						)
 					}
 				}
