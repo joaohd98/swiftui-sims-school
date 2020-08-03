@@ -9,11 +9,13 @@
 import SwiftUI
 
 struct TipsFullScreenBackButton: View {
+	@Binding var presentationMode: PresentationMode
 	@ObservedObject var tip: TipsResponse
 	var isVisible: Bool
 
     var body: some View {
 		Button(action: {
+			self.presentationMode.dismiss()
 		}) {
 			HStack(spacing: 10) {
 				Image(systemName: "chevron.left")

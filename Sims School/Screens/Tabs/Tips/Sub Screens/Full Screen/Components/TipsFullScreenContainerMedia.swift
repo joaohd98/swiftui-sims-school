@@ -11,6 +11,7 @@ import SwiftUI
 struct TipsFullScreenContainerMedia<Content: View>: View {
 	var tip: TipsResponse
 	var status: NetworkRequestStatus
+	@Binding var presentationMode: PresentationMode
 	@Binding var currentMedia: Int
 	@Binding var nav: SlideHorizontalNav
 	@Binding var isDetectingPress: Bool
@@ -18,10 +19,11 @@ struct TipsFullScreenContainerMedia<Content: View>: View {
 	var content: () -> Content
 	
 	init(tip: TipsResponse, status: NetworkRequestStatus, currentMedia: Binding<Int>,
-		 nav: Binding<SlideHorizontalNav>, isDetectingPress: Binding<Bool>,
+		 presentationMode: Binding<PresentationMode>, nav: Binding<SlideHorizontalNav>, isDetectingPress: Binding<Bool>,
 		 onChangeStatus:  @escaping (Int) -> Void, @ViewBuilder content: @escaping () -> Content) {
 		self.tip = tip
 		self.status = status
+		self._presentationMode = presentationMode
 		self._currentMedia = currentMedia
 		self._nav = nav
 		self._isDetectingPress = isDetectingPress
@@ -33,10 +35,16 @@ struct TipsFullScreenContainerMedia<Content: View>: View {
 		let x = location.x
 		let half = UIScreen.screenWidth / 2
 		
+		print("tip", self.tip.name)
+		print("tip", self.tip.indicies)
+
 		if x > half {			
 			if self.currentMedia + 1 >= self.tip.medias.count {
 				if self.tip.indicies.nextTip != nil {
-					self.nav = .next
+					//self.nav = .next
+				}
+				else {
+					self.presentationMode.dismiss()
 				}
 			}
 			else {
@@ -46,7 +54,10 @@ struct TipsFullScreenContainerMedia<Content: View>: View {
 		else {
 			if self.currentMedia - 1 <= -1 {
 				if self.tip.indicies.prevTip != nil {
-					self.nav = .previous
+					//self.nav = .previous
+				}
+				else {
+					self.presentationMode.dismiss()
 				}
 			}
 			else {

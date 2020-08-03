@@ -15,11 +15,11 @@ class TipsMediasResponse: ObservableObject {
 	@Published var url: URL!
 	@Published var image: String?
 	@Published var video: String?
-	@Published var videoDuration: Int64
+	@Published var videoDuration: Double
 	@Published var uiImage: UIImage?
 	@Published var videoView: VideoView?
 	@Published var status: NetworkRequestStatus
-	@Published var progress: CGFloat
+	@Published var progress: Double
 	@Published var isVerticalVideo: Bool
 	@Published var isVerticalIMG: Bool
 	
@@ -44,14 +44,15 @@ class TipsMediasResponse: ObservableObject {
 	
 	func isVerticalVideo(url: URL, completion: @escaping () -> Void) {
 		let videoTrack = AVAsset(url: url)
-		let assets =  ["tracks"]
+		let assets =  ["tracks", "duration"]
 		
 		videoTrack.loadValuesAsynchronously(forKeys: assets) {
+			let duration = videoTrack.duration.seconds
 			let videoTrack = videoTrack.tracks(withMediaType: AVMediaType.video).first!
 			let transformedVideoSize = videoTrack.naturalSize.applying(videoTrack.preferredTransform)
 			
-			
 			DispatchQueue.main.async {
+				self.videoDuration = duration
 				self.isVerticalVideo = abs(transformedVideoSize.width) < abs(transformedVideoSize.height)
 				
 				completion()

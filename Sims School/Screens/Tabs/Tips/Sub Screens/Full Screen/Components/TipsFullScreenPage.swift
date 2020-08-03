@@ -11,15 +11,17 @@ import SwiftUI
 struct TipsFullScreenPage: View {
 	@ObservedObject var props: TipsFullScreenPageModel
 	@Binding var nav: SlideHorizontalNav
+	@Binding var presentationMode: PresentationMode
 	@Binding var currentSlide: Int
 	@Binding var isSliding: Bool
 	@Binding var isDetectingPress: Bool
 	var timer: Timer?
 	
-	init(tip: TipsResponse, nav: Binding<SlideHorizontalNav>, isSliding: Binding<Bool>,
-		 isDetectingPress: Binding<Bool>, currentSlide: Binding<Int>) {
+	init(tip: TipsResponse, nav: Binding<SlideHorizontalNav>, presentationMode: Binding<PresentationMode>,
+		 isSliding: Binding<Bool>, isDetectingPress: Binding<Bool>, currentSlide: Binding<Int>) {
 		
 		self.props = TipsFullScreenPageModel(tip: tip, nav: nav, isDetectingPress: isDetectingPress)
+		self._presentationMode = presentationMode
 		self._nav = nav
 		self._isSliding = isSliding
 		self._isDetectingPress = isDetectingPress
@@ -102,37 +104,49 @@ struct TipsFullScreenPage: View {
 						isVisible: !self.isDetectingPress
 					)
 					TipsFullScreenBackButton(
+						presentationMode: self.$presentationMode,
 						tip: self.props.tip,
 						isVisible: !self.isDetectingPress
 					)
-					if self.currentSlide == self.props.tip.index || media.status == .success {
-						TipsFullScreenContainerMedia(
-							tip: self.props.tip,
-							status: media.status,
-							currentMedia: self.$props.currentMedia,
-							nav: self.$nav,
-							isDetectingPress: self.$isDetectingPress,
-							onChangeStatus: { value in  self.props.changeStatus(value: value) }) {
-								if media.status == .failed {
-									self.failedView
-								}
-								else if media.status == .loading {
-									self.loadingView
-								}
-								else {
-									self.successView
-								}
-						}
-						.onAppear {
-							self.props.mediaRequest()
-						}
-						if media.status == .success {
-							TipsFullScreenOpenLink(
-								link: media.url,
-								isVertical: media.isVerticalIMG && media.isVerticalVideo
-							)
-						}
+					//					if self.currentSlide == self.props.tip.index || media.status == .success {
+					TipsFullScreenContainerMedia(
+						tip: self.props.tip,
+						status: media.status,
+						currentMedia: self.$props.currentMedia,
+						presentationMode: self.$presentationMode,
+						nav: self.$nav,
+						isDetectingPress: self.$isDetectingPress,
+						onChangeStatus: { value in  self.props.changeStatus(value: value) }) {
+							if media.status == .failed {
+								self.failedView
+							}
+							else if media.status == .loading {
+								self.loadingView
+							}
+							else {
+								self.successView
+							}
 					}
+					.onAppear {
+						self.props.mediaRequest()
+					}
+					if media.status == .success {
+						TipsFullScreenOpenLink(
+							link: media.url,
+							isVertical: media.isVerticalIMG && media.isVerticalVideo
+						)
+					}
+					//					}
+					//					else {
+					//						Group {
+					//							Spacer()
+					//							self.loadingView
+					//							Spacer()
+					//						}
+					//						.onAppear {
+					//							self.props.mediaRequest()
+					//						}
+					//					}
 				}
 				.background(self.getBackground())
 				.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .top)

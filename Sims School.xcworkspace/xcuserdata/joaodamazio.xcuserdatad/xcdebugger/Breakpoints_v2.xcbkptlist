@@ -7,22 +7,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "35F34724-4D17-4513-AAE4-559CA82FED7B"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Sims School/Services/Tips/TipsMediasResponse.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
-            landmarkName = "isVerticalVideo(url:completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "62CC35B5-F3DB-4A59-A280-465EC9454AA6"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -33,6 +17,22 @@
             startingLineNumber = "63"
             endingLineNumber = "63"
             landmarkName = "getMedia(media:hasPause:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "912A9C41-A2C2-4A54-A83E-C9C604A18466"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Sims School/Screens/Tabs/Tips/Sub Screens/Full Screen/Components/TipsFullScreenContainerMedia.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
+            landmarkName = "tapHandler(location:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

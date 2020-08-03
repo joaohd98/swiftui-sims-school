@@ -9,11 +9,13 @@
 import SwiftUI
 
 struct TipsFullScreen: View {
+	@Environment(\.presentationMode) var presentationMode
 	@ObservedObject var props: TipsFullScreenModel
 	@State var index: Int
 	@State var isSliding: Bool = false
 	@State var isDetectingPress: Bool = false
-	
+	@State var nav: SlideHorizontalNav = .none
+
 	init(tips: [TipsResponse], tipIndex: Int) {
 		self.props = TipsFullScreenModel(tips: tips, index: tipIndex)
 		self._index = State(initialValue: tipIndex)
@@ -24,15 +26,16 @@ struct TipsFullScreen: View {
 			self.props.tips.enumerated().map { (index, tip) in
 				TipsFullScreenPage(
 					tip: self.props.tips[index],
-					nav: self.$props.nav,
+					nav: self.$nav,
+					presentationMode: self.presentationMode,
 					isSliding: self.$isSliding,
 					isDetectingPress: self.$isDetectingPress,
 					currentSlide: self.$index
 				)
-			},
+ 			},
 			hasDots: false,
 			currentPage: self.index,
-			nav: self.$props.nav,
+			nav: self.$nav,
 			currentPageCallBack: { number in
 				self.index = number
 			},

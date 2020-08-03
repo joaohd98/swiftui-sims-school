@@ -11,22 +11,22 @@ import SwiftUI
 struct TipsFullScreenProgressBar: View {
 	@ObservedObject var tip: TipsResponse
 	var currentMedia: Int
-	var progress: CGFloat
+	var progress: Double
 	var isVisible: Bool
-	var size: CGFloat
+	var size: Double
 	
-	init(tip: TipsResponse, currentMedia: Int, progress: CGFloat, isVisible: Bool) {
+	init(tip: TipsResponse, currentMedia: Int, progress: Double, isVisible: Bool) {
 		self.tip = tip
 		self.currentMedia = currentMedia
 		self.progress = progress
 		self.isVisible = isVisible
 
-		self.size = UIScreen.screenWidth / CGFloat(tip.medias.count) - 10
+		self.size = Double(UIScreen.screenWidth) / Double(tip.medias.count) - 10
 	}
 
-	func getWidthBar(_ index: Int) -> CGFloat {
+	func getWidthBar(_ index: Int) -> Double {
 		let actualndex = self.currentMedia
-		
+				
 		if index > actualndex {
 			return 0
 		}
@@ -34,7 +34,7 @@ struct TipsFullScreenProgressBar: View {
 			return self.size
 		}
 		
-		return min(CGFloat(self.progress) * self.size, self.size)
+		return min(Double(self.progress) * self.size, self.size)
 	}
 	
     var body: some View {
@@ -42,13 +42,13 @@ struct TipsFullScreenProgressBar: View {
 			ForEach(self.tip.medias.indices) { index in
 				ZStack(alignment: .leading) {
 					Rectangle()
-						.frame(width: self.size, height: 6, alignment: .center)
+						.frame(width: CGFloat(self.size), height: 6, alignment: .center)
 						.opacity(0.3)
 						.foregroundColor(Color.gray)
 					
 					Rectangle()
 						.frame(
-							width: self.getWidthBar(index),
+							width: CGFloat(self.getWidthBar(index)),
 							height: 6,
 							alignment: .leading
 					)

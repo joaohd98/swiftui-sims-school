@@ -17,7 +17,11 @@ extension UIPageViewController {
 		guard let nextViewController = dataSource?.pageViewController(self, viewControllerAfter: currentViewController ) else {
 			return
 		}
-		setViewControllers([nextViewController], direction: .forward, animated: true, completion: { _ in self.view.isUserInteractionEnabled = true
+		
+		setViewControllers([nextViewController], direction: .forward, animated: true, completion: { _ in
+			DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+				self.view.isUserInteractionEnabled = true
+			}
 		})
 	}
 	
@@ -29,7 +33,9 @@ extension UIPageViewController {
 		}
 		
 		setViewControllers([previousViewController], direction: .reverse, animated: true, completion: { _ in
-			self.view.isUserInteractionEnabled = true
+			DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+				self.view.isUserInteractionEnabled = true
+			}
 		})
 
 	}
