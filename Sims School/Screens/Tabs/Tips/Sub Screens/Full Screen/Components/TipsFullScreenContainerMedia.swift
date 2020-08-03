@@ -10,15 +10,18 @@ import SwiftUI
 
 struct TipsFullScreenContainerMedia<Content: View>: View {
 	var tip: TipsResponse
+	var status: NetworkRequestStatus
 	@Binding var currentMedia: Int
 	@Binding var currentSlide: Int
 	@Binding var isDetectingPress: Bool
 	var onChangeStatus: (Int) -> Void
 	var content: () -> Content
-
-	init(tip: TipsResponse, currentMedia: Binding<Int>, currentSlide: Binding<Int>, isDetectingPress: Binding<Bool>,
+	
+	init(tip: TipsResponse, status: NetworkRequestStatus, currentMedia: Binding<Int>,
+		 currentSlide: Binding<Int>, isDetectingPress: Binding<Bool>,
 		 onChangeStatus:  @escaping (Int) -> Void, @ViewBuilder content: @escaping () -> Content) {
 		self.tip = tip
+		self.status = status
 		self._currentMedia = currentMedia
 		self._currentSlide = currentSlide
 		self._isDetectingPress = isDetectingPress
@@ -29,12 +32,12 @@ struct TipsFullScreenContainerMedia<Content: View>: View {
 	func tapHandler(location: CGPoint) {
 		let x = location.x
 		let half = UIScreen.screenWidth / 2
-						
+		
 		if x > half {			
 			if self.currentMedia + 1 >= self.tip.medias.count {
-//				if let index = self.tip.indicies.nextTip {
-//					self.currentSlide = index
-//				}
+				//				if let index = self.tip.indicies.nextTip {
+				//					self.currentSlide = index
+				//				}
 			}
 			else {
 				self.onChangeStatus(1)
@@ -42,9 +45,9 @@ struct TipsFullScreenContainerMedia<Content: View>: View {
 		}
 		else {
 			if self.currentMedia - 1 <= -1 {
-//				if let index = self.tip.indicies.prevTip {
-//					self.currentSlide = index
-//				}
+				//				if let index = self.tip.indicies.prevTip {
+				//					self.currentSlide = index
+				//				}
 			}
 			else {
 				self.onChangeStatus(-1)
@@ -63,11 +66,12 @@ struct TipsFullScreenContainerMedia<Content: View>: View {
 			Background(
 				tappedCallback: { location in
 					self.tapHandler(location: location)
-				},
+			},
 				tappedContinous:  { hasPress in
 					self.tapContinous(isPressing: hasPress)
-				})
-			.background(self.content())
+			})
+			.overlay(self.status != .loading ? AnyView(self.content()) : AnyView(EmptyView()))
+			.background(self.status == .loading ? AnyView(self.content()) : AnyView(EmptyView()))
 		}
 	}
 }
@@ -75,7 +79,7 @@ struct TipsFullScreenContainerMedia<Content: View>: View {
 private struct Background: UIViewRepresentable {
 	var tappedCallback: (CGPoint) -> Void
 	var tappedContinous: (Bool) -> Void
-
+	
 	func makeUIView(context: UIViewRepresentableContext<Background>) -> UIView {
 		let v = UIView(frame: .zero)
 		let gestureTap = UITapGestureRecognizer(target: context.coordinator,
@@ -96,7 +100,7 @@ private struct Background: UIViewRepresentable {
 	class Coordinator: NSObject {
 		var tappedCallback: (CGPoint) -> Void
 		var tappedContinous: (Bool) -> Void
-
+		
 		init(tappedCallback: @escaping ((CGPoint) -> Void), tappedContinous: @escaping ((Bool) -> Void)) {
 			self.tappedCallback = tappedCallback
 			self.tappedContinous = tappedContinous

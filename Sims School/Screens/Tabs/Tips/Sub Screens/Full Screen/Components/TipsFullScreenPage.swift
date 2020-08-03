@@ -62,13 +62,15 @@ struct TipsFullScreenPage: View {
 		TryAgainView(
 			text: "There was an error when trying to get the tip.",
 			onTryAgain: {
-//				self.props.medias[self.props.currentMedia]. = .loading
-//
-//				let media = self.props.tip.getMedia()
-//
-//				DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-//					media.getMediaRequest()
-//				}
+				let media = self.props.medias[self.props.currentMedia]
+				
+				media.status = .loading
+				
+				self.props.medias[self.props.currentMedia] = media
+
+				DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+					self.props.mediaRequest()
+				}
 			},
 			color: .white
 		)
@@ -85,9 +87,7 @@ struct TipsFullScreenPage: View {
 	
 	var body: some View {
 		let media = self.getActualMedia()
-		
-		print(props.currentMedia)
-		
+				
 		return (
 			GeometryReader { geometry in
 				VStack {
@@ -103,6 +103,7 @@ struct TipsFullScreenPage: View {
 					)
 					TipsFullScreenContainerMedia(
 						tip: self.props.tip,
+						status: media.status,
 						currentMedia: self.$props.currentMedia,
 						currentSlide: self.$props.currentSlide,
 						isDetectingPress: self.$props.isDetectingPress,
