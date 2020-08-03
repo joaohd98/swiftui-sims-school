@@ -30,21 +30,21 @@ struct TipsFullScreenContainerMedia<Content: View>: View {
 		let x = location.x
 		let half = UIScreen.screenWidth / 2
 				
-		if x > half {
-			if self.currentMedia - 1 == self.tip.medias.count {
-				if let index = self.tip.indicies.nextTip {
-					self.currentSlide = index
-				}
+		if x > half {			
+			if self.currentMedia + 1 >= self.tip.medias.count {
+//				if let index = self.tip.indicies.nextTip {
+//					self.currentSlide = index
+//				}
 			}
 			else {
 				self.onChangeStatus(1)
 			}
 		}
 		else {
-			if self.currentMedia - 1 == -1 {
-				if let index = self.tip.indicies.prevTip {
-					self.currentSlide = index
-				}
+			if self.currentMedia - 1 <= -1 {
+//				if let index = self.tip.indicies.prevTip {
+//					self.currentSlide = index
+//				}
 			}
 			else {
 				self.onChangeStatus(-1)

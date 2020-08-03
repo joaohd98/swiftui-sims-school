@@ -35,6 +35,11 @@ class TipsFullScreenPageModel: ObservableObject {
 	func mediaRequest() {
 		let media = TipsMediasResponse(media: self.medias[self.currentMedia])
 		
+		if media.uiImage != nil || media.videoView != nil {
+			media.status = .success
+			return
+		}
+		
 		TipsService.getMedia(media: media) { (url, image, video) in
 			if let image = image {
 				media.uiImage = image
