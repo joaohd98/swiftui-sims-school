@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class TipsService {
 	static func getTips(
@@ -45,6 +46,34 @@ class TipsService {
 				
 			else {
 				onError()
+			}
+		}
+	}
+	
+	static func getMedia(
+		media: TipsMediasResponse,
+		completion: @escaping ((_ url: URL?, _ image: UIImage?, _ video: VideoView?) -> Void)) {
+		let isVideo = media.video != nil
+		
+		FirebaseDatabase.storage.reference().child((isVideo ? media.video : media.image)!).downloadURL { url, error in
+			if error == nil, let url = url {
+				if isVideo {
+					completion(url, nil, VideoView(videoURL: url, hasToPause: false))
+				}
+					
+				else {
+					URLSession.shared.downloadImageAndCache(url: url) { image in
+						if let image = image {
+							completion(url, image , nil)
+						}
+						else {
+							completion(url, nil, nil)
+						}
+					}
+				}
+			}
+			else {
+				completion(nil, nil, nil)
 			}
 		}
 	}

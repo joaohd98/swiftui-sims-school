@@ -33,60 +33,44 @@ class TipsMediasResponse: ObservableObject {
 		self.isVerticalIMG = false
 	}
 	
-	func getMediaRequest() {
-		DispatchQueue.global().async {
-			self.getMedia{ (url, image, video) in
-				if let image = image {
-					self.uiImage = image
-					self.status = .success
-					self.isVerticalImage(imageSource: image)
-				}
-				else if let video = video {
-					self.videoView = video
-					self.status = .success
-					self.isVerticalVideo(url: url!)
-				}
-				else {
-					self.status = .failed
-				}
-			}
-		}
+	init(media: TipsMediasResponse) {
+		self.url = media.url
+		self.image = media.image
+		self.video = media.video
+		self.uiImage = media.uiImage
+		self.videoView = media.videoView
+		self.status = media.status
+		self.progress = media.progress
+		self.isVerticalVideo = media.isVerticalVideo
+		self.isVerticalIMG = media.isVerticalIMG
 	}
 	
-	private func getMedia(completion: @escaping ((_ url: URL?, _ image: UIImage?, _ video: VideoView?) -> Void)) {
-		let isVideo = self.video != nil
-		
-		FirebaseDatabase.storage.reference().child((isVideo ? self.video : self.image)!).downloadURL { url, error in
-			if error == nil, let url = url {
-				if isVideo {
-					completion(url, nil, VideoView(videoURL: url))
-				}
-					
-				else {
-					URLSession.shared.downloadImageAndCache(url: url) { image in
-						if let image = image {
-							completion(url, image , nil)
-						}
-						else {
-							completion(url, nil, nil)
-						}
-					}
-				}
+	func getMediaRequest() {
+		TipsService.getMedia(media: self) { (url, image, video) in
+			if let image = image {
+				self.uiImage = image
+				self.status = .success
+				self.isVerticalImage(imageSource: image)
+			}
+			else if let video = video {
+				self.videoView = video
+				self.status = .success
+				self.isVerticalVideo(url: url!)
 			}
 			else {
-				completion(nil, nil, nil)
+				self.status = .failed
 			}
 		}
 	}
 	
-	private func isVerticalImage(imageSource: UIImage)  {
+	func isVerticalImage(imageSource: UIImage)  {
 		let imageWidth = imageSource.size.width * imageSource.scale
 		let imageHeight = imageSource.size.height * imageSource.scale
 		
 		self.isVerticalIMG = imageWidth < imageHeight
 	}
 	
-	private func isVerticalVideo(url: URL) {
+	func isVerticalVideo(url: URL) {
 		let videoTrack = AVAsset(url: url).tracks(withMediaType: AVMediaType.video).first!
 		
 		let transformedVideoSize = videoTrack.naturalSize.applying(videoTrack.preferredTransform)

@@ -9,16 +9,20 @@
 import SwiftUI
 
 struct TipsFullScreenContainerMedia<Content: View>: View {
-	@ObservedObject var tip: TipsResponse
+	var tip: TipsResponse
+	@Binding var currentMedia: Int
 	@Binding var currentSlide: Int
 	@Binding var isDetectingPress: Bool
+	var onChangeStatus: (Int) -> Void
 	var content: () -> Content
 
-	init(tip: TipsResponse, currentSlide: Binding<Int>, isDetectingPress: Binding<Bool>,
-		 @ViewBuilder content: @escaping () -> Content) {
+	init(tip: TipsResponse, currentMedia: Binding<Int>, currentSlide: Binding<Int>, isDetectingPress: Binding<Bool>,
+		 onChangeStatus:  @escaping (Int) -> Void, @ViewBuilder content: @escaping () -> Content) {
 		self.tip = tip
+		self._currentMedia = currentMedia
 		self._currentSlide = currentSlide
 		self._isDetectingPress = isDetectingPress
+		self.onChangeStatus = onChangeStatus
 		self.content = content
 	}
 	
@@ -27,25 +31,23 @@ struct TipsFullScreenContainerMedia<Content: View>: View {
 		let half = UIScreen.screenWidth / 2
 				
 		if x > half {
-			if self.tip.mediasIndex - 1 == self.tip.medias.count {
+			if self.currentMedia - 1 == self.tip.medias.count {
 				if let index = self.tip.indicies.nextTip {
 					self.currentSlide = index
 				}
 			}
 			else {
-				self.tip.mediasIndex += 1
-				self.tip.getMedia().getMediaRequest()
+				self.onChangeStatus(1)
 			}
 		}
 		else {
-			if self.tip.mediasIndex - 1 == -1 {
+			if self.currentMedia - 1 == -1 {
 				if let index = self.tip.indicies.prevTip {
 					self.currentSlide = index
 				}
 			}
 			else {
-				self.tip.mediasIndex -= 1
-				self.tip.getMedia().getMediaRequest()
+				self.onChangeStatus(-1)
 			}
 		}
 	}

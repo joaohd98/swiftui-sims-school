@@ -15,19 +15,24 @@ class PlayerView: UIView {
 	init(frame: CGRect, url: URL) {
 		super.init(frame: frame)
 		
-		// Create the video player using the URL passed in.
 		let player = AVPlayer(url: url)
-		player.volume = 0 // Will play audio if you don't set to zero
-		player.play() // Set to play once created
+		player.play()
 		
-		// Add the player to our Player Layer
 		playerLayer.player = player
-		playerLayer.videoGravity = .resizeAspectFill // Resizes content to fill whole video layer.
+		playerLayer.videoGravity = .resizeAspectFill
 		playerLayer.backgroundColor = UIColor.black.cgColor
 				
 		layer.addSublayer(playerLayer)
 	}
 	
+	func pause() {
+		playerLayer.player?.pause()
+	}
+	
+	func play() {
+		playerLayer.player?.play()
+	}
+		
 	required init?(coder: NSCoder) {
 		super.init(coder: coder)
 	}

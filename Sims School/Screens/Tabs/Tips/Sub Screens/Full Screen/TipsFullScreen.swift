@@ -20,8 +20,8 @@ struct TipsFullScreen: View {
 			self.props.tips.enumerated().map { (index, tip) in
 				TipsFullScreenPage(
 					tip: self.props.tips[index],
-					isSliding: self.$props.isSliding,
-					currentSlide: self.$props.index,
+					isSliding: self.props.isSliding,
+					currentSlide: self.props.index,
 					isActual: self.props.index == tip.index
 				)
 			},

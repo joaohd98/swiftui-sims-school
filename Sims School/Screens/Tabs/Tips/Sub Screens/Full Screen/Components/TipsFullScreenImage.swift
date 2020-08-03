@@ -9,13 +9,13 @@
 import SwiftUI
 
 struct TipsFullScreenImage: View {
-	@ObservedObject var tip: TipsResponse
+	@ObservedObject var media: TipsMediasResponse
 
 	func getHorizontalImage(_ uiImage: UIImage) -> some View {
 		Image(uiImage: uiImage)
 			.resizable()
 			.scaledToFit()
-			.frame(width: UIScreen.screenWidth, height: UIScreen.screenHeight / 2.5)
+			.frame(width: UIScreen.screenWidth, height: UIScreen.screenHeight / 2)
 			.clipped()
 			.padding(.vertical, 10)
 	}
@@ -26,8 +26,6 @@ struct TipsFullScreenImage: View {
 	}
 	
     var body: some View {
-		let media = self.tip.getMedia()
-		
 		return (
 			Group {
 				if media.uiImage != nil && !media.isVerticalIMG {
@@ -44,10 +42,10 @@ struct TipsFullScreenImage: View {
     }
 }
 
-struct TipsFullScreenImage_Previews: PreviewProvider {
-	@State static var tip = TipsResponse()
-	
-    static var previews: some View {
-		TipsFullScreenImage(tip: tip)
-    }
-}
+//struct TipsFullScreenImage_Previews: PreviewProvider {
+//	@State static var tip = TipsResponse()
+//	
+//    static var previews: some View {
+//		TipsFullScreenImage(tip: tip)
+//    }
+//}
