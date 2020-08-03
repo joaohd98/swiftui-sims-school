@@ -70,8 +70,8 @@ struct TipsFullScreenContainerMedia<Content: View>: View {
 				tappedContinous:  { hasPress in
 					self.tapContinous(isPressing: hasPress)
 			})
-			.overlay(self.status != .loading ? AnyView(self.content()) : AnyView(EmptyView()))
-			.background(self.status == .loading ? AnyView(self.content()) : AnyView(EmptyView()))
+			.background(self.status != .failed ? AnyView(self.content()) : AnyView(EmptyView()))
+			.overlay(self.status == .failed ? AnyView(self.content()) : AnyView(EmptyView()))
 		}
 	}
 }

@@ -45,24 +45,6 @@ class TipsMediasResponse: ObservableObject {
 		self.isVerticalIMG = media.isVerticalIMG
 	}
 	
-	func getMediaRequest() {
-		TipsService.getMedia(media: self) { (url, image, video) in
-			if let image = image {
-				self.uiImage = image
-				self.status = .success
-				self.isVerticalImage(imageSource: image)
-			}
-			else if let video = video {
-				self.videoView = video
-				self.status = .success
-				self.isVerticalVideo(url: url!)
-			}
-			else {
-				self.status = .failed
-			}
-		}
-	}
-	
 	func isVerticalImage(imageSource: UIImage)  {
 		let imageWidth = imageSource.size.width * imageSource.scale
 		let imageHeight = imageSource.size.height * imageSource.scale
@@ -70,12 +52,20 @@ class TipsMediasResponse: ObservableObject {
 		self.isVerticalIMG = imageWidth < imageHeight
 	}
 	
-	func isVerticalVideo(url: URL) {
-		let videoTrack = AVAsset(url: url).tracks(withMediaType: AVMediaType.video).first!
+	func isVerticalVideo(url: URL, completion: @escaping () -> Void) {
+		let videoTrack = AVAsset(url: url)
+		let assets =  ["tracks"]
 		
-		let transformedVideoSize = videoTrack.naturalSize.applying(videoTrack.preferredTransform)
+		videoTrack.loadValuesAsynchronously(forKeys: assets) {
+			let videoTrack = videoTrack.tracks(withMediaType: AVMediaType.video).first!
+			let transformedVideoSize = videoTrack.naturalSize.applying(videoTrack.preferredTransform)
+			
+			DispatchQueue.main.async {
+				self.isVerticalVideo = abs(transformedVideoSize.width) < abs(transformedVideoSize.height)
+				completion()
+			}
+		}
 		
-		self.isVerticalVideo = abs(transformedVideoSize.width) < abs(transformedVideoSize.height)
 	}
 	
 	

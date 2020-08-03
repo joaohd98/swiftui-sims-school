@@ -11,14 +11,17 @@ import SwiftUI
 struct TipsFullScreenPage: View {
 	@ObservedObject var props: TipsFullScreenPageModel
 	@Binding var nav: SlideHorizontalNav
-	
-	init(tip: TipsResponse, nav: Binding<SlideHorizontalNav>, isSliding: Bool, currentSlide: Int, isActual: Bool) {
+	@Binding var currentSlide: Int
+	@Binding var isSliding: Bool
+	var initialSlide: Bool = true
+
+	init(tip: TipsResponse, nav: Binding<SlideHorizontalNav>, isSliding: Binding<Bool>, currentSlide: Binding<Int>) {
+		self.props = TipsFullScreenPageModel(tip: tip)
 		self._nav = nav
-		self.props = TipsFullScreenPageModel(
-			tip: tip, isSliding: isSliding, currentSlide: currentSlide, isActual: isActual
-		)
+		self._isSliding = isSliding
+		self._currentSlide = currentSlide
 		
-		if self.props.isActual {
+		if self.currentSlide == self.props.tip.index {
 			self.props.mediaRequest()
 		}
 		
@@ -91,6 +94,11 @@ struct TipsFullScreenPage: View {
 	
 	var body: some View {
 		let media = self.getActualMedia()
+		
+		print(self.props.tip.name)
+		print(media.url)
+		print(media.status)
+
 				
 		return (
 			GeometryReader { geometry in
@@ -99,11 +107,11 @@ struct TipsFullScreenPage: View {
 						tip: self.props.tip,
 						currentMedia: self.props.currentMedia,
 						progress: media.progress,
-						isVisible: !self.props.isDetectingPress && !self.props.isSliding
+						isVisible: !self.props.isDetectingPress && !self.isSliding
 					)
 					TipsFullScreenBackButton(
 						tip: self.props.tip,
-						isVisible: !self.props.isDetectingPress && !self.props.isSliding
+						isVisible: !self.props.isDetectingPress && !self.isSliding
 					)
 					TipsFullScreenContainerMedia(
 						tip: self.props.tip,
@@ -126,7 +134,7 @@ struct TipsFullScreenPage: View {
 						TipsFullScreenOpenLink(
 							link: media.url,
 							isVertical: media.isVerticalIMG && media.isVerticalVideo,
-							isVisible: !self.props.isDetectingPress && !self.props.isSliding
+							isVisible: !self.props.isDetectingPress && !self.isSliding
 						)
 					}
 				}

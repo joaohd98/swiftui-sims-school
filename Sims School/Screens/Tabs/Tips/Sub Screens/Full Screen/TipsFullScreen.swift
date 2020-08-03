@@ -21,9 +21,8 @@ struct TipsFullScreen: View {
 				TipsFullScreenPage(
 					tip: self.props.tips[index],
 					nav: self.$props.nav,
-					isSliding: self.props.isSliding,
-					currentSlide: self.props.index,
-					isActual: self.props.index == tip.index
+					isSliding: self.$props.isSliding,
+					currentSlide: self.$props.index
 				)
 			},
 			hasDots: false,
@@ -33,7 +32,8 @@ struct TipsFullScreen: View {
 				self.props.index = number
 			},
 			isSlidingCallBack: { isSliding in
-			},
+
+		},
 			isInModal: true
 		)
 	}
