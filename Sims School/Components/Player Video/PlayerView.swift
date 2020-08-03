@@ -19,7 +19,7 @@ class PlayerView: UIView {
 		player.play()
 		
 		playerLayer.player = player
-		playerLayer.videoGravity = .resizeAspectFill
+		playerLayer.videoGravity = .resizeAspect
 		playerLayer.backgroundColor = UIColor.black.cgColor
 				
 		layer.addSublayer(playerLayer)

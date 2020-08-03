@@ -15,14 +15,14 @@ struct TipsFullScreenImage: View {
 		Image(uiImage: uiImage)
 			.resizable()
 			.scaledToFit()
-			.frame(width: UIScreen.screenWidth, height: UIScreen.screenHeight / 2)
+			.frame(width: UIScreen.screenWidth, height: UIScreen.screenHeight / 1.5)
 			.clipped()
 			.padding(.vertical, 10)
 	}
 	
 	func getHorizontalVideo(_ videoView: VideoView) -> some View {
 		videoView
-			.frame(width: nil, height: UIScreen.screenHeight / 2.5, alignment: .center)
+			.frame(width: UIScreen.screenWidth, height: UIScreen.screenHeight / 1.5, alignment: .center)
 	}
 	
 	var body: some View {
