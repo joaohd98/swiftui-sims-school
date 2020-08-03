@@ -14,13 +14,11 @@ class TipsFullScreenPageModel: ObservableObject {
 	@Published var tip: TipsResponse
 	@Published var medias: [TipsMediasResponse]
 	@Published var currentMedia: Int
-	@Published var nav: SlideHorizontalNav
 	var timer: Timer?
 	
-	init(tip: TipsResponse, nav: SlideHorizontalNav) {
+	init(tip: TipsResponse) {
 		self.tip = tip
 		self.medias = tip.medias
-		self.nav = nav
 		self.currentMedia = 0
 	}
 

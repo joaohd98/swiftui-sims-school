@@ -113,9 +113,9 @@ struct CustomUIPageViewController: UIViewControllerRepresentable {
 				parent.currentPage = index
 				
 				self.parent.currentPageCallBack(index)
-				
+
 			}
-			
+						
 			self.parent.isSlidingCallBack(false)
 		}
 		

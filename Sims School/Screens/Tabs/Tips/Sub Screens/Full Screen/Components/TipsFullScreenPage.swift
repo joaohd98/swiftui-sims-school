@@ -14,12 +14,13 @@ struct TipsFullScreenPage: View {
 	@Binding var currentSlide: Int
 	@Binding var isDetectingPress: Bool
 	@Binding var isSliding: Bool
-	
-	init(tip: TipsResponse, nav: SlideHorizontalNav, presentationMode: Binding<PresentationMode>,
+	@Binding var nav: SlideHorizontalNav
+
+	init(tip: TipsResponse, nav: Binding<SlideHorizontalNav>, presentationMode: Binding<PresentationMode>,
 		 isSliding: Binding<Bool>, isDetectingPress: Binding<Bool>, currentSlide: Binding<Int>) {
 		
-		self.props = TipsFullScreenPageModel(tip: tip, nav: nav)
-		
+		self.props = TipsFullScreenPageModel(tip: tip)
+		self._nav = nav
 		self._presentationMode = presentationMode
 		self._currentSlide = currentSlide
 		self._isDetectingPress = isDetectingPress
@@ -162,8 +163,7 @@ struct TipsFullScreenPage: View {
 	
 	var body: some View {
 		let media = self.getActualMedia()
-		
-
+				
 		return (
 			GeometryReader { geometry in
 				VStack {
@@ -184,7 +184,7 @@ struct TipsFullScreenPage: View {
 							status: media.status,
 							currentMedia: self.$props.currentMedia,
 							presentationMode: self.$presentationMode,
-							nav: self.$props.nav,
+							nav: self.$nav,
 							isDetectingPress: self.$isDetectingPress,
 							onChangeStatus: { value in  self.props.changeStatus(value: value) }) {
 								if media.status == .failed {

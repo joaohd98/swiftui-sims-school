@@ -35,13 +35,13 @@ struct TipsFullScreenContainerMedia<Content: View>: View {
 		let x = location.x
 		let half = UIScreen.screenWidth / 2
 		
-		print("tip", self.tip.name)
-		print("tip", self.tip.indicies)
-
 		if x > half {			
 			if self.currentMedia + 1 >= self.tip.medias.count {
 				if self.tip.indicies.nextTip != nil {
-					//self.nav = .next
+					self.nav = .next
+					DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+						self.nav = .none
+					}
 				}
 				else {
 					self.presentationMode.dismiss()
@@ -54,7 +54,10 @@ struct TipsFullScreenContainerMedia<Content: View>: View {
 		else {
 			if self.currentMedia - 1 <= -1 {
 				if self.tip.indicies.prevTip != nil {
-					//self.nav = .previous
+					self.nav = .previous
+					DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+						self.nav = .none
+					}
 				}
 				else {
 					self.presentationMode.dismiss()
