@@ -14,6 +14,7 @@ import Combine
 struct CustomUIPageViewController: UIViewControllerRepresentable {
 	var controllers: [UIViewController]
 	@Binding var currentPage: Int
+	@Binding var nav: SlideHorizontalNav
 	var isInModal: Bool = false
 	var currentPageCallBack: (Int) -> Void
 	var isSlidingCallBack: (Bool) -> Void
@@ -42,6 +43,18 @@ struct CustomUIPageViewController: UIViewControllerRepresentable {
 	}
 	
 	func updateUIViewController(_ pageViewController: UIPageViewController, context: Context) {
+		
+		if nav != .none {
+			if nav == .next {
+				pageViewController.goToNextPage()
+			}
+			
+			else {
+				pageViewController.goToPreviousPage()
+			}
+			
+			nav = .none
+		}
 		
 	}
 	

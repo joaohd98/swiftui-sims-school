@@ -7,6 +7,12 @@ A view for bridging a UIPageViewController.
 
 import SwiftUI
 
+enum SlideHorizontalNav {
+	case next
+	case previous
+	case none
+}
+
 struct SlideHorizontal<Page: View>: View {
     var viewControllers: [UIHostingController<Page>]
 	var hasDots: Bool
@@ -15,6 +21,8 @@ struct SlideHorizontal<Page: View>: View {
 	@State var currentPage: Int
 	@State var isSliding = false
 	
+	@Binding var nav: SlideHorizontalNav
+
 	var currentPageCallBack: (Int) -> Void
 	var isSlidingCallBack: (Bool) -> Void
 	
@@ -22,12 +30,14 @@ struct SlideHorizontal<Page: View>: View {
 		_ views: [Page],
 		hasDots: Bool,
 		currentPage: Int = 0,
+		nav: Binding<SlideHorizontalNav> = Binding.constant(.previous),
 		currentPageCallBack: @escaping (Int) -> Void = { _ in },
 		isSlidingCallBack: @escaping (Bool) -> Void = { _ in },
 		isInModal: Bool = false) {
 		
 		self.viewControllers = views.map { UIHostingController(rootView: $0) }
 		self.hasDots = hasDots
+		self._nav = nav
 		self.isInModal = isInModal
 		self.currentPageCallBack = currentPageCallBack
 		self.isSlidingCallBack = isSlidingCallBack
@@ -39,6 +49,7 @@ struct SlideHorizontal<Page: View>: View {
 			CustomUIPageViewController(
 				controllers: viewControllers,
 				currentPage: $currentPage,
+				nav: $nav,
 				isInModal: isInModal,
 				currentPageCallBack: currentPageCallBack,
 				isSlidingCallBack: isSlidingCallBack

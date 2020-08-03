@@ -10,9 +10,13 @@ import SwiftUI
 
 struct TipsFullScreenPage: View {
 	@ObservedObject var props: TipsFullScreenPageModel
-
-	init(tip: TipsResponse, isSliding: Bool, currentSlide: Int, isActual: Bool) {
-		self.props = TipsFullScreenPageModel(tip: tip, isSliding: isSliding, currentSlide: currentSlide, isActual: isActual)
+	@Binding var nav: SlideHorizontalNav
+	
+	init(tip: TipsResponse, nav: Binding<SlideHorizontalNav>, isSliding: Bool, currentSlide: Int, isActual: Bool) {
+		self._nav = nav
+		self.props = TipsFullScreenPageModel(
+			tip: tip, isSliding: isSliding, currentSlide: currentSlide, isActual: isActual
+		)
 		
 		if self.props.isActual {
 			self.props.mediaRequest()
@@ -105,7 +109,7 @@ struct TipsFullScreenPage: View {
 						tip: self.props.tip,
 						status: media.status,
 						currentMedia: self.$props.currentMedia,
-						currentSlide: self.$props.currentSlide,
+						nav: self.$nav,
 						isDetectingPress: self.$props.isDetectingPress,
 						onChangeStatus: { value in  self.props.changeStatus(value: value) }) {
 							if media.status == .failed {

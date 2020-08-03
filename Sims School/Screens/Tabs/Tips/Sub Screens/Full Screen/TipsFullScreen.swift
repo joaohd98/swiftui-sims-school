@@ -20,6 +20,7 @@ struct TipsFullScreen: View {
 			self.props.tips.enumerated().map { (index, tip) in
 				TipsFullScreenPage(
 					tip: self.props.tips[index],
+					nav: self.$props.nav,
 					isSliding: self.props.isSliding,
 					currentSlide: self.props.index,
 					isActual: self.props.index == tip.index
@@ -27,6 +28,7 @@ struct TipsFullScreen: View {
 			},
 			hasDots: false,
 			currentPage: self.props.index,
+			nav: self.$props.nav,
 			currentPageCallBack: { number in
 				self.props.index = number
 			},
@@ -34,7 +36,6 @@ struct TipsFullScreen: View {
 			},
 			isInModal: true
 		)
-
 	}
 }
 
