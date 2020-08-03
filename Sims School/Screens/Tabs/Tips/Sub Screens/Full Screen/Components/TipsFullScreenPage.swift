@@ -39,16 +39,7 @@ struct TipsFullScreenPage: View {
 		}
 			
 		else {
-			let backgroundColors = Gradient(colors: [
-				Color(UIColor.hexStringToUIColor(hex: "#cccccc")),
-				Color(UIColor.hexStringToUIColor(hex: "#e5e5e5"))
-			])
-		
-			let gradient = LinearGradient(
-				gradient: backgroundColors, startPoint: .top, endPoint: .bottom
-			)
-			
-			return AnyView(gradient)
+			return AnyView(Color.black)
 		}
 		
 	}
@@ -58,13 +49,13 @@ struct TipsFullScreenPage: View {
 			.resizable()
 			.frame(width: UIScreen.screenWidth, height: UIScreen.screenHeight  - 20)
 			.clipped()
-			.opacity(0.95)
+			.opacity(0.92)
 	}
 	
 	func getVerticalVideo(_ videoView: VideoView) -> some View {
 		videoView
 			.frame(width: nil, height: UIScreen.screenHeight - 20, alignment: .center)
-			.opacity(0.95)
+			.opacity(0.92)
 	}
 	
 	var failedView: some View {
@@ -85,7 +76,7 @@ struct TipsFullScreenPage: View {
 	}
 	
 	var loadingView: some View {
-		ActivityIndicator(color: .black, transform: CGAffineTransform(scaleX: 3, y: 3))
+		ActivityIndicator(transform: CGAffineTransform(scaleX: 2, y: 2))
 	}
 	
 	var successView: some View {
@@ -94,6 +85,8 @@ struct TipsFullScreenPage: View {
 	
 	var body: some View {
 		let media = self.getActualMedia()
+		
+		print(props.currentMedia)
 		
 		return (
 			GeometryReader { geometry in

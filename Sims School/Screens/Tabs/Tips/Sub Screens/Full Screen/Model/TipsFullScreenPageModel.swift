@@ -30,8 +30,11 @@ class TipsFullScreenPageModel: ObservableObject {
 	}
 	
 	func changeStatus (value: Int) {
+		print("currentMedia", currentMedia)
 		self.currentMedia += value
-		self.mediaRequest()
+		DispatchQueue.global().asyncAfter(deadline: .now() + 1) {
+			self.mediaRequest()
+		}
 	}
 	
 	func mediaRequest() {
@@ -64,6 +67,7 @@ class TipsFullScreenPageModel: ObservableObject {
 				}
 				else {
 					media.status = .failed
+					self.medias[index] = media
 				}
 			}
 		}
