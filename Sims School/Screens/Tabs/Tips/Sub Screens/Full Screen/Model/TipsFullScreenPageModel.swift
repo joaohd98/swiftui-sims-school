@@ -10,6 +10,8 @@ import Foundation
 
 
 class TipsFullScreenPageModel: ObservableObject {
+	static var serialQueue = DispatchQueue(label: "TipsFullScreenPageModel")
+	
 	@Published var tip: TipsResponse
 	@Published var medias: [TipsMediasResponse]
 	@Published var isSliding: Bool
@@ -33,31 +35,38 @@ class TipsFullScreenPageModel: ObservableObject {
 	}
 	
 	func mediaRequest() {
-		let media = TipsMediasResponse(media: self.medias[self.currentMedia])
+		let index = self.currentMedia
+		let media = TipsMediasResponse(media: self.medias[index])
 		
 		if media.uiImage != nil || media.videoView != nil {
 			media.status = .success
 			return
 		}
 		
-		TipsService.getMedia(media: media) { (url, image, video) in
-			if let image = image {
-				media.uiImage = image
-				media.status = .success
-				media.isVerticalImage(imageSource: image)
-				
-				self.medias[self.currentMedia] = media
-			}
-			else if let video = video {
-				media.videoView = video
-				media.status = .success
-				media.isVerticalVideo(url: url!)
-				
-				self.medias[self.currentMedia] = media
-			}
-			else {
-				media.status = .failed
+		Self.serialQueue.sync {
+			TipsService.getMedia(media: media) { (url, image, video) in
+				if let image = image {
+					
+					media.uiImage = image
+					media.status = .success
+					media.isVerticalImage(imageSource: image)
+					
+					
+					self.medias[index] = media
+				}
+				else if let video = video {
+					media.videoView = video
+					media.status = .success
+					media.isVerticalVideo(url: url!)
+					
+					
+					self.medias[index] = media
+				}
+				else {
+					media.status = .failed
+				}
 			}
 		}
+		
 	}
 }

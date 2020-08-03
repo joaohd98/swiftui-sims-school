@@ -29,7 +29,7 @@ struct TipsFullScreenContainerMedia<Content: View>: View {
 	func tapHandler(location: CGPoint) {
 		let x = location.x
 		let half = UIScreen.screenWidth / 2
-				
+						
 		if x > half {			
 			if self.currentMedia + 1 >= self.tip.medias.count {
 //				if let index = self.tip.indicies.nextTip {
