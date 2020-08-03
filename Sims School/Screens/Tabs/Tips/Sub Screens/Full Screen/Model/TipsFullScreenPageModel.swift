@@ -75,12 +75,12 @@ class TipsFullScreenPageModel: ObservableObject {
 				if seconds <= 0 {
 					timer.invalidate()
 					
-					//					if self.currentMedia + 1 >= self.medias.count {
-					//						self.nav = .next
-					//					}
-					//					else {
-					//						self.currentMedia += 1
-					//					}
+//					if self.currentMedia + 1 >= self.medias.count {
+//						self.nav = .next
+//					}
+//					else {
+//						self.currentMedia += 1
+//					}
 					
 				}
 				
@@ -109,10 +109,10 @@ class TipsFullScreenPageModel: ObservableObject {
 			self.medias[index] = media
 			
 			if media.image != nil {
-				self.setTimeVideo()
+				self.setTimeImage()
 			}
 			else {
-				self.setTimeImage()
+				self.setTimeVideo()
 			}
 			
 			return
@@ -126,7 +126,6 @@ class TipsFullScreenPageModel: ObservableObject {
 		serialQueue.sync {
 			TipsService.getMedia(media: media, hasPause: self.$isDetectingPress ) { (url, image, video) in
 				if let image = image {
-					
 					media.uiImage = image
 					media.status = .success
 					media.isVerticalImage(imageSource: image)
@@ -146,21 +145,8 @@ class TipsFullScreenPageModel: ObservableObject {
 					
 				}
 				else {
-					let url = URL(string: "https://bit.ly/swswift")!
-					
-					media.videoView = VideoView(
-						videoURL: url,
-						hasToPause: false
-					)
-					
-					media.isVerticalVideo(url: url) {
-						media.status = .success
-						self.medias[index] = media
-						self.setTimeVideo()
-					}
-					
-					//					media.status = .failed
-					//					self.medias[index] = media
+					media.status = .failed
+					self.medias[index] = media
 				}
 				
 				self.tip.medias = self.medias
