@@ -67,6 +67,7 @@
 		DC64928024BE1A3D00EDAC0E /* HomeScreenAds.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC64927F24BE1A3D00EDAC0E /* HomeScreenAds.swift */; };
 		DC662B5324D712B200D8B6EB /* TipsFullScreenImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC662B5224D712B200D8B6EB /* TipsFullScreenImage.swift */; };
 		DC662B5524D7550200D8B6EB /* TipsFullScreenPageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC662B5424D7550200D8B6EB /* TipsFullScreenPageModel.swift */; };
+		DC662B5724D7C0B900D8B6EB /* NextPreviousUiPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC662B5624D7C0B900D8B6EB /* NextPreviousUiPageViewController.swift */; };
 		DC73635424D66FBC00D3202F /* TipsFullScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC73635324D66FBC00D3202F /* TipsFullScreenModel.swift */; };
 		DC74CF8424CB229000EFBFA0 /* RemoveAllCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC74CF8324CB228F00EFBFA0 /* RemoveAllCoreData.swift */; };
 		DC74CF8824CB6CDF00EFBFA0 /* ClassRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC74CF8724CB6CDF00EFBFA0 /* ClassRequest.swift */; };
@@ -179,6 +180,7 @@
 		DC64927F24BE1A3D00EDAC0E /* HomeScreenAds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenAds.swift; sourceTree = "<group>"; };
 		DC662B5224D712B200D8B6EB /* TipsFullScreenImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsFullScreenImage.swift; sourceTree = "<group>"; };
 		DC662B5424D7550200D8B6EB /* TipsFullScreenPageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsFullScreenPageModel.swift; sourceTree = "<group>"; };
+		DC662B5624D7C0B900D8B6EB /* NextPreviousUiPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextPreviousUiPageViewController.swift; sourceTree = "<group>"; };
 		DC73635324D66FBC00D3202F /* TipsFullScreenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsFullScreenModel.swift; sourceTree = "<group>"; };
 		DC74CF8324CB228F00EFBFA0 /* RemoveAllCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveAllCoreData.swift; sourceTree = "<group>"; };
 		DC74CF8724CB6CDF00EFBFA0 /* ClassRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassRequest.swift; sourceTree = "<group>"; };
@@ -941,6 +943,7 @@
 				DC74CF8324CB228F00EFBFA0 /* RemoveAllCoreData.swift */,
 				DC577C6424D3215C001104F7 /* Cache.swift */,
 				DC577C6624D339CF001104F7 /* ConcurrentSequence.swift */,
+				DC662B5624D7C0B900D8B6EB /* NextPreviousUiPageViewController.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1160,6 +1163,7 @@
 				DC07B46E24C5DA7400840714 /* TipsScreen.swift in Sources */,
 				DC577C6324D307D0001104F7 /* TipsScreenModel.swift in Sources */,
 				DCF0440F24AE393500241062 /* FormRules.swift in Sources */,
+				DC662B5724D7C0B900D8B6EB /* NextPreviousUiPageViewController.swift in Sources */,
 				DC577C6024D3060C001104F7 /* TipsMediasResponse.swift in Sources */,
 				DC10078B24C77DC200DB3EE7 /* MenuScreenLogout.swift in Sources */,
 				DC73635424D66FBC00D3202F /* TipsFullScreenModel.swift in Sources */,

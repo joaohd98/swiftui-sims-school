@@ -12,7 +12,7 @@ struct SlideHorizontal<Page: View>: View {
 	var hasDots: Bool
 	var isInModal: Bool
 		
-	@State var currentPage: Int = 0
+	@State var currentPage: Int
 	@State var isSliding = false
 	
 	var currentPageCallBack: (Int) -> Void
@@ -21,6 +21,7 @@ struct SlideHorizontal<Page: View>: View {
 	init(
 		_ views: [Page],
 		hasDots: Bool,
+		currentPage: Int = 0,
 		currentPageCallBack: @escaping (Int) -> Void = { _ in },
 		isSlidingCallBack: @escaping (Bool) -> Void = { _ in },
 		isInModal: Bool = false) {
@@ -30,6 +31,7 @@ struct SlideHorizontal<Page: View>: View {
 		self.isInModal = isInModal
 		self.currentPageCallBack = currentPageCallBack
 		self.isSlidingCallBack = isSlidingCallBack
+		self._currentPage = State(initialValue: currentPage)
 	}
 
     var body: some View {

@@ -120,6 +120,7 @@ struct HomeScreenClasses: View {
 			SlideHorizontal(
 				classes.enumerated().map { (index, element) in self.getCard(actualClass: element, index: index) },
 				hasDots: true,
+				currentPage: self.currentClass,
 				currentPageCallBack: { page in
 					self.currentClass = page
 				}

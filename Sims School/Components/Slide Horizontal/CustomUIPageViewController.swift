@@ -37,12 +37,12 @@ struct CustomUIPageViewController: UIViewControllerRepresentable {
 		
 		pageViewController.setViewControllers(
 			[controllers[currentPage]], direction: .forward, animated: true)
-	
+		
 		return pageViewController
 	}
 	
 	func updateUIViewController(_ pageViewController: UIPageViewController, context: Context) {
-
+		
 	}
 	
 	class Coordinator: NSObject, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
@@ -90,7 +90,8 @@ struct CustomUIPageViewController: UIViewControllerRepresentable {
 			return parent.controllers[index + 1]
 		}
 		
-		func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
+		func pageViewController(
+			_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
 			self.parent.isSlidingCallBack(true)
 		}
 		
@@ -103,7 +104,7 @@ struct CustomUIPageViewController: UIViewControllerRepresentable {
 				self.parent.currentPageCallBack(index)
 				
 			}
-					
+			
 			self.parent.isSlidingCallBack(false)
 		}
 		

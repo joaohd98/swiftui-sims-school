@@ -121,7 +121,7 @@ struct TipsFullScreenPage: View {
 					if media.status == .success {
 						TipsFullScreenOpenLink(
 							link: media.url,
-							isVertical: !media.isVerticalIMG && !media.isVerticalVideo,
+							isVertical: media.isVerticalIMG && media.isVerticalVideo,
 							isVisible: !self.props.isDetectingPress && !self.props.isSliding
 						)
 					}
