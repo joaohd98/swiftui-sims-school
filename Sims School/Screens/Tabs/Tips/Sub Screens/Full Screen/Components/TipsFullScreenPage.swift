@@ -118,6 +118,7 @@ struct TipsFullScreenPage: View {
 	
 	func getVerticalVideo(_ videoView: VideoView) -> some View {
 		videoView
+			.restart(self.currentSlide != self.props.tip.index)
 			.hasPause(self.isDetectingPress || self.isSliding)
 			.frame(width: nil, height: UIScreen.screenHeight - 20, alignment: .center)
 			.opacity(0.92)
@@ -152,6 +153,7 @@ struct TipsFullScreenPage: View {
 		return (
 			TipsFullScreenImage(
 				media: self.getActualMedia(),
+				restart: self.currentSlide != self.props.tip.index,
 				hasPause: self.isDetectingPress || self.isSliding
 			)
 			.onAppear { media.image != nil  ? self.setTimeImage() : self.setTimeVideo() }

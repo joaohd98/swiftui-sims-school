@@ -32,6 +32,10 @@ class PlayerView: UIView {
 	func play() {
 		playerLayer.player?.play()
 	}
+	
+	func stop() {
+		playerLayer.player?.seek(to: .zero)
+	}
 		
 	required init?(coder: NSCoder) {
 		super.init(coder: coder)

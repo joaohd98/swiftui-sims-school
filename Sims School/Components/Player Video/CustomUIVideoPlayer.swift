@@ -11,6 +11,7 @@ import AVKit
 
 protocol CustomVIew: UIViewRepresentable {
 	func hasPause(_ newState: Bool) -> Self;
+	func restart(_ newState: Bool) -> Self;
 }
 
 struct VideoView: CustomVIew {
@@ -28,7 +29,22 @@ struct VideoView: CustomVIew {
 		let copy = self
 				
 		if newState {
+
 			self.playerView.pause()
+		}
+		else {
+			self.playerView.play()
+		}
+
+		return copy
+	}
+	
+	
+	func restart(_ newState: Bool) -> VideoView {
+		let copy = self
+				
+		if newState {
+			self.playerView.stop()
 		}
 		else {
 			self.playerView.play()

@@ -10,6 +10,7 @@ import SwiftUI
 
 struct TipsFullScreenImage: View {
 	@ObservedObject var media: TipsMediasResponse
+	var restart: Bool
 	var hasPause: Bool
 
 	func getHorizontalImage(_ uiImage: UIImage) -> some View {
@@ -24,6 +25,7 @@ struct TipsFullScreenImage: View {
 	func getHorizontalVideo(_ videoView: VideoView) -> some View {
 		videoView
 			.hasPause(hasPause)
+			.restart(restart)
 			.frame(width: UIScreen.screenWidth, height: UIScreen.screenHeight / 1.5, alignment: .center)
 	}
 	
@@ -46,6 +48,6 @@ struct TipsFullScreenImage_Previews: PreviewProvider {
 	@State static var media = TipsMediasResponse()
 	
 	static var previews: some View {
-		TipsFullScreenImage(media: media, hasPause: false)
+		TipsFullScreenImage(media: media, restart: false, hasPause: false)
 	}
 }
