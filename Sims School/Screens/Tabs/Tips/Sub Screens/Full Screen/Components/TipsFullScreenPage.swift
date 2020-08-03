@@ -15,7 +15,7 @@ struct TipsFullScreenPage: View {
 	@Binding var isSliding: Bool
 	@Binding var isDetectingPress: Bool
 	var timer: Timer?
-
+	
 	init(tip: TipsResponse, nav: Binding<SlideHorizontalNav>, isSliding: Binding<Bool>,
 		 isDetectingPress: Binding<Bool>, currentSlide: Binding<Int>) {
 		
@@ -24,14 +24,7 @@ struct TipsFullScreenPage: View {
 		self._isSliding = isSliding
 		self._isDetectingPress = isDetectingPress
 		self._currentSlide = currentSlide
-
-		if self.currentSlide == self.props.tip.index {
-			self.props.mediaRequest()
-		}
 		
-		else {
-			
-		}
 	}
 	
 	func getActualMedia() -> TipsMediasResponse {
@@ -78,14 +71,14 @@ struct TipsFullScreenPage: View {
 				media.status = .loading
 				
 				self.props.medias[self.props.currentMedia] = media
-
+				
 				DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
 					self.props.mediaRequest()
 				}
-			},
+		},
 			color: .white
 		)
-		.padding(.horizontal)
+			.padding(.horizontal)
 	}
 	
 	var loadingView: some View {
@@ -98,7 +91,7 @@ struct TipsFullScreenPage: View {
 	
 	var body: some View {
 		let media = self.getActualMedia()
-				
+		
 		return (
 			GeometryReader { geometry in
 				VStack {
@@ -106,35 +99,39 @@ struct TipsFullScreenPage: View {
 						tip: self.props.tip,
 						currentMedia: self.props.currentMedia,
 						progress: media.progress,
-						isVisible: !self.isDetectingPress && !self.isSliding
+						isVisible: !self.isDetectingPress
 					)
 					TipsFullScreenBackButton(
 						tip: self.props.tip,
-						isVisible: !self.isDetectingPress && !self.isSliding
+						isVisible: !self.isDetectingPress
 					)
-					TipsFullScreenContainerMedia(
-						tip: self.props.tip,
-						status: media.status,
-						currentMedia: self.$props.currentMedia,
-						nav: self.$nav,
-						isDetectingPress: self.$isDetectingPress,
-						onChangeStatus: { value in  self.props.changeStatus(value: value) }) {
-							if media.status == .failed {
-								self.failedView
-							}
-							else if media.status == .loading {
-								self.loadingView
-							}
-							else {
-								self.successView
-							}
-					}
-					if media.status == .success {
-						TipsFullScreenOpenLink(
-							link: media.url,
-							isVertical: media.isVerticalIMG && media.isVerticalVideo,
-							isVisible: !self.isDetectingPress && !self.isSliding
-						)
+					if self.currentSlide == self.props.tip.index || media.status == .success {
+						TipsFullScreenContainerMedia(
+							tip: self.props.tip,
+							status: media.status,
+							currentMedia: self.$props.currentMedia,
+							nav: self.$nav,
+							isDetectingPress: self.$isDetectingPress,
+							onChangeStatus: { value in  self.props.changeStatus(value: value) }) {
+								if media.status == .failed {
+									self.failedView
+								}
+								else if media.status == .loading {
+									self.loadingView
+								}
+								else {
+									self.successView
+								}
+						}
+						.onAppear {
+							self.props.mediaRequest()
+						}
+						if media.status == .success {
+							TipsFullScreenOpenLink(
+								link: media.url,
+								isVertical: media.isVerticalIMG && media.isVerticalVideo
+							)
+						}
 					}
 				}
 				.background(self.getBackground())

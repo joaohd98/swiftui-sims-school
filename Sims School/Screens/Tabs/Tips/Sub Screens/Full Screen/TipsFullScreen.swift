@@ -10,11 +10,13 @@ import SwiftUI
 
 struct TipsFullScreen: View {
 	@ObservedObject var props: TipsFullScreenModel
+	@State var index: Int
 	@State var isSliding: Bool = false
 	@State var isDetectingPress: Bool = false
 	
 	init(tips: [TipsResponse], tipIndex: Int) {
 		self.props = TipsFullScreenModel(tips: tips, index: tipIndex)
+		self._index = State(initialValue: tipIndex)
 	}
 	
 	var body: some View {
@@ -25,17 +27,17 @@ struct TipsFullScreen: View {
 					nav: self.$props.nav,
 					isSliding: self.$isSliding,
 					isDetectingPress: self.$isDetectingPress,
-					currentSlide: self.$props.index
+					currentSlide: self.$index
 				)
 			},
 			hasDots: false,
-			currentPage: self.props.index,
+			currentPage: self.index,
 			nav: self.$props.nav,
 			currentPageCallBack: { number in
-				self.props.index = number
+				self.index = number
 			},
 			isSlidingCallBack: { isSliding in
-
+				self.isSliding = isSliding
 			},
 			isInModal: true
 		)

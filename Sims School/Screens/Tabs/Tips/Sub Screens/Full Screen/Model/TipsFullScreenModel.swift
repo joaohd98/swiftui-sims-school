@@ -13,13 +13,10 @@ import UIKit
 
 class TipsFullScreenModel: ObservableObject {
 	@Published var tips: [TipsResponse]
-	@Published var index: Int
 	@Published var nav: SlideHorizontalNav
-
 
 	init(tips: [TipsResponse], index: Int) {
 		self.tips = tips
-		self.index = index
 		self.nav = .none
 	}
 }

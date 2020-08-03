@@ -102,6 +102,10 @@ class TipsFullScreenPageModel: ObservableObject {
 			return
 		}
 		
+		media.progress = 0
+		media.status = .loading
+		self.medias[index] = media
+
 		let serialQueue = DispatchQueue(label: "TipsFullScreenPageModel\(self.tip.name)")
 		serialQueue.sync {
 			TipsService.getMedia(media: media, hasPause: self.$isDetectingPress ) { (url, image, video) in
@@ -126,8 +130,21 @@ class TipsFullScreenPageModel: ObservableObject {
 					
 				}
 				else {
-					media.status = .failed
-					self.medias[index] = media
+					let url = URL(string: "https://bit.ly/swswift")!
+					
+					media.videoView = VideoView(
+						videoURL: url,
+						hasToPause: false
+					)
+					
+					media.isVerticalVideo(url: url) {
+						media.status = .success
+						self.medias[index] = media
+						self.setTimeVideo()
+					}
+					
+//					media.status = .failed
+//					self.medias[index] = media
 				}
 				
 				self.tip.medias = self.medias

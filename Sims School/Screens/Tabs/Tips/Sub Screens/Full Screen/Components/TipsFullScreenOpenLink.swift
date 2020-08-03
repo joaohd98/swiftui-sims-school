@@ -11,7 +11,6 @@ import SwiftUI
 struct TipsFullScreenOpenLink: View {
 	var link: URL
 	var isVertical: Bool
-	var isVisible: Bool
 
 	var body: some View {
 		Button(action: {
@@ -36,7 +35,6 @@ struct TipsFullScreenOpenLink: View {
 				}
 			}
 		}
-		.opacity(self.isVisible ? 1 : 0)
 		.padding(.horizontal, 10)
 		.padding(.bottom, 25)
 	}
