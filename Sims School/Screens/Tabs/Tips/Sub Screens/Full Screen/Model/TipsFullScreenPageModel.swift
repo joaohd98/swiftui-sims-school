@@ -14,28 +14,27 @@ class TipsFullScreenPageModel: ObservableObject {
 	@Published var tip: TipsResponse
 	@Published var medias: [TipsMediasResponse]
 	@Published var currentMedia: Int
-	@Published var changedSlide: Bool
-	@Binding var nav: SlideHorizontalNav
-	@Binding var isDetectingPress: Bool
+	@Published var nav: SlideHorizontalNav
+	@Published var isDetectingPress: Bool
+	@Published var isSliding: Bool
 	var timer: Timer?
 	
-	init(tip: TipsResponse, nav: Binding<SlideHorizontalNav>, isDetectingPress: Binding<Bool>) {
+	init(tip: TipsResponse, nav: SlideHorizontalNav, isDetectingPress: Bool, isSliding: Bool) {
 		self.tip = tip
 		self.medias = tip.medias
-		self._nav = nav
-		self._isDetectingPress = isDetectingPress
+		self.nav = nav
+		self.isDetectingPress = isDetectingPress
+		self.isSliding  = isSliding
 		self.currentMedia = 0
-		self.changedSlide = false
 	}
 	
 	func setTimeImage() {
-		var seconds = 5.0
+		var seconds = 10.0
 		let interval = 0.1
 		let valueProgress = (1 / seconds) / 10
 		
 		self.timer = Timer.scheduledTimer(withTimeInterval: interval, repeats: true) { timer in
-			
-			if true {
+			if !self.isDetectingPress && !self.isSliding {
 				let media = self.medias[self.currentMedia]
 				
 				seconds -= interval
@@ -44,12 +43,10 @@ class TipsFullScreenPageModel: ObservableObject {
 				if seconds < 0 {
 					timer.invalidate()
 					
-					//					if self.currentMedia + 1 >= self.medias.count {
-					//						self.nav = .next
-					//					}
-					//					else {
-					//						self.currentMedia += 1
-					//					}
+					if self.currentMedia + 1 >= self.medias.count {
+					}
+					else {
+					}
 				}
 				
 				self.medias[self.currentMedia] = media
@@ -66,7 +63,7 @@ class TipsFullScreenPageModel: ObservableObject {
 		
 		self.timer = Timer.scheduledTimer(withTimeInterval: interval, repeats: true) { timer in
 			
-			if true {
+			if !self.isDetectingPress && !self.isSliding {
 				let media = self.medias[self.currentMedia]
 				
 				seconds -= interval
@@ -75,12 +72,12 @@ class TipsFullScreenPageModel: ObservableObject {
 				if seconds <= 0 {
 					timer.invalidate()
 					
-//					if self.currentMedia + 1 >= self.medias.count {
-//						self.nav = .next
-//					}
-//					else {
-//						self.currentMedia += 1
-//					}
+					if self.currentMedia + 1 >= self.medias.count {
+
+					}
+					else {
+
+					}
 					
 				}
 				
@@ -89,7 +86,7 @@ class TipsFullScreenPageModel: ObservableObject {
 		}
 	}
 	
-	
+
 	func changeStatus (value: Int) {
 		self.currentMedia += value
 		self.mediaRequest()
@@ -124,7 +121,7 @@ class TipsFullScreenPageModel: ObservableObject {
 		
 		let serialQueue = DispatchQueue(label: "TipsFullScreenPageModel\(self.tip.name)")
 		serialQueue.sync {
-			TipsService.getMedia(media: media, hasPause: self.$isDetectingPress ) { (url, image, video) in
+			TipsService.getMedia(media: media) { (url, image, video) in
 				if let image = image {
 					media.uiImage = image
 					media.status = .success

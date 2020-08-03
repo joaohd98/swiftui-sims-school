@@ -26,10 +26,10 @@ struct TipsFullScreen: View {
 			self.props.tips.enumerated().map { (index, tip) in
 				TipsFullScreenPage(
 					tip: self.props.tips[index],
-					nav: self.$nav,
+					nav: self.nav,
 					presentationMode: self.presentationMode,
-					isSliding: self.$isSliding,
-					isDetectingPress: self.$isDetectingPress,
+					isSliding: self.isSliding,
+					isDetectingPress: self.isDetectingPress,
 					currentSlide: self.$index
 				)
  			},

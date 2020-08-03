@@ -53,14 +53,13 @@ class TipsService {
 	
 	static func getMedia(
 		media: TipsMediasResponse,
-		hasPause: Binding<Bool>,
 		completion: @escaping ((_ url: URL?, _ image: UIImage?, _ video: VideoView?) -> Void)) {
 		let isVideo = media.video != nil
 		
 		FirebaseDatabase.storage.reference().child((isVideo ? media.video : media.image)!).downloadURL { url, error in
 			if error == nil, let url = url {
 				if isVideo {
-					completion(url, nil, VideoView(videoURL: url, hasToPause: false))
+					completion(url, nil, VideoView(playerView: PlayerView(frame: .zero, url: url)))
 				}
 					
 				else {

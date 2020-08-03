@@ -10,23 +10,18 @@ import SwiftUI
 
 struct TipsFullScreenPage: View {
 	@ObservedObject var props: TipsFullScreenPageModel
-	@Binding var nav: SlideHorizontalNav
 	@Binding var presentationMode: PresentationMode
 	@Binding var currentSlide: Int
-	@Binding var isSliding: Bool
-	@Binding var isDetectingPress: Bool
 	var timer: Timer?
 	
-	init(tip: TipsResponse, nav: Binding<SlideHorizontalNav>, presentationMode: Binding<PresentationMode>,
-		 isSliding: Binding<Bool>, isDetectingPress: Binding<Bool>, currentSlide: Binding<Int>) {
+	init(tip: TipsResponse, nav: SlideHorizontalNav, presentationMode: Binding<PresentationMode>,
+		 isSliding: Bool, isDetectingPress: Bool, currentSlide: Binding<Int>) {
 		
-		self.props = TipsFullScreenPageModel(tip: tip, nav: nav, isDetectingPress: isDetectingPress)
+		self.props = TipsFullScreenPageModel(
+			tip: tip, nav: nav, isDetectingPress: isDetectingPress, isSliding: isSliding
+		)
 		self._presentationMode = presentationMode
-		self._nav = nav
-		self._isSliding = isSliding
-		self._isDetectingPress = isDetectingPress
 		self._currentSlide = currentSlide
-		
 	}
 	
 	func getActualMedia() -> TipsMediasResponse {
@@ -60,8 +55,11 @@ struct TipsFullScreenPage: View {
 	
 	func getVerticalVideo(_ videoView: VideoView) -> some View {
 		videoView
+			.hasPause(self.props.isDetectingPress || self.props.isSliding)
 			.frame(width: nil, height: UIScreen.screenHeight - 20, alignment: .center)
 			.opacity(0.92)
+		
+		
 	}
 	
 	var failedView: some View {
@@ -77,10 +75,10 @@ struct TipsFullScreenPage: View {
 				DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
 					self.props.mediaRequest()
 				}
-		},
+			},
 			color: .white
 		)
-			.padding(.horizontal)
+		.padding(.horizontal)
 	}
 	
 	var loadingView: some View {
@@ -88,7 +86,10 @@ struct TipsFullScreenPage: View {
 	}
 	
 	var successView: some View {
-		TipsFullScreenImage(media: self.getActualMedia())
+		TipsFullScreenImage(
+			media: self.getActualMedia(),
+			hasPause: self.props.isDetectingPress || self.props.isSliding
+		)
 	}
 	
 	var body: some View {
@@ -101,52 +102,52 @@ struct TipsFullScreenPage: View {
 						tip: self.props.tip,
 						currentMedia: self.props.currentMedia,
 						progress: media.progress,
-						isVisible: !self.isDetectingPress
+						isVisible: !self.props.isDetectingPress
 					)
 					TipsFullScreenBackButton(
 						presentationMode: self.$presentationMode,
 						tip: self.props.tip,
-						isVisible: !self.isDetectingPress
+						isVisible: !self.props.isDetectingPress
 					)
-					//					if self.currentSlide == self.props.tip.index || media.status == .success {
-					TipsFullScreenContainerMedia(
-						tip: self.props.tip,
-						status: media.status,
-						currentMedia: self.$props.currentMedia,
-						presentationMode: self.$presentationMode,
-						nav: self.$nav,
-						isDetectingPress: self.$isDetectingPress,
-						onChangeStatus: { value in  self.props.changeStatus(value: value) }) {
-							if media.status == .failed {
-								self.failedView
-							}
-							else if media.status == .loading {
-								self.loadingView
-							}
-							else {
-								self.successView
-							}
-					}
-					.onAppear {
-						self.props.mediaRequest()
-					}
-					if media.status == .success {
-						TipsFullScreenOpenLink(
-							link: media.url,
-							isVertical: media.isVerticalIMG && media.isVerticalVideo
-						)
-					}
-					//					}
-					//					else {
-					//						Group {
-					//							Spacer()
-					//							self.loadingView
-					//							Spacer()
-					//						}
-					//						.onAppear {
-					//							self.props.mediaRequest()
-					//						}
-					//					}
+//					if self.currentSlide == self.props.tip.index || media.status == .success {
+						TipsFullScreenContainerMedia(
+							tip: self.props.tip,
+							status: media.status,
+							currentMedia: self.$props.currentMedia,
+							presentationMode: self.$presentationMode,
+							nav: self.$props.nav,
+							isDetectingPress: self.$props.isDetectingPress,
+							onChangeStatus: { value in  self.props.changeStatus(value: value) }) {
+								if media.status == .failed {
+									self.failedView
+								}
+								else if media.status == .loading {
+									self.loadingView
+								}
+								else {
+									self.successView
+								}
+						}
+						.onAppear {
+							self.props.mediaRequest()
+						}
+						if media.status == .success {
+							TipsFullScreenOpenLink(
+								link: media.url,
+								isVertical: media.isVerticalIMG && media.isVerticalVideo
+							)
+						}
+//					}
+//					else {
+//						Group {
+//							Spacer()
+//							self.loadingView
+//							Spacer()
+//						}
+//						.onAppear {
+//							self.props.mediaRequest()
+//						}
+//					}
 				}
 				.background(self.getBackground())
 				.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .top)

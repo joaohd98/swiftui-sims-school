@@ -9,31 +9,41 @@
 import SwiftUI
 import AVKit
 
-struct VideoView: UIViewRepresentable {
-	var videoURL: URL
-	var hasToPause: Bool
+protocol CustomVIew: UIViewRepresentable {
+	func hasPause(_ newState: Bool) -> Self;
+}
+
+struct VideoView: CustomVIew {
+	var playerView: PlayerView
 
 	func makeUIView(context: Context) -> PlayerView {
-		return PlayerView(frame: .zero, url: videoURL)
+		return playerView
 	}
 
 	func updateUIView(_ playerView: PlayerView, context: Context) {
-		if self.hasToPause {
-			playerView.pause()
+
+	}
+	
+	func hasPause(_ newState: Bool) -> VideoView {
+		let copy = self
+				
+		if newState {
+			self.playerView.pause()
 		}
 		else {
-			playerView.play()
+			self.playerView.play()
 		}
+
+		return copy
 	}
 	
 }
 
-struct CustomUIVideoPlayer_Previews: PreviewProvider {
-	@State static var videoURL = "https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8"
-	@State static var hasToPause = false
-	
-	static var previews: some View {
-		VideoView(videoURL: URL(string: videoURL)!, hasToPause: self.hasToPause)
-	}
-}
-
+//struct CustomUIVideoPlayer_Previews: PreviewProvider {
+//	@State static var videoURL = "https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8"
+//
+//	static var previews: some View {
+//		VideoView(videoURL: URL(string: videoURL)!)
+//	}
+//}
+//
