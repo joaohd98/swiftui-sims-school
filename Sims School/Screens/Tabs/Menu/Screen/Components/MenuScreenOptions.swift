@@ -85,9 +85,13 @@ struct MenuScreenOptions: View {
 			}
 			.frame(width: UIScreen.screenWidth / 2 - 60, alignment: .leading)
 			.padding()
-			.background(Color.white)
+			.background(Color(UIColor { (trait) -> UIColor in
+			   return trait.userInterfaceStyle == .dark ? .black : .white
+			}))
 			.cornerRadius(15)
-			.shadow(color: Color.black.opacity(0.2), radius: 7, x: 0, y: 2)
+			.shadow(color: Color(UIColor { (trait) -> UIColor in
+			   return trait.userInterfaceStyle == .dark ? .white : .black
+			}), radius: 2.5, x: 0, y: 2)
 		}
 	}
 	

@@ -21,6 +21,12 @@ class TipsFullScreenPageModel: ObservableObject {
 		self.medias = tip.medias
 		self.currentMedia = 0
 	}
+	
+	func removeTimer() {
+		if let timer = self.timer {
+			timer.invalidate()
+		}
+	}
 
 	func changeStatus (value: Int) {
 		self.currentMedia += value
@@ -28,9 +34,7 @@ class TipsFullScreenPageModel: ObservableObject {
 	}
 	
 	func mediaRequest() {
-		if let timer = self.timer {
-			timer.invalidate()
-		}
+		self.removeTimer()
 		
 		let index = self.currentMedia
 		let media = self.medias[index]
@@ -42,10 +46,6 @@ class TipsFullScreenPageModel: ObservableObject {
 			
 			return
 		}
-		
-		media.progress = 0
-		media.status = .loading
-		self.medias[index] = media
 		
 		let serialQueue = DispatchQueue(label: "TipsFullScreenPageModel\(self.tip.name)")
 		serialQueue.sync {
@@ -68,8 +68,21 @@ class TipsFullScreenPageModel: ObservableObject {
 					
 				}
 				else {
-					media.status = .failed
-					self.medias[index] = media
+					let url = URL(string: "https://www.talkwalker.com/images/2020/blog-headers/image-analysis.png")!
+					
+					URLSession.shared.downloadImageAndCache(url: url) { image in
+						if let image = image {
+							media.uiImage = image
+							media.status = .success
+							media.isVerticalImage(imageSource: image)
+							
+							self.medias[index] = media
+							
+						}
+					}
+					
+//					media.status = .failed
+//					self.medias[index] = media
 				}
 				
 				self.tip.medias = self.medias

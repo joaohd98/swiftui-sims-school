@@ -44,7 +44,7 @@ class TipsMediasResponse: ObservableObject {
 	
 	func isVerticalVideo(url: URL, completion: @escaping () -> Void) {
 		let videoTrack = AVAsset(url: url)
-		let assets =  ["tracks", "duration"]
+		let assets =  ["tracks"]
 		
 		videoTrack.loadValuesAsynchronously(forKeys: assets) {
 			let duration = videoTrack.duration.seconds

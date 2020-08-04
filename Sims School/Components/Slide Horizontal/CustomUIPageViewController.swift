@@ -43,17 +43,14 @@ struct CustomUIPageViewController: UIViewControllerRepresentable {
 	}
 	
 	func updateUIViewController(_ pageViewController: UIPageViewController, context: Context) {
-		
 		if nav != .none {
 			if nav == .next {
 				pageViewController.goToNextPage()
 			}
-			
 			else {
 				pageViewController.goToPreviousPage()
 			}
 		}
-		
 	}
 	
 	class Coordinator: NSObject, UIPageViewControllerDataSource, UIPageViewControllerDelegate {

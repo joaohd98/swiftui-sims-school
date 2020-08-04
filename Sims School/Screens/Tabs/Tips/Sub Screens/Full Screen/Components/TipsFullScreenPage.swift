@@ -47,8 +47,13 @@ struct TipsFullScreenPage: View {
 					timer.invalidate()
 					
 					if self.props.currentMedia + 1 >= self.props.medias.count {
+						self.nav = .next
+						DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+							self.nav = .none
+						}
 					}
 					else {
+						self.props.currentMedia += 1
 					}
 				}
 				
@@ -60,7 +65,7 @@ struct TipsFullScreenPage: View {
 	func setTimeVideo() {
 		let media = self.getActualMedia()
 		
-		var seconds = media.videoDuration
+		var seconds = 10.0
 		let interval = 0.1
 		let valueProgress = (1 / seconds) / 10
 		
@@ -76,12 +81,14 @@ struct TipsFullScreenPage: View {
 					timer.invalidate()
 					
 					if self.props.currentMedia + 1 >= self.props.medias.count {
-
+						self.nav = .next
+						DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+							self.nav = .none
+						}
 					}
 					else {
-
+							self.props.currentMedia += 1
 					}
-					
 				}
 				
 				self.props.medias[self.props.currentMedia] = media
@@ -94,12 +101,12 @@ struct TipsFullScreenPage: View {
 		let media = self.getActualMedia()
 		
 		if let uiImage = media.uiImage, media.isVerticalIMG {
-			return AnyView(getVerticalImage(uiImage).onAppear { self.setTimeImage() })
+			return AnyView(getVerticalImage(uiImage).onAppear { self.setTimeImage() }.onDisappear {self.props.removeTimer()})
 				
 		}
 			
 		else if let videoView = media.videoView, media.isVerticalVideo {
-			return AnyView(getVerticalVideo(videoView).onAppear { self.setTimeVideo() })
+			return AnyView(getVerticalVideo(videoView).onAppear { self.setTimeVideo() }.onDisappear {self.props.removeTimer()})
 
 		}
 			
@@ -158,12 +165,15 @@ struct TipsFullScreenPage: View {
 				hasPause: self.isDetectingPress || self.isSliding
 			)
 			.onAppear { media.image != nil  ? self.setTimeImage() : self.setTimeVideo() }
+			.onDisappear {self.props.removeTimer() }
 		)
 	}
 	
 	var body: some View {
 		let media = self.getActualMedia()
-				
+		
+		print("currentMedia", self.props.currentMedia)
+		
 		return (
 			GeometryReader { geometry in
 				VStack {
