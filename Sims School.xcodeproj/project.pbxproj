@@ -21,6 +21,7 @@
 		DC198D3E24C3D2B000AF27B5 /* ClassesScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC198D3D24C3D2B000AF27B5 /* ClassesScreenModel.swift */; };
 		DC1D22DB24BE5C1F00E1855D /* SlideHorizontal.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1D22DA24BE5C1F00E1855D /* SlideHorizontal.swift */; };
 		DC24909324CF6ABB006746D0 /* CameraCaptureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC24909224CF6ABB006746D0 /* CameraCaptureView.swift */; };
+		DC25F61024D995D10006542C /* TipsFullScreenBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC25F60F24D995D10006542C /* TipsFullScreenBackground.swift */; };
 		DC26355624D17ADC00CFBF4F /* CalendarRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC26355524D17ADC00CFBF4F /* CalendarRequest.swift */; };
 		DC26355824D17AF000CFBF4F /* CalendarResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC26355724D17AF000CFBF4F /* CalendarResponse.swift */; };
 		DC26355A24D17AFC00CFBF4F /* CalendarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC26355924D17AFC00CFBF4F /* CalendarService.swift */; };
@@ -135,6 +136,7 @@
 		DC198D3D24C3D2B000AF27B5 /* ClassesScreenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassesScreenModel.swift; sourceTree = "<group>"; };
 		DC1D22DA24BE5C1F00E1855D /* SlideHorizontal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideHorizontal.swift; sourceTree = "<group>"; };
 		DC24909224CF6ABB006746D0 /* CameraCaptureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraCaptureView.swift; sourceTree = "<group>"; };
+		DC25F60F24D995D10006542C /* TipsFullScreenBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsFullScreenBackground.swift; sourceTree = "<group>"; };
 		DC26355524D17ADC00CFBF4F /* CalendarRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarRequest.swift; sourceTree = "<group>"; };
 		DC26355724D17AF000CFBF4F /* CalendarResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarResponse.swift; sourceTree = "<group>"; };
 		DC26355924D17AFC00CFBF4F /* CalendarService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarService.swift; sourceTree = "<group>"; };
@@ -286,7 +288,6 @@
 			isa = PBXGroup;
 			children = (
 				DCFD821B24C61413008E3C05 /* List */,
-				DCFD821C24C6142A008E3C05 /* Full Screen */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -427,6 +428,7 @@
 				DC357ABB24D46441007A23D9 /* TipsFullScreenOpenLink.swift */,
 				DC5919A824D49E99002CEE22 /* TipsFullScreenPage.swift */,
 				DC662B5224D712B200D8B6EB /* TipsFullScreenImage.swift */,
+				DC25F60F24D995D10006542C /* TipsFullScreenBackground.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -959,13 +961,6 @@
 			path = List;
 			sourceTree = "<group>";
 		};
-		DCFD821C24C6142A008E3C05 /* Full Screen */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Full Screen";
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1170,6 +1165,7 @@
 				DC662B5724D7C0B900D8B6EB /* NextPreviousUiPageViewController.swift in Sources */,
 				DC577C6024D3060C001104F7 /* TipsMediasResponse.swift in Sources */,
 				DC10078B24C77DC200DB3EE7 /* MenuScreenLogout.swift in Sources */,
+				DC25F61024D995D10006542C /* TipsFullScreenBackground.swift in Sources */,
 				DC73635424D66FBC00D3202F /* TipsFullScreenModel.swift in Sources */,
 				DCB672DA24B2683D0064484D /* HexToUiColor.swift in Sources */,
 				DC53D72624C0EB53004266CE /* CustomUIPageViewController.swift in Sources */,

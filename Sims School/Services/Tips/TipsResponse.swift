@@ -19,8 +19,6 @@ class TipsResponse: ObservableObject {
 	@Published var name: String
 	@Published var medias: [TipsMediasResponse]
 	@Published var thumbnail: UIImage
-	@Published var index: Int
-	@Published var mediasIndex: Int
 	@Published var indicies: (prevTip: Int?, nextTip: Int?)
 	@Published var test: Bool = false
 
@@ -28,13 +26,7 @@ class TipsResponse: ObservableObject {
 		name = ""
 		medias = []
 		thumbnail = UIImage()
-		index = 0
-		mediasIndex = 0
 		indicies = (prevTip: nil, nextTip: nil)
-	}
-	
-	func getMedia() -> TipsMediasResponse {
-		return medias[mediasIndex]
 	}
 }
 

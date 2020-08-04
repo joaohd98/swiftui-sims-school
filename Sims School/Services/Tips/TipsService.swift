@@ -30,9 +30,6 @@ class TipsService {
 				group.notify(queue: .main) {
 					let size = response.count
 					response = response.enumerated().map {(index, tip) in
-						tip.index = index
-						tip.mediasIndex = 0
-						
 						let prev = index - 1 > -1 ? index - 1 : nil
 						let next = index + 1 < size ? index + 1 : nil
 						tip.indicies.prevTip = prev

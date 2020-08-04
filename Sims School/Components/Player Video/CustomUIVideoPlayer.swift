@@ -29,7 +29,7 @@ struct VideoView: CustomVIew {
 		let copy = self
 				
 		if newState {
-
+			print("pause....")
 			self.playerView.pause()
 		}
 		else {
@@ -42,7 +42,7 @@ struct VideoView: CustomVIew {
 	
 	func restart(_ newState: Bool) -> VideoView {
 		let copy = self
-				
+		
 		if newState {
 			self.playerView.stop()
 		}

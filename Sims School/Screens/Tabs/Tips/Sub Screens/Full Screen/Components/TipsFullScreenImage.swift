@@ -12,7 +12,8 @@ struct TipsFullScreenImage: View {
 	@ObservedObject var media: TipsMediasResponse
 	var restart: Bool
 	var hasPause: Bool
-
+	var onAppear: () -> Void
+	
 	func getHorizontalImage(_ uiImage: UIImage) -> some View {
 		Image(uiImage: uiImage)
 			.resizable()
@@ -20,13 +21,19 @@ struct TipsFullScreenImage: View {
 			.frame(width: UIScreen.screenWidth, height: UIScreen.screenHeight / 1.5)
 			.clipped()
 			.padding(.vertical, 10)
+			.onAppear { self.onAppear() }
 	}
 	
 	func getHorizontalVideo(_ videoView: VideoView) -> some View {
-		videoView
-			.hasPause(hasPause)
-			.restart(restart)
-			.frame(width: UIScreen.screenWidth, height: UIScreen.screenHeight / 1.5, alignment: .center)
+		print("hasPause", hasPause)
+
+		return (
+			videoView
+				.hasPause(hasPause)
+				.restart(restart)
+				.frame(width: UIScreen.screenWidth, height: UIScreen.screenHeight / 1.5, alignment: .center)
+				.onAppear { self.onAppear() }
+		)
 	}
 	
 	var body: some View {
@@ -48,6 +55,6 @@ struct TipsFullScreenImage_Previews: PreviewProvider {
 	@State static var media = TipsMediasResponse()
 	
 	static var previews: some View {
-		TipsFullScreenImage(media: media, restart: false, hasPause: false)
+		TipsFullScreenImage(media: media, restart: false, hasPause: false, onAppear: {})
 	}
 }

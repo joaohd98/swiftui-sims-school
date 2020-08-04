@@ -1,247 +1,208 @@
-//
-//  TipsFullScreenPage.swift
-//  Sims School
-//
-//  Created by João Damazio on 31/07/20.
-//  Copyright © 2020 João Damazio. All rights reserved.
-//
-
-import SwiftUI
-
-struct TipsFullScreenPage: View {
-	@ObservedObject var props: TipsFullScreenPageModel
-	@Binding var presentationMode: PresentationMode
-	@Binding var currentSlide: Int
-	@Binding var isDetectingPress: Bool
-	@Binding var isSliding: Bool
-	@Binding var nav: SlideHorizontalNav
-
-	init(tip: TipsResponse, nav: Binding<SlideHorizontalNav>, presentationMode: Binding<PresentationMode>,
-		 isSliding: Binding<Bool>, isDetectingPress: Binding<Bool>, currentSlide: Binding<Int>) {
-		
-		self.props = TipsFullScreenPageModel(tip: tip)
-		self._nav = nav
-		self._presentationMode = presentationMode
-		self._currentSlide = currentSlide
-		self._isDetectingPress = isDetectingPress
-		self._isSliding = isSliding
-	}
+	//
+	//  TipsFullScreenPage.swift
+	//  Sims School
+	//
+	//  Created by João Damazio on 31/07/20.
+	//  Copyright © 2020 João Damazio. All rights reserved.
+	//
 	
-	func getActualMedia() -> TipsMediasResponse {
-		self.props.medias[self.props.currentMedia]
-	}
+	import SwiftUI
 	
-	func setTimeImage() {
-		var seconds = 10.0
-		let interval = 0.1
-		let valueProgress = (1 / seconds) / 10
+	struct TipsFullScreenPage: View {
+		@ObservedObject var props: TipsFullScreenPageModel
+		@Binding var presentationMode: PresentationMode
+		@Binding var currentSlide: Int
+		@Binding var isSliding: Bool
+		@Binding var isDetectingPress: Bool
+		@Binding var nav: SlideHorizontalNav
 		
-		self.props.timer = Timer.scheduledTimer(withTimeInterval: interval, repeats: true) { timer in
-			if !self.isDetectingPress && !self.isSliding {
-				let media = self.getActualMedia()
+		init(tip: TipsResponse, nav: Binding<SlideHorizontalNav>, presentationMode: Binding<PresentationMode>,
+			 isSliding: Binding<Bool>, isDetectingPress: Binding<Bool>, currentSlide: Binding<Int>) {
+			
+			self.props = TipsFullScreenPageModel(tip: tip)
+			self._nav = nav
+			self._presentationMode = presentationMode
+			self._currentSlide = currentSlide
+			self._isDetectingPress = isDetectingPress
+			self._isSliding = isSliding
+		}
+		
+		func getOnAppear() -> () -> Void {
+			let media = self.props.getActualMedia()
+			
+			if media.uiImage != nil {
+				return self.setTimeImage
+			}
 				
-				seconds -= interval
-				media.progress += valueProgress
+			else if media.videoView != nil {
+				return self.setTimeVideo
+			}
 				
-				if seconds < 0 {
-					timer.invalidate()
-					
-					if self.props.currentMedia + 1 >= self.props.medias.count {
-						self.nav = .next
-						DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-							self.nav = .none
-						}
-					}
-					else {
-						self.props.currentMedia += 1
-					}
-				}
-				
-				self.props.medias[self.props.currentMedia] = media
+			else {
+				return {}
 			}
 		}
-	}
-	
-	func setTimeVideo() {
-		let media = self.getActualMedia()
 		
-		var seconds = 10.0
-		let interval = 0.1
-		let valueProgress = (1 / seconds) / 10
-		
-		self.props.timer = Timer.scheduledTimer(withTimeInterval: interval, repeats: true) { timer in
+		func setTimeImage() {
+			let seconds = 10.0
+			let interval = 0.1
+			let valueProgress = (1 / seconds) / 10
 			
-			if !self.isDetectingPress && !self.isSliding {
-				let media = self.getActualMedia()
-
-				seconds -= interval
-				media.progress += valueProgress
-								
-				if seconds <= 0 {
-					timer.invalidate()
+			self.setTime(seconds: seconds, interval: interval, valueProgress: valueProgress)
+		}
+		
+		func setTimeVideo() {
+			let seconds = self.props.getActualMedia().videoDuration
+			let interval = 0.1
+			let valueProgress = (1 / seconds) / 10
+			
+			self.setTime(seconds: seconds, interval: interval, valueProgress: valueProgress)
+			
+		}
+		
+		func setTime(seconds: Double, interval: Double, valueProgress: Double) {
+			let media = self.props.getActualMedia()
+			media.progress = 0
+			self.props.medias[self.props.currentMedia] = media
+			
+			var seconds = seconds
+			
+			self.props.timer = Timer.scheduledTimer(withTimeInterval: interval, repeats: true) { timer in
+				
+				if !self.isDetectingPress && !self.isSliding {
+					let media = self.props.getActualMedia()
 					
-					if self.props.currentMedia + 1 >= self.props.medias.count {
-						self.nav = .next
-						DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-							self.nav = .none
+					seconds -= interval
+					media.progress += valueProgress
+					
+					if seconds <= 0 {
+						timer.invalidate()
+						
+						if self.props.currentMedia + 1 >= self.props.medias.count {
+							self.nav = .next
+							DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+								self.nav = .none
+							}
+						}
+						else {
+							self.props.changeStatus(value: 1)
 						}
 					}
-					else {
-							self.props.currentMedia += 1
-					}
+					
+					self.props.medias[self.props.currentMedia] = media
 				}
-				
-				self.props.medias[self.props.currentMedia] = media
 			}
 		}
-	}
-
-	
-	func getBackground() -> AnyView {
-		let media = self.getActualMedia()
 		
-		if let uiImage = media.uiImage, media.isVerticalIMG {
-			return AnyView(getVerticalImage(uiImage).onAppear { self.setTimeImage() }.onDisappear {self.props.removeTimer()})
-				
-		}
-			
-		else if let videoView = media.videoView, media.isVerticalVideo {
-			return AnyView(getVerticalVideo(videoView).onAppear { self.setTimeVideo() }.onDisappear {self.props.removeTimer()})
-
-		}
-			
-		else {
-			return AnyView(Color.black)
-		}
-		
-	}
-	
-	func getVerticalImage(_ uiImage: UIImage) -> some View {
-		Image(uiImage: uiImage)
-			.resizable()
-			.frame(width: UIScreen.screenWidth, height: UIScreen.screenHeight  - 20)
-			.clipped()
-			.opacity(0.92)
-	}
-	
-	func getVerticalVideo(_ videoView: VideoView) -> some View {
-		videoView
-			.restart(self.currentSlide != self.props.tip.index)
-			.hasPause(self.isDetectingPress || self.isSliding)
-			.frame(width: nil, height: UIScreen.screenHeight - 20, alignment: .center)
-			.opacity(0.92)
-	}
-	
-	var failedView: some View {
-		TryAgainView(
-			text: "There was an error when trying to get the tip.",
-			onTryAgain: {
-				let media = self.props.medias[self.props.currentMedia]
-				
-				media.status = .loading
-				
-				self.props.medias[self.props.currentMedia] = media
-				
-				DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-					self.props.mediaRequest()
-				}
+		var failedView: some View {
+			TryAgainView(
+				text: "There was an error when trying to get the tip.",
+				onTryAgain: {
+					let media = self.props.medias[self.props.currentMedia]
+					
+					media.status = .loading
+					
+					self.props.medias[self.props.currentMedia] = media
+					
+					DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+						self.props.mediaRequest()
+					}
 			},
-			color: .white
-		)
-		.padding(.horizontal)
-	}
-	
-	var loadingView: some View {
-		ActivityIndicator(transform: CGAffineTransform(scaleX: 2, y: 2))
-	}
-	
-	var successView: some View {
-		let media = self.getActualMedia()
-			
-		return (
-			TipsFullScreenImage(
-				media: self.getActualMedia(),
-				restart: self.currentSlide != self.props.tip.index,
-				hasPause: self.isDetectingPress || self.isSliding
+				color: .white
 			)
-			.onAppear { media.image != nil  ? self.setTimeImage() : self.setTimeVideo() }
-			.onDisappear {self.props.removeTimer() }
-		)
+				.padding(.horizontal)
+		}
+		
+		var loadingView: some View {
+			ActivityIndicator(transform: CGAffineTransform(scaleX: 2, y: 2))
+		}
+		
+		var successView: some View {
+			TipsFullScreenImage(
+				media: self.props.getActualMedia(),
+				restart: self.currentSlide != self.props.currentMedia,
+				hasPause: self.isDetectingPress || self.isSliding,
+				onAppear: self.getOnAppear()
+			)
+		}
+		
+		var body: some View {
+			let media = self.props.getActualMedia()
+			
+			return (
+				GeometryReader { geometry in
+					VStack {
+						TipsFullScreenProgressBar(
+							tip: self.props.tip,
+							currentMedia: self.props.currentMedia,
+							progress: media.progress,
+							isVisible: !self.isDetectingPress
+						)
+						TipsFullScreenBackButton(
+							presentationMode: self.$presentationMode,
+							tip: self.props.tip,
+							isVisible: !self.isDetectingPress
+						)
+						if self.currentSlide == self.props.currentMedia || media.status == .success {
+							TipsFullScreenContainerMedia(
+								tip: self.props.tip,
+								status: media.status,
+								currentMedia: self.$props.currentMedia,
+								presentationMode: self.$presentationMode,
+								nav: self.$nav,
+								isDetectingPress: self.$isDetectingPress,
+								onChangeStatus: { value in  self.props.changeStatus(value: value) }) {
+									if media.status == .failed {
+										self.failedView
+									}
+									else if media.status == .loading {
+										self.loadingView
+									}
+									else {
+										self.successView
+									}
+								}
+								.onAppear {
+									self.props.mediaRequest()
+								}
+								if media.status == .success {
+									TipsFullScreenOpenLink(
+										link: media.url,
+										isVertical: media.isVerticalIMG && media.isVerticalVideo
+									)
+								}
+						}
+						else {
+							Group {
+								Spacer()
+								self.loadingView
+								Spacer()
+							}
+							.onAppear {
+								self.props.mediaRequest()
+							}
+						}
+					}
+					.background(TipsFullScreenBackground(
+						media: media,
+						restart: self.currentSlide != self.props.currentMedia,
+						hasPause: self.isDetectingPress || self.isSliding,
+						onAppear: self.getOnAppear()
+					))
+					.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .top)
+					.rotation3DEffect(
+						Angle(degrees: Double(geometry.frame(in: .global).minX / 5)),
+						axis: (x: 0, y: 10, z: 0)
+					)
+				}
+				.background(Color.black)
+			)
+		}
 	}
 	
-	var body: some View {
-		let media = self.getActualMedia()
-		
-		print("currentMedia", self.props.currentMedia)
-		
-		return (
-			GeometryReader { geometry in
-				VStack {
-					TipsFullScreenProgressBar(
-						tip: self.props.tip,
-						currentMedia: self.props.currentMedia,
-						progress: media.progress,
-						isVisible: !self.isDetectingPress
-					)
-					TipsFullScreenBackButton(
-						presentationMode: self.$presentationMode,
-						tip: self.props.tip,
-						isVisible: !self.isDetectingPress
-					)
-					if self.currentSlide == self.props.tip.index || media.status == .success {
-						TipsFullScreenContainerMedia(
-							tip: self.props.tip,
-							status: media.status,
-							currentMedia: self.$props.currentMedia,
-							presentationMode: self.$presentationMode,
-							nav: self.$nav,
-							isDetectingPress: self.$isDetectingPress,
-							onChangeStatus: { value in  self.props.changeStatus(value: value) }) {
-								if media.status == .failed {
-									self.failedView
-								}
-								else if media.status == .loading {
-									self.loadingView
-								}
-								else {
-									self.successView
-								}
-						}
-						.onAppear {
-							self.props.mediaRequest()
-						}
-						if media.status == .success {
-							TipsFullScreenOpenLink(
-								link: media.url,
-								isVertical: media.isVerticalIMG && media.isVerticalVideo
-							)
-						}
-					}
-					else {
-						Group {
-							Spacer()
-							self.loadingView
-							Spacer()
-						}
-						.onAppear {
-							self.props.mediaRequest()
-						}
-					}
-				}
-				.background(self.getBackground())
-				.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .top)
-				.rotation3DEffect(
-					Angle(degrees: Double(geometry.frame(in: .global).minX / 5)),
-					axis: (x: 0, y: 10, z: 0)
-				)
-			}
-			.background(Color.black)
-		)
-	}
-}
-
-//struct TipsFullScreenPage_Previews: PreviewProvider {
-//	static var previews: some View {
-//		TipsFullScreenPage()
-//	}
-//}
+	//struct TipsFullScreenPage_Previews: PreviewProvider {
+	//	static var previews: some View {
+	//		TipsFullScreenPage()
+	//	}
+	//}
+	

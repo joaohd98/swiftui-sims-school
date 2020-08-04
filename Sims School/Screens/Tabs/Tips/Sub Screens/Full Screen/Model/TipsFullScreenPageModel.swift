@@ -27,6 +27,11 @@ class TipsFullScreenPageModel: ObservableObject {
 			timer.invalidate()
 		}
 	}
+	
+	func getActualMedia() -> TipsMediasResponse {
+		self.medias[self.currentMedia]
+	}
+		
 
 	func changeStatus (value: Int) {
 		self.currentMedia += value
@@ -68,21 +73,8 @@ class TipsFullScreenPageModel: ObservableObject {
 					
 				}
 				else {
-					let url = URL(string: "https://www.talkwalker.com/images/2020/blog-headers/image-analysis.png")!
-					
-					URLSession.shared.downloadImageAndCache(url: url) { image in
-						if let image = image {
-							media.uiImage = image
-							media.status = .success
-							media.isVerticalImage(imageSource: image)
-							
-							self.medias[index] = media
-							
-						}
-					}
-					
-//					media.status = .failed
-//					self.medias[index] = media
+					media.status = .failed
+					self.medias[index] = media
 				}
 				
 				self.tip.medias = self.medias
