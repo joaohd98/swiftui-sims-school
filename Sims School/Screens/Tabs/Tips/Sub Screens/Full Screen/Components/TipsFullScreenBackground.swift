@@ -41,8 +41,8 @@ struct TipsFullScreenBackground: View {
 	
 	func getVerticalVideo(_ videoView: VideoView) -> some View {
 		videoView
-			.restart(restart)
-			.hasPause(hasPause || changeSlide)
+			.restart(restart || changeSlide)
+			.hasPause(hasPause)
 			.opacity(0.92)
 			.opacity(self.opacityVideo())
 			.onAppear {
