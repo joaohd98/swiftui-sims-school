@@ -35,6 +35,7 @@ class PlayerView: UIView {
 	
 	func stop() {
 		playerLayer.player?.seek(to: .zero)
+		playerLayer.player?.pause()
 	}
 		
 	required init?(coder: NSCoder) {

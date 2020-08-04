@@ -17,7 +17,7 @@ protocol CustomVIew: UIViewRepresentable {
 struct VideoView: CustomVIew {
 	var playerView: PlayerView
 	var isPlaying: Bool = true
-	var isStopped: Bool = false
+	var isStopped: Bool = true
 
 	func makeUIView(context: Context) -> PlayerView {
 		return playerView

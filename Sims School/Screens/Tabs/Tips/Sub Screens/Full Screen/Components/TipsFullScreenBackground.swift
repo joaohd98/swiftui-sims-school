@@ -9,11 +9,27 @@
 import SwiftUI
 
 struct TipsFullScreenBackground: View {
+	@State var restart: Bool = true
 	var media: TipsMediasResponse
-	var restart: Bool
+	var changeSlide: Bool
 	var hasPause: Bool
 	var onAppear: () -> Void
 
+	func onAppearVideo() {
+		DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+			self.restart = false
+			self.onAppear()
+		}
+	}
+	
+	func onDisappearVideo() {
+		self.restart = true
+	}
+	
+	func opacityVideo() -> Double {
+		return self.restart ? 0 : 0.92
+	}
+	
 	func getVerticalImage(_ uiImage: UIImage) -> some View {
 		Image(uiImage: uiImage)
 			.resizable()
@@ -24,18 +40,18 @@ struct TipsFullScreenBackground: View {
 	}
 	
 	func getVerticalVideo(_ videoView: VideoView) -> some View {
-		print("video", self.restart)
-		print("video", self.hasPause)
-
-		return (
-			videoView
+		videoView
 			.restart(restart)
-			.hasPause(hasPause)
+			.hasPause(hasPause || changeSlide)
 			.opacity(0.92)
-			.onAppear { self.onAppear() }
+			.opacity(self.opacityVideo())
+			.onAppear {
+				self.onAppearVideo()
+			}
+			.onDisappear {
+				self.onDisappearVideo()
+			}
 			.frame(width: nil, height: UIScreen.screenHeight - 20, alignment: .center)
-		)
-	
 	}
 	
     var body: some View {
@@ -57,13 +73,13 @@ struct TipsFullScreenBackground: View {
     }
 }
 
-struct TipsFullScreenBackground_Previews: PreviewProvider {
-    static var previews: some View {
-		TipsFullScreenBackground(
-			media: TipsMediasResponse(),
-			restart: false,
-			hasPause: false,
-			onAppear: {}
-		)
-    }
-}
+//struct TipsFullScreenBackground_Previews: PreviewProvider {
+//    static var previews: some View {
+//		TipsFullScreenBackground(
+//			restart: TipsMediasResponse(),
+//			media: false,
+//			changeSlide: false,
+//			hasPause: {}
+//		)
+//    }
+//}

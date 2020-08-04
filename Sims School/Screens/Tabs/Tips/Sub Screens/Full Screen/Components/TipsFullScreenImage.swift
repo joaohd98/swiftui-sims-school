@@ -8,11 +8,28 @@
 
 import SwiftUI
 
+
 struct TipsFullScreenImage: View {
+	@State var restart: Bool = true
 	@ObservedObject var media: TipsMediasResponse
-	var restart: Bool
+	var changeSlide: Bool
 	var hasPause: Bool
 	var onAppear: () -> Void
+	
+	func onAppearVideo() {
+		DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+			self.restart = false
+			self.onAppear()
+		}
+	}
+	
+	func onDisappearVideo() {
+		self.restart = true
+	}
+	
+	func opacityVideo() -> Double {
+		return self.restart ? 0 : 0.92
+	}
 	
 	func getHorizontalImage(_ uiImage: UIImage) -> some View {
 		Image(uiImage: uiImage)
@@ -25,15 +42,21 @@ struct TipsFullScreenImage: View {
 	}
 	
 	func getHorizontalVideo(_ videoView: VideoView) -> some View {
-		print("hasPause", hasPause)
-
-		return (
-			videoView
-				.hasPause(hasPause)
-				.restart(restart)
-				.frame(width: UIScreen.screenWidth, height: UIScreen.screenHeight / 1.5, alignment: .center)
-				.onAppear { self.onAppear() }
-		)
+		videoView
+			.hasPause(hasPause)
+			.restart(restart || changeSlide)
+			.frame(
+				width: UIScreen.screenWidth,
+				height: UIScreen.screenHeight / 1.5,
+				alignment: .center
+			)
+			.opacity(self.opacityVideo())
+			.onAppear {
+				self.onAppearVideo()
+			}
+			.onDisappear {
+				self.onDisappearVideo()
+			}
 	}
 	
 	var body: some View {
@@ -51,10 +74,10 @@ struct TipsFullScreenImage: View {
 	}
 }
 
-struct TipsFullScreenImage_Previews: PreviewProvider {
-	@State static var media = TipsMediasResponse()
-	
-	static var previews: some View {
-		TipsFullScreenImage(media: media, restart: false, hasPause: false, onAppear: {})
-	}
-}
+//struct TipsFullScreenImage_Previews: PreviewProvider {
+//	@State static var media = TipsMediasResponse()
+//
+//	static var previews: some View {
+//		TipsFullScreenImage(media: media, restart: false, isVertical: false, hasPause: false, onAppear: {})
+//	}
+//}

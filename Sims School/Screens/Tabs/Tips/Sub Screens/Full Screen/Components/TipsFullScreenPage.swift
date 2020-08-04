@@ -94,14 +94,14 @@
 			}
 		}
 		
-		func getPropsMedia() -> (media: TipsMediasResponse, restart: Bool, hasPause: Bool,  onAppear: () -> Void) {
+		func getPropsMedia() -> (media: TipsMediasResponse, changeSlide: Bool, hasPause: Bool,  onAppear: () -> Void) {
 			let media = self.props.getActualMedia()
 			
-			let restart = self.currentSlide != self.props.tip.index || media.index != self.props.currentMedia
-		
+			let changeSlide = self.currentSlide != self.props.tip.index
+					
 			return (
 				media: media,
-				restart: restart,
+				changeSlide: changeSlide,
 				hasPause: self.isSliding || self.isDetectingPress,
 				onAppear: self.getOnAppear()
 			)
@@ -136,7 +136,7 @@
 			return (
 				TipsFullScreenImage(
 					media: props.media,
-					restart: props.restart,
+					changeSlide: props.changeSlide,
 					hasPause: props.hasPause,
 					onAppear: props.onAppear
 				)
@@ -178,10 +178,10 @@
 								else {
 									self.successView
 								}
-						}
-						.onAppear {
-							self.props.mediaRequest()
-						}
+							}
+							.onAppear {
+								self.props.mediaRequest()
+							}
 						if media.status == .success {
 							TipsFullScreenOpenLink(
 								link: media.url,
@@ -191,7 +191,7 @@
 					}
 					.background(TipsFullScreenBackground(
 						media: propsMedia.media,
-						restart: propsMedia.restart,
+						changeSlide: propsMedia.changeSlide,
 						hasPause: propsMedia.hasPause,
 						onAppear: propsMedia.onAppear
 					))
