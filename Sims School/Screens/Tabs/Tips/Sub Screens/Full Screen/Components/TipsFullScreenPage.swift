@@ -94,6 +94,19 @@
 			}
 		}
 		
+		func getPropsMedia() -> (media: TipsMediasResponse, restart: Bool, hasPause: Bool,  onAppear: () -> Void) {
+			let media = self.props.getActualMedia()
+			
+			let restart = self.currentSlide != self.props.tip.index || media.index != self.props.currentMedia
+		
+			return (
+				media: media,
+				restart: restart,
+				hasPause: self.isSliding || self.isDetectingPress,
+				onAppear: self.getOnAppear()
+			)
+		}
+		
 		var failedView: some View {
 			TryAgainView(
 				text: "There was an error when trying to get the tip.",
@@ -118,17 +131,22 @@
 		}
 		
 		var successView: some View {
-			TipsFullScreenImage(
-				media: self.props.getActualMedia(),
-				restart: self.currentSlide != self.props.currentMedia,
-				hasPause: self.isDetectingPress || self.isSliding,
-				onAppear: self.getOnAppear()
+			let props = self.getPropsMedia()
+			
+			return (
+				TipsFullScreenImage(
+					media: props.media,
+					restart: props.restart,
+					hasPause: props.hasPause,
+					onAppear: props.onAppear
+				)
 			)
 		}
 		
 		var body: some View {
 			let media = self.props.getActualMedia()
-			
+			let propsMedia = self.getPropsMedia()
+					
 			return (
 				GeometryReader { geometry in
 					VStack {
@@ -143,51 +161,39 @@
 							tip: self.props.tip,
 							isVisible: !self.isDetectingPress
 						)
-						if self.currentSlide == self.props.currentMedia || media.status == .success {
-							TipsFullScreenContainerMedia(
-								tip: self.props.tip,
-								status: media.status,
-								currentMedia: self.$props.currentMedia,
-								presentationMode: self.$presentationMode,
-								nav: self.$nav,
-								isDetectingPress: self.$isDetectingPress,
-								onChangeStatus: { value in  self.props.changeStatus(value: value) }) {
-									if media.status == .failed {
-										self.failedView
-									}
-									else if media.status == .loading {
-										self.loadingView
-									}
-									else {
-										self.successView
-									}
+						TipsFullScreenContainerMedia(
+							tip: self.props.tip,
+							status: media.status,
+							currentMedia: self.$props.currentMedia,
+							presentationMode: self.$presentationMode,
+							nav: self.$nav,
+							isDetectingPress: self.$isDetectingPress,
+							onChangeStatus: { value in  self.props.changeStatus(value: value) }) {
+								if  media.status == .loading {
+									self.loadingView
 								}
-								.onAppear {
-									self.props.mediaRequest()
+								else if media.status == .failed {
+									self.failedView
 								}
-								if media.status == .success {
-									TipsFullScreenOpenLink(
-										link: media.url,
-										isVertical: media.isVerticalIMG && media.isVerticalVideo
-									)
+								else {
+									self.successView
 								}
 						}
-						else {
-							Group {
-								Spacer()
-								self.loadingView
-								Spacer()
-							}
-							.onAppear {
-								self.props.mediaRequest()
-							}
+						.onAppear {
+							self.props.mediaRequest()
+						}
+						if media.status == .success {
+							TipsFullScreenOpenLink(
+								link: media.url,
+								isVertical: media.isVerticalIMG && media.isVerticalVideo
+							)
 						}
 					}
 					.background(TipsFullScreenBackground(
-						media: media,
-						restart: self.currentSlide != self.props.currentMedia,
-						hasPause: self.isDetectingPress || self.isSliding,
-						onAppear: self.getOnAppear()
+						media: propsMedia.media,
+						restart: propsMedia.restart,
+						hasPause: propsMedia.hasPause,
+						onAppear: propsMedia.onAppear
 					))
 					.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .top)
 					.rotation3DEffect(

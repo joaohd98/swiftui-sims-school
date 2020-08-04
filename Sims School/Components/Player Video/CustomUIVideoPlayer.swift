@@ -16,6 +16,8 @@ protocol CustomVIew: UIViewRepresentable {
 
 struct VideoView: CustomVIew {
 	var playerView: PlayerView
+	var isPlaying: Bool = true
+	var isStopped: Bool = false
 
 	func makeUIView(context: Context) -> PlayerView {
 		return playerView
@@ -23,33 +25,34 @@ struct VideoView: CustomVIew {
 
 	func updateUIView(_ playerView: PlayerView, context: Context) {
 
+		if !isPlaying {
+			playerView.pause()
+		}
+		
+		else if isStopped {
+			playerView.stop()
+		}
+		
+		else {
+			playerView.play()
+		}
+		
 	}
 	
 	func hasPause(_ newState: Bool) -> VideoView {
-		let copy = self
-				
-		if newState {
-			print("pause....")
-			self.playerView.pause()
-		}
-		else {
-			self.playerView.play()
-		}
-
+		var copy = self
+			
+		copy.isPlaying = !newState
+	
 		return copy
 	}
 	
 	
 	func restart(_ newState: Bool) -> VideoView {
-		let copy = self
+		var copy = self
 		
-		if newState {
-			self.playerView.stop()
-		}
-		else {
-			self.playerView.play()
-		}
-
+		copy.isStopped = newState
+		
 		return copy
 	}
 	

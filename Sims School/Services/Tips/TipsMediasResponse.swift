@@ -12,6 +12,7 @@ import SwiftUI
 import AVFoundation
 
 class TipsMediasResponse: ObservableObject {
+	@Published var index: Int
 	@Published var url: URL!
 	@Published var image: String?
 	@Published var video: String?
@@ -24,6 +25,7 @@ class TipsMediasResponse: ObservableObject {
 	@Published var isVerticalIMG: Bool
 	
 	init() {
+		self.index = 0
 		self.image = nil
 		self.video = nil
 		self.videoDuration = 0

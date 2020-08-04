@@ -24,8 +24,9 @@ struct TipsFullScreenBackground: View {
 	}
 	
 	func getVerticalVideo(_ videoView: VideoView) -> some View {
-		
-		
+		print("video", self.restart)
+		print("video", self.hasPause)
+
 		return (
 			videoView
 			.restart(restart)
