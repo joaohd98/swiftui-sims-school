@@ -18,6 +18,7 @@ struct CustomUIPageViewController: UIViewControllerRepresentable {
 	var isInModal: Bool = false
 	var currentPageCallBack: (Int) -> Void
 	var isSlidingCallBack: (Bool) -> Void
+	var sliding = false
 	
 	func makeCoordinator() -> Coordinator {
 		Coordinator(self)
@@ -50,6 +51,7 @@ struct CustomUIPageViewController: UIViewControllerRepresentable {
 			else {
 				pageViewController.goToPreviousPage()
 			}
+			
 		}
 	}
 	
@@ -100,6 +102,7 @@ struct CustomUIPageViewController: UIViewControllerRepresentable {
 		
 		func pageViewController(
 			_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
+			self.parent.sliding = true
 			self.parent.isSlidingCallBack(true)
 		}
 		
@@ -113,7 +116,10 @@ struct CustomUIPageViewController: UIViewControllerRepresentable {
 
 			}
 						
-			self.parent.isSlidingCallBack(false)
+			if self.parent.sliding {
+				self.parent.isSlidingCallBack(false)
+				self.parent.sliding = false
+			}
 		}
 		
 	}

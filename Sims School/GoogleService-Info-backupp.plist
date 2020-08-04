@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>268085241448-c6q2m6hk489s99c32evvcqplhnln8lt6.apps.googleusercontent.com</string>
+	<string>594196771574-3blc5f81hjluvh2e5vge9tm1kiv75tn6.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.268085241448-c6q2m6hk489s99c32evvcqplhnln8lt6</string>
+	<string>com.googleusercontent.apps.594196771574-3blc5f81hjluvh2e5vge9tm1kiv75tn6</string>
 	<key>API_KEY</key>
-	<string>AIzaSyD8ZCu4Ow1WnJAR84d4gLFRAsuAU4Vqobs</string>
+	<string>AIzaSyDVSBjglT57C-XHcl51ikCvy-lR0D40gwc</string>
 	<key>GCM_SENDER_ID</key>
-	<string>268085241448</string>
+	<string>594196771574</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>joao.tm.swiftui-sims-school</string>
+	<string>joao.tm.swiftui-sims-school-backup</string>
 	<key>PROJECT_ID</key>
-	<string>swiftui-sims-school</string>
+	<string>sims-school-project</string>
 	<key>STORAGE_BUCKET</key>
-	<string>swiftui-sims-school.appspot.com</string>
+	<string>sims-school-project.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,8 +29,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:268085241448:ios:a44a227ce65e6bdd753ddd</string>
+	<string>1:594196771574:ios:ae116d810a801501c032d7</string>
 	<key>DATABASE_URL</key>
-	<string>https://swiftui-sims-school.firebaseio.com</string>
+	<string>https://sims-school-project.firebaseio.com</string>
 </dict>
 </plist>

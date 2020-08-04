@@ -43,15 +43,15 @@ extension TipsResponse  {
 			self.medias.append(TipsMediasResponse(dictionary: media))
 		}
 		
-//		let media = self.medias.randomElement()!
-//		
-//		group.enter()
-//		self.getThumbnail(media: media) { image in
-//			if let image = image {
-//				self.thumbnail = image
-//			}
-//			group.leave()
-//		}
+		let media = self.medias.randomElement()!
+		
+		group.enter()
+		self.getThumbnail(media: media) { image in
+			if let image = image {
+				self.thumbnail = image
+			}
+			group.leave()
+		}
 		
 	}
 	

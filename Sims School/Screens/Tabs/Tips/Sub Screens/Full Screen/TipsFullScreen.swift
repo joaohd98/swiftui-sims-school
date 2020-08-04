@@ -15,7 +15,7 @@ struct TipsFullScreen: View {
 	@State var isSliding: Bool = false
 	@State var isDetectingPress: Bool = false
 	@State var nav: SlideHorizontalNav = .none
-
+	
 	init(tips: [TipsResponse], tipIndex: Int) {
 		self.props = TipsFullScreenModel(tips: tips, index: tipIndex)
 		self._index = State(initialValue: tipIndex)
@@ -30,7 +30,8 @@ struct TipsFullScreen: View {
 					presentationMode: self.presentationMode,
 					isSliding: self.$isSliding,
 					isDetectingPress: self.$isDetectingPress,
-					currentSlide: self.$index
+					currentSlide: self.$index,
+					timer: self.$props.timer
 				)
  			},
 			hasDots: false,
@@ -44,6 +45,18 @@ struct TipsFullScreen: View {
 			},
 			isInModal: true
 		)
+		.onDisappear {
+			if let timer = self.props.timer {
+				timer.invalidate()
+			}
+		}
+		.onReceive(NotificationCenter.default.publisher(for: UIApplication.willResignActiveNotification)) { _ in
+		   if let timer = self.props.timer {
+			   timer.invalidate()
+		   }
+			
+			self.presentationMode.wrappedValue.dismiss()
+		}
 	}
 }
 

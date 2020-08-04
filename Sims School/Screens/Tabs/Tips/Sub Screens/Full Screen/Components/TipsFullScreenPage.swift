@@ -15,11 +15,16 @@
 		@Binding var isSliding: Bool
 		@Binding var isDetectingPress: Bool
 		@Binding var nav: SlideHorizontalNav
-		
-		init(tip: TipsResponse, nav: Binding<SlideHorizontalNav>, presentationMode: Binding<PresentationMode>,
-			 isSliding: Binding<Bool>, isDetectingPress: Binding<Bool>, currentSlide: Binding<Int>) {
+
+		init(tip: TipsResponse,
+			 nav: Binding<SlideHorizontalNav>,
+			 presentationMode: Binding<PresentationMode>,
+			 isSliding: Binding<Bool>,
+			 isDetectingPress: Binding<Bool>,
+			 currentSlide: Binding<Int>,
+			 timer: Binding<Timer?>) {
 			
-			self.props = TipsFullScreenPageModel(tip: tip)
+			self.props = TipsFullScreenPageModel(tip: tip, timer: timer)
 			self._nav = nav
 			self._presentationMode = presentationMode
 			self._currentSlide = currentSlide
@@ -66,15 +71,14 @@
 			self.props.medias[self.props.currentMedia] = media
 			
 			var seconds = seconds
-			
+
 			self.props.timer = Timer.scheduledTimer(withTimeInterval: interval, repeats: true) { timer in
 				
 				if !self.isDetectingPress && !self.isSliding {
 					let media = self.props.getActualMedia()
-					
 					seconds -= interval
 					media.progress += valueProgress
-					
+																				
 					if seconds <= 0 {
 						timer.invalidate()
 						
@@ -85,11 +89,15 @@
 							}
 						}
 						else {
-							self.props.changeStatus(value: 1)
+							DispatchQueue.main.async {
+								self.props.changeStatus(value: 1)
+							}
 						}
 					}
 					
-					self.props.medias[self.props.currentMedia] = media
+					else {
+						self.props.medias[self.props.currentMedia] = media
+					}
 				}
 			}
 		}
@@ -120,10 +128,10 @@
 					DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
 						self.props.mediaRequest()
 					}
-			},
+				},
 				color: .white
 			)
-				.padding(.horizontal)
+			.padding(.horizontal)
 		}
 		
 		var loadingView: some View {

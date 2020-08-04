@@ -13,6 +13,7 @@ import UIKit
 
 class TipsFullScreenModel: ObservableObject {
 	@Published var tips: [TipsResponse]
+	@Published var timer: Timer?
 
 	init(tips: [TipsResponse], index: Int) {
 		self.tips = tips

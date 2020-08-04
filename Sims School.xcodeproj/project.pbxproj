@@ -69,7 +69,7 @@
 		DC662B5324D712B200D8B6EB /* TipsFullScreenImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC662B5224D712B200D8B6EB /* TipsFullScreenImage.swift */; };
 		DC662B5524D7550200D8B6EB /* TipsFullScreenPageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC662B5424D7550200D8B6EB /* TipsFullScreenPageModel.swift */; };
 		DC662B5724D7C0B900D8B6EB /* NextPreviousUiPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC662B5624D7C0B900D8B6EB /* NextPreviousUiPageViewController.swift */; };
-		DC662B5924D89FC000D8B6EB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DC662B5824D89FC000D8B6EB /* GoogleService-Info.plist */; };
+		DC662B5924D89FC000D8B6EB /* GoogleService-Info-backupp.plist in Resources */ = {isa = PBXBuildFile; fileRef = DC662B5824D89FC000D8B6EB /* GoogleService-Info-backupp.plist */; };
 		DC73635424D66FBC00D3202F /* TipsFullScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC73635324D66FBC00D3202F /* TipsFullScreenModel.swift */; };
 		DC74CF8424CB229000EFBFA0 /* RemoveAllCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC74CF8324CB228F00EFBFA0 /* RemoveAllCoreData.swift */; };
 		DC74CF8824CB6CDF00EFBFA0 /* ClassRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC74CF8724CB6CDF00EFBFA0 /* ClassRequest.swift */; };
@@ -83,7 +83,7 @@
 		DC89F04724BD704B001964FC /* TabsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC89F04624BD704B001964FC /* TabsScreen.swift */; };
 		DC989EDD24BCEDCA003B79A6 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC989EDC24BCEDCA003B79A6 /* HomeScreen.swift */; };
 		DC989EE524BD0006003B79A6 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC989EE424BD0006003B79A6 /* Layout.swift */; };
-		DC98E1AF24B8A07F00D4BD76 /* GoogleService-Info-backup.plist in Resources */ = {isa = PBXBuildFile; fileRef = DC98E1AE24B8A07F00D4BD76 /* GoogleService-Info-backup.plist */; };
+		DC98E1AF24B8A07F00D4BD76 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DC98E1AE24B8A07F00D4BD76 /* GoogleService-Info.plist */; };
 		DC98E1B224B8A18100D4BD76 /* LoginScreenSubmitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC98E1B124B8A18100D4BD76 /* LoginScreenSubmitButton.swift */; };
 		DC98E1B524B8AA3E00D4BD76 /* LoginScreenLogo.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC98E1B424B8AA3E00D4BD76 /* LoginScreenLogo.swift */; };
 		DC98E1B924B8AE3900D4BD76 /* LoginScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC98E1B824B8AE3900D4BD76 /* LoginScreenModel.swift */; };
@@ -184,7 +184,7 @@
 		DC662B5224D712B200D8B6EB /* TipsFullScreenImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsFullScreenImage.swift; sourceTree = "<group>"; };
 		DC662B5424D7550200D8B6EB /* TipsFullScreenPageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsFullScreenPageModel.swift; sourceTree = "<group>"; };
 		DC662B5624D7C0B900D8B6EB /* NextPreviousUiPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextPreviousUiPageViewController.swift; sourceTree = "<group>"; };
-		DC662B5824D89FC000D8B6EB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		DC662B5824D89FC000D8B6EB /* GoogleService-Info-backupp.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-backupp.plist"; sourceTree = "<group>"; };
 		DC73635324D66FBC00D3202F /* TipsFullScreenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsFullScreenModel.swift; sourceTree = "<group>"; };
 		DC74CF8324CB228F00EFBFA0 /* RemoveAllCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveAllCoreData.swift; sourceTree = "<group>"; };
 		DC74CF8724CB6CDF00EFBFA0 /* ClassRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassRequest.swift; sourceTree = "<group>"; };
@@ -198,7 +198,7 @@
 		DC89F04624BD704B001964FC /* TabsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabsScreen.swift; sourceTree = "<group>"; };
 		DC989EDC24BCEDCA003B79A6 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		DC989EE424BD0006003B79A6 /* Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
-		DC98E1AE24B8A07F00D4BD76 /* GoogleService-Info-backup.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-backup.plist"; sourceTree = "<group>"; };
+		DC98E1AE24B8A07F00D4BD76 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DC98E1B124B8A18100D4BD76 /* LoginScreenSubmitButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenSubmitButton.swift; sourceTree = "<group>"; };
 		DC98E1B424B8AA3E00D4BD76 /* LoginScreenLogo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenLogo.swift; sourceTree = "<group>"; };
 		DC98E1B824B8AE3900D4BD76 /* LoginScreenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenModel.swift; sourceTree = "<group>"; };
@@ -824,8 +824,8 @@
 				DCF043F224AD16E600241062 /* Screens */,
 				DCF0440A24AE224200241062 /* Services */,
 				DCF043FD24AD1C5700241062 /* Theme */,
-				DC662B5824D89FC000D8B6EB /* GoogleService-Info.plist */,
-				DC98E1AE24B8A07F00D4BD76 /* GoogleService-Info-backup.plist */,
+				DC662B5824D89FC000D8B6EB /* GoogleService-Info-backupp.plist */,
+				DC98E1AE24B8A07F00D4BD76 /* GoogleService-Info.plist */,
 				DCF6EEC724CB177A00C026E9 /* SimsSchool.xcdatamodeld */,
 				DC10077D24C7580E00DB3EE7 /* video-vertical.mov */,
 				DC10077E24C7580E00DB3EE7 /* video-horizontal.mp4 */,
@@ -1022,10 +1022,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				DC10077F24C7580E00DB3EE7 /* video-vertical.mov in Resources */,
-				DC662B5924D89FC000D8B6EB /* GoogleService-Info.plist in Resources */,
+				DC662B5924D89FC000D8B6EB /* GoogleService-Info-backupp.plist in Resources */,
 				DC10078024C7580E00DB3EE7 /* video-horizontal.mp4 in Resources */,
 				DCF043EB24AD16B800241062 /* LaunchScreen.storyboard in Resources */,
-				DC98E1AF24B8A07F00D4BD76 /* GoogleService-Info-backup.plist in Resources */,
+				DC98E1AF24B8A07F00D4BD76 /* GoogleService-Info.plist in Resources */,
 				DCF043E824AD16B800241062 /* Preview Assets.xcassets in Resources */,
 				DCF043E524AD16B800241062 /* Assets.xcassets in Resources */,
 				DC26356424D22B4900CFBF4F /* calendar-animation.json in Resources */,
@@ -1327,7 +1327,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "joao.tm.swiftui-sims-school-backup";
+				PRODUCT_BUNDLE_IDENTIFIER = "joao.tm.swiftui-sims-school";
 				PRODUCT_NAME = "Sims School";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1349,7 +1349,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "joao.tm.swiftui-sims-school-backup";
+				PRODUCT_BUNDLE_IDENTIFIER = "joao.tm.swiftui-sims-school";
 				PRODUCT_NAME = "Sims School";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

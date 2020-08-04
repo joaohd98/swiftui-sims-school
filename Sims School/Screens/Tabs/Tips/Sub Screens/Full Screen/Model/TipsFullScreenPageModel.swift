@@ -14,16 +14,18 @@ class TipsFullScreenPageModel: ObservableObject {
 	@Published var tip: TipsResponse
 	@Published var medias: [TipsMediasResponse]
 	@Published var currentMedia: Int
-	var timer: Timer?
-	
-	init(tip: TipsResponse) {
+	@Binding var timer: Timer?
+
+	init(tip: TipsResponse, timer: Binding<Timer?>) {
 		self.tip = tip
 		self.medias = tip.medias
 		self.currentMedia = 0
+		self._timer = timer
 	}
 	
 	func removeTimer() {
 		if let timer = self.timer {
+			print("clear timer")
 			timer.invalidate()
 		}
 	}
