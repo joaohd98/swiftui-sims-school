@@ -51,7 +51,6 @@ struct CustomUIPageViewController: UIViewControllerRepresentable {
 			else {
 				pageViewController.goToPreviousPage()
 			}
-			
 		}
 	}
 	

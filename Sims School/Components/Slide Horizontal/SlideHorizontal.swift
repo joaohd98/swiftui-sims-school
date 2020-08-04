@@ -30,7 +30,7 @@ struct SlideHorizontal<Page: View>: View {
 		_ views: [Page],
 		hasDots: Bool,
 		currentPage: Int = 0,
-		nav: Binding<SlideHorizontalNav> = Binding.constant(.previous),
+		nav: Binding<SlideHorizontalNav> = Binding.constant(.none),
 		currentPageCallBack: @escaping (Int) -> Void = { _ in },
 		isSlidingCallBack: @escaping (Bool) -> Void = { _ in },
 		isInModal: Bool = false) {
