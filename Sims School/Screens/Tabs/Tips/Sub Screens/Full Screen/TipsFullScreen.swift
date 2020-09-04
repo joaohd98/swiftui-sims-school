@@ -49,6 +49,14 @@ struct TipsFullScreen: View {
 			if let timer = self.props.timer {
 				timer.invalidate()
 			}
+			
+			self.props.tips.forEach { tip in
+				tip.medias.forEach { media in
+					if let videoView = media.videoView {
+						videoView.playerView.stop()
+					}
+				}
+			}
 		}
 		.onReceive(NotificationCenter.default.publisher(for: UIApplication.willResignActiveNotification)) { _ in
 		   if let timer = self.props.timer {
