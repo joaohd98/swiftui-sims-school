@@ -24,6 +24,10 @@ class CalendarCourseResponse: ObservableObject {
 		weekday = 0
 		test = ""
 	}
+	
+	func getDayOfMonth() -> String {
+		return String(day.split(separator: "/").first ?? "")
+	}
 }
 
 

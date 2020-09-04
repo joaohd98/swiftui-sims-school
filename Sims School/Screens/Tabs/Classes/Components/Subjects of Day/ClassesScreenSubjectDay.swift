@@ -45,9 +45,41 @@ struct ClassesScreenSubjectDay: View {
 		let gradient = RadialGradient(
 			gradient: backgroundColors, center: .top, startRadius: 50, endRadius: 200
 		)
-			.cornerRadius(5)
+		.cornerRadius(5)
 		
 		let isCurrentDay: (_ index: Int) -> Bool = { index in index == courseSelected.weekday }
+		let getDay: (_ index: Int) -> String = { index in
+			let getCurrentWeekDay: (_ isIncreasing: Bool) -> String = { isIncreasing in
+				var indexSelected = self.dayOfYear
+				var value = ""
+				 
+				let size = self.days.count - 1
+				let sumValue = isIncreasing ? 1 : -1
+
+				while(isIncreasing ? indexSelected <= size : indexSelected >= 0) {
+					let selectedDay = self.days[indexSelected]
+					if(selectedDay.weekday == index) {
+						value = selectedDay.getDayOfMonth()
+						break
+					}
+					
+					indexSelected += sumValue
+				}
+				
+				return value
+			}
+			
+			if(courseSelected.weekday > index) {
+				return getCurrentWeekDay(false)
+			}
+			else if(courseSelected.weekday < index) {
+				return getCurrentWeekDay(true)
+			}
+			else {
+				return courseSelected.getDayOfMonth()
+			}
+		}
+		
 		
 		return (
 			HStack(spacing: 0) {
@@ -59,14 +91,14 @@ struct ClassesScreenSubjectDay: View {
 						VStack(spacing: 30) {
 							Text(self.weekdays[index])
 								.foregroundColor(isCurrentDay(index) ? Color.black : Color(CustomColor.gray))
-							Text(String(index + 1))
+							Text(getDay(index))
 								.foregroundColor(isCurrentDay(index) ? Color.black : Color(CustomColor.gray))
 						}
 					}
 					.frame(maxWidth: .infinity)
 					.padding(.vertical, 5)
 					.background(isCurrentDay(index) ? gradient : nil)
-					.disabled(isCurrentDay(index))
+					.disabled(getDay(index) != "" ? isCurrentDay(index) : true)
 				}
 			}
 			.padding(.top, 10)
